@@ -1,0 +1,525 @@
+/* Demo style:.salsa */
+
+
+    /* ONE STEP */
+
+    /* Typography ----------------------------------------------------------------------------------------------------*/
+
+    .salsa a{
+    color: #db0926;
+    }
+    .salsa a:hover, .salsa a:active, .salsa a:focus{
+    color: #990033;
+    }
+    .salsa .ct-u-colorMotive{
+    color: #db0926;
+    }
+    .salsa .ct-u-colorInherit{\
+    color: inherit;
+    }
+
+    /* Menu ----------------------------------------------------------------------------------------------------------*/
+
+    .salsa .navbar-nav > li > a.active{
+    color: #db0926;
+    }
+    .salsa .navbar-nav > li > a:hover,
+    .salsa .navbar-nav > li > a:focus{
+    color: #db0926;
+    }
+    .salsa .navbar.yamm li.dropdown ul.dropdown-menu li a:hover{
+    color: #db0926;
+    }
+    .salsa .navbar-nav > li.dropdown ul.dropdown-menu li a.active{
+    color: #db0926;
+    }
+    .salsa .navbar-nav li.active a{
+    color: #db0926;
+    }
+
+    /* Tooltip -------------------------------------------------------------------------------------------------------*/
+
+    .salsa .tooltip.top .tooltip-arrow {
+    border-top-color: #db0926 !important;
+    }
+    .salsa .tooltip .tooltip-inner {
+    background-color: #db0926 !important;
+    }
+
+
+    /* Footer --------------------------------------------------------------------------------------------------------*/
+
+    .salsa footer.ct-footer .ct-widgetHeader {
+    color: #db0926;
+    }
+    .salsa footer.ct-footer .ct-widgetLinks .ct-widgetLinks-list li a:hover {
+    color: #990033;
+    }
+    .salsa footer.ct-footer .ct-widgetLinks .ct-widgetLinks-list li a:active {
+    color: #db0926;
+    }
+    .salsa footer.ct-footer .ct-widgetLinks .ct-widgetLinks-list li a:focus {
+    color: #db0926;
+    }
+
+
+    /* Buttons -------------------------------------------------------------------------------------------------------*/
+
+    .salsa .btn-primary{
+    background-color: #db0926;
+    border-color: #db0926;
+    color: #ffffff;
+    }
+    .salsa .btn-primary:hover, .salsa .btn-primary:active, .salsa .btn-primary:focus{
+    background-color: #990033;
+    border-color: #990033;
+    color: #ffffff;
+    }
+    .salsa .btn-primary:before{
+    background-color: #db0926;
+    }
+    .salsa .btn-primay,
+    .salsa .btn-success,
+    .salsa .btn-danger,
+    .salsa .btn-warning,
+    .salsa .btn-info,
+    .salsa .btn-darkGray,
+    .salsa .btn-primay:hover,
+    .salsa .btn-success:hover,
+    .salsa .btn-danger:hover,
+    .salsa .btn-warning:hover,
+    .salsa .btn-info:hover,
+    .salsa .btn-darkGray:hover{
+    color: #ffffff;
+    }
+    .salsa .btn-gray,
+    .salsa .btn-gray:hover{
+    color: #303030;
+    }
+    .salsa .btn-transparent{
+    color: #ffffff;
+    }
+    /* Back to top ---------------------------------------------------------------------------------------------------*/
+
+    .salsa #toTop{
+    background-color: #db0926;
+    }
+    .salsa #toTop:hover{
+    background-color: #990033;
+    }
+
+    /* Icon box ------------------------------------------------------------------------------------------------------*/
+    .salsa .ct-iconBox.ct-iconBox--pentagon .ct-iconBox-icon svg{
+    fill: #db0926;
+    stroke: #db0926;
+    }
+    .salsa .ct-iconBox.ct-iconBox--pentagon:hover .ct-iconBox-icon svg{
+    fill: transparent;
+    stroke: #db0926;
+    }
+    .salsa .ct-iconBox.ct-iconBox--pentagon:hover .ct-iconBox-icon i{
+    color: #db0926;
+    }
+    .salsa .ct-iconBox.ct-iconBox--square:hover .ct-iconBox-icon i{
+    color: #db0926;
+    }
+    .salsa .ct-iconBox.ct-iconBox--square .ct-iconBox-icon{
+    background-color: #db0926;
+    border-color: #db0926;
+    }
+    .salsa .ct-iconBox.ct-iconBox--square:hover .ct-iconBox-icon{
+    background-color: transparent;
+    }
+    .salsa .ct-iconBox--type1 .ct-iconBox-Icon{
+    background-color: #db0926;
+    }
+    .salsa .ct-iconBox--type1 .ct-iconBox-Icon.ct-iconBox-IconEffect:after{
+    box-shadow: 3px 3px 0 #db0926;
+    -webkit-box-shadow: 3px 3px 0 #db0926;
+    }
+    .salsa .ct-iconBox--type1 .ct-iconBox-Icon.ct-iconBox-effectHelper:after{
+    box-shadow: 3px 3px 0 #db0926;
+    -webkit-box-shadow: 3px 3px 0 #db0926;
+    }
+
+
+
+    /* Title box -----------------------------------------------------------------------------------------------------*/
+
+    .salsa .ct-titleBox{
+    color: #db0926;
+    }
+
+
+    /* Tabs ----------------------------------------------------------------------------------------------------------*/
+
+    .salsa .nav.nav-tabs.ct-navTabas--vertical li a:hover, .salsa .nav.nav-tabs.ct-navTabas--vertical li a:focus, .salsa .nav.nav-tabs.ct-navTabas--vertical li a:active{
+    color: #db0926;
+    }
+    .salsa .nav.nav-tabs.ct-navTabs--vertical li.active a{
+    color: #db0926;
+    }
+    .salsa .nav.nav-tabs.ct-navTabs--vertical .salsa @media (max-width: 992px) li.active a{
+    background-color: #db0926;
+    }
+    .salsa .ct-tabpanel.ct-tabpanel--motive .nav-tabs li a{
+    background-color: #db0926;
+    }
+    .salsa .ct-tabpanel.ct-tabpanel--motive .nav-tabs li a:hover,
+    .salsa .ct-tabpanel.ct-tabpanel--motive .nav-tabs li a:focus,
+    .salsa .ct-tabpanel.ct-tabpanel--motive .nav-tabs li a:active{
+    background-color: #990033;
+    }
+    .salsa .ct-tabpanel.ct-tabpanel--motive .nav-tabs li.active a{
+    background-color: #eaeaea;
+    }
+
+    /* Gallery Isotope -----------------------------------------------------------------------------------------------*/
+    .salsa .ct-gallery-filters li a.active{
+    color: #db0926;
+    }
+    .salsa .ct-galleryBox--motive .ct-galleryBox-overlay{
+    background-color: rgba(219, 9, 38, .7);
+    }
+
+    /* Shop single product */
+    .salsa .ct-productDescription .ct-stars{
+    color: #db0926;
+    }
+    .salsa .ct-productShop .ct-productShop-content .ct-productShop-image .ct-productShop-topDescription .ct-productShop-wishlist{
+    background-color: rgba(219, 9, 38, .7);
+    }
+    .salsa .ct-productShop .ct-productShop-content .ct-productShop-name a:hover{
+    color: #db0926;
+    }
+    /* Text select ---------------------------------------------------------------------------------------------------*/
+    .salsa ::-moz-selection{
+    background: #db0926;
+    }
+    .salsa ::selection{
+    background: #db0926;
+    }
+
+    /* OWL pagination ------------------------------------------------------------------------------------------------*/
+    .salsa .owl-carousel .owl-controls .owl-pagination .owl-page.active span{
+    background-color: #db0926;
+    }
+    .salsa .owl-carousel .owl-controls .owl-pagination .owl-page span{
+    background-color: rgba(219, 9, 38, .7);
+    }
+    .salsa .ct-pagination .ct-pages .ct-pages-next a:hover, .salsa .ct-pagination .ct-pages .ct-pages-prev a:hover{
+    color: #db0926    }
+
+    /* Social list ---------------------------------------------------------------------------------------------------*/
+    .salsa .ct-socialList li a.ct-socialLink span:before{
+    color: #db0926;
+    }
+    .salsa .ct-socials.ct-socials--motive li a i{
+    color: #db0926;
+    }
+    .salsa .ct-socials.ct-socials--darkGrey > li > a i:hover{
+    color: #db0926;
+    }
+
+    /* Page loader ---------------------------------------------------------------------------------------------------*/
+    .salsa .ct-loader .ct-loader-part{
+    background-color: #db0926;
+    }
+
+    /* Courses box ---------------------------------------------------------------------------------------------------*/
+    .salsa .ct-coursesBox .ct-coursesBox-image .ct-coursesIcon{
+    background-color: #db0926;
+    }
+    .salsa .ct-coursesBox .ct-coursesBox-title a{
+    color: #303030;
+    }
+    .salsa .ct-coursesBox .ct-coursesBox-title a:hover{
+    color: #db0926;
+    }
+
+    /* Blog ----------------------------------------------------------------------------------------------------------*/
+    .salsa .ct-blogList .ct-Description .ct-readMore .ct-readMore-link:before{
+    border-top-color: #db0926;
+    }
+    .salsa .ct-blogList .ct-blogList-content .ct-blogThumbnail .ct-blogDate{
+    border-color: #db0926;
+    }
+    .salsa .ct-blogList .ct-blogList-content .ct-blogThumbnail .ct-blogDate .ct-blogDay{
+    border-bottom-color: #db0926;
+    }
+    .salsa .ct-blogList .ct-blogList-content .ct-blogThumbnail .ct-blogImage{
+    border-color: #db0926;
+    }
+    .salsa .ct-blog .ct-blog-sideBar .ct-widget-search input[type=text]:focus + .btn{
+    background-color: #db0926;
+    border-color: #db0926;
+    color: #db0926;
+    }
+    .salsa .ct-blog .ct-blog-sideBar .ct-widget-search input[type=text]:active + .btn{
+    background-color: #db0926;
+    border-color: #db0926;
+    color: #db0926;
+    }
+    .salsa .ct-blog .ct-blog-sideBar .ct-widget-search input[type=text]:valid + .btn{
+    background-color: #db0926;
+    border-color: #db0926;
+    color: #db0926;
+    }
+    .salsa .ct-blog .ct-blog-sideBar .ct-blogTopPosts ul li a:hover,
+    .salsa .ct-blog .ct-blog-sideBar .ct-blogTopPosts ul li a:active,
+    .salsa .ct-blog .ct-blog-sideBar .ct-blogTopPosts ul li a:focus{
+    color: #db0926;
+    }
+    .salsa .ct-blog .ct-blog-sideBar .ct-blog-latestComments ul li a:hover,
+    .salsa .ct-blog .ct-blog-sideBar .ct-blog-latestComments ul li a:active,
+    .salsa .ct-blog .ct-blog-sideBar .ct-blog-latestComments ul li a:focus{
+    color: #db0926;
+    }
+    .salsa .ct-blog .ct-blog-sideBar .ct-blog-latestComments a span.ct-blog-latestComments-tagName{
+    color: #db0926;
+    }
+    .salsa .ct-blog .ct-blog-sideBar .ct-blog-latestComments a span.ct-blog-latestComments-tagName:hover{
+    color: #990033;
+    }
+    .salsa .ct-blog .ct-blog-sideBar .ct-blog-tags a{
+    color: inherit;
+    }
+    .salsa .ct-blog .ct-blog-sideBar .ct-blog-tags a:hover{
+    color: #db0926;
+    border-color: #db0926;
+    }
+    .salsa .ct-blog .ct-blog-sideBar .ct-blog-recentPosts .ct-widgetInner .ct-blog-recentPosts-description .ct-blog-recentPost-shortInformation .ct-blog-recentPosts-title{
+    color: inherit;
+    }
+    .salsa .ct-blog .ct-blog-sideBar .ct-blog-recentPosts .ct-widgetInner .ct-blog-recentPosts-description .ct-blog-recentPost-shortInformation .ct-blog-recentPosts-title:hover{
+    color: #990033;
+    }
+    .salsa .ct-blog .ct-blogItem.ct-blogItem--primary .ct-blogDescription .ct-blogTitle a:hover{
+    color: #db0926;
+    }
+
+    /* Google maps ---------------------------------------------------------------------------------------------------*/
+    .salsa .ct-mapBox{
+    background-color: #db0926;
+    }
+    .salsa .ct-mapBox:before{
+    border-color: transparent #db0926 transparent transparent;
+    }
+
+    /* Pircing Box ---------------------------------------------------------------------------------------------------*/
+    .salsa .ct-pricingBox.ct-pricingBox--standard .ct-pricingBox-list li i,
+    .salsa .ct-pricingBox.ct-pricingBox--professional .ct-pricingBox-list li i{
+    color: #db0926;
+    }
+    .salsa .ct-pricingBox.ct-pricingBox--standard.ct-pricingBox--important .ct-pricingBox-pricing{
+    background-color: #db0926;
+    }
+    .salsa .ct-pricingBox.ct-pricingBox--professional .ct-pricingBox-pricing{
+    background-color: #db0926;
+    }
+    .salsa .ct-pricingBox.ct-pricingBox--professional:hover .ct-pricingBox-title{
+    background-color: #db0926;
+    }
+    .salsa .ct-pricingBox.ct-pricingBox--professional:hover .ct-pricingBox-title .ct-pricingBox-pricing{
+    border-color: #db0926;
+    color: #db0926;
+    }
+
+    /* Testimonials --------------------------------------------------------------------------------------------------*/
+    .salsa .ct-testimonials .ct-testimonials-content-name{
+    color: #db0926;
+    }
+
+    /* Author Comments, posts [Blog single] --------------------------------------------------------------------------*/
+    .salsa .ct-authorComment .ct-authorPost-author{
+    color: #db0926;
+    }
+    .salsa .ct-authorPost, .salsa .ct-authorPost:before{
+    background-color: #db0926;
+    }
+
+    /* Section titles ------------------------------------------------------------------------------------------------*/
+    .salsa .ct-sectionTitle .ct-sectionTitle-decorativeLine--small.ct-sectionTitle-decorativeLine--motive:after,
+    .salsa .ct-sectionTitle .ct-sectionTitle-decorativeLine--medium.ct-sectionTitle-decorativeLine--motive:after{
+    background-color: #db0926;
+    }
+
+    /* Social icons --------------------------------------------------------------------------------------------------*/
+    .salsa .ct-socials.ct-socials--motive li a i{
+    color: #db0926;
+    }
+    .salsa .ct-socials.ct-socials--motive li a i:hover,
+    .salsa .ct-socials.ct-socials--motive li a i:active,
+    .salsa .ct-socials.ct-socials--motive li a i:focus{
+    color: #db0926;
+    }
+    .salsa .ct-socials.ct-socials--lightGrey li a i:hover,
+    .salsa .ct-socials.ct-socials--lightGrey li a i:active,
+    .salsa .ct-socials.ct-socials--lightGrey li a i:focus{
+    color: #db0926;
+    }
+    .salsa .ct-socials.ct-socials--darkGrey li a i:hover,
+    .salsa .ct-socials.ct-socials--darkGrey li a i:active,
+    .salsa .ct-socials.ct-socials--darkGrey li a i:focus,{
+    color: #db0926;
+    }
+
+    /* Synced Carousel -----------------------------------------------------------------------------------------------*/
+    .salsa .ct-syncedCarousel.ct-syncedCarousel--navigationBottom .owl-item.synced{
+    border: 2px solid #db0926;
+    }
+    .salsa .ct-syncedCarousel-videoPoster figcaption{
+    background-color: rgba(219, 9, 38, .7);
+    }
+
+    /* Person Boxes --------------------------------------------------------------------------------------------------*/
+
+    .salsa .ct-personBox.ct-personBox--primary .ct-personBox-image figcaption:before{
+    background-color: rgba(219, 9, 38, .7);
+    }
+    .salsa .ct-personBox.ct-personBox--primary .ct-personBox-image figcaption .ct-personBox-name{
+    background-color: rgba(219, 9, 38, .7);
+    }
+    .salsa .ct-personBox.ct-personBox--primary .ct-personBox-image:hover figcaption .ct-personBox-name{
+    background-color: transparent;
+    }
+    .salsa html.ie8 .ct-personBox.ct-personBox--primary .ct-personBox-image figcaption .ct-personBox-name{
+    background-color: #db0926;
+    }
+
+    /* Magnific popup ------------------------------------------------------------------------------------------------*/
+
+    .salsa .mfp-arrow-left:before, .salsa .mfp-arrow-left .mfp-b{
+    border-right: 27px solid #db0926;
+    }
+    .salsa .mfp-arrow-right:before, .salsa .mfp-arrow-right .mfp-b{
+    border-left: 27px solid #db0926;
+    }
+
+
+    /* Date picker ---------------------------------------------------------------------------------------------------*/
+
+    .salsa .datepicker table tr td.today,
+    .salsa .datepicker table tr td.today:hover,
+    .salsa .datepicker table tr td.today.disabled,
+    .salsa .datepicker table tr td.today.disabled:hover{
+    background-color: #db0926;
+    background-image: -moz-linear-gradient(top, #db0926, #db0926);
+    background-image: -ms-linear-gradient(top, #db0926, #db0926);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#db0926), to(#db0926));
+    background-image: -webkit-linear-gradient(top, #db0926, #db0926);
+    background-image: -o-linear-gradient(top, #db0926, #db0926);
+    background-image: linear-gradient(top, #db0926, #db0926);
+    -webkit-box-shadow: inset 0 0 10px #990033;
+       -moz-box-shadow: inset 0 0 10px #990033;
+            box-shadow: inset 0 0 10px #990033;
+    border-left-color: #990033;
+    border-top-color: #990033;
+    }
+    .salsa .datepicker table tr td.range.today,
+    .salsa .datepicker table tr td.range.today:hover,
+    .salsa .datepicker table tr td.range.today.disabled,
+    .salsa .datepicker table tr td.range.today.disabled:hover{
+    background-color: #db0926;
+    background-image: -moz-linear-gradient(top, #db0926, #db0926);
+    background-image: -ms-linear-gradient(top, #db0926, #db0926);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#db0926), to(#db0926));
+    background-image: -webkit-linear-gradient(top, #db0926, #db0926);
+    background-image: -o-linear-gradient(top, #db0926, #db0926);
+    background-image: linear-gradient(top, #db0926, #db0926);
+    }
+    .salsa .datepicker table tr td.active:hover,
+    .salsa .datepicker table tr td.active:hover:hover,
+    .salsa .datepicker table tr td.active.disabled:hover,
+    .salsa .datepicker table tr td.active.disabled:hover:hover,
+    .salsa .datepicker table tr td.active:active,
+    .salsa .datepicker table tr td.active:hover:active,
+    .salsa .datepicker table tr td.active.disabled:active,
+    .salsa .datepicker table tr td.active.disabled:hover:active,
+    .salsa .datepicker table tr td.active.active,
+    .salsa .datepicker table tr td.active:hover.active,
+    .salsa .datepicker table tr td.active.disabled.active,
+    .salsa .datepicker table tr td.active.disabled:hover.active,
+    .salsa .datepicker table tr td.active.disabled,
+    .salsa .datepicker table tr td.active:hover.disabled,
+    .salsa .datepicker table tr td.active.disabled.disabled,
+    .salsa .datepicker table tr td.active.disabled:hover.disabled,
+    .salsa .datepicker table tr td.active[disabled],
+    .salsa .datepicker table tr td.active:hover[disabled],
+    .salsa .datepicker table tr td.active.disabled[disabled],
+    .salsa .datepicker table tr td.active.disabled:hover[disabled]{
+    background-color: #db0926;
+    background-image: -moz-linear-gradient(top, #db0926, #db0926);
+    background-image: -ms-linear-gradient(top, #db0926, #db0926);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#db0926), to(#db0926));
+    background-image: -webkit-linear-gradient(top, #db0926, #db0926);
+    background-image: -o-linear-gradient(top, #db0926, #db0926);
+    background-image: linear-gradient(top, #db0926, #db0926);
+    -moz-box-shadow:    inset 0 0 10px #990033;
+    -webkit-box-shadow: inset 0 0 10px #990033;
+    box-shadow:         inset 0 0 10px #990033;
+    border-left-color: #990033;
+    border-top-color: #990033;
+    }
+    .salsa .datepicker table tr td.selected:active,
+    .salsa .datepicker table tr td.selected:hover:active,
+    .salsa .datepicker table tr td.selected.disabled:active,
+    .salsa  .datepicker table tr td.selected.disabled:hover:active,
+    .salsa .datepicker table tr td.selected.active,
+    .salsa .datepicker table tr td.selected:hover.active,
+    .salsa .datepicker table tr td.selected.disabled.active,
+    .salsa .datepicker table tr td.selected.disabled:hover.active{
+    background: #db0926;
+    }
+    .salsa .datepicker table tr td.active{
+    background: #db0926;
+    }
+
+    /* Forms ---------------------------------------------------------------------------------------------------------*/
+
+    .salsa .form-control:focus,
+    .salsa .form-control:active{
+    border-color: #db0926;
+    }
+
+    /* Progress bars -------------------------------------------------------------------------------------------------*/
+
+    .salsa .ct-progressBar .progress .progress-bar.progress-bar--motive{
+    background: #db0926;
+    }
+    .salsa .ct-progressBar .progress .progress-bar .ct-progressBar-content{
+    background: #db0926;
+    }
+
+    /* Counters ------------------------------------------------------------------------------------------------------*/
+
+    .salsa .ct-counterBox-icon .ct-counter-icon{
+    background: #db0926;
+    }
+    .salsa .ct-counterBox-icon  .ct-counter-content .ct-counter-description{
+    color: #db0926;
+    }
+    .salsa .ct-counterBox .ct-counter-content .ct-counter-description{
+    color: #db0926;
+    }
+
+    /* Accordions ----------------------------------------------------------------------------------------------------*/
+    .salsa .panel-group .panel-heading a:before{
+    background-color: #db0926;
+    }
+
+    /* Tables --------------------------------------------------------------------------------------------------------*/
+    .salsa table.table > thead{
+    background-color: #db0926;
+    }
+
+    /* Image box -----------------------------------------------------------------------------------------------------*/
+    .salsa .ct-imageBox.ct-imageBox--type1 .ct-imageBox-content:before{
+    background-color: rgba(219, 9, 38, .9);
+    background-color: rgba(219, 9, 38, .9);
+    }
+
+    /* Select 2 ------------------------------------------------------------------------------------------------------*/
+    .salsa .select2-container--default .select2-results__option--highlighted[aria-selected]{
+    background-color: rgba(219, 9, 38, .1);
+    }
