@@ -1,0 +1,12 @@
+/bootstrap/compiled.php 
+/app/config/database.php 
+/vendor 
+/logs 
+/conf 
+composer.phar 
+composer.lock 
+.DS_Store 
+Thumbs.db 
+*.swp 
+*.log 
+/vendor/*
