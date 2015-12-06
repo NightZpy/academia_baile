@@ -9,6 +9,7 @@
     @include('partials._errors')
     {!! Form::open(array('url' => route('academies-participants.store'), 'method' => 'post', 'class' => 'ct-u-paddingTop25 ct-u-form-control--Default ct-loginForm', 'accept-charset' => 'UTF-8')) !!}
         <div class="form-group">
+            {!! Form::label('name', 'Nombré') !!}
             {!! Form::text('name', old('name'), array('placeholder' => 'Nombre de la Academia', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
         </div>
         <div class="form-group">

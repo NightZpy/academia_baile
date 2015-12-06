@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html class="no-js" lang="es"> <!--<![endif]-->
-<head lang="es">
+<html lang="es"> <!--<![endif]-->
+<head>
 @include('layout.includes._head')
 </head>
 {{-- <body class="cssAnimate ct-headroom--scrollUpMenu  salsa"> --}}
