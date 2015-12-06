@@ -22,9 +22,9 @@ class CreateAcademiesParticipantsTable extends Migration
             $table->string('logo', 128)->nullable();
             $table->string('email', 128)->unique();
             $table->string('phone', 24);
-            $table->string('facebook', 128)->unique();
-            $table->string('twitter', 128)->unique();
-            $table->string('instagram', 128)->unique();
+            $table->string('facebook', 128)->->nullable()->unique();
+            $table->string('twitter', 128)->->nullable()->unique();
+            $table->string('instagram', 128)->->nullable()->unique();
             
             $table->integer('estate_id')->length(11)->unsigned();
             // $table->foreign('estate_id')->references('id')->on('estates')->onDelete('cascade')->onUpdate('cascade');
