@@ -1,8 +1,13 @@
 <!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]>
+<html class="no-js ie8" lang="es"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js ie9" lang="es"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html lang="es"> <!--<![endif]-->
-<head>
-@include('layout.includes._head')
+<html class="no-js" lang="es"> <!--<![endif]-->
+<head lang="es">
+	@include('layout.includes._head')
 </head>
 {{-- <body class="cssAnimate ct-headroom--scrollUpMenu  salsa"> --}}
 <body class="cssAnimate ct-headroom--fixedMenu onepager salsa">
