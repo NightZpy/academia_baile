@@ -84,7 +84,7 @@ class AppMailer
         $from = $this->from;
         $fromName = $this->fromName;
         $this->mailer->send($this->view, $this->data, function ($message) use ($to, $from, $fromName) {
-            $message->from($from, $fromName)
+            $message->from('pluranza@alcompas.com.ve', $fromName)
                 ->to($to);
         });
     }
