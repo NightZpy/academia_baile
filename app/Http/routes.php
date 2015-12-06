@@ -37,7 +37,7 @@ Route::post('/send-message', function() {
 
 Route::group(['prefix' => 'pluranza'], function () {
 	/*
-	* ---------- Academies participants ----------
+	* ---------- Users ----------
 	*/
 	Route::post('usuarios/login', [
 		'as' => 'users.api.login',
@@ -50,7 +50,7 @@ Route::group(['prefix' => 'pluranza'], function () {
 	*/
 	Route::post('academias-participantes', [
 		'before' => 'guest',
-		'as' => 'academies-participants.register-base',
+		'as' => 'academies-participants.store',
 		'uses' => 'AcademieParticipantController@store'
 	]);	
 

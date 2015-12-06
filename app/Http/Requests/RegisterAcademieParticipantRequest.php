@@ -29,7 +29,7 @@ class RegisterAcademieParticipantRequest extends Request
             'description' => 'max:1024',
             'foundation' => 'date_format:d-m-Y',
             'logo' => 'image:jpg,png|max:128',
-            'email' => 'required|email|max:128|unique:academies_participants',
+            'email' => 'required|email|max:128|confirmed:email-confirm|unique:academies_participants',
             'phone' => 'required|numeric',
             'facebook' => 'max:128|unique:academies_participants',
             'twitter' => 'max:128|unique:academies_participants',
