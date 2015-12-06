@@ -1,29 +1,34 @@
 <div class="form">
     <div class="text-right ct-u-colorLighterGray ct-u-size16">
-        <span class="ct-u-colorLighterGrey ct-u-cursorPointer" data-toggle="modal" data-target="#myModal">Login</span>
+        <span class="ct-u-colorLighterGrey ct-u-cursorPointer" data-toggle="modal" data-target="#myModal">Ingresar</span>
     </div>
     <div class="text-left">
-        <h3 class="ct-u-marginBoth0 ct-u-marginTopMinus10 ct-u-size24 ct-fw-400">Join Us</h3>
+        <h3 class="ct-u-marginBoth0 ct-u-marginTopMinus10 ct-u-size24 ct-fw-400">Obten información</h3>
     </div>
-    <form class="ct-u-paddingTop25 ct-u-form-control--Default ct-loginForm">
+    @include('partials._flash')
+    @include('partials._errors')
+    {!! Form::open(array('url' => route('academies-participants.store'), 'method' => 'post', 'class' => 'ct-u-paddingTop25 ct-u-form-control--Default ct-loginForm', 'accept-charset' => 'UTF-8')) !!}
         <div class="form-group">
-            <input type="text" class="form-control input-sm" placeholder="First Name" required="required">
+            {!! Form::text('name', old('name'), array('placeholder' => 'Nombre de la Academia', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
         </div>
         <div class="form-group">
-            <input type="text" class="form-control input-sm"  placeholder="Last Name" required="required">
+            {!! Form::text('phone', old('phone'), array('placeholder' => 'Teléfono de contacto', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
         </div>
         <div class="form-group">
-            <input type="email" class="form-control input-sm"  placeholder="Email Address" required="required">
+            {!! Form::text('phone_confirmation', old('phone_confirmation'), array('placeholder' => 'Confirmar el teléfono', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
         </div>
         <div class="form-group">
-            <input type="email" class="form-control input-sm"  placeholder="Confirm Email Address" required="required">
+            {!! Form::email('email', old('email'), array('placeholder' => 'Email', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
         </div>
-        <button type="submit" class="btn btn-xs btn-primary btn-block text-uppercase ct-u-size14">Sign up</button>
-        <div class="help-block ct-u-size12 ct-u-colorLighterGray ct-u-paddingTop20">
+        <div class="form-group">
+            {!! Form::email('email_confirmation', old('email_confirmation'), array('placeholder' => 'Confirmár Email', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
+        </div>
+        <button type="submit" class="btn btn-xs btn-primary btn-block text-uppercase ct-u-size14">Registrar</button>
+        {{--<div class="help-block ct-u-size12 ct-u-colorLighterGray ct-u-paddingTop20">
             By signing up with 1step, you agree to our
             <a href="">Terms of OurService</a>
             and
             <a href="">Privacy Policy.</a>
-        </div>
-    </form>
+        </div>--}}
+    {!! Form::close() !!}
 </div>
