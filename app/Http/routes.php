@@ -55,3 +55,7 @@ Route::group(['prefix' => 'pluranza'], function () {
 	]);	
 
 });
+
+Route::get('info', function () {
+	return phpinfo();
+});

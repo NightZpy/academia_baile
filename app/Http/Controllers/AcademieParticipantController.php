@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mailers\AppMailer;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -37,9 +38,10 @@ class AcademieParticipantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterAcademieParticipantRequest $request)
+    public function store(RegisterAcademieParticipantRequest $request, AppMailer $mailer)
     {
-        AcademieParticipant::create($request->all());
+        $aP = AcademieParticipant::create($request->all());
+        $mailer->sendEmailBase($aP);
         flash()->success('Datos guardados exitosamente, le será enviado un correo con información detallada.');
         return redirect()->back()->withInput($request->except('password', 'password_confirmation'));
     }

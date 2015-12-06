@@ -1,8 +1,8 @@
 <?php
 namespace App\Mailers;
+use App\AcademieParticipant;
 use App\User;
 use Illuminate\Contracts\Mail\Mailer;
-
 class AppMailer
 {
     /**
@@ -12,11 +12,17 @@ class AppMailer
      */
     protected $mailer;
     /**
+     * The sender NAME of the email.
+     *
+     * @var string
+     */
+    protected $fromName;
+    /**
      * The sender of the email.
      *
      * @var string
      */
-    protected $from = 'admin@example.com';
+    protected $from;
     /**
      * The recipient of the email.
      *
@@ -43,6 +49,8 @@ class AppMailer
     public function __construct(Mailer $mailer)
     {
         $this->mailer = $mailer;
+        $this->from = env('EMAIL_FROM', false);
+        $this->fromName = env('EMAIL_FROM_NAME', false);
     }
     /**
      * Deliver the email confirmation.
@@ -57,6 +65,14 @@ class AppMailer
         $this->data = compact('user');
         $this->deliver();
     }
+
+    public function sendEmailBase(AcademieParticipant $academieParticipant)
+    {
+        $this->to = '<' . $academieParticipant->email . '>';
+        $this->view = 'emails.base';
+        $this->data = compact('academieParticipant');
+        $this->deliver();
+    }
     /**
      * Deliver the email.
      *
@@ -64,9 +80,12 @@ class AppMailer
      */
     public function deliver()
     {
-        $this->mailer->send($this->view, $this->data, function ($message) {
-            $message->from($this->from, 'Administrator')
-                    ->to($this->to);
+        $to = $this->to;
+        $from = $this->from;
+        $fromName = $this->fromName;
+        $this->mailer->send($this->view, $this->data, function ($message) use ($to, $from, $fromName) {
+            $message->from($from, $fromName)
+                ->to($to);
         });
     }
 }
