@@ -68,7 +68,7 @@ class AppMailer
 
     public function sendEmailBase(AcademieParticipant $academieParticipant)
     {
-        $this->to = '<' . $academieParticipant->email . '>';
+        $this->to = $academieParticipant->email;
         $this->view = 'emails.base';
         $this->data = compact('academieParticipant');
         $this->deliver();
