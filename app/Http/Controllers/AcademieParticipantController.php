@@ -41,7 +41,7 @@ class AcademieParticipantController extends Controller
     {
         AcademieParticipant::create($request->all());
         flash()->success('Datos guardados exitosamente, le será enviado un correo con información detallada.');
-        return redirect()->back();
+        return redirect()->back()->withInput($request->except('password', 'password_confirmation'));
     }
 
     /**

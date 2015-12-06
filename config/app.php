@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -151,6 +151,7 @@ return [
         MisterPhilip\MaintenanceMode\MaintenanceModeServiceProvider::class,
         MisterPhilip\MaintenanceMode\MaintenanceCommandServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -200,6 +201,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Flash'     => Laracasts\Flash\Flash::class,
+        'Html'      => Collective\Html\HtmlFacade::class,
+        'Form'      => Collective\Html\FormFacade::class,
     ],
 
 ];

@@ -7,22 +7,21 @@
     </div>
     @include('partials._flash')
     @include('partials._errors')
-    <form method="post" action="{{ route('academies-participants.store') }}" class="ct-u-paddingTop25 ct-u-form-control--Default ct-loginForm">
-        <input name="_token" hidden value="{!! csrf_token() !!}" />
+    {!! Form::open(array('url' => route('academies-participants.store'), 'method' => 'post', 'class' => 'ct-u-paddingTop25 ct-u-form-control--Default ct-loginForm', 'accept-charset' => 'UTF-8')) !!}
         <div class="form-group">
-            <input type="text" name="name" class="form-control input-sm" placeholder="Nombre de la Academia" required="required">
+            {!! Form::text('name', old('name'), array('placeholder' => 'Nombre de la Academia', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
         </div>
         <div class="form-group">
-            <input type="text" name="phone" class="form-control input-sm"  placeholder="Teléfono de contacto" required="required">
+            {!! Form::text('phone', old('phone'), array('placeholder' => 'Teléfono de contacto', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
         </div>
         <div class="form-group">
-            <input type="text" name="phone_confirmation" class="form-control input-sm"  placeholder="Confirma el teléfono" required="required">
+            {!! Form::text('phone_confirmation', old('phone_confirmation'), array('placeholder' => 'Confirmar el teléfono', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
         </div>
         <div class="form-group">
-            <input type="email" name="email" class="form-control input-sm"  placeholder="Email" required="required">
+            {!! Form::email('email', old('email'), array('placeholder' => 'Email', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
         </div>
         <div class="form-group">
-            <input type="email" name="email_confirmation" class="form-control input-sm"  placeholder="Confirmar Email" required="required">
+            {!! Form::email('email_confirmation', old('email_confirmation'), array('placeholder' => 'Confirmár Email', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
         </div>
         <button type="submit" class="btn btn-xs btn-primary btn-block text-uppercase ct-u-size14">Registrar</button>
         {{--<div class="help-block ct-u-size12 ct-u-colorLighterGray ct-u-paddingTop20">
@@ -31,5 +30,5 @@
             and
             <a href="">Privacy Policy.</a>
         </div>--}}
-    </form>
+    {!! Form::close() !!}
 </div>
