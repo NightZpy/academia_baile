@@ -1,6 +1,8 @@
 @extends('layout.main')
 
 @section('content')
+    @include('layout.includes._header')
+    <div class="clearfix"></div>
     <section class="ct-u-paddingBottom60 ct-backgroundContent" data-type="color" data-bg-color="#ffffff" style="background-color: rgb(255, 255, 255);">
         <div class="container">
             <div class="row">
@@ -27,7 +29,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="control-label" for="name">Name error</label>
+                        <label class="control-label" for="email">Email error</label>
                         {!! Form::text('email', old('email'), array('placeholder' => 'Nombre de la Academia', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
                     </div>
                 </div>

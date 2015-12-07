@@ -6,7 +6,7 @@
       <div class="col-lg-4 col-md-3 col-sm-2">
         <div class="navbar-header">
           <a class="navbar-brand" href="index.html">
-            <img src="assets/images/demo-content/salsa-logo.png" alt="Website Logo mobile">
+            <img src="/assets/images/demo-content/salsa-logo.png" alt="Website Logo mobile">
           </a>
         </div>
       </div>

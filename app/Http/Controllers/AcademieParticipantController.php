@@ -66,7 +66,7 @@ class AcademieParticipantController extends Controller
     public function edit($id)
     {
         $academieParticipant = AcademieParticipant::find($id);
-        return view('academies-participants.edit')->with(compact('academieParticipant'));
+        return view('pluranza.academies-participants.edit')->with(compact('academieParticipant'));
     }
 
     /**

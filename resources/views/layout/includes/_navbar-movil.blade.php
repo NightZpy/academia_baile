@@ -6,6 +6,6 @@
     <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" href="index.html">
-        <img src="assets/images/logo.png" alt="Website Logo">
+        <img src="/assets/images/logo.png" alt="Website Logo">
     </a>
 </div>
