@@ -4,8 +4,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<link rel="shortcut icon" href="favicon2.png">
-<link rel="apple-touch-icon" href="favicon2.png">
+<link rel="shortcut icon" href="/favicon2.png">
+<link rel="apple-touch-icon" href="/favicon2.png">
 <title>Al Compás - Academia de Baile</title>
 
 @include('layout.includes._css')

@@ -28,7 +28,7 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 * ---------- Home routes ----------
 */
 Route::get('/', [ 'as' => 'home', function () {
-    return view('layout.pages.index');
+    return view('pages.index');
 }]);
 
 Route::post('/send-message', function() {
