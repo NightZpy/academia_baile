@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Estate;
 use App\Mailers\AppMailer;
+use App\Municipality;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -65,8 +67,30 @@ class AcademieParticipantController extends Controller
      */
     public function edit($id)
     {
+        $cities = array();
+        $parishes = array();
+        $municipalities = array();
+        $estates = array();
+
         $academieParticipant = AcademieParticipant::find($id);
-        return view('pluranza.academies-participants.edit')->with(compact('academieParticipant'));
+        $cityId = $academieParticipant->city_id;
+        if($cityId > 0) {
+            $cities = City::all()->lists('ciudad', 'id_ciudad');
+        }
+
+        $parishId = $academieParticipant->parish_id;
+        if($parishId > 0) {
+            $parishes = Parish::all()->lists('parroquia', 'id_parroquia');
+        }
+
+        $municipalityId = $academieParticipant->municipality_id;
+        if($municipalityId > 0) {
+            $municipalities = Municipality::all()->lists('municipio', 'id_municipio');
+        }
+
+        $estateId = $academieParticipant->estate_id;
+	    $estates = Estate::all()->lists('estado', 'id_estado');
+	    return view('pluranza.academies-participants.edit')->with(compact('academieParticipant', 'estates', 'estateId', 'municipalities', 'municipalityId', 'parishes', 'parishId', 'cities', 'cityId'));
     }
 
     /**

@@ -17,7 +17,7 @@ class CreateAcademiesParticipantsTable extends Migration
             $table->increments('id');
             $table->string('name', 64)->unique();
             $table->string('address', 256)->nullable();
-            $table->text('description')->nullable();
+            $table->text('history')->nullable();
             $table->date('foundation')->nullable();
             $table->string('logo', 128)->nullable();
             $table->string('email', 128)->unique();
