@@ -28,7 +28,7 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 * ---------- Home routes ----------
 */
 Route::get('/', [ 'as' => 'home', function () {
-    return view('layout.main');
+    return view('layout.pages.index');
 }]);
 
 Route::post('/send-message', function() {
@@ -52,10 +52,21 @@ Route::group(['prefix' => 'pluranza'], function () {
 		'before' => 'guest',
 		'as' => 'academies-participants.store',
 		'uses' => 'AcademieParticipantController@store'
-	]);	
+	]);
 
-});
+	Route::get('academias-participantes/editar/{id}', [
+		'before' => 'guest',
+		'as' => 'academies-participants.edit',
+		'uses' => 'AcademieParticipantController@edit'
+	]);
 
-Route::get('info', function () {
-	return phpinfo();
+	Route::post('academias-participantes/update', [
+		'before' => 'guest',
+		'as' => 'academies-participants.update',
+		'uses' => 'AcademieParticipantController@edit'
+	]);
+	/*
+	 *
+	 */
+
 });

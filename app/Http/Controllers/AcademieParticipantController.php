@@ -43,7 +43,7 @@ class AcademieParticipantController extends Controller
         $aP = AcademieParticipant::create($request->all());
         $mailer->sendEmailBase($aP);
         flash()->success('Datos guardados exitosamente, le será enviado un correo con información detallada.');
-        return redirect()->back()->withInput($request->except('password', 'password_confirmation'));
+        return redirect()->back()->withInput();
     }
 
     /**
@@ -65,7 +65,8 @@ class AcademieParticipantController extends Controller
      */
     public function edit($id)
     {
-        //
+        $academieParticipant = AcademieParticipant::find($id);
+        return view('academies-participants.edit')->with(compact('academieParticipant'));
     }
 
     /**
@@ -75,9 +76,11 @@ class AcademieParticipantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RegisterAcademieParticipantRequest $request, $id)
     {
-        //
+        $academieParticipant = AcademieParticipant::find($id);
+        $academieParticipant->update($request->all());
+        return redirect()->back()->with(compact('academieParticipant'));
     }
 
     /**
