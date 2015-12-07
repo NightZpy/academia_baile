@@ -73,6 +73,7 @@ class AppMailer
         $this->data = compact('academieParticipant');
         $this->deliver();
     }
+
     /**
      * Deliver the email.
      *
@@ -84,8 +85,9 @@ class AppMailer
         $from = $this->from;
         $fromName = $this->fromName;
         $this->mailer->send($this->view, $this->data, function ($message) use ($to, $from, $fromName) {
-            $message->from('pluranza@alcompas.com.ve', $fromName)
-                ->to($to);
+            $message->from(env('MAIL_FROM', null), $fromName)
+                ->to($to)
+                ->attach(app_path() . '/resources/assets/misc/reglas.pdf');
         });
     }
 }
