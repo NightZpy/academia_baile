@@ -32,7 +32,7 @@
                                     </ul>
                                 </label>
                             @endif
-                            {!! Form::text('name', old('name'), array('placeholder' => 'Nombre de la Academia', 'class' => 'form-control input-sm')) !!}
+                            {!! Form::text('name', old('name'), array('placeholder' => 'Nombre de la Academia', 'class' => 'form-control input-sm', 'disabled' => 'disabled')) !!}
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -46,7 +46,7 @@
                                     </ul>
                                 </label>
                             @endif
-                            {!! Form::text('email', old('email'), array('placeholder' => 'Email de la Academia', 'class' => 'form-control input-sm')) !!}
+                            {!! Form::text('email', old('email'), array('placeholder' => 'Email de la Academia', 'class' => 'form-control input-sm', 'disabled' => 'disabled')) !!}
                         </div>
                     </div>
                     <div class="col-sm-4">

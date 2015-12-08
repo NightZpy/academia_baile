@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class RegisterAcademieParticipantRequest extends Request
+class UpdateAcademieParticipantRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,11 @@ class RegisterAcademieParticipantRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|max:64|unique:academies_participants',
             'address' => 'max:256',
             'description' => 'max:1024',
             'foundation' => 'date_format:d-m-Y',
             'logo' => 'image:jpg,png|mimes:jpg,png|max:128',
-            'email' => 'required|email|max:128|confirmed|unique:academies_participants',
-            'email_confirmation' => 'required|email|max:128',
-            'phone' => 'required|numeric|confirmed',
-            'phone_confirmation' => 'required|numeric',
+            'phone' => 'required|numeric',
             'facebook' => 'max:128|unique:academies_participants',
             'twitter' => 'max:128|unique:academies_participants',
             'instagram' => 'max:128|unique:academies_participants',

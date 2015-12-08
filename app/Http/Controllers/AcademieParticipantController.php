@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Estate;
+use App\Http\Requests\UpdateAcademieParticipantRequest;
 use App\Mailers\AppMailer;
 use App\Municipality;
 use Illuminate\Http\Request;
@@ -100,7 +101,7 @@ class AcademieParticipantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RegisterAcademieParticipantRequest $request, $id)
+    public function update(UpdateAcademieParticipantRequest $request, $id)
     {
         $academieParticipant = AcademieParticipant::find($id);
         $academieParticipant->update($request->all());
