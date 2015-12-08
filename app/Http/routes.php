@@ -63,7 +63,7 @@ Route::group(['prefix' => 'pluranza'], function () {
 	Route::post('academias-participantes/update', [
 		'before' => 'guest',
 		'as' => 'academies-participants.update',
-		'uses' => 'AcademieParticipantController@edit'
+		'uses' => 'AcademieParticipantController@update'
 	]);
 	/*
 	 *
