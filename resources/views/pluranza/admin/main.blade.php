@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="/favicon2.png">
     <link rel="apple-touch-icon" href="/favicon2.png">
     <title>Pluranza 2016 @yield('title', '')</title>
-    @include('layout.includes._css')
+    @include('pluranza.admin.partials._css')
     @include('layout.includes._js-head')
 </head>
 {{-- <body class="cssAnimate ct-headroom--scrollUpMenu  salsa"> --}}
@@ -23,6 +23,6 @@
         <!-- Back to top -->
         <a href="#" id="toTop" style="display: block;"><i class="fa fa-chevron-up"></i></a>
     </div>
-    @include('layout.includes._js')
+    @include('pluranza.admin.partials._js')
 </body>
 </html>

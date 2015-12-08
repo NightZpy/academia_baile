@@ -35,6 +35,13 @@ Route::post('/send-message', function() {
 	return 'true';
 });
 
+/*
+* ---------- Estates ----------
+*/
+Route::get('estados', function () {
+	return response()->json(\App\Estate::all()->lists('estado', 'id_estado'));
+});
+
 Route::group(['prefix' => 'pluranza'], function () {
 	/*
 	* ---------- Users ----------

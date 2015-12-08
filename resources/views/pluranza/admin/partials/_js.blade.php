@@ -1,3 +1,10 @@
-{!! Html::script('/assets/bootstrap/js/bootstrap.min.js') !!}
-{!! Html::script('/assets/js/jquery.min.js') !!}
-{!! Html::script('/assets/js/main.js') !!}
+@include('layout.includes._js')
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
+{!! Html::script('/assets/js/custom.js') !!}
+
+<script>
+    jQuery(document).ready(function() {
+        // Custom inits
+        CustomApp.init();
+    });
+</script>
