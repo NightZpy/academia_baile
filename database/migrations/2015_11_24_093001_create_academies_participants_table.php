@@ -25,7 +25,8 @@ class CreateAcademiesParticipantsTable extends Migration
             $table->string('facebook', 128)->nullable()->unique();
             $table->string('twitter', 128)->nullable()->unique();
             $table->string('instagram', 128)->nullable()->unique();
-            
+            $table->integer('user_id')->unsigned()->unique();
+
             $table->integer('estate_id')->length(11)->unsigned();
             // $table->foreign('estate_id')->references('id')->on('estates')->onDelete('cascade')->onUpdate('cascade');
             

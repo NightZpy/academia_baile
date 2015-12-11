@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Mailers\AppMailer;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
 class RegistrationController extends Controller
 {
@@ -51,10 +50,17 @@ class RegistrationController extends Controller
      * @param  string $token
      * @return mixed
      */
-    public function confirmEmail($token)
+    public function confirm($token)
     {
         User::whereToken($token)->firstOrFail()->confirmEmail();
         flash('Tu correo ha sido confirmado. Ya puedes ingresar!');
-        return redirect('login');
+        return redirect()->route('users.login');
+    }
+
+    public function confirmPluranza($token)
+    {
+        User::whereToken($token)->firstOrFail()->confirmEmail();
+        flash('Tu correo ha sido confirmado. Ya puedes ingresar!');
+        return redirect()->route('pluranza.index');
     }
 }

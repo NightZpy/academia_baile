@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Pluranza;
 
 use Illuminate\Database\Eloquent\Model;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
@@ -56,6 +56,11 @@ class AcademieParticipant extends Model implements StaplerableInterface
     {
     	return $this->belongsTo('App\City');
     }
+
+	public function user()
+	{
+		return $this->hasOne('App\User');
+	}
 
 	/*
 	 * -------------------------------- Accessors --------------------------------

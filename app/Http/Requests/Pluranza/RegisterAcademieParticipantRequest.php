@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Pluranza;
 
 use App\Http\Requests\Request;
 
@@ -29,8 +29,7 @@ class RegisterAcademieParticipantRequest extends Request
             'email_confirmation' => 'required|email|max:128',
             'phone' => 'required|numeric|confirmed',
             'phone_confirmation' => 'required|numeric',
-            'password' => 'required|confirmed',
-            'passowrd_confirmation' => 'required'
+            'password' => 'required|confirmed'
         ];
     }
 }

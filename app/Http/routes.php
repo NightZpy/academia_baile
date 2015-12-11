@@ -40,45 +40,48 @@ Route::get('ciudades/por-estado/{id}', function ($id) {
 	return response()->json(\App\Estate::find($id)->cities->lists('name', 'id'));
 });
 
-Route::group(['prefix' => 'pluranza'], function () {
-	/*
-	* ---------- Users ----------
-	*/
+/*
+* ---------- Users ----------
+*/
+Route::post('usuarios/api/login', [
+	'as' => 'users.api.login',
+	'uses' => 'SessionController@postApiLogin'
+]);
 
-	Route::get('usuarios/login', [
-		'as' => 'pluranza.users.api.login',
-		'uses' => '\Pluranza\SessionController@postLoginPluranza'
-	]);
+Route::post('usuarios/login', [
+	'as' => 'users.login',
+	'uses' => 'SessionController@postLogin'
+]);
 
+Route::get('usuarios/confirmar/{token}', [
+	'as' => 'users.confirm',
+	'uses' => 'SessionController@confirm'
+]);
 
-	Route::post('usuarios/login', [
-		'as' => 'pluranza.users.api.login',
-		'uses' => '\Pluranza\SessionController@postLogin'
-	]);
+Route::get('usuarios/confirmar/{token}', [
+	'as' => 'pluranza.users.confirm',
+	'uses' => 'RegistrationController@confirmPluranza'
+]);
 
-
+Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 	/*
 	* ---------- Academies participants ----------
 	*/
 	Route::post('academias-participantes', [
 		'before' => 'guest',
 		'as' => 'pluranza.academies-participants.store',
-		'uses' => '\Pluranza\AcademieParticipantController@store'
+		'uses' => 'AcademieParticipantController@store'
 	]);
 
 	Route::get('academias-participantes/editar/{id}', [
 		'before' => 'guest',
 		'as' => 'pluranza.academies-participants.edit',
-		'uses' => '\Pluranza\AcademieParticipantController@edit'
+		'uses' => 'AcademieParticipantController@edit'
 	]);
 
 	Route::patch('academias-participantes/update/{id}', [
 		'before' => 'guest',
 		'as' => 'pluranza.academies-participants.update',
-		'uses' => '\Pluranza\AcademieParticipantController@update'
+		'uses' => 'AcademieParticipantController@update'
 	]);
-	/*
-	 *
-	 */
-
 });

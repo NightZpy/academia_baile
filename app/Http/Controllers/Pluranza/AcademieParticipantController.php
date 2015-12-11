@@ -1,20 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\City;
-use App\Estate;
-use App\Http\Requests\UpdateAcademieParticipantRequest;
-use App\Mailers\AppMailer;
-use App\Municipality;
-use App\Parish;
+namespace App\Http\Controllers\Pluranza;
 use App\User;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\Estate;
+use App\Municipality;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterAcademieParticipantRequest;
-use App\AcademieParticipant;
+use App\Http\Requests;
+use App\Http\Requests\Pluranza\UpdateAcademieParticipantRequest;
+use App\Http\Requests\Pluranza\RegisterAcademieParticipantRequest;
+use App\Pluranza\AcademieParticipant;
+use App\Mailers\AppMailer;
 
 class AcademieParticipantController extends Controller
 {
@@ -46,9 +41,10 @@ class AcademieParticipantController extends Controller
      */
     public function store(RegisterAcademieParticipantRequest $request, AppMailer $mailer)
     {
-        $aP = AcademieParticipant::create($request->all());
         $user = User::create($request->all());
-        $mailer->sendEmailConfirmationTo($aP);
+        $aP = AcademieParticipant::create($request->all());
+        $user->academieParticipant()->save($aP);
+        $mailer->sendEmailConfirmationTo($user);
         flash()->success('Datos guardados exitosamente, le será enviado un correo con información detallada.');
         return redirect()->back()->withInput();
     }

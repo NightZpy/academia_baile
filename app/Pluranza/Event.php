@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Pluranza;
 
 use Illuminate\Database\Eloquent\Model;
 
