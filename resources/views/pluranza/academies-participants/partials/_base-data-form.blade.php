@@ -23,6 +23,13 @@
         <div class="form-group">
             {!! Form::email('email_confirmation', old('email_confirmation'), array('placeholder' => 'Confirmar Email', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
         </div>
+        <div class="form-group">
+            {!! Form::password('password', ['placeholder' => 'Contrase&ntilde;a', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+        </div>
+    <div class="form-group">
+        {!! Form::password('password_confirmation', ['placeholder' => 'Confirmar contrase&ntilde;a', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+    </div>
+
         <button type="submit" class="btn btn-xs btn-primary btn-block text-uppercase ct-u-size14">Registrar</button>
         {{--<div class="help-block ct-u-size12 ct-u-colorLighterGray ct-u-paddingTop20">
             By signing up with 1step, you agree to our

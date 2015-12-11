@@ -10,20 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-/*
-* ---------- User auth, register routes ----------
-*/
-// Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
-
-// Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
-
-
 /*
 * ---------- Home routes ----------
 */
@@ -58,9 +44,16 @@ Route::group(['prefix' => 'pluranza'], function () {
 	/*
 	* ---------- Users ----------
 	*/
+
+	Route::get('usuarios/login', [
+		'as' => 'pluranza.users.api.login',
+		'uses' => '\Pluranza\SessionController@postLoginPluranza'
+	]);
+
+
 	Route::post('usuarios/login', [
-		'as' => 'users.api.login',
-		'uses' => 'SessionController@postLogin'
+		'as' => 'pluranza.users.api.login',
+		'uses' => '\Pluranza\SessionController@postLogin'
 	]);
 
 
@@ -69,20 +62,20 @@ Route::group(['prefix' => 'pluranza'], function () {
 	*/
 	Route::post('academias-participantes', [
 		'before' => 'guest',
-		'as' => 'academies-participants.store',
-		'uses' => 'AcademieParticipantController@store'
+		'as' => 'pluranza.academies-participants.store',
+		'uses' => '\Pluranza\AcademieParticipantController@store'
 	]);
 
 	Route::get('academias-participantes/editar/{id}', [
 		'before' => 'guest',
-		'as' => 'academies-participants.edit',
-		'uses' => 'AcademieParticipantController@edit'
+		'as' => 'pluranza.academies-participants.edit',
+		'uses' => '\Pluranza\AcademieParticipantController@edit'
 	]);
 
 	Route::patch('academias-participantes/update/{id}', [
 		'before' => 'guest',
-		'as' => 'academies-participants.update',
-		'uses' => 'AcademieParticipantController@update'
+		'as' => 'pluranza.academies-participants.update',
+		'uses' => '\Pluranza\AcademieParticipantController@update'
 	]);
 	/*
 	 *

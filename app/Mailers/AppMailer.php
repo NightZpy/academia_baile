@@ -86,8 +86,8 @@ class AppMailer
         $fromName = $this->fromName;
         $this->mailer->send($this->view, $this->data, function ($message) use ($to, $from, $fromName) {
             $message->from(env('MAIL_FROM', null), $fromName)
-                ->to($to)
-                ->attach(app_path() . '/resources/assets/misc/reglas.pdf');
+                ->to($to);
+                //->attach(app_path() . '/resources/assets/misc/reglas.pdf');
         });
     }
 }

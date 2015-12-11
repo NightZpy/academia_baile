@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateAcademieParticipantRequest;
 use App\Mailers\AppMailer;
 use App\Municipality;
 use App\Parish;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -46,7 +47,8 @@ class AcademieParticipantController extends Controller
     public function store(RegisterAcademieParticipantRequest $request, AppMailer $mailer)
     {
         $aP = AcademieParticipant::create($request->all());
-        $mailer->sendEmailBase($aP);
+        $user = User::create($request->all());
+        $mailer->sendEmailConfirmationTo($aP);
         flash()->success('Datos guardados exitosamente, le será enviado un correo con información detallada.');
         return redirect()->back()->withInput();
     }

@@ -143,6 +143,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group {{ ($errors->has('foundation') ? 'has-error' : 'has-success') }}">
+                                    @if ($errors->has('foundation'))
+                                        <label class="control-label" for="foundation">
+                                            <ul>
+                                                @foreach($errors->get('foundation') as $error)
+                                                    <li>{!! $error !!}</li>
+                                                @endforeach
+                                            </ul>
+                                        </label>
+                                    @endif
+                                    {!! Form::date('foundation', ( $foundation > 0 ? $foundation : old('foundation')), array('placeholder' => 'Fecha de fundaci&#243;n', 'class' => 'form-control input-sm')) !!}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -161,33 +177,17 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="col-sm-12">
-                            <div class="form-group {{ ($errors->has('foundation') ? 'has-error' : 'has-success') }}">
-                                @if ($errors->has('foundation'))
-                                    <label class="control-label" for="foundation">
-                                        <ul>
-                                            @foreach($errors->get('foundation') as $error)
-                                                <li>{!! $error !!}</li>
-                                            @endforeach
-                                        </ul>
-                                    </label>
-                                @endif
-                                {!! Form::date('foundation', ( $foundation > 0 ? $foundation : old('foundation')), array('placeholder' => 'Fecha de fundaci&#243;n', 'class' => 'form-control input-sm')) !!}
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group {{ ($errors->has('logo') ? 'has-error' : 'has-success') }}">
-                                @if ($errors->has('logo'))
-                                    <label class="control-label" for="logo">
-                                        <ul>
-                                            @foreach($errors->get('logo') as $error)
-                                                <li>{!! $error !!}</li>
-                                            @endforeach
-                                        </ul>
-                                    </label>
-                                @endif
-                                {!! Form::file('logo', array('placeholder' => 'Logo de la Academia', 'class' => 'file-upload')) !!}
-                            </div>
+                        <div class="form-group {{ ($errors->has('logo') ? 'has-error' : 'has-success') }}">
+                            @if ($errors->has('logo'))
+                                <label class="control-label" for="logo">
+                                    <ul>
+                                        @foreach($errors->get('logo') as $error)
+                                            <li>{!! $error !!}</li>
+                                        @endforeach
+                                    </ul>
+                                </label>
+                            @endif
+                            {!! Form::file('logo', array('placeholder' => 'Logo de la Academia', 'class' => 'file-upload')) !!}
                         </div>
                     </div>
                 </div>
