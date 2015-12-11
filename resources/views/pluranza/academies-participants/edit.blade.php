@@ -16,7 +16,7 @@
                 {!! Form::model($academieParticipant,
                     [
                         'route' => ['academies-participants.update', $academieParticipant->id],
-                        'method' => 'post',
+                        'method' => 'PATCH',
                         'role' => 'form',
                         'files' => true
                     ])
@@ -95,7 +95,7 @@
                                             </ul>
                                         </label>
                                     @endif
-                                    {!! Form::select('estate_id', $estates, old('estate_id') || $estateId, ['placeholder' => 'Selecciona un estado', 'class' => 'form-control input-sm estate-select']) !!}
+                                    {!! Form::select('estate_id', $estates, ( $estateId > 0 ? $estateId : old('estate_id')), ['placeholder' => 'Selecciona un estado', 'class' => 'form-control input-sm estate-select']) !!}
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -109,7 +109,7 @@
                                             </ul>
                                         </label>
                                     @endif
-                                    {!! Form::select('municipality_id', $municipalities, old('municipality_id') || $municipalityId, ['placeholder' => 'Selecciona un municipio', 'class' => 'form-control input-sm municipality-select']) !!}
+                                    {!! Form::select('municipality_id', $municipalities, ( $municipalityId > 0 ? $municipalityId : old('municipality_id')), ['placeholder' => 'Selecciona un municipio', 'class' => 'form-control input-sm municipality-select']) !!}
                                 </div>
                             </div>
                         </div>
@@ -125,7 +125,7 @@
                                             </ul>
                                         </label>
                                     @endif
-                                    {!! Form::select('parish_id', $parishes, old('parish_id') || $parishId, ['placeholder' => 'Selecciona una parroquia', 'class' => 'form-control input-sm parish-select']) !!}
+                                    {!! Form::select('parish_id', $parishes, ( $parishId > 0 ? $parishId : old('parish_id')), ['placeholder' => 'Selecciona una parroquia', 'class' => 'form-control input-sm parish-select']) !!}
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -139,7 +139,7 @@
                                             </ul>
                                         </label>
                                     @endif
-                                    {!! Form::select('city_id', $cities, old('city_id') || $cityId, ['placeholder' => 'Selecciona una ciudad', 'class' => 'form-control input-sm city-select']) !!}
+                                    {!! Form::select('city_id', $cities, ( $cityId > 0 ? $cityId : old('city_id')), ['placeholder' => 'Selecciona una ciudad', 'class' => 'form-control input-sm city-select']) !!}
                                 </div>
                             </div>
                         </div>
@@ -172,7 +172,7 @@
                                         </ul>
                                     </label>
                                 @endif
-                                {!! Form::date('foundation', old('foundation') || \Carbon\Carbon::now(), array('placeholder' => 'Fecha de fundaci&#243;n', 'class' => 'form-control input-sm')) !!}
+                                {!! Form::date('foundation', ( $foundation > 0 ? $foundation : old('foundation')), array('placeholder' => 'Fecha de fundaci&#243;n', 'class' => 'form-control input-sm')) !!}
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -186,7 +186,7 @@
                                         </ul>
                                     </label>
                                 @endif
-                                {!! Form::file('logo', array('placeholder' => 'Logo de la Academia')) !!}
+                                {!! Form::file('logo', array('placeholder' => 'Logo de la Academia', 'class' => 'file-upload')) !!}
                             </div>
                         </div>
                     </div>

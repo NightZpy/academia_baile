@@ -79,7 +79,7 @@ Route::group(['prefix' => 'pluranza'], function () {
 		'uses' => 'AcademieParticipantController@edit'
 	]);
 
-	Route::post('academias-participantes/update', [
+	Route::patch('academias-participantes/update/{id}', [
 		'before' => 'guest',
 		'as' => 'academies-participants.update',
 		'uses' => 'AcademieParticipantController@update'

@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class AcademieParticipant extends Model
 {
 	protected $table = 'academies_participants';
-    protected $fillable = ['name', 'email', 'phone'];
+    protected $fillable = ['name', 'address', 'history', 'foundation', 'logo',
+	                       'email', 'phone', 'facebook', 'twitter', 'instagram',
+	                       'estate_id', 'municipality_id', 'parish_id', 'city_id'];
 
 	/*
 	* -------------------------- Relations ------------------------
@@ -37,5 +39,13 @@ class AcademieParticipant extends Model
 	public function city()
     {
     	return $this->belongsTo('App\City');
-    } 
+    }
+
+	/*
+	 * -------------------------------- Accessors --------------------------------
+	 */
+	/*public function getFoundationAttribute()
+	{
+		return $this->foundation->format('d/m/Y');
+	}*/
 }

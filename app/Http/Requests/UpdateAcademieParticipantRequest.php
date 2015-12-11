@@ -26,7 +26,7 @@ class UpdateAcademieParticipantRequest extends Request
         return [
             'address' => 'max:256',
             'description' => 'max:1024',
-            'foundation' => 'date_format:d-m-Y',
+            //'foundation' => 'date_format:d/m/Y',
             'logo' => 'image:jpg,png|mimes:jpg,png|max:128',
             'phone' => 'required|numeric',
             'facebook' => 'max:128|unique:academies_participants',

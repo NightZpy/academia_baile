@@ -1,10 +1,41 @@
+var cleanElement = function(element) {
+    $(element).empty();
+}
+
 var CustomApp = function () {
+
+    /*-----------------------------------------------------------------------------------*/
+    /*  Bootstrap FileInput
+     /*-----------------------------------------------------------------------------------*/
+    var handleBootstrapFileInput = function() {
+        try {
+            $(".file-upload").fileinput({
+                previewFileType: "image",
+                browseClass: "btn btn-success",
+                browseLabel: "Buscar",
+                browseIcon: '<i class="fa fa-picture-o"></i>',
+                removeClass: "btn btn-danger",
+                removeLabel: "Eliminar",
+                removeIcon: '<i class="fa fa-trash"></i>',
+                uploadClass: "btn btn-info",
+                uploadLabel: "Subir",
+                uploadIcon: '<i class="fa fa-upload"></i>',
+            });
+
+        } catch(e) {
+            alert('fileinput.js no soporta navegadores antiguos!');
+        }
+    }
 
     var cascadingAddressSelecting = function ()  {
         $('.address-select').cascadingDropdown({
             selectBoxes: [
                 {
                     selector: '.estate-select',
+                    onChange: function(event, value, requiredValues){
+                        //cleanElement('.municipality-select');
+                        //cleanElement('.city-select');
+                    }
                 },
                 {
                     selector: '.municipality-select',
@@ -21,16 +52,19 @@ var CustomApp = function () {
                                 };
                             }));
                         });
-                    }
+                    },
+                    onChange: function(event, value, requiredValues){
+                        //cleanElement('.parish-select');
+                    },
                 },
                 {
                     selector: '.parish-select',
                     requires: ['.estate-select', '.municipality-select'],
                     requireAll: true,
-                    source: function(request, response) {
+                    source: function (request, response) {
                         var municipalityId = $('.municipality-select').val();
-                        $.getJSON('/parroquias/por-municipio/' + municipalityId, request, function(data) {
-                            response($.map(data, function(item, index) {
+                        $.getJSON('/parroquias/por-municipio/' + municipalityId, request, function (data) {
+                            response($.map(data, function (item, index) {
                                 return {
                                     label: item,
                                     value: index,
@@ -38,9 +72,6 @@ var CustomApp = function () {
                                 };
                             }));
                         });
-                    },
-                    onChange: function(event, value, requiredValues){
-                        // do stuff
                     }
                 },
                 {
@@ -60,7 +91,7 @@ var CustomApp = function () {
                         });
                     },
                     onChange: function(event, value, requiredValues){
-                        // do stuff
+
                     },
                     onReady: function(event, dropdownData) {
                         // do stuff
@@ -73,6 +104,7 @@ var CustomApp = function () {
     return {
         init: function() {
             cascadingAddressSelecting();
+            handleBootstrapFileInput();
         }
     }
 }();

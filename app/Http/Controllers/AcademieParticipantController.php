@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
 use App\Estate;
 use App\Http\Requests\UpdateAcademieParticipantRequest;
 use App\Mailers\AppMailer;
 use App\Municipality;
+use App\Parish;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -71,27 +73,30 @@ class AcademieParticipantController extends Controller
         $cities = array();
         $parishes = array();
         $municipalities = array();
-        $estates = array();
-
         $academieParticipant = AcademieParticipant::find($id);
+        $foundation = $academieParticipant->foundation;
+
+        $estates = Estate::all()->lists('name', 'id');
+        $estateId = $academieParticipant->estate_id;
+        $estate = Estate::findOrFail($estateId);
+
         $cityId = $academieParticipant->city_id;
         if($cityId > 0) {
-            $cities = City::all()->lists('name', 'id');
-        }
-
-        $parishId = $academieParticipant->parish_id;
-        if($parishId > 0) {
-            $parishes = Parish::all()->lists('name', 'id');
+            $cities = $estate->cities->lists('name', 'id');
         }
 
         $municipalityId = $academieParticipant->municipality_id;
         if($municipalityId > 0) {
-            $municipalities = Municipality::all()->lists('name', 'id');
+            $municipalities = $estate->municipalities->lists('name', 'id');
+
+            $parishId = $academieParticipant->parish_id;
+            if($parishId > 0) {
+                $parishes = Municipality::findOrFail($municipalityId)->parishes->lists('name', 'id');
+            }
         }
 
-        $estateId = $academieParticipant->estate_id;
-	    $estates = Estate::all()->lists('name', 'id');
-	    return view('pluranza.academies-participants.edit')->with(compact('academieParticipant', 'estates', 'estateId', 'municipalities', 'municipalityId', 'parishes', 'parishId', 'cities', 'cityId'));
+
+        return view('pluranza.academies-participants.edit')->with(compact('academieParticipant', 'estates', 'estateId', 'municipalities', 'municipalityId', 'parishes', 'parishId', 'cities', 'cityId', 'foundation'));
     }
 
     /**
@@ -101,10 +106,10 @@ class AcademieParticipantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAcademieParticipantRequest $request, $id)
+    public function update($id, UpdateAcademieParticipantRequest $request)
     {
-        $academieParticipant = AcademieParticipant::find($id);
-        $academieParticipant->update($request->all());
+        $academieParticipant = AcademieParticipant::findOrFail($id);
+        $academieParticipant->fill($request->all())->save();
         return redirect()->back()->with(compact('academieParticipant'));
     }
 
