@@ -12,7 +12,7 @@ var CustomApp = function () {
             $(".file-upload").fileinput({
                 previewFileType: "image",
                 browseClass: "btn btn-success",
-                browseLabel: "Buscar",
+                browseLabel: "Buscar Logo",
                 browseIcon: '<i class="fa fa-picture-o"></i>',
                 removeClass: "btn btn-danger",
                 removeLabel: "Eliminar",

@@ -152,6 +152,7 @@ return [
         MisterPhilip\MaintenanceMode\MaintenanceCommandServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
     ],
 
     /*

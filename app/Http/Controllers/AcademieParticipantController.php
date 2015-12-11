@@ -109,7 +109,8 @@ class AcademieParticipantController extends Controller
     public function update($id, UpdateAcademieParticipantRequest $request)
     {
         $academieParticipant = AcademieParticipant::findOrFail($id);
-        $academieParticipant->fill($request->all())->save();
+        // $academieParticipant->fill($request->all())->save();
+        $academieParticipant->update($request->all());
         return redirect()->back()->with(compact('academieParticipant'));
     }
 
