@@ -63,24 +63,29 @@ Route::get('usuarios/confirmar/{token}', [
 	'uses' => 'RegistrationController@confirmPluranza'
 ]);
 
-Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
+Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza', 'middleware' => 'auth'], function () {
+	/*
+	* ---------- Page index ----------
+	*/
+	Route::get('/', [
+		'as' => 'pluranza.index',
+		'uses' => 'PagesController@index'
+	]);
+
 	/*
 	* ---------- Academies participants ----------
 	*/
 	Route::post('academias-participantes', [
-		'before' => 'guest',
 		'as' => 'pluranza.academies-participants.store',
 		'uses' => 'AcademieParticipantController@store'
 	]);
 
 	Route::get('academias-participantes/editar/{id}', [
-		'before' => 'guest',
 		'as' => 'pluranza.academies-participants.edit',
 		'uses' => 'AcademieParticipantController@edit'
 	]);
 
 	Route::patch('academias-participantes/update/{id}', [
-		'before' => 'guest',
 		'as' => 'pluranza.academies-participants.update',
 		'uses' => 'AcademieParticipantController@update'
 	]);
