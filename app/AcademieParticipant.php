@@ -24,17 +24,17 @@ class AcademieParticipant extends Model
     	return $this->belongsTo('App\Estate');
     }
 
-    public function Municipality()
+    public function municipality()
     {
     	return $this->belongsTo('App\Municipality');
     }
 
-    public function Parish()
+    public function parish()
     {
     	return $this->belongsTo('App\Parish');
     }      
 
-	public function City()
+	public function city()
     {
     	return $this->belongsTo('App\City');
     } 

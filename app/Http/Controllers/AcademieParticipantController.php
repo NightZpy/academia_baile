@@ -76,21 +76,21 @@ class AcademieParticipantController extends Controller
         $academieParticipant = AcademieParticipant::find($id);
         $cityId = $academieParticipant->city_id;
         if($cityId > 0) {
-            $cities = City::all()->lists('ciudad', 'id_ciudad');
+            $cities = City::all()->lists('name', 'id');
         }
 
         $parishId = $academieParticipant->parish_id;
         if($parishId > 0) {
-            $parishes = Parish::all()->lists('parroquia', 'id_parroquia');
+            $parishes = Parish::all()->lists('name', 'id');
         }
 
         $municipalityId = $academieParticipant->municipality_id;
         if($municipalityId > 0) {
-            $municipalities = Municipality::all()->lists('municipio', 'id_municipio');
+            $municipalities = Municipality::all()->lists('name', 'id');
         }
 
         $estateId = $academieParticipant->estate_id;
-	    $estates = Estate::all()->lists('estado', 'id_estado');
+	    $estates = Estate::all()->lists('name', 'id');
 	    return view('pluranza.academies-participants.edit')->with(compact('academieParticipant', 'estates', 'estateId', 'municipalities', 'municipalityId', 'parishes', 'parishId', 'cities', 'cityId'));
     }
 

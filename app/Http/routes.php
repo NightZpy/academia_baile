@@ -42,6 +42,18 @@ Route::get('estados', function () {
 	return response()->json(\App\Estate::all()->lists('estado', 'id_estado'));
 });
 
+Route::get('municipios/por-estado/{id}', function ($id) {
+	return response()->json(\App\Estate::find($id)->municipalities->lists('name', 'id'));
+});
+
+Route::get('parroquias/por-municipio/{id}', function ($id) {
+	return response()->json(\App\Municipality::find($id)->parishes->lists('name', 'id'));
+});
+
+Route::get('ciudades/por-estado/{id}', function ($id) {
+	return response()->json(\App\Estate::find($id)->cities->lists('name', 'id'));
+});
+
 Route::group(['prefix' => 'pluranza'], function () {
 	/*
 	* ---------- Users ----------

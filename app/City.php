@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Municipality extends Model
+class City extends Model
 {
 	/*
 	* -------------------------- Relations ------------------------
@@ -17,10 +17,5 @@ class Municipality extends Model
     public function estate()
     {
     	return $this->belongsTo('App\Estate');
-    }
-
-    public function parishes()
-    {
-    	return $this->hasMany('App\Parish');
     }
 }

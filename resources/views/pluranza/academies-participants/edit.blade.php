@@ -82,7 +82,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 address-select">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group {{ ($errors->has('estate_id') ? 'has-error' : 'has-success') }}">
@@ -95,7 +95,7 @@
                                             </ul>
                                         </label>
                                     @endif
-                                    {!! Form::select('estate_id', array(), old('estate_id') || $estateId, ['placeholder' => 'Selecciona un estado', 'class' => 'form-control input-sm']) !!}
+                                    {!! Form::select('estate_id', $estates, old('estate_id') || $estateId, ['placeholder' => 'Selecciona un estado', 'class' => 'form-control input-sm estate-select']) !!}
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -109,7 +109,7 @@
                                             </ul>
                                         </label>
                                     @endif
-                                    {!! Form::select('municipality_id', $municipalities, old('municipality_id') || $municipalityId, ['placeholder' => 'Selecciona un municipio', 'class' => 'form-control input-sm']) !!}
+                                    {!! Form::select('municipality_id', $municipalities, old('municipality_id') || $municipalityId, ['placeholder' => 'Selecciona un municipio', 'class' => 'form-control input-sm municipality-select']) !!}
                                 </div>
                             </div>
                         </div>
@@ -125,7 +125,7 @@
                                             </ul>
                                         </label>
                                     @endif
-                                    {!! Form::select('parish_id', $parishes, old('parish_id') || $parishId, ['placeholder' => 'Selecciona una parroquia', 'class' => 'form-control input-sm']) !!}
+                                    {!! Form::select('parish_id', $parishes, old('parish_id') || $parishId, ['placeholder' => 'Selecciona una parroquia', 'class' => 'form-control input-sm parish-select']) !!}
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -139,7 +139,7 @@
                                             </ul>
                                         </label>
                                     @endif
-                                    {!! Form::select('city_id', $cities, old('city_id') || $cityId, ['placeholder' => 'Selecciona una ciudad', 'class' => 'form-control input-sm']) !!}
+                                    {!! Form::select('city_id', $cities, old('city_id') || $cityId, ['placeholder' => 'Selecciona una ciudad', 'class' => 'form-control input-sm city-select']) !!}
                                 </div>
                             </div>
                         </div>
