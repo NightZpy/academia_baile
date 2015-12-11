@@ -61,6 +61,9 @@ var CustomApp = function () {
                     },
                     onChange: function(event, value, requiredValues){
                         // do stuff
+                    },
+                    onReady: function(event, dropdownData) {
+                        // do stuff
                     }
                 }
             ]
