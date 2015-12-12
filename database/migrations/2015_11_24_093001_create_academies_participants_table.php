@@ -17,7 +17,7 @@ class CreateAcademiesParticipantsTable extends Migration
             $table->increments('id');
             $table->string('name', 64)->unique();
             $table->string('address', 256)->nullable();
-            $table->text('description')->nullable();
+            $table->text('history')->nullable();
             $table->date('foundation')->nullable();
             $table->string('logo', 128)->nullable();
             $table->string('email', 128)->unique();
@@ -25,7 +25,8 @@ class CreateAcademiesParticipantsTable extends Migration
             $table->string('facebook', 128)->nullable()->unique();
             $table->string('twitter', 128)->nullable()->unique();
             $table->string('instagram', 128)->nullable()->unique();
-            
+            $table->integer('user_id')->unsigned()->unique();
+
             $table->integer('estate_id')->length(11)->unsigned();
             // $table->foreign('estate_id')->references('id')->on('estates')->onDelete('cascade')->onUpdate('cascade');
             

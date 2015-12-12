@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pluranza;
 
-use App\Mailers\AppMailer;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterAcademieParticipantRequest;
-use App\AcademieParticipant;
 
-class AcademieParticipantController extends Controller
+class PagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +16,7 @@ class AcademieParticipantController extends Controller
      */
     public function index()
     {
-        //
+        return view ('pluranza.pages.index');
     }
 
     /**
@@ -38,12 +35,9 @@ class AcademieParticipantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterAcademieParticipantRequest $request, AppMailer $mailer)
+    public function store(Request $request)
     {
-        $aP = AcademieParticipant::create($request->all());
-        $mailer->sendEmailBase($aP);
-        flash()->success('Datos guardados exitosamente, le será enviado un correo con información detallada.');
-        return redirect()->back()->withInput($request->except('password', 'password_confirmation'));
+        //
     }
 
     /**

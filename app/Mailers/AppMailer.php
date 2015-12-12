@@ -49,8 +49,8 @@ class AppMailer
     public function __construct(Mailer $mailer)
     {
         $this->mailer = $mailer;
-        $this->from = env('EMAIL_FROM', false);
-        $this->fromName = env('EMAIL_FROM_NAME', false);
+        $this->from = env('EMAIL_FROM', null);
+        $this->fromName = env('EMAIL_FROM_NAME', null);
     }
     /**
      * Deliver the email confirmation.
@@ -63,11 +63,12 @@ class AppMailer
         $this->to = $user->email;
         $this->view = 'emails.confirm';
         $this->data = compact('user');
-        $this->deliver();
+        $this->deliver('Pluranza 2016: Confirma tu cuenta!');
     }
 
     public function sendEmailBase(AcademieParticipant $academieParticipant)
     {
+        // app_path() . '/resources/assets/misc/reglas.pdf'
         $this->to = $academieParticipant->email;
         $this->view = 'emails.base';
         $this->data = compact('academieParticipant');
@@ -79,15 +80,17 @@ class AppMailer
      *
      * @return void
      */
-    public function deliver()
+    public function deliver($subject = null, $attach = null)
     {
         $to = $this->to;
         $from = $this->from;
         $fromName = $this->fromName;
-        $this->mailer->send($this->view, $this->data, function ($message) use ($to, $from, $fromName) {
-            $message->from(env('MAIL_FROM', null), $fromName)
-                ->to($to)
-                ->attach(app_path() . '/resources/assets/misc/reglas.pdf');
+        $this->mailer->send($this->view, $this->data, function ($message) use ($to, $from, $fromName, $subject, $attach) {
+            $message->from(env('MAIL_FROM', null), env('MAIL_FROM_NAME', null))->to($to);
+            if($subject)
+                $message->subject($subject);
+            if($attach)
+                $message->attach($attach);
         });
     }
 }

@@ -30,7 +30,8 @@
         "MisterPhilip\\MaintenanceMode\\MaintenanceModeServiceProvider",
         "MisterPhilip\\MaintenanceMode\\MaintenanceCommandServiceProvider",
         "Laracasts\\Flash\\FlashServiceProvider",
-        "Collective\\Html\\HtmlServiceProvider"
+        "Collective\\Html\\HtmlServiceProvider",
+        "Codesleeve\\LaravelStapler\\Providers\\L5ServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -49,7 +50,8 @@
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider",
         "MisterPhilip\\MaintenanceMode\\MaintenanceModeServiceProvider",
-        "Laracasts\\Flash\\FlashServiceProvider"
+        "Laracasts\\Flash\\FlashServiceProvider",
+        "Codesleeve\\LaravelStapler\\Providers\\L5ServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
@@ -157,7 +159,4 @@
         "MisterPhilip\\MaintenanceMode\\MaintenanceCommandServiceProvider": [],
         "Collective\\Html\\HtmlServiceProvider": []
     }
-
-
-
 }

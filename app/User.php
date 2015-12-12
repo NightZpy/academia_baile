@@ -67,8 +67,16 @@ class User extends Model implements AuthenticatableContract,
      */
     public function confirmEmail()
     {
-        $this->active = true;
+        $this->verified = true;
         $this->token = null;
         $this->save();
+    }
+
+    /*
+	* -------------------------- Relations ------------------------
+	*/
+    public function academieParticipant()
+    {
+        return $this->hasOne('App\Pluranza\AcademieParticipant');
     }
 }

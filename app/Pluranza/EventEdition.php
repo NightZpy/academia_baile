@@ -1,22 +1,25 @@
 <?php
 
-namespace App;
+namespace App\Pluranza;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AcademieParticipant extends Model
+class EventEdition extends Model
 {
-	protected $table = 'academies_participants';
-    protected $fillable = ['name', 'email', 'phone'];
-
 	/*
 	* -------------------------- Relations ------------------------
 	*/
-	public function eventEditions()
+
+	public function participants()
 	{
-		return $this->belongsToMany('App\EventEdition', 'event_participants', 'academie_participant_id', 'event_edition_id')
+		return $this->belongsToMany('App\AcademieParticipant', 'event_participants', 'academie_participant_id', 'event_edition_id')
 					->withPivot('active', 'bank_reference', 'activation_code')
 					->withTimestamps();
+	}
+
+	public function Event()
+	{
+		return $this->belongsTo('App\Event');
 	}
 
     public function estate()
@@ -37,5 +40,5 @@ class AcademieParticipant extends Model
 	public function City()
     {
     	return $this->belongsTo('App\City');
-    } 
+    }     
 }

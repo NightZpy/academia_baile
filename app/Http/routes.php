@@ -10,52 +10,93 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-/*
-* ---------- User auth, register routes ----------
-*/
-// Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
-
-// Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
-
-
 /*
 * ---------- Home routes ----------
 */
 Route::get('/', [ 'as' => 'home', function () {
-    return view('layout.main');
+    return view('pages.index');
 }]);
 
 Route::post('/send-message', function() {
 	return 'true';
 });
 
-Route::group(['prefix' => 'pluranza'], function () {
-	/*
-	* ---------- Users ----------
-	*/
-	Route::post('usuarios/login', [
-		'as' => 'users.api.login',
-		'uses' => 'SessionController@postLogin'
-	]);
+/*
+* ---------- Estates ----------
+*/
+Route::get('estados', function () {
+	return response()->json(\App\Estate::all()->lists('estado', 'id_estado'));
+});
 
+Route::get('municipios/por-estado/{id}', function ($id) {
+	return response()->json(\App\Estate::find($id)->municipalities->lists('name', 'id'));
+});
+
+Route::get('parroquias/por-municipio/{id}', function ($id) {
+	return response()->json(\App\Municipality::find($id)->parishes->lists('name', 'id'));
+});
+
+Route::get('ciudades/por-estado/{id}', function ($id) {
+	return response()->json(\App\Estate::find($id)->cities->lists('name', 'id'));
+});
+
+/*
+* ---------- Users ----------
+*/
+Route::get('usuarios/login', [
+	'as' => 'users.login',
+	'uses' => 'SessionController@login'
+]);
+
+Route::post('usuarios/api/login', [
+	'as' => 'users.api.login',
+	'uses' => 'SessionController@postApiLogin'
+]);
+
+Route::post('usuarios/login', [
+	'as' => 'users.login',
+	'uses' => 'SessionController@postLogin'
+]);
+
+Route::get('usuarios/logout', [
+	'as' => 'users.logout',
+	'uses' => 'SessionController@logout'
+]);
+
+Route::get('usuarios/confirmar/{token}', [
+	'as' => 'users.confirm',
+	'uses' => 'SessionController@confirm'
+]);
+
+Route::get('/pluranza/usuarios/confirmar/{token}', [
+	'as' => 'pluranza.users.confirm',
+	'uses' => 'RegistrationController@confirmPluranza'
+]);
+
+Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza', 'middleware' => 'auth', /*'middleware' => 'pluranza'*/], function () {
+	/*
+	* ---------- Page index ----------
+	*/
+	Route::get('/', [
+		'as' => 'pluranza.home',
+		'uses' => 'PagesController@index'
+	]);
 
 	/*
 	* ---------- Academies participants ----------
 	*/
 	Route::post('academias-participantes', [
-		'before' => 'guest',
-		'as' => 'academies-participants.store',
+		'as' => 'pluranza.academies-participants.store',
 		'uses' => 'AcademieParticipantController@store'
-	]);	
+	]);
 
-});
+	Route::get('academias-participantes/editar/{id}', [
+		'as' => 'pluranza.academies-participants.edit',
+		'uses' => 'AcademieParticipantController@edit'
+	]);
 
-Route::get('info', function () {
-	return phpinfo();
+	Route::patch('academias-participantes/update/{id}', [
+		'as' => 'pluranza.academies-participants.update',
+		'uses' => 'AcademieParticipantController@update'
+	]);
 });
