@@ -73,12 +73,12 @@ Route::get('/pluranza/usuarios/confirmar/{token}', [
 	'uses' => 'RegistrationController@confirmPluranza'
 ]);
 
-Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza', 'middleware' => 'auth', /*'middleware' => 'pluranza'*/], function () {
 	/*
 	* ---------- Page index ----------
 	*/
 	Route::get('/', [
-		'as' => 'pluranza.index',
+		'as' => 'pluranza.home',
 		'uses' => 'PagesController@index'
 	]);
 
