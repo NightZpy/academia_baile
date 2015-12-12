@@ -4,7 +4,7 @@
         <a class="ct-u-colorLighterGrey ct-u-cursorPointer" href="{{ route('users.login') }}">Ingresar</a>
     </div>
     <div class="text-left">
-        <h3 class="ct-u-marginBoth0 ct-u-marginTopMinus10 ct-u-size24 ct-fw-400">Obten informaci&#243;n</h3>
+        <h3 class="ct-u-marginBoth0 ct-u-marginTopMinus10 ct-u-size24 ct-fw-400">Obten informaci&#243;n PLURANZA 2016</h3>
     </div>
     @include('partials._flash')
     @include('partials._errors')

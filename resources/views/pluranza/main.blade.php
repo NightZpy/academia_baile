@@ -21,7 +21,7 @@
         @include('pluranza.public.partials._menu-movil')
     @endif
     <div id="ct-js-wrapper" class="ct-pageWrapper">
-        @if(Auth::user()->academieParticipant)
+        @if(Auth::user() AND Auth::user()->academieParticipant)
             @include('pluranza.admin.partials._header')
         @else
             @include('pluranza.public.partials._header')

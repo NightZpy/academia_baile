@@ -13,11 +13,11 @@
                 <div class="col-lg-10 col-md-9 col-sm-12">
                     <ul class="nav navbar-nav navbar-right ct-navbar--fadeIn">
                         <li class="onepage"><a href="{{ route('pluranza.home') }}" class="ct-js-btnScroll">Inicio</a></li>
-                        <li class="onepage"><a href="{{ route('pluranza.academies-participants', $academieParticipant->id) }}" class="ct-js-btnScroll">Participantes</a></li>
-                        <li class="onepage"><a href="{{ route('pluranza.competitions') }}" class="ct-js-btnScroll">Competencias</a></li>
-                        <li class="onepage"><a href="{{ route('pluranza.exhibitions') }}" class="ct-js-btnScroll">Exhibiciones</a></li>
-                        <li class="onepage"><a href="{{ route('pluranza.headquarters') }}" class="ct-js-btnScroll">Sede</a></li>
-                        <li class="onepage"><a href="{{ route('pluranza.hotels') }}" class="ct-js-btnScroll">Hoteles</a></li>
+                        <li class="onepage"><a href="#" class="ct-js-btnScroll">Participantes</a></li>
+                        <li class="onepage"><a href="#" class="ct-js-btnScroll">Competencias</a></li>
+                        <li class="onepage"><a href="#" class="ct-js-btnScroll">Exhibiciones</a></li>
+                        <li class="onepage"><a href="#" class="ct-js-btnScroll">Sede</a></li>
+                        <li class="onepage"><a href="#" class="ct-js-btnScroll">Hoteles</a></li>
                         @if(Auth::user())
                             <li class="onepage"><a href="{{ route('users.logout') }}" class="ct-js-btnScroll">Salir</a></li>
                         @endif

@@ -13,9 +13,9 @@
                 <div class="col-lg-10 col-md-9 col-sm-12">
                     <ul class="nav navbar-nav navbar-right ct-navbar--fadeIn">
                         <li class="onepage"><a href="{{ route('pluranza.home') }}" class="ct-js-btnScroll">Inicio</a></li>
-                        <li class="onepage"><a href="{{ route('pluranza.academies-participants.edit', $academieParticipant->id) }}" class="ct-js-btnScroll">Editar</a></li>
-                        <li class="onepage"><a href="{{ route('pluranza.academies-participants.members') }}" class="ct-js-btnScroll">Miembros</a></li>
-                        <li class="onepage"><a href="{{ route('pluranza.academies-participants.results') }}" class="ct-js-btnScroll">Resultados</a></li>
+                        <li class="onepage"><a href="#" class="ct-js-btnScroll">Editar</a></li>
+                        <li class="onepage"><a href="#" class="ct-js-btnScroll">Miembros</a></li>
+                        <li class="onepage"><a href="#" class="ct-js-btnScroll">Resultados</a></li>
                         @if(Auth::user())
                             <li class="onepage"><a href="{{ route('users.logout') }}" class="ct-js-btnScroll">Salir</a></li>
                         @endif
