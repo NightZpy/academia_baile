@@ -14,5 +14,5 @@
     @include('layout.sections.social-networks')
     {{-- @include('layout.sections.contact-us') --}}
     @include('layout.includes._footer')
-    @include('layout.includes._modal-login-form')
+    {{-- @include('layout.includes._modal-login-form') --}}
 @stop

@@ -1,6 +1,7 @@
 <div class="form">
-    <div class="text-right ct-u-colorLighterGray ct-u-size16">
-        <span class="ct-u-colorLighterGrey ct-u-cursorPointer" data-toggle="modal" data-target="#myModal">Ingresar</span>
+    <div class="text-right ct-u-colorLighterGray ct-u-size20">
+        {{--<span class="ct-u-colorLighterGrey ct-u-cursorPointer" data-toggle="modal" data-target="#myModal">Ingresar</span>--}}
+        <a class="ct-u-colorLighterGrey ct-u-cursorPointer" href="{{ route('users.login') }}">Ingresar</a>
     </div>
     <div class="text-left">
         <h3 class="ct-u-marginBoth0 ct-u-marginTopMinus10 ct-u-size24 ct-fw-400">Obten informaci&#243;n</h3>
