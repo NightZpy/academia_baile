@@ -1,21 +1,21 @@
-@extends('pluranza.admin.main')
+@extends('pluranza.main')
 
 @section('content')
     @include('partials._flash')
     <section class="ct-u-paddingBottom60 ct-backgroundContent" data-type="color" data-bg-color="#ffffff">
         <div class="container">
             <div class="row ct-u-paddingTop100">
-                <div class="col-md-12">
-                    <h5 class="ct-titleBox text-uppercase ct-u-paddingTop30">
+                <div class="col-md-12 text-center ct-titleBox">
+                    <h4 class="text-uppercase ct-u-paddingTop30">
                         Academia <i>{!! $academieParticipant->name !!}</i>
-                    </h5>
+                    </h4>
                 </div>
             </div>
 
             <div class="row ct-u-paddingTop25">
                 {!! Form::model($academieParticipant,
                     [
-                        'route' => ['academies-participants.update', $academieParticipant->id],
+                        'route' => ['pluranza.academies-participants.update', $academieParticipant->id],
                         'method' => 'PATCH',
                         'role' => 'form',
                         'files' => true
@@ -23,7 +23,7 @@
                 !!}
                 <div class="row">
                     <div class="col-sm-4">
-                        <div class="form-group {{ ($errors->has('name') ? 'has-error' : 'has-success') }}">
+                        <div class="form-group {{ ($errors->has('name') ? 'has-error' : '') }}">
                             @if ($errors->has('name'))
                                 <label class="control-label" for="name">
                                     <ul>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="form-group {{ ($errors->has('email') ? 'has-error' : 'has-success') }}">
+                        <div class="form-group {{ ($errors->has('email') ? 'has-error' : '') }}">
                             @if ($errors->has('email'))
                                 <label class="control-label" for="email">
                                     <ul>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="form-group {{ ($errors->has('phone') ? 'has-error' : 'has-success') }}">
+                        <div class="form-group {{ ($errors->has('phone') ? 'has-error' : '') }}">
                             @if ($errors->has('phone'))
                                 <label class="control-label" for="phone">
                                     <ul>
@@ -68,7 +68,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="col-sm-12">
-                            <div class="form-group {{ ($errors->has('address') ? 'has-error' : 'has-success') }}">
+                            <div class="form-group {{ ($errors->has('address') ? 'has-error' : '') }}">
                                 @if ($errors->has('address'))
                                     <label class="control-label" for="address">
                                         <ul>
@@ -85,7 +85,7 @@
                     <div class="col-sm-6 address-select">
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="form-group {{ ($errors->has('estate_id') ? 'has-error' : 'has-success') }}">
+                                <div class="form-group {{ ($errors->has('estate_id') ? 'has-error' : '') }}">
                                     @if ($errors->has('estate_id'))
                                         <label class="control-label" for="estate_id">
                                             <ul>
@@ -99,7 +99,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group {{ ($errors->has('municipality_id') ? 'has-error' : 'has-success') }}">
+                                <div class="form-group {{ ($errors->has('municipality_id') ? 'has-error' : '') }}">
                                     @if ($errors->has('municipality_id'))
                                         <label class="control-label" for="municipality_id">
                                             <ul>
@@ -115,7 +115,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="form-group {{ ($errors->has('parish_id') ? 'has-error' : 'has-success') }}">
+                                <div class="form-group {{ ($errors->has('parish_id') ? 'has-error' : '') }}">
                                     @if ($errors->has('parish_id'))
                                         <label class="control-label" for="parish_id">
                                             <ul>
@@ -129,7 +129,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group {{ ($errors->has('city_id') ? 'has-error' : 'has-success') }}">
+                                <div class="form-group {{ ($errors->has('city_id') ? 'has-error' : '') }}">
                                     @if ($errors->has('city_id'))
                                         <label class="control-label" for="city_id">
                                             <ul>
@@ -145,7 +145,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="form-group {{ ($errors->has('foundation') ? 'has-error' : 'has-success') }}">
+                                <div class="form-group {{ ($errors->has('foundation') ? 'has-error' : '') }}">
                                     @if ($errors->has('foundation'))
                                         <label class="control-label" for="foundation">
                                             <ul>
@@ -163,7 +163,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
-                        <div class="form-group {{ ($errors->has('history') ? 'has-error' : 'has-success') }}">
+                        <div class="form-group {{ ($errors->has('history') ? 'has-error' : '') }}">
                             @if ($errors->has('history'))
                                 <label class="control-label" for="history">
                                     <ul>
@@ -177,7 +177,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="form-group {{ ($errors->has('logo') ? 'has-error' : 'has-success') }}">
+                        <div class="form-group {{ ($errors->has('logo') ? 'has-error' : '') }}">
                             @if ($errors->has('logo'))
                                 <label class="control-label" for="logo">
                                     <ul>
@@ -193,7 +193,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
-                        <div class="form-group {{ ($errors->has('facebook') ? 'has-error' : 'has-success') }}">
+                        <div class="form-group {{ ($errors->has('facebook') ? 'has-error' : '') }}">
                             @if ($errors->has('facebook'))
                                 <label class="control-label" for="facebook">
                                     <ul>
@@ -207,7 +207,7 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="form-group {{ ($errors->has('twitter') ? 'has-error' : 'has-success') }}">
+                        <div class="form-group {{ ($errors->has('twitter') ? 'has-error' : '') }}">
                             @if ($errors->has('twitter'))
                                 <label class="control-label" for="twitter">
                                     <ul>
@@ -221,7 +221,7 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="form-group {{ ($errors->has('instagram') ? 'has-error' : 'has-success') }}">
+                        <div class="form-group {{ ($errors->has('instagram') ? 'has-error' : '') }}">
                             @if ($errors->has('instagram'))
                                 <label class="control-label" for="instagram">
                                     <ul>

@@ -5,6 +5,8 @@
         <li><a href="#videos" class="ct-js-btnScroll--mobile">Videos</a></li>
         <li><a href="#academy-show" class="ct-js-btnScroll--mobile">Academias</a></li>
         <li><a href="#blog" class="ct-js-btnScroll--mobile">Blog</a></li>
-        {{-- <li><a href="#contact-us" class="ct-js-btnScroll--mobile">Contáctanos</a></li> --}}
+        @if(Auth::user())
+            <li><a href="{{ route('users.logout') }}" class="ct-js-btnScroll--mobile">Salir</a></li>
+        @endif
     </ul>
 </div>

@@ -58,10 +58,10 @@ class AppMailer
      * @param  User $user
      * @return void
      */
-    public function sendEmailConfirmationTo(User $user)
+    public function sendEmailConfirmationTo(User $user, $view = null)
     {
         $this->to = $user->email;
-        $this->view = 'emails.confirm';
+        $this->view = $view;
         $this->data = compact('user');
         $this->deliver('Pluranza 2016: Confirma tu cuenta!');
     }

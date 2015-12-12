@@ -44,8 +44,8 @@ class AcademieParticipantController extends Controller
         $user = User::create($request->all());
         $aP = AcademieParticipant::create($request->all());
         $user->academieParticipant()->save($aP);
-        $mailer->sendEmailConfirmationTo($user);
-        flash()->success('Datos guardados exitosamente, le será enviado un correo con información detallada.');
+        $mailer->sendEmailConfirmationTo($user, 'pluranza.emails.confirm');
+        flash()->success('Datos guardados exitosamente, debe activar la cuenta, un correo llegará a su buzón en unos minutos.');
         return redirect()->back()->withInput();
     }
 
@@ -69,31 +69,33 @@ class AcademieParticipantController extends Controller
     public function edit($id)
     {
         $cities = array();
+        $cityId = 0;
         $parishes = array();
+        $parishId = 0;
         $municipalities = array();
+        $municipalityId = 0;
         $academieParticipant = AcademieParticipant::find($id);
         $foundation = $academieParticipant->foundation;
 
         $estates = Estate::all()->lists('name', 'id');
         $estateId = $academieParticipant->estate_id;
-        $estate = Estate::findOrFail($estateId);
+        if($estateId > 0) {
+            $estate = Estate::findOrFail($estateId);
+            $cityId = $academieParticipant->city_id;
+            if($cityId > 0) {
+                $cities = $estate->cities->lists('name', 'id');
+            }
 
-        $cityId = $academieParticipant->city_id;
-        if($cityId > 0) {
-            $cities = $estate->cities->lists('name', 'id');
-        }
+            $municipalityId = $academieParticipant->municipality_id;
+            if($municipalityId > 0) {
+                $municipalities = $estate->municipalities->lists('name', 'id');
 
-        $municipalityId = $academieParticipant->municipality_id;
-        if($municipalityId > 0) {
-            $municipalities = $estate->municipalities->lists('name', 'id');
-
-            $parishId = $academieParticipant->parish_id;
-            if($parishId > 0) {
-                $parishes = Municipality::findOrFail($municipalityId)->parishes->lists('name', 'id');
+                $parishId = $academieParticipant->parish_id;
+                if($parishId > 0) {
+                    $parishes = Municipality::findOrFail($municipalityId)->parishes->lists('name', 'id');
+                }
             }
         }
-
-
         return view('pluranza.academies-participants.edit')->with(compact('academieParticipant', 'estates', 'estateId', 'municipalities', 'municipalityId', 'parishes', 'parishId', 'cities', 'cityId', 'foundation'));
     }
 

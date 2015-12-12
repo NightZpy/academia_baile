@@ -1,4 +1,4 @@
-@extends('pluranza.admin.main')
+@extends('pluranza.main')
 
 @section('content')
     @include('partials._flash')

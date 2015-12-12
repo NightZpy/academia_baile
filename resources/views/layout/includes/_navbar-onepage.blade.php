@@ -17,7 +17,9 @@
                         <li class="onepage"><a href="#videos" class="ct-js-btnScroll">Videos</a></li>
                         <li class="onepage"><a href="#academy-show" class="ct-js-btnScroll">Academias</a></li>
                         <li class="onepage"><a href="#blog" class="ct-js-btnScroll" >Blog</a></li>
-                        {{-- <li class="onepage"><a href="#contact-us" class="ct-js-btnScroll" >Contáctanos</a></li> --}}
+                        @if(Auth::user())
+                            <li class="onepage"><a href="{{ route('users.logout') }}" class="ct-js-btnScroll" >Salir</a></li>
+                        @endif
                     </ul>
                     <div class="clearfix"></div>
                 </div>

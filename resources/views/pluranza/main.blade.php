@@ -15,9 +15,17 @@
 {{-- <body class="cssAnimate ct-headroom--scrollUpMenu  salsa"> --}}
 <body class="cssAnimate ct-headroom--fixedMenu onepager salsa">
     @include('layout.includes._loader')
-    @include('layout.includes._menu-movil')
+    @if(Auth::user() AND Auth::user()->academieParticipant)
+        @include('pluranza.admin.partials._menu-movil')
+    @else
+        @include('pluranza.public.partials._menu-movil')
+    @endif
     <div id="ct-js-wrapper" class="ct-pageWrapper">
-        @include('pluranza.admin.partials._header')
+        @if(Auth::user()->academieParticipant)
+            @include('pluranza.admin.partials._header')
+        @else
+            @include('pluranza.public.partials._header')
+        @endif
         @yield('content')
         @include('layout.includes._footer')
         <!-- Back to top -->
