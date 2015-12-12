@@ -13,7 +13,7 @@ class SessionController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest', ['except' => 'logout']);
     }
     /**
      * Show the login page.
@@ -34,11 +34,15 @@ class SessionController extends Controller
     {
         $this->validate($request, ['email' => 'required|email', 'password' => 'required']);
         if ($this->signIn($request)) {
-            flash('Welcome back!');
-            return redirect()->intended('/dashboard');
+            flash('Bienvenido!');
+            $user = Auth::user();
+            $route = 'home';
+            if ($user->academieParticipant)
+                $route = 'pluranza.home';
+            return redirect()->route($route);
         }
         flash('No pudo ingresar, intente de nuevo!');
-        return redirect()->route('home');
+        return redirect()->route('users.login');
     }
     /**
      * Destroy the user's current session.
@@ -48,8 +52,8 @@ class SessionController extends Controller
     public function logout()
     {
         Auth::logout();
-        flash('You have now been signed out. See ya.');
-        return redirect('login');
+        flash('Has cerrado exitosamente la sesión.');
+        return redirect()->route('home');
     }
     /**
      * Attempt to sign in the user.
@@ -72,7 +76,7 @@ class SessionController extends Controller
         return [
             'email'    => $request->input('email'),
             'password' => $request->input('password'),
-            'active' => true
+            'verified' => true
         ];
     }
 }

@@ -43,6 +43,11 @@ Route::get('ciudades/por-estado/{id}', function ($id) {
 /*
 * ---------- Users ----------
 */
+Route::get('usuarios/login', [
+	'as' => 'users.login',
+	'uses' => 'SessionController@login'
+]);
+
 Route::post('usuarios/api/login', [
 	'as' => 'users.api.login',
 	'uses' => 'SessionController@postApiLogin'
@@ -53,12 +58,17 @@ Route::post('usuarios/login', [
 	'uses' => 'SessionController@postLogin'
 ]);
 
+Route::get('usuarios/logout', [
+	'as' => 'users.logout',
+	'uses' => 'SessionController@logout'
+]);
+
 Route::get('usuarios/confirmar/{token}', [
 	'as' => 'users.confirm',
 	'uses' => 'SessionController@confirm'
 ]);
 
-Route::get('usuarios/confirmar/{token}', [
+Route::get('/pluranza/usuarios/confirmar/{token}', [
 	'as' => 'pluranza.users.confirm',
 	'uses' => 'RegistrationController@confirmPluranza'
 ]);
