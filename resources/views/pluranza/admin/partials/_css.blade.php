@@ -4,3 +4,4 @@
 {!! HTML::style('/assets/plugins/fileinput/fileinput.min.css') !!}
 {!! Html::style('/assets/css/style.css') !!}
 {!! Html::style('/assets/css/salsa.css') !!}
+{!! Html::style('/assets/css/custom.css') !!}

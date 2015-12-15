@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Pluranza;
 
+use App\Pluranza\AcademyParticipant;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class PagesController extends Controller
 {
@@ -16,7 +18,10 @@ class PagesController extends Controller
      */
     public function index()
     {
-        return view ('pluranza.pages.index');
+        if (Auth::user()) {
+            $academyParticipant = AcademyParticipant::find(Auth::user()->academyParticipant->id);
+        }
+        return view ('pluranza.pages.index')->with(compact('academyParticipant'));
     }
 
     /**

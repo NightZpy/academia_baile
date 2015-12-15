@@ -48,6 +48,12 @@
                             <button type="submit" class="btn btn-xs btn-primary btn-block text-uppercase">Ingresar</button>
                         {!! Form::close() !!}
                     </div>
+                    <div class="modal-footer">
+                        <div class="help-block ct-u-size12 ct-u-colorLighterGray text-left">
+                            &iquest;Haz perdido tu contrase&ntilde;a?
+                            <a href="">&iexcl;Recuperar contrase&ntilde;a!</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

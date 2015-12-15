@@ -7,7 +7,7 @@ use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 
 
-class AcademieParticipant extends Model implements StaplerableInterface
+class AcademyParticipant extends Model implements StaplerableInterface
 {
 	use EloquentTrait;
 

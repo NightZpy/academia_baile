@@ -5,3 +5,13 @@
 .navbar-brand {
 	padding: 0; 
 }
+
+.button-fixed {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	width: 45px;
+	height: 45px;
+	border: 1px solid transparent;
+	z-index: 999;
+}

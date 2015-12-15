@@ -15,13 +15,13 @@
 {{-- <body class="cssAnimate ct-headroom--scrollUpMenu  salsa"> --}}
 <body class="cssAnimate ct-headroom--fixedMenu onepager salsa">
     @include('layout.includes._loader')
-    @if(Auth::user() AND Auth::user()->academieParticipant)
+    @if(Auth::user() AND Auth::user()->academyParticipant)
         @include('pluranza.admin.partials._menu-movil')
     @else
         @include('pluranza.public.partials._menu-movil')
     @endif
     <div id="ct-js-wrapper" class="ct-pageWrapper">
-        @if(Auth::user() AND Auth::user()->academieParticipant)
+        @if(Auth::user() AND Auth::user()->academyParticipant)
             @include('pluranza.admin.partials._header')
         @else
             @include('pluranza.public.partials._header')
@@ -29,7 +29,7 @@
         @yield('content')
         @include('layout.includes._footer')
         <!-- Back to top -->
-        <a href="#" id="toTop" style="display: block;"><i class="fa fa-chevron-up"></i></a>
+        <a href="#" class="button-fixed" style="display: block;"><i class="fa fa-sign-in fa-2x"></i>Ingresar</a>
     </div>
     @include('pluranza.admin.partials._js')
 </body>

@@ -7,15 +7,15 @@
             <div class="row ct-u-paddingTop100">
                 <div class="col-md-12 text-center ct-titleBox">
                     <h4 class="text-uppercase ct-u-paddingTop30">
-                        Academia <i>{!! $academieParticipant->name !!}</i>
+                        Academia <i>{!! $academyParticipant->name !!}</i>
                     </h4>
                 </div>
             </div>
 
             <div class="row ct-u-paddingTop25">
-                {!! Form::model($academieParticipant,
+                {!! Form::model($academyParticipant,
                     [
-                        'route' => ['pluranza.academies-participants.update', $academieParticipant->id],
+                        'route' => ['pluranza.academies-participants.update', $academyParticipant->id],
                         'method' => 'PATCH',
                         'role' => 'form',
                         'files' => true
