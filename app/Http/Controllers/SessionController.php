@@ -8,6 +8,7 @@ use Auth;
 
 class SessionController extends Controller
 {
+    protected $redirectPath = 'usuarios/login';
     /**
      * Create a new sessions controller instance.
      */

@@ -4,5 +4,6 @@
         <li><a href="#" class="ct-js-btnScroll--mobile">Editar</a></li>
         <li><a href="#" class="ct-js-btnScroll--mobile">Miembros</a></li>
         <li><a href="#" class="ct-js-btnScroll--mobile">Resultados</a></li>
+        @include('pluranza.public.partials._sign-movil-area')
     </ul>
 </div>

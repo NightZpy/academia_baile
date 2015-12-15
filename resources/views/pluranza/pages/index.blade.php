@@ -1,5 +1,5 @@
 @extends('pluranza.main')
 
 @section('content')
-    @include('partials._flash')
+    @include('pluranza.academies-participants.register')
 @stop

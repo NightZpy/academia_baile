@@ -5,7 +5,7 @@
     <div class="clearfix"></div>
     @include('layout.includes._slider')
     {{-- @include('layout.sections.classes') --}}
-    @include('layout.sections.join-us')
+    {{--@include('layout.sections.join-us')--}}
     @include('layout.sections.videos')
     {{-- @include('layout.sections.awesome-classes') --}}
     @include('layout.sections.academy-show') {{-- instructors --}}

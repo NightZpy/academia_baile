@@ -6,5 +6,6 @@
         <li><a href="#" class="ct-js-btnScroll--mobile">Exhibiciones</a></li>
         <li><a href="#" class="ct-js-btnScroll--mobile">Sede</a></li>
         <li><a href="#" class="ct-js-btnScroll--mobile">Hoteles</a></li>
+        @include('pluranza.public.partials._sign-movil-area')
     </ul>
 </div>
