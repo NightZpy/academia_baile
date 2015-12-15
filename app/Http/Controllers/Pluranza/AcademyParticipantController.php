@@ -6,12 +6,12 @@ use App\Estate;
 use App\Municipality;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Http\Requests\Pluranza\UpdateAcademieParticipantRequest;
-use App\Http\Requests\Pluranza\RegisterAcademieParticipantRequest;
+use App\Http\Requests\Pluranza\UpdateAcademyParticipantRequest;
+use App\Http\Requests\Pluranza\RegisterAcademyParticipantRequest;
 use App\Pluranza\AcademyParticipant;
 use App\Mailers\AppMailer;
 
-class AcademieParticipantController extends Controller
+class AcademyParticipantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,11 +39,11 @@ class AcademieParticipantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterAcademieParticipantRequest $request, AppMailer $mailer)
+    public function store(RegisterAcademyParticipantRequest $request, AppMailer $mailer)
     {
         $user = User::create($request->all());
         $aP = AcademyParticipant::create($request->all());
-        $user->academieParticipant()->save($aP);
+        $user->academyParticipant()->save($aP);
         $mailer->sendEmailConfirmationTo($user, 'pluranza.emails.confirm');
         flash()->success('Datos guardados exitosamente, debe activar la cuenta, un correo llegará a su buzón en unos minutos.');
         return redirect()->back()->withInput();
@@ -106,12 +106,12 @@ class AcademieParticipantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, UpdateAcademieParticipantRequest $request)
+    public function update($id, UpdateAcademyParticipantRequest $request)
     {
-        $academieParticipant = AcademyParticipant::findOrFail($id);
-        // $academieParticipant->fill($request->all())->save();
-        $academieParticipant->update($request->all());
-        return redirect()->back()->with(compact('academieParticipant'));
+        $academyParticipant = AcademyParticipant::findOrFail($id);
+        // $academyParticipant->fill($request->all())->save();
+        $academyParticipant->update($request->all());
+        return redirect()->back()->with(compact('academyParticipant'));
     }
 
     /**

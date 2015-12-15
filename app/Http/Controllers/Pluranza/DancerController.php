@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pluranza;
 
+use App\Pluranza\AcademyParticipant;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -14,9 +15,10 @@ class DancerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $academyParticipant = AcademyParticipant::findOrFail($id);
+        return view('pluranza.dancers.index')->with(compact('academyParticipant'));
     }
 
     /**

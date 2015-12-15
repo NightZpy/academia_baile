@@ -4,7 +4,7 @@ namespace App\Http\Requests\Pluranza;
 
 use App\Http\Requests\Request;
 
-class RegisterAcademieParticipantRequest extends Request
+class RegisterAcademyParticipantRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
