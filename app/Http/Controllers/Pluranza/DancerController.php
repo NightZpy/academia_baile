@@ -24,8 +24,8 @@ class DancerController extends Controller
         $academyParticipant = AcademyParticipant::findOrFail($id);
         $dancerDataTable->setQuery($academyParticipant->dancers()->select('*'));
         $dancerDataTable->setAcademyFilterId($academyParticipant->id);
-        return $dancerDataTable->render('pluranza.dancers.index', compact('academyParticipant'));
-        //return view('pluranza.dancers.index')->with(compact('academyParticipant', 'dancerDataTable'));
+        return $dancerDataTable->render('pluranza.dancers.index', compact('academy'));
+        //return view('pluranza.dancers.index')->with(compact('academy', 'dancerDataTable'));
     }
 
     /**

@@ -12,7 +12,7 @@
             </div>
             <div class="row ct-u-paddingTop25">
                 <div class="col-md-10">
-                    <button class="pull-right btn btn-sm btn-danger btn-circle">Agregar</button>
+                    <a href="{{ route('pluranza.dancers.new', $academyParticipant->id) }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
                 </div>
             </div>
             <div class="row ct-u-paddingTop5">
@@ -34,7 +34,7 @@
             },
             processing: true,
             serverSide: true,
-            ajax: '{!! route('pluranza.dancers.api.list', $academyParticipant->id) !!}',
+            ajax: '{!! route('pluranza.dancers.api.list', $academy->id) !!}',
             columns: [
                 { data: 'name', name: 'name' },
                 { data: 'bird_date', name: 'bird_date' },

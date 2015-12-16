@@ -12,7 +12,7 @@ var CustomApp = function () {
             $(".file-upload").fileinput({
                 previewFileType: "image",
                 browseClass: "btn btn-success",
-                browseLabel: "Buscar Logo",
+                browseLabel: "Buscar",
                 browseIcon: '<i class="fa fa-picture-o"></i>',
                 removeClass: "btn btn-danger",
                 removeLabel: "Eliminar",
@@ -103,8 +103,8 @@ var CustomApp = function () {
 
     return {
         init: function() {
-            cascadingAddressSelecting();
             handleBootstrapFileInput();
+            cascadingAddressSelecting();
         }
     }
 }();
