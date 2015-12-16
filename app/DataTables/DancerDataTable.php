@@ -29,9 +29,6 @@ class DancerDataTable extends DataTable
 	{
 		return $this->datatables
 			->of($this->query())
-			->addColumn('Acciones', function ($dancer) {
-				return '<a href="#edit-'.$dancer->id.'" class="btn btn-xs btn-primary"><i class="fa fa-pencil-square"></i> Edit</a>';
-			})
 			->make(true);
 	}
 	/**
@@ -54,10 +51,9 @@ class DancerDataTable extends DataTable
 					'id'            =>      ['data' => 'id', 'name' => 'id', 'title' => '#'],
 					'name'          =>      ['data' => 'name', 'name' => 'name', 'title' => 'Nombre'],
 					'email'         =>      ['data' => 'email', 'name' => 'email', 'title' => 'Correo electrónico'],
-					'bird_date'     =>      ['data' => 'bird_date', 'name' => 'bird_date', 'title' => 'Fecha de nacimiento'],
+					'birth_date'     =>      ['data' => 'birth_date', 'name' => 'birth_date', 'title' => 'Fecha de nacimiento'],
 					'created_at'    =>      ['data' => 'created_at', 'name' => 'created_at', 'title' => 'Agregado'],
-					'updated_at'    =>      ['data' => 'updated_at', 'name' => 'updated_at', 'title' => 'Actualizado'],
-					'Acciones'
+					'updated_at'    =>      ['data' => 'updated_at', 'name' => 'updated_at', 'title' => 'Actualizado']
 		];
 		return $this->builder()
 			->columns($colums)

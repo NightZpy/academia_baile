@@ -17,6 +17,7 @@
                                         'url' => route('pluranza.dancers.store'),
                                         'method' => 'post',
                                         'accept-charset' => 'UTF-8',
+                                        'role' => 'form',
                                         'files' => true
                                         )) !!}
                         @include('pluranza.dancers.partials._form')

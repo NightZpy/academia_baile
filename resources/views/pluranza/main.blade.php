@@ -15,13 +15,13 @@
 {{-- <body class="cssAnimate ct-headroom--scrollUpMenu  salsa"> --}}
 <body class="cssAnimate ct-headroom--fixedMenu onepager salsa">
     @include('layout.includes._loader')
-    @if(Auth::user() AND Auth::user()->academy)
+    @if(Auth::user() AND Auth::user()->academyParticipant)
         @include('pluranza.admin.partials._menu-movil')
     @else
         @include('pluranza.public.partials._menu-movil')
     @endif
     <div id="ct-js-wrapper" class="ct-pageWrapper">
-        @if(Auth::user() AND Auth::user()->academy)
+        @if(Auth::user() AND Auth::user()->academyParticipant)
             @include('pluranza.admin.partials._header')
         @else
             @include('pluranza.public.partials._header')

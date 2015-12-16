@@ -72,34 +72,18 @@
             {!! Form::text('phone', old('phone'), array('placeholder' => 'Teléfono', 'class' => 'form-control input-sm')) !!}
         </div>
     </div>
-    <div class="col-sm-2">
-        <div class="form-group {{ ($errors->has('independent') ? 'has-error' : '') }}">
-            <label class="control-label" for="independent">
-                ¿Independiente?
-                @if ($errors->has('independent'))
+    <div class="col-sm-4">
+        <div class="form-group {{ ($errors->has('birth_date') ? 'has-error' : '') }}">
+            @if ($errors->has('birth_date'))
+                <label class="control-label" for="birth_date">
                     <ul>
-                        @foreach($errors->get('independent') as $error)
+                        @foreach($errors->get('birth_date') as $error)
                             <li>{!! $error !!}</li>
                         @endforeach
                     </ul>
-                @endif
-            </label>
-            {!! Form::checkbox('independent', old('independent'), array('class' => 'form-control input-sm')) !!}
-        </div>
-    </div>
-    <div class="col-sm-2">
-        <div class="form-group {{ ($errors->has('director') ? 'has-error' : '') }}">
-            <label class="control-label" for="director">
-                ¿Director?
-                @if ($errors->has('director'))
-                    <ul>
-                        @foreach($errors->get('director') as $error)
-                            <li>{!! $error !!}</li>
-                        @endforeach
-                    </ul>
-                @endif
-            </label><br>
-            {!! Form::checkbox('director', old('director'), array('class' => 'form-control input-sm')) !!}
+                </label>
+            @endif
+            {!! Form::date('birth_date', old('birth_date'), array('placeholder' => 'Fecha de fundaci&#243;n', 'class' => 'form-control input-sm')) !!}
         </div>
     </div>
 </div>
@@ -148,7 +132,37 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-offset-3 col-sm-6">
+    <div class="col-sm-3">
+        <div class="form-group {{ ($errors->has('independent') ? 'has-error' : '') }}">
+            <label class="control-label" for="independent">
+                ¿Independiente?
+                @if ($errors->has('independent'))
+                    <ul>
+                        @foreach($errors->get('independent') as $error)
+                            <li>{!! $error !!}</li>
+                        @endforeach
+                    </ul>
+                @endif
+            </label>
+            {!! Form::checkbox('independent', null, old('independent'), array('class' => 'form-control input-sm')) !!}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group {{ ($errors->has('director') ? 'has-error' : '') }}">
+            <label class="control-label" for="director">
+                ¿Director?
+                @if ($errors->has('director'))
+                    <ul>
+                        @foreach($errors->get('director') as $error)
+                            <li>{!! $error !!}</li>
+                        @endforeach
+                    </ul>
+                @endif
+            </label>
+            {!! Form::checkbox('director', null, old('director'), array('class' => 'form-control input-sm')) !!}
+        </div>
+    </div>
+    <div class="col-sm-6">
         <div class="form-group {{ ($errors->has('photo') ? 'has-error' : '') }}">
             @if ($errors->has('photo'))
                 <label class="control-label" for="photo">
@@ -165,6 +179,6 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-9 col-sm-3">
-        {!! Form::submit('Actualizar Informaci&#243;n', [ 'class' => 'btn btn-xs btn-primary btn-block text-uppercase ct-u-size14']) !!}
+        {!! Form::submit('Guardar', [ 'class' => 'btn btn-xs btn-primary btn-block text-uppercase ct-u-size14']) !!}
     </div>
 </div>

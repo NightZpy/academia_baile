@@ -1,4 +1,3 @@
-Probando correo!
 <!DOCTYPE html>
 <html lang="es">
 <head>

@@ -13,7 +13,7 @@ class RegisterDancerFormRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -34,8 +34,8 @@ class RegisterDancerFormRequest extends Request
             'facebook' => 'max:128|unique:dancers',
             'twitter' => 'max:128|unique:dancers',
             'instagram' => 'max:128|unique:dancers',
-            'independent' => 'in:0,1',
-            'director' => 'in:0,1',
+            'independent' => 'in:off,on',
+            'director' => 'in:off,on',
             'academy_participant_id' => 'required|exists:academies_participants,id'
         ];
     }

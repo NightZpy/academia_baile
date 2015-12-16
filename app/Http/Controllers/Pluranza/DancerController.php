@@ -21,9 +21,9 @@ class DancerController extends Controller
      */
     public function index($id, DancerDataTable $dancerDataTable)
     {
-        $academyParticipant = AcademyParticipant::findOrFail($id);
-        $dancerDataTable->setQuery($academyParticipant->dancers()->select('*'));
-        $dancerDataTable->setAcademyFilterId($academyParticipant->id);
+        $academy = AcademyParticipant::findOrFail($id);
+        $dancerDataTable->setQuery($academy->dancers);
+        $dancerDataTable->setAcademyFilterId($academy->id);
         return $dancerDataTable->render('pluranza.dancers.index', compact('academy'));
         //return view('pluranza.dancers.index')->with(compact('academy', 'dancerDataTable'));
     }
@@ -50,7 +50,7 @@ class DancerController extends Controller
         $dancer = Dancer::create($request->all());
         if ($dancer->email) {
             $mailer->sendEmailToDancer($dancer, 'pluranza.emails.dancer-invitation');
-            flash()->success('Datos guardados exitosamente, correo de invitación enviado al bailarin!');
+            flash()->success('Datos guardados exitosamente, correo de invitación enviado al bailarín!');
         } else {
             flash()->success('Datos guardados exitosamente!');
         }

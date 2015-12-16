@@ -21,7 +21,7 @@ class PagesController extends Controller
         if (Auth::user()) {
             $academyParticipant = AcademyParticipant::find(Auth::user()->academyParticipant->id);
         }
-        return view ('pluranza.pages.index')->with(compact('academy'));
+        return view ('pluranza.pages.index')->with(compact('academyParticipant'));
     }
 
     /**
