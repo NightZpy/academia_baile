@@ -118,6 +118,16 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 				'as' => 'pluranza.dancers.api.list',
 				'uses' => 'DancerController@apiList'
 			]);
+
+			Route::get('nuevo/{id}', [
+				'as' => 'pluranza.dancers.new',
+				'uses' => 'DancerController@create'
+			]);
+
+			Route::post('/', [
+				'as' => 'pluranza.dancers.store',
+				'uses' => 'DancerController@store'
+			]);
 		});
 	});
 });

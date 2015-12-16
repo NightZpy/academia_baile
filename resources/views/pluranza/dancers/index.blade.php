@@ -11,6 +11,11 @@
                 </div>
             </div>
             <div class="row ct-u-paddingTop25">
+                <div class="col-md-10">
+                    <button class="pull-right btn btn-sm btn-danger btn-circle">Agregar</button>
+                </div>
+            </div>
+            <div class="row ct-u-paddingTop5">
                 <div class="col-md-offset-2 col-md-8">
                     {!! $dataTable->table() !!}
                 </div>

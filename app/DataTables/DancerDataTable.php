@@ -28,7 +28,10 @@ class DancerDataTable extends DataTable
 	public function ajax()
 	{
 		return $this->datatables
-			->eloquent($this->query())
+			->of($this->query())
+			->addColumn('Acciones', function ($dancer) {
+				return '<a href="#edit-'.$dancer->id.'" class="btn btn-xs btn-primary"><i class="fa fa-pencil-square"></i> Edit</a>';
+			})
 			->make(true);
 	}
 	/**
@@ -50,10 +53,11 @@ class DancerDataTable extends DataTable
 		$colums = [
 					'id'            =>      ['data' => 'id', 'name' => 'id', 'title' => '#'],
 					'name'          =>      ['data' => 'name', 'name' => 'name', 'title' => 'Nombre'],
-					'email'         =>      ['data' => 'email', 'name' => 'email', 'title' => utf8_encode ('Correo electrónico')],
+					'email'         =>      ['data' => 'email', 'name' => 'email', 'title' => 'Correo electrÃ³nico'],
 					'bird_date'     =>      ['data' => 'bird_date', 'name' => 'bird_date', 'title' => 'Fecha de nacimiento'],
 					'created_at'    =>      ['data' => 'created_at', 'name' => 'created_at', 'title' => 'Agregado'],
-					'updated_at'    =>      ['data' => 'updated_at', 'name' => 'updated_at', 'title' => 'Actualizado']
+					'updated_at'    =>      ['data' => 'updated_at', 'name' => 'updated_at', 'title' => 'Actualizado'],
+					'Acciones'
 		];
 		return $this->builder()
 			->columns($colums)
