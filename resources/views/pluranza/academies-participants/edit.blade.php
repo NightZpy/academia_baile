@@ -61,7 +61,7 @@
                                     </ul>
                                 </label>
                             @endif
-                            {!! Form::text('phone', old('phone'), array('placeholder' => 'Tel�fono de la Academia', 'class' => 'form-control input-sm')) !!}
+                            {!! Form::text('phone', old('phone'), array('placeholder' => 'Teléfono de la Academia', 'class' => 'form-control input-sm')) !!}
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                                         </ul>
                                     </label>
                                 @endif
-                                {!! Form::textarea('address', old('address'), array('placeholder' => 'Direcci&#243;n de la Academia', 'class' => 'form-control input-sm')) !!}
+                                {!! Form::textarea('address', old('address'), array('placeholder' => 'Dirección de la Academia', 'class' => 'form-control input-sm')) !!}
                             </div>
                         </div>
                     </div>

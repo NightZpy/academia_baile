@@ -50,7 +50,7 @@ class DancerDataTable extends DataTable
 		$colums = [
 					'id'            =>      ['data' => 'id', 'name' => 'id', 'title' => '#'],
 					'name'          =>      ['data' => 'name', 'name' => 'name', 'title' => 'Nombre'],
-					'email'         =>      ['data' => 'email', 'name' => 'email', 'title' => 'Correo electronico'],
+					'email'         =>      ['data' => 'email', 'name' => 'email', 'title' => utf8_encode ('Correo electrónico')],
 					'bird_date'     =>      ['data' => 'bird_date', 'name' => 'bird_date', 'title' => 'Fecha de nacimiento'],
 					'created_at'    =>      ['data' => 'created_at', 'name' => 'created_at', 'title' => 'Agregado'],
 					'updated_at'    =>      ['data' => 'updated_at', 'name' => 'updated_at', 'title' => 'Actualizado']
