@@ -42,7 +42,7 @@ class RegistrationController extends Controller
         $user = User::create($request->all());
         $mailer->sendEmailConfirmationTo($user);
         flash('Se ha registrado con éxito. Información con detalles ha sido enviada al correo electronico especificado!');
-        return redirect()->back();
+        return redirect()->route('users.login');
     }
     /**
      * Confirm a user's email address.
@@ -61,6 +61,6 @@ class RegistrationController extends Controller
     {
         User::whereToken($token)->firstOrFail()->confirmEmail();
         flash('Tu correo ha sido confirmado. Ya puedes ingresar!');
-        return redirect()->route('pluranza.home');
+        return redirect()->route('users.login');
     }
 }

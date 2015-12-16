@@ -46,7 +46,7 @@ class AcademyParticipantController extends Controller
         $user->academyParticipant()->save($aP);
         $mailer->sendEmailConfirmationTo($user, 'pluranza.emails.confirm');
         flash()->success('Datos guardados exitosamente, debe activar la cuenta, un correo llegará a su buzón en unos minutos.');
-        return redirect()->back()->withInput();
+        return redirect()->route('users.login');
     }
 
     /**
