@@ -19,9 +19,9 @@ class PagesController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            $academyParticipant = AcademyParticipant::find(Auth::user()->academyParticipant->id);
+            $academy = AcademyParticipant::find(Auth::user()->academyParticipant->id);
         }
-        return view ('pluranza.pages.index')->with(compact('academyParticipant'));
+        return view ('pluranza.pages.index')->with(compact('academy'));
     }
 
     /**
