@@ -74,23 +74,23 @@ class AcademyParticipantController extends Controller
         $parishId = 0;
         $municipalities = array();
         $municipalityId = 0;
-        $academyParticipant = AcademyParticipant::find($id);
-        $foundation = $academyParticipant->foundation;
+        $academy = AcademyParticipant::find($id);
+        $foundation = $academy->foundation;
 
         $estates = Estate::all()->lists('name', 'id');
-        $estateId = $academyParticipant->estate_id;
+        $estateId = $academy->estate_id;
         if($estateId > 0) {
             $estate = Estate::findOrFail($estateId);
-            $cityId = $academyParticipant->city_id;
+            $cityId = $academy->city_id;
             if($cityId > 0) {
                 $cities = $estate->cities->lists('name', 'id');
             }
 
-            $municipalityId = $academyParticipant->municipality_id;
+            $municipalityId = $academy->municipality_id;
             if($municipalityId > 0) {
                 $municipalities = $estate->municipalities->lists('name', 'id');
 
-                $parishId = $academyParticipant->parish_id;
+                $parishId = $academy->parish_id;
                 if($parishId > 0) {
                     $parishes = Municipality::findOrFail($municipalityId)->parishes->lists('name', 'id');
                 }
