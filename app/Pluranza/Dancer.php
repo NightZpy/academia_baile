@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Pluranza;
 
 use Codesleeve\Stapler\ORM\EloquentTrait;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dancer extends Model implements StaplerableInterface
 {
-	use EloquentTrait
+	use EloquentTrait;
 
-	protected $table = 'academies_participants';
+	protected $table = 'dancers';
 	protected $fillable = ['name', 'last_name', 'ci', 'bird_date', 'email',
 						   'phone', 'photo', 'facebook', 'twitter', 'instagram',
 		                   'independent', 'director', 'academy_id'];
@@ -31,6 +31,6 @@ class Dancer extends Model implements StaplerableInterface
 	*/
 	public function academyParticipant()
 	{
-		return $this->hasMany('App\Pluranza\AcademyParticipant');
+		return $this->belongsTo('App\Pluranza\AcademyParticipant');
 	}
 }

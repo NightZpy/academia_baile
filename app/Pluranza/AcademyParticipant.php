@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 
-
 class AcademyParticipant extends Model implements StaplerableInterface
 {
 	use EloquentTrait;
@@ -59,7 +58,12 @@ class AcademyParticipant extends Model implements StaplerableInterface
 
 	public function user()
 	{
-		return $this->hasOne('App\User');
+		return $this->belongsTo('App\User');
+	}
+
+	public function dancers()
+	{
+		return $this->hasMany('App\Pluranza\Dancer');
 	}
 
 	/*

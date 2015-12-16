@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Pluranza;
 
+use App\DataTables\DancerDataTable;
 use App\Pluranza\AcademyParticipant;
+use App\Pluranza\Dancer;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use yajra\Datatables\Datatables;
 
 class DancerController extends Controller
 {
@@ -15,10 +17,11 @@ class DancerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index($id, DancerDataTable $dancerDataTable)
     {
         $academyParticipant = AcademyParticipant::findOrFail($id);
-        return view('pluranza.dancers.index')->with(compact('academyParticipant'));
+        $dancerDataTable->setQuery($academyParticipant->dancers);
+        return view('pluranza.dancers.index')->with(compact('academyParticipant', 'dancerDataTable'));
     }
 
     /**
@@ -85,5 +88,14 @@ class DancerController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    /*
+     * ---------------------- APIs ---------------------
+     */
+    public function apiList($id)
+    {
+        if(request()->ajax())
+            return Datatables::of(AcademyParticipant::findOrFail($id)->dancers()->select('*'))->make(true);
     }
 }

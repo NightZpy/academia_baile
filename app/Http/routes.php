@@ -77,6 +77,7 @@ Route::get('/pluranza/usuarios/confirmar/{token}', [
  * ---------- Pluranza ----------
  */
 Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
+
 	/*
 	* ---------- Page index ----------
 	*/
@@ -86,30 +87,36 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 	]);
 
 	Route::group(['middleware' => 'auth'], function () {
+
 		/*
 		* ---------- Academies participants ----------
 		*/
-		Route::post('academias-participantes', [
-			'as' => 'pluranza.academies-participants.store',
-			'uses' => 'AcademyParticipantController@store'
-		]);
+		Route::group(['prefix' => 'academias-participantes'], function () {
+			Route::post('/', ['as' => 'pluranza.academies-participants.store', 'uses' => 'AcademyParticipantController@store']);
 
-		Route::get('academias-participantes/editar/{id}', [
-			'as' => 'pluranza.academies-participants.edit',
-			'uses' => 'AcademyParticipantController@edit'
-		]);
+			Route::get('editar/{id}', ['as' => 'pluranza.academies-participants.edit', 'uses' => 'AcademyParticipantController@edit']);
 
-		Route::patch('academias-participantes/update/{id}', [
-			'as' => 'pluranza.academies-participants.update',
-			'uses' => 'AcademyParticipantController@update'
-		]);
+			Route::patch('update/{id}', ['as' => 'pluranza.academies-participants.update', 'uses' => 'AcademyParticipantController@update']);
+		});
 
 		/*
 		* ---------- Dancers ----------
 		*/
-		Route::get('/bailarines/{id}', [
-			'as' => 'pluranza.dancers.home',
-			'uses' => 'DancerController@index'
-		]);
+		Route::group(['prefix' => 'bailarines'], function () {
+			Route::get('{id}', [
+				'as' => 'pluranza.dancers.home',
+				'uses' => 'DancerController@index'
+			]);
+
+			Route::get('lista/{id}', [
+				'as' => 'pluranza.dancers',
+				'uses' => 'DancerController@index'
+			]);
+
+			Route::get('api/lista/{id}', [
+				'as' => 'pluranza.dancers.api.list',
+				'uses' => 'DancerController@apiList'
+			]);
+		});
 	});
 });

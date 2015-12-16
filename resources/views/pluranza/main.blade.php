@@ -28,8 +28,6 @@
         @endif
         @yield('content')
         @include('layout.includes._footer')
-        <!-- Back to top -->
-        <a href="#" class="button-fixed" style="display: block;"><i class="fa fa-sign-in fa-2x"></i>Ingresar</a>
     </div>
     @include('pluranza.admin.partials._js')
 </body>
