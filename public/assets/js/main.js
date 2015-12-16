@@ -122,15 +122,15 @@ function parseBoolean(str, $defaultValue) {
         function goToByScrollMobile(id) {
             $('html,body').animate({scrollTop: $(id).offset().top}, 'slow');
         }
-            $('body .ct-js-btnScroll').on('click', function () {
-                goToByScroll($(this).attr('href'));
-                return false;
-            });
-            $('body .ct-js-btnScroll--mobile').on('click', function () {
-                $('.navbar-toggle').click();
-                goToByScrollMobile($(this).attr('href'));
-                return false;
-            });
+        $('body .ct-js-btnScroll').on('click', function () {
+            goToByScroll($(this).attr('href'));
+            return false;
+        });
+        $('body .ct-js-btnScroll--mobile').on('click', function () {
+            $('.navbar-toggle').click();
+            goToByScrollMobile($(this).attr('href'));
+            return false;
+        });
         $('.ct-js-btnScrollUp').on('click', function (e) {
             e.preventDefault();
             $("body,html").animate({scrollTop: 0}, 1200);

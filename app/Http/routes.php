@@ -76,15 +76,8 @@ Route::get('/pluranza/usuarios/confirmar/{token}', [
 /*
  * ---------- Pluranza ----------
  */
-Route::group([
-				'prefix' => 'pluranza',
-				'namespace' => 'Pluranza',
-				[
-					'middleware' => [
-										'auth', ['except' => 'pluranza.home']
-									]
-				]
-			], function () {
+Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
+
 	/*
 	* ---------- Page index ----------
 	*/
@@ -93,21 +86,37 @@ Route::group([
 		'uses' => 'PagesController@index'
 	]);
 
-	/*
-	* ---------- Academies participants ----------
-	*/
-	Route::post('academias-participantes', [
-		'as' => 'pluranza.academies-participants.store',
-		'uses' => 'AcademieParticipantController@store'
-	]);
+	Route::group(['middleware' => 'auth'], function () {
 
-	Route::get('academias-participantes/editar/{id}', [
-		'as' => 'pluranza.academies-participants.edit',
-		'uses' => 'AcademieParticipantController@edit'
-	]);
+		/*
+		* ---------- Academies participants ----------
+		*/
+		Route::group(['prefix' => 'academias-participantes'], function () {
+			Route::post('/', ['as' => 'pluranza.academies-participants.store', 'uses' => 'AcademyParticipantController@store']);
 
-	Route::patch('academias-participantes/update/{id}', [
-		'as' => 'pluranza.academies-participants.update',
-		'uses' => 'AcademieParticipantController@update'
-	]);
+			Route::get('editar/{id}', ['as' => 'pluranza.academies-participants.edit', 'uses' => 'AcademyParticipantController@edit']);
+
+			Route::patch('update/{id}', ['as' => 'pluranza.academies-participants.update', 'uses' => 'AcademyParticipantController@update']);
+		});
+
+		/*
+		* ---------- Dancers ----------
+		*/
+		Route::group(['prefix' => 'bailarines'], function () {
+			Route::get('{id}', [
+				'as' => 'pluranza.dancers.home',
+				'uses' => 'DancerController@index'
+			]);
+
+			Route::get('lista/{id}', [
+				'as' => 'pluranza.dancers',
+				'uses' => 'DancerController@index'
+			]);
+
+			Route::get('api/lista/{id}', [
+				'as' => 'pluranza.dancers.api.list',
+				'uses' => 'DancerController@apiList'
+			]);
+		});
+	});
 });

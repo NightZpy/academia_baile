@@ -9,9 +9,9 @@ class Municipality extends Model
 	/*
 	* -------------------------- Relations ------------------------
 	*/
-    public function academieParticipant()
+    public function academiesParticipants()
     {
-    	return $this->hasMany('App\AcademieParticipant');
+    	return $this->hasMany('App\Pluranza\AcademyParticipant');
     }
 
     public function estate()

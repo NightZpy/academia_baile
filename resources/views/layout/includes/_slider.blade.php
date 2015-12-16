@@ -5,7 +5,7 @@
                 @include('pluranza.academies-participants.partials._base-data-form')
             </div>
         @endif
-        @if(Auth::user() AND Auth::user()->academieParticipant)
+        @if(Auth::user() AND Auth::user()->academyParticipant)
             <div class="ct-shadowBox ct-backgroundContent">
                 <h1>Ingresar a sitio de PLURANZA</h1>
             </div>

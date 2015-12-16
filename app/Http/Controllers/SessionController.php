@@ -38,7 +38,7 @@ class SessionController extends Controller
             flash('Bienvenido!');
             $user = Auth::user();
             $route = 'home';
-            if ($user->academieParticipant)
+            if ($user->academyParticipant)
                 $route = 'pluranza.home';
             return redirect()->route($route);
         }
