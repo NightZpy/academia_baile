@@ -96,7 +96,7 @@ class AcademyParticipantController extends Controller
                 }
             }
         }
-        return view('pluranza.academies-participants.edit')->with(compact('academyParticipant', 'estates', 'estateId', 'municipalities', 'municipalityId', 'parishes', 'parishId', 'cities', 'cityId', 'foundation'));
+        return view('pluranza.academies-participants.edit')->with(compact('academy', 'estates', 'estateId', 'municipalities', 'municipalityId', 'parishes', 'parishId', 'cities', 'cityId', 'foundation'));
     }
 
     /**
@@ -109,9 +109,9 @@ class AcademyParticipantController extends Controller
     public function update($id, UpdateAcademyParticipantRequest $request)
     {
         $academyParticipant = AcademyParticipant::findOrFail($id);
-        // $academyParticipant->fill($request->all())->save();
+        // $academy->fill($request->all())->save();
         $academyParticipant->update($request->all());
-        return redirect()->back()->with(compact('academyParticipant'));
+        return redirect()->back()->with(compact('academy'));
     }
 
     /**

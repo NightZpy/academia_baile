@@ -28,7 +28,7 @@ class DancerDataTable extends DataTable
 	public function ajax()
 	{
 		return $this->datatables
-			->eloquent($this->query())
+			->of($this->query())
 			->make(true);
 	}
 	/**
@@ -50,8 +50,8 @@ class DancerDataTable extends DataTable
 		$colums = [
 					'id'            =>      ['data' => 'id', 'name' => 'id', 'title' => '#'],
 					'name'          =>      ['data' => 'name', 'name' => 'name', 'title' => 'Nombre'],
-					'email'         =>      ['data' => 'email', 'name' => 'email', 'title' => 'Correo electronico'],
-					'bird_date'     =>      ['data' => 'bird_date', 'name' => 'bird_date', 'title' => 'Fecha de nacimiento'],
+					'email'         =>      ['data' => 'email', 'name' => 'email', 'title' => 'Correo electrónico'],
+					'birth_date'     =>      ['data' => 'birth_date', 'name' => 'birth_date', 'title' => 'Fecha de nacimiento'],
 					'created_at'    =>      ['data' => 'created_at', 'name' => 'created_at', 'title' => 'Agregado'],
 					'updated_at'    =>      ['data' => 'updated_at', 'name' => 'updated_at', 'title' => 'Actualizado']
 		];

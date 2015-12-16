@@ -17,7 +17,7 @@ class CreateDancersTable extends Migration
             $table->string('name', 128);
             $table->string('last_name', 128);
             $table->string('ci', 16);
-            $table->date('bird_date');
+            $table->date('birth_date');
             $table->string('email', 128)->nullable()->unique();
             $table->string('phone', 24)->nullable();
             $table->string('photo', 128)->nullable();

@@ -11,9 +11,9 @@ class Dancer extends Model implements StaplerableInterface
 	use EloquentTrait;
 
 	protected $table = 'dancers';
-	protected $fillable = ['name', 'last_name', 'ci', 'bird_date', 'email',
+	protected $fillable = ['name', 'last_name', 'ci', 'birth_date', 'email',
 						   'phone', 'photo', 'facebook', 'twitter', 'instagram',
-		                   'independent', 'director', 'academy_id'];
+		                   'independent', 'director', 'academy_participant_id'];
 
 	public function __construct(array $attributes = array()) {
 		$this->hasAttachedFile('photo', [

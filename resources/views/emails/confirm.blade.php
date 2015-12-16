@@ -6,10 +6,10 @@ Probando correo!
     <title>Confirmar registro</title>
 </head>
 <body>
-<h1>Gracias por tu interÈs en nuestro Festival PLURANZA 2016!</h1>
+<h1>Gracias por tu inter√©s en nuestro Festival PLURANZA 2016!</h1>
 
 <p>
-    Necesitamos <a href='{{ route("pluranza.users.confirm", $user->token) }}'>confimar tu correo</a>, ser· r·pido!
+    Necesitamos <a href='{{ route("pluranza.users.confirm", $user->token) }}'>confimar tu correo</a> electr√≥nico!
 </p>
 </body>
 </html>

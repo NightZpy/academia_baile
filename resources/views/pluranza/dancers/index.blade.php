@@ -6,24 +6,17 @@
             <div class="row ct-u-paddingTop100">
                 <div class="col-md-12 ct-titleBox">
                     <h4 class="text-center text-uppercase ct-u-paddingTop30">
-                        Bailarines de <i>{{ $academyParticipant->name }}</i>
+                        Sólo: Bailarines de <i>{{ $academy->name }}</i>
                     </h4>
                 </div>
             </div>
             <div class="row ct-u-paddingTop25">
+                <div class="col-md-10">
+                    <a href="{{ route('pluranza.dancers.new', $academy->id) }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
+                </div>
+            </div>
+            <div class="row ct-u-paddingTop5">
                 <div class="col-md-offset-2 col-md-8">
-                    {{--<table class="table table-bordered table-hover table-responsive" id="dancers-table">
-                        <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Grupo</th>
-                            <th>Acciones</th>
-                            <th>Acciones</th>
-                            <th>Acciones</th>
-                        </tr>
-                        </thead>
-                    </table>--}}
                     {!! $dataTable->table() !!}
                 </div>
             </div>
@@ -41,7 +34,7 @@
             },
             processing: true,
             serverSide: true,
-            ajax: '{!! route('pluranza.dancers.api.list', $academyParticipant->id) !!}',
+            ajax: '{!! route('pluranza.dancers.api.list', $academy->id) !!}',
             columns: [
                 { data: 'name', name: 'name' },
                 { data: 'bird_date', name: 'bird_date' },

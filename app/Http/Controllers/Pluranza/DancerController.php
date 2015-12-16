@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Pluranza;
 
 use App\DataTables\DancerDataTable;
+use App\Http\Requests\Pluranza\RegisterDancerFormRequest;
+use App\Mailers\AppMailer;
 use App\Pluranza\AcademyParticipant;
+use App\Pluranza\Dancer;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -18,11 +21,11 @@ class DancerController extends Controller
      */
     public function index($id, DancerDataTable $dancerDataTable)
     {
-        $academyParticipant = AcademyParticipant::findOrFail($id);
-        $dancerDataTable->setQuery($academyParticipant->dancers);
-        $dancerDataTable->setAcademyFilterId($academyParticipant->id);
-        return $dancerDataTable->render('pluranza.dancers.index', compact('academyParticipant'));
-        //return view('pluranza.dancers.index')->with(compact('academyParticipant', 'dancerDataTable'));
+        $academy = AcademyParticipant::findOrFail($id);
+        $dancerDataTable->setQuery($academy->dancers);
+        $dancerDataTable->setAcademyFilterId($academy->id);
+        return $dancerDataTable->render('pluranza.dancers.index', compact('academy'));
+        //return view('pluranza.dancers.index')->with(compact('academy', 'dancerDataTable'));
     }
 
     /**
@@ -30,9 +33,10 @@ class DancerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $academy = AcademyParticipant::findOrFail($id);
+        return view('pluranza.dancers.new')->with(compact('academy'));
     }
 
     /**
@@ -41,9 +45,16 @@ class DancerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RegisterDancerFormRequest $request, AppMailer $mailer)
     {
-        //
+        $dancer = Dancer::create($request->all());
+        if ($dancer->email) {
+            $mailer->sendEmailToDancer($dancer, 'pluranza.emails.dancer-invitation');
+            flash()->success('Datos guardados exitosamente, correo de invitación enviado al bailarín!');
+        } else {
+            flash()->success('Datos guardados exitosamente!');
+        }
+        return redirect()->back()->withInput();
     }
 
     /**
