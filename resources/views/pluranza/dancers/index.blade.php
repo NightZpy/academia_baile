@@ -24,7 +24,7 @@
                         </tr>
                         </thead>
                     </table>--}}
-                    {!! $dancerDataTable->table() !!}
+                    {!! $dataTable->table() !!}
                 </div>
             </div>
         </div>
@@ -32,10 +32,10 @@
 @stop
 
 @push('scripts')
-<script type="text/javascript" language="javascript">
-    jQuery(document).ready(function() {
-        {!! $dancerDataTable->scripts() !!}
-        /*$('#dancers-table').DataTable({
+{{--<script type="text/javascript" language="javascript">
+    jQuery(document).ready(function() {--}}
+        {!! $dataTable->scripts() !!}
+        {{-- $('#dancers-table').DataTable({
             language: {
                 url: 'https://cdn.datatables.net/plug-ins/1.10.10/i18n/Spanish.json'
             },
@@ -50,7 +50,7 @@
                 { data: 'bird_date', name: 'algo2' },
                 { data: 'bird_date', name: 'algo3' },
             ]
-        });*/
-    });
-</script>
+        }); --}}
+{{--    });
+</script>--}}
 @endpush

@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Pluranza;
 
 use App\DataTables\DancerDataTable;
 use App\Pluranza\AcademyParticipant;
-use App\Pluranza\Dancer;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use yajra\Datatables\Datatables;
+use Yajra\Datatables\Datatables;
 
 class DancerController extends Controller
 {
@@ -21,7 +20,9 @@ class DancerController extends Controller
     {
         $academyParticipant = AcademyParticipant::findOrFail($id);
         $dancerDataTable->setQuery($academyParticipant->dancers);
-        return view('pluranza.dancers.index')->with(compact('academyParticipant', 'dancerDataTable'));
+        $dancerDataTable->setAcademyFilterId($academyParticipant->id);
+        return $dancerDataTable->render('pluranza.dancers.index', compact('academyParticipant'));
+        //return view('pluranza.dancers.index')->with(compact('academyParticipant', 'dancerDataTable'));
     }
 
     /**
