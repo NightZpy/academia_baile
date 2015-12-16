@@ -61,6 +61,6 @@ class RegistrationController extends Controller
     {
         User::whereToken($token)->firstOrFail()->confirmEmail();
         flash('Tu correo ha sido confirmado. Ya puedes ingresar!');
-        return redirect()->route('pluranza.index');
+        return redirect()->route('pluranza.home');
     }
 }
