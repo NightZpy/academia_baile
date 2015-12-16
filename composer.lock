@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b92e3c56ee79d3c57f03ab1a98791b91",
+    "hash": "0800cca19acfb51d961081eb11efb9f0",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -2235,7 +2235,7 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "dev-master",
+            "version": "v5.12.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
@@ -3562,9 +3562,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "yajra/laravel-datatables-oracle": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
