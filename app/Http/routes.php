@@ -86,13 +86,14 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		'uses' => 'PagesController@index'
 	]);
 
+	Route::post('academias-participantes', ['middleware' => 'guest', 'as' => 'pluranza.academies-participants.store', 'uses' => 'AcademyParticipantController@store']);
+
 	Route::group(['middleware' => 'auth'], function () {
 
 		/*
 		* ---------- Academies participants ----------
 		*/
 		Route::group(['prefix' => 'academias-participantes'], function () {
-			Route::post('/', ['as' => 'pluranza.academies-participants.store', 'uses' => 'AcademyParticipantController@store']);
 
 			Route::get('editar/{id}', ['as' => 'pluranza.academies-participants.edit', 'uses' => 'AcademyParticipantController@edit']);
 
