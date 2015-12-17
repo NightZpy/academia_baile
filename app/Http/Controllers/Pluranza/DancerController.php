@@ -82,7 +82,9 @@ class DancerController extends Controller
      */
     public function show($id)
     {
-        //
+	    $dancer = $this->dancerRepository->get($id);
+	    $academy = $dancer->academy;
+	    return view('pluranza.dancers.show')->with(compact('dancer', 'academy'));
     }
 
     /**
