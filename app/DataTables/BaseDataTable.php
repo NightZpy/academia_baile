@@ -51,7 +51,13 @@ class BaseDataTable {
 			if (in_array('all', $actions)) {
 				$this->addActionColumn("<a class='show btn btn-xs btn-info btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-trash'></i> Ver</a>");
 				$this->addActionColumn("<a  class='edit btn btn-xs btn-success btn-circle' href='" . route($routes['edit'], $model->id) . "' id='edit_" . $model->id . "'><i class='fa fa-pencil'></i> Editar</a>");
-				$this->addActionColumn("<a class='delete btn btn-xs btn-primary btn-circle' href='#' id='delete_".$model->id."'><i class='fa fa-trash'></i> Eliminar</a>");
+
+				$deleteForm = '<form method="POST" action="' . route($routes['delete'], $model->id) . '" accept-charset="UTF-8">';
+				$deleteForm .= '<input name="_method" type="hidden" value="DELETE">';
+				$deleteForm .= '<input name="_token" type="hidden" value="' . csrf_token() . '">';
+				$deleteForm .= '<button type="submit" class="delete btn btn-xs btn-primary btn-circle"><i class="fa fa-trash"></i> Eliminar</button>';
+				$deleteForm .= '</form>';
+				$this->addActionColumn($deleteForm);
 			} else {
 				if (in_array('show', $actions))
 					$this->addActionColumn("<a class='show btn btn-xs btn-info btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-user'></i> Ver</a>");
@@ -60,7 +66,12 @@ class BaseDataTable {
 					$this->addActionColumn("<a  class='edit btn btn-xs btn-success btn-circle' href='" . route($routes['edit'], $model->id) . "' id='edit_".$model->id."'><i class='fa fa-pencil'></i> Editar</a>");
 
 				if (in_array('delete', $actions)) {
-					$this->addActionColumn("<a class='delete btn btn-xs btn-primary btn-circle' href='#' id='delete_".$model->id."'><i class='fa fa-trash'></i> Eliminar</a>");
+					$deleteForm = '<form method="POST" action="' . route($routes['delete'], $model->id) . '" accept-charset="UTF-8">';
+					$deleteForm .= '<input name="_method" type="hidden" value="DELETE">';
+					$deleteForm .= '<input name="_token" type="hidden" value="' . csrf_token() . '">';
+					$deleteForm .= '<button type="submit" class="delete btn btn-xs btn-primary btn-circle"><i class="fa fa-trash"></i> Eliminar</button>';
+					$deleteForm .= '</form>';
+					$this->addActionColumn($deleteForm);
 				}
 			}
 			return implode(" ", $this->getActionColumn());

@@ -97,7 +97,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 
 			Route::get('editar/{id}', ['as' => 'pluranza.academies-participants.edit', 'uses' => 'AcademyParticipantController@edit']);
 
-			Route::patch('update/{id}', ['as' => 'pluranza.academies-participants.update', 'uses' => 'AcademyParticipantController@update']);
+			Route::patch('actualizar/{id}', ['as' => 'pluranza.academies-participants.update', 'uses' => 'AcademyParticipantController@update']);
 		});
 
 		/*
@@ -143,7 +143,10 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 
 			Route::get('editar/{id}', ['as' => 'pluranza.dancers.edit', 'uses' => 'DancerController@edit']);
 
-			Route::patch('update/{id}', ['as' => 'pluranza.dancers.update', 'uses' => 'DancerController@update']);
+			Route::patch('actualizar/{id}', ['as' => 'pluranza.dancers.update', 'uses' => 'DancerController@update']);
+
+			Route::delete('{id}', ['as' => 'pluranza.dancers.delete', 'uses' => 'DancerController@destroy']);
+
 		});
 	});
 });
