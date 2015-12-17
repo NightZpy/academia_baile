@@ -2,6 +2,7 @@
 
 namespace App\Pluranza;
 
+use Carbon\Carbon;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Illuminate\Database\Eloquent\Model;
@@ -29,8 +30,22 @@ class Dancer extends Model implements StaplerableInterface
 	/*
 	* -------------------------- Relations ------------------------
 	*/
-	public function academyParticipant()
+	public function academy()
 	{
 		return $this->belongsTo('App\Pluranza\Academy');
+	}
+
+	/*
+	 * ------------------------- Accessors ---------------------------
+	 */
+	public function getFullNameAttribute()
+	{
+		return $this->name . ' ' . $this->last_name;
+	}
+
+	public function getAgeAttribute()
+	{
+		return Carbon::createFromFormat('Y-m-d', $this->birth_date)->age;
+		//return Carbon::createFromDate($fecha[0], $fecha[1], $fecha[2])->age;
 	}
 }

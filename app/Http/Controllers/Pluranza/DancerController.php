@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pluranza;
 
 use App\Http\Requests\Pluranza\RegisterDancerFormRequest;
+use App\Http\Requests\Pluranza\UpdateDancerFormRequest;
 use App\Mailers\AppMailer;
 use App\Repository\Pluranza\AcademyRepository;
 use App\Repository\Pluranza\DancerRepository;
@@ -92,7 +93,9 @@ class DancerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dancer = $this->dancerRepository->get($id);
+        $academy = $dancer->academy;
+        return view('pluranza.dancers.edit')->with(compact('dancer', 'academy'));
     }
 
     /**
@@ -102,10 +105,14 @@ class DancerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+	public function update($id, UpdateDancerFormRequest $request)
+	{
+		$dancer = $this->dancerRepository->get($id);
+		$dancer->update($request->all());
+		$academy = $dancer->academy;
+		flash()->success('Datos actualizados exitosamente!');
+		return redirect()->back()->with(compact('dancer', 'academy'));
+	}
 
     /**
      * Remove the specified resource from storage.
