@@ -36,7 +36,7 @@ class RegisterDancerFormRequest extends Request
             'instagram' => 'max:128|unique:dancers',
             'independent' => 'in:off,on',
             'director' => 'in:off,on',
-            'academy_participant_id' => 'required|exists:academies_participants,id'
+            'academy_id' => 'required|exists:academies_participants,id'
         ];
     }
 }

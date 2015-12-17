@@ -6,6 +6,7 @@ use App\Http\Requests\Pluranza\RegisterDancerFormRequest;
 use App\Mailers\AppMailer;
 use App\Pluranza\Academy;
 use App\Pluranza\Dancer;
+use App\Repository\Pluranza\AcademyRepository;
 use App\Repository\Pluranza\DancerRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -14,12 +15,13 @@ use App\Http\Controllers\Controller;
 class DancerController extends Controller
 {
     protected $dancerRepository;
-
+    protected $academyRepository;
     /**
      * DancerController constructor.
      */
-    public function __construct(DancerRepository $dancerRepository) {
+    public function __construct(DancerRepository $dancerRepository, AcademyRepository $academyRepository) {
         $this->dancerRepository = $dancerRepository;
+        $this->academyRepository = $academyRepository;
     }
 
 
@@ -36,8 +38,9 @@ class DancerController extends Controller
 
     public function byAcademy($id)
     {
-        $table = $this->dancerRepository->getByAcademyTable($id);
-        return  view('pluranza.dancers.by-academy')->with(compact('table'));
+        $table = $this->dancerRepository->dataTable->getByAcademyTable([$id]);
+        $academy = $this->academyRepository->get($id);
+        return  view('pluranza.dancers.by-academy')->with(compact('table', 'academy'));
     }
 
     /**
@@ -60,13 +63,15 @@ class DancerController extends Controller
     public function store(RegisterDancerFormRequest $request, AppMailer $mailer)
     {
         $dancer = Dancer::create($request->all());
+        $academy = Academy::findOrFail($request->get('academy_id'));
+        $academy->dancers()->save($dancer);
         if ($dancer->email) {
             $mailer->sendEmailToDancer($dancer, 'pluranza.emails.dancer-invitation');
             flash()->success('Datos guardados exitosamente, correo de invitación enviado al bailarín!');
         } else {
             flash()->success('Datos guardados exitosamente!');
         }
-        return redirect()->back()->withInput();
+        return redirect()->route('pluranza.dancers.by-academy', $academy->id);
     }
 
     /**
@@ -126,6 +131,6 @@ class DancerController extends Controller
     public function apiByAcademyList($id)
     {
         if(request()->ajax())
-            return $this->dancerRepository->dataTable->getDefaultTableForAll();
+            return $this->dancerRepository->getByAcademyTable($id);
     }
 }

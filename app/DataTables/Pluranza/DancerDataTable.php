@@ -14,7 +14,8 @@ class DancerDataTable extends BaseDataTable
 			'Nivel',
 			'Acciones'
 		];
-		$this->setListAllRoute('pluranza.dancers.api.list');
+		$this->defaultConfig();
+		$this->setRoute('pluranza.dancers.api.list');
 	}
 
 	public function setBodyTableSettings()
@@ -51,5 +52,10 @@ class DancerDataTable extends BaseDataTable
 		{
 			return 'nivel';
 		});
+	}
+
+	public function getByAcademyTable($params = [])
+	{
+		return $this->getAllTable('pluranza.dancers.api.by-academy', $params);
 	}
 }

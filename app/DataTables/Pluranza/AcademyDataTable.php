@@ -14,7 +14,7 @@ class AcademyDataTable extends BaseDataTable
 			'Nivel',
 			'Acciones'
 		];
-		$this->setListAllRoute('pluranza.academies.api.list');
+		$this->setRoute('pluranza.academies.api.list');
 	}
 
 	public function setBodyTableSettings()

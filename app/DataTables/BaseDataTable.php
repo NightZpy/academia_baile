@@ -8,16 +8,35 @@ class BaseDataTable {
 	protected $columns;
 	protected $actionColums = array();
 	protected $collection;
-	protected $listAllRoute;
+	protected $route;
+	protected $dataTable;
+
+	/**
+	 * BaseDataTable constructor.
+	 * @param $columns
+	 */
+	public function defaultConfig() {
+		$this->dataTable = Datatable::table()
+			->setOptions(array(
+				'dom' =>"T<'clear'>lfrtip",
+				'tabletools' => array(
+					"aButtons" => array("print", "pdf", "xls"),
+					"buttons" => [ "copy", "csv", "xls", "pdf", ["type"=> "print", "buttonText" => "Print me!" ]]
+				),
+				'language' => array(
+					'url' => 'https://cdn.datatables.net/plug-ins/1.10.10/i18n/Spanish.json'
+				)
+			));
+	}
 
 	public function getColumnCount()
 	{
 		return count($this->columns);
 	}
 
-	public function setListAllRoute($listAllRoute)
+	public function setRoute($route)
 	{
-		$this->listAllRoute = $listAllRoute;
+		$this->route = $route;
 	}
 
 	/*
@@ -30,19 +49,19 @@ class BaseDataTable {
 			$this->cleanActionColumn();
 
 			if (in_array('all', $actions)) {
-				$this->addActionColumn("<a  class='edit btn btn-xs btn-success btn-circle' href='" . route($routes('edit'), $model->id) . "' id='edit_".$model->id."'><i class='fa fa-pencil-circle'></i></a><br />");
-				$this->addActionColumn("<a class='delete btn btn-xs btn-warning btn-circle' href='#' id='delete_".$model->id."'><i class='fa fa-minus-circle'></i></a>");
-				$this->addActionColumn("<a class='show btn btn-xs btn-primary btn-circle' href='" . route($routes('show'), $model->id) . "' id='show_".$model->id."'><i class='fa fa-eye'></i></a><br />");
+				$this->addActionColumn("<a class='show btn btn-xs btn-info btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-trash'></i> Ver</a>");
+				$this->addActionColumn("<a  class='edit btn btn-xs btn-success btn-circle' href='" . route($routes['edit'], $model->id) . "' id='edit_" . $model->id . "'><i class='fa fa-pencil'></i> Editar</a>");
+				$this->addActionColumn("<a class='delete btn btn-xs btn-primary btn-circle' href='#' id='delete_".$model->id."'><i class='fa fa-trash'></i> Eliminar</a>");
 			} else {
+				if (in_array('show', $actions))
+					$this->addActionColumn("<a class='show btn btn-xs btn-info btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-user'></i> Ver</a>");
+
 				if (in_array('edit', $actions))
-					$this->addActionColumn("<a  class='edit btn btn-xs btn-success btn-circle' href='" . route($routes('edit'), $model->id) . "' id='edit_".$model->id."'><i class='fa fa-pencil-circle'></i></a><br />");
+					$this->addActionColumn("<a  class='edit btn btn-xs btn-success btn-circle' href='" . route($routes['edit'], $model->id) . "' id='edit_".$model->id."'><i class='fa fa-pencil'></i> Editar</a>");
 
 				if (in_array('delete', $actions)) {
-					$this->addActionColumn("<a class='delete btn btn-xs btn-warning btn-circle' href='#' id='delete_".$model->id."'><i class='fa fa-minus-circle'></i></a>");
+					$this->addActionColumn("<a class='delete btn btn-xs btn-primary btn-circle' href='#' id='delete_".$model->id."'><i class='fa fa-trash'></i> Eliminar</a>");
 				}
-
-				if (in_array('show', $actions))
-					$this->addActionColumn("<a class='show btn btn-xs btn-primary btn-circle' href='" . route($routes('show'), $model->id) . "' id='show_".$model->id."'><i class='fa fa-eye'></i></a><br />");
 			}
 			return implode(" ", $this->getActionColumn());
 		});
@@ -51,17 +70,16 @@ class BaseDataTable {
 	public function getAllTable($route = null, $params = array(), $orderColumn = 1, $type = 'asc', $tableId = 'datatable')
 	{
 		if(!$route)
-			$route = $this->listAllRoute;
+			$route = $this->route;
 
-		$datatable = Datatable::table();
-		$datatable->addColumn($this->columns);
-		$datatable->setOptions('order', [[$orderColumn , $type]]);
-		//$datatable->setCustomValues('table-id', 'datatable-' . $tableId);
+		$this->dataTable->addColumn($this->columns);
+		$this->dataTable->setOptions('order', [[$orderColumn , $type]]);
+		//$this->dataTable->setCustomValues('table-id', 'datatable-' . $tableId);
 		if($tableId != 'datatable')
-			$datatable->setId('datatable-' . $tableId);
-		$datatable->setUrl(route($route, $params));
-		$datatable->noScript();
-		return $datatable;
+			$this->dataTable->setId('datatable-' . $tableId);
+		$this->dataTable->setUrl(route($route, $params));
+		$this->dataTable->noScript();
+		return $this->dataTable;
 	}
 
 	public function setCollection($collection)

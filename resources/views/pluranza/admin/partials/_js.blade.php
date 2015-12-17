@@ -32,6 +32,7 @@
 <script>
     jQuery(document).ready(function() {
         // Custom inits
-        CustomApp.init();    });
+        CustomApp.init();
+    });
 </script>
 
