@@ -27,7 +27,7 @@ class CreateDancersTable extends Migration
             $table->boolean('independent')->default(false);
             $table->boolean('director')->default(false);
             $table->integer('academy_id')->nullable();
-            //$table->foreign('academy_id')->references('id')->on('academies_participants');
+            //$table->foreign('academy_id')->references('id')->on('academies');
             $table->timestamps();
         });
     }

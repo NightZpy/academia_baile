@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Pluranza;
 
 use App\Http\Requests\Pluranza\RegisterDancerFormRequest;
 use App\Mailers\AppMailer;
-use App\Pluranza\Academy;
-use App\Pluranza\Dancer;
 use App\Repository\Pluranza\AcademyRepository;
 use App\Repository\Pluranza\DancerRepository;
 use Illuminate\Http\Request;
@@ -50,7 +48,7 @@ class DancerController extends Controller
      */
     public function create($id)
     {
-        $academy = Academy::findOrFail($id);
+        $academy = $this->academyRepository->get($id);
         return view('pluranza.dancers.new')->with(compact('academy'));
     }
 
@@ -62,8 +60,9 @@ class DancerController extends Controller
      */
     public function store(RegisterDancerFormRequest $request, AppMailer $mailer)
     {
-        $dancer = Dancer::create($request->all());
-        $academy = Academy::findOrFail($request->get('academy_id'));
+        $dancer = $this->dancerRepository->create($request->all());
+        //$dancer = Dancer::create($request->all());
+        $academy = $this->academyRepository->get($request->get('academy_id'));
         $academy->dancers()->save($dancer);
         if ($dancer->email) {
             $mailer->sendEmailToDancer($dancer, 'pluranza.emails.dancer-invitation');

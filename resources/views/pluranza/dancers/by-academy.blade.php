@@ -15,15 +15,16 @@
                     <a href="{{ route('pluranza.dancers.new', $academy->id) }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6">
+                    @include('partials._flash')
+                </div>
+            </div>
             <div class="row ct-u-paddingTop5">
                 <div class="col-md-offset-2 col-md-8">
-                    {!! $table->render() !!}
+                    @include('partials._table')
                 </div>
             </div>
         </div>
     </section>
 @stop
-
-@push('scripts')
-    {!! $table->script() !!}
-@endpush

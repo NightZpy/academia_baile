@@ -12,7 +12,7 @@ class AddLogoFieldsToAcademiesParticipantsTable extends Migration {
      */
     public function up()
     {
-        Schema::table('academies_participants', function(Blueprint $table) {
+        Schema::table('academies', function(Blueprint $table) {
 
             $table->string('logo_file_name')->nullable();
             $table->integer('logo_file_size')->nullable()->after('logo_file_name');
@@ -30,7 +30,7 @@ class AddLogoFieldsToAcademiesParticipantsTable extends Migration {
      */
     public function down()
     {
-        Schema::table('academies_participants', function(Blueprint $table) {
+        Schema::table('academies', function(Blueprint $table) {
 
             $table->dropColumn('logo_file_name');
             $table->dropColumn('logo_file_size');

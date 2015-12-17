@@ -12,7 +12,7 @@ class CreateAcademiesParticipantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('academies_participants', function (Blueprint $table) {
+        Schema::create('academies', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 64)->unique();
@@ -50,6 +50,6 @@ class CreateAcademiesParticipantsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('academies_participants');
+        Schema::drop('academies');
     }
 }
