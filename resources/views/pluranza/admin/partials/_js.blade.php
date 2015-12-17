@@ -29,7 +29,7 @@
 
 @yield('scripts')
 
-<script type="text/javascript" language="javascript">
+<script>
     jQuery(document).ready(function() {
         // Custom inits
         CustomApp.init();    });

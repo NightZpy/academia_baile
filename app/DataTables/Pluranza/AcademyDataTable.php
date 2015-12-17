@@ -2,7 +2,7 @@
 namespace App\DataTables\Pluranza;
 use App\DataTables\BaseDataTable;
 
-class DancerDataTable extends BaseDataTable
+class AcademyDataTable extends BaseDataTable
 {
 	function __construct() {
 		$this->columns = [
@@ -14,7 +14,7 @@ class DancerDataTable extends BaseDataTable
 			'Nivel',
 			'Acciones'
 		];
-		$this->setListAllRoute('pluranza.dancers.api.list');
+		$this->setListAllRoute('pluranza.academies.api.list');
 	}
 
 	public function setBodyTableSettings()

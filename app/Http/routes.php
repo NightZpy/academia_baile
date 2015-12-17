@@ -104,7 +104,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		* ---------- Dancers ----------
 		*/
 		Route::group(['prefix' => 'bailarines'], function () {
-			Route::get('{id}', [
+			Route::get('/', [
 				'as' => 'pluranza.dancers.home',
 				'uses' => 'DancerController@index'
 			]);
@@ -117,6 +117,11 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 			Route::get('api/lista/{id}', [
 				'as' => 'pluranza.dancers.api.list',
 				'uses' => 'DancerController@apiList'
+			]);
+
+			Route::get('{id}', [
+				'as' => 'pluranza.dancers.by-academy',
+				'uses' => 'DancerController@byAcademy'
 			]);
 
 			Route::get('nuevo/{id}', [

@@ -4,7 +4,7 @@ namespace App\DataTables;
 use Datatable;
 use Illuminate\Database\Eloquent\Collection;
 
-class DataTable {
+class BaseDataTable {
 	protected $columns;
 	protected $actionColums = array();
 	protected $collection;
@@ -23,22 +23,27 @@ class DataTable {
 	/*
 	************************** DATATABLE COLLECTION METHODS *********************************
 	*/
-	public function setDefaultActionColumn($actions = array('all')) {
+	public function setDefaultActionColumn($routes, $actions = array('all')) {
 
-		$this->addColumnToCollection('Acciones', function($model)
+		$this->addColumnToCollection('Acciones', function($model) use ($routes, $actions)
 		{
 			$this->cleanActionColumn();
-			if ( $action == 'all' || $action == 'edit' )
-				$this->addActionColumn("<a  class='edit btn btn-xs btn-success btn-circle' href='" . route('pluranza.dancers.edit', $model->id) . "' id='edit_".$model->id."'><i class='fa fa-pencil-square'></i></a><br />");
 
-			if ( $action == 'all' || $action == 'delete' ) {
+			if (in_array('all', $actions)) {
+				$this->addActionColumn("<a  class='edit btn btn-xs btn-success btn-circle' href='" . route($routes('edit'), $model->id) . "' id='edit_".$model->id."'><i class='fa fa-pencil-circle'></i></a><br />");
+				$this->addActionColumn("<a class='delete btn btn-xs btn-warning btn-circle' href='#' id='delete_".$model->id."'><i class='fa fa-minus-circle'></i></a>");
+				$this->addActionColumn("<a class='show btn btn-xs btn-primary btn-circle' href='" . route($routes('show'), $model->id) . "' id='show_".$model->id."'><i class='fa fa-eye'></i></a><br />");
+			} else {
+				if (in_array('edit', $actions))
+					$this->addActionColumn("<a  class='edit btn btn-xs btn-success btn-circle' href='" . route($routes('edit'), $model->id) . "' id='edit_".$model->id."'><i class='fa fa-pencil-circle'></i></a><br />");
 
+				if (in_array('delete', $actions)) {
+					$this->addActionColumn("<a class='delete btn btn-xs btn-warning btn-circle' href='#' id='delete_".$model->id."'><i class='fa fa-minus-circle'></i></a>");
+				}
+
+				if (in_array('show', $actions))
+					$this->addActionColumn("<a class='show btn btn-xs btn-primary btn-circle' href='" . route($routes('show'), $model->id) . "' id='show_".$model->id."'><i class='fa fa-eye'></i></a><br />");
 			}
-				$this->addActionColumn("<a class='delete btn btn-xs btn-warning btn-circle' href='#' id='delete_".$model->id."'><i class='fa fa-pencil-square'></i></a>");
-
-			if ( $action == 'all' || $action == 'show' )
-				$this->addActionColumn("<a class='show btn btn-xs btn-primary btn-circle' href='" . route('pluranza.dancers.show', $model->id) . "' id='show_".$model->id."'><i class='fa fa-pencil-square'></i></a><br />");
-
 			return implode(" ", $this->getActionColumn());
 		});
 	}
@@ -108,7 +113,6 @@ class DataTable {
 		$this->setDefaultActionColumn();
 	}
 
-	public function setDefaultActionColumn(){}
 	public function setBodyTableSettings(){}
 }
 

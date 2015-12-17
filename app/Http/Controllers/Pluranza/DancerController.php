@@ -2,30 +2,42 @@
 
 namespace App\Http\Controllers\Pluranza;
 
-use App\DataTables\DancerDataTable;
 use App\Http\Requests\Pluranza\RegisterDancerFormRequest;
 use App\Mailers\AppMailer;
 use App\Pluranza\Academy;
 use App\Pluranza\Dancer;
+use App\Repository\Pluranza\DancerRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Yajra\Datatables\Datatables;
 
 class DancerController extends Controller
 {
+    protected $dancerRepository;
+
+    /**
+     * DancerController constructor.
+     */
+    public function __construct(DancerRepository $dancerRepository) {
+        $this->dancerRepository = $dancerRepository;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id, DancerDataTable $dancerDataTable)
+    public function index()
     {
-        $academy = Academy::findOrFail($id);
-        $dancerDataTable->setQuery($academy->dancers);
-        $dancerDataTable->setAcademyFilterId($academy->id);
-        return $dancerDataTable->render('pluranza.dancers.index', compact('academy'));
-        //return view('pluranza.dancers.index')->with(compact('academy', 'dancerDataTable'));
+        $table = $this->dancerRepository->dataTable->getAllTable();
+        return  view('pluranza.dancers.index')->with(compact('table'));
+    }
+
+    public function byAcademy($id)
+    {
+        $table = $this->dancerRepository->getByAcademyTable($id);
+        return  view('pluranza.dancers.by-academy')->with(compact('table'));
     }
 
     /**
@@ -108,6 +120,12 @@ class DancerController extends Controller
     public function apiList($id)
     {
         if(request()->ajax())
-            return Datatables::of(Academy::findOrFail($id)->dancers()->select('*'))->make(true);
+            return $this->dancerRepository->dataTable->getDefaultTableForAll();
+    }
+
+    public function apiByAcademyList($id)
+    {
+        if(request()->ajax())
+            return $this->dancerRepository->dataTable->getDefaultTableForAll();
     }
 }

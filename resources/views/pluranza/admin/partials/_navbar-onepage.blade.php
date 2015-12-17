@@ -14,7 +14,7 @@
                     <ul class="nav navbar-nav navbar-right ct-navbar--fadeIn">
                         <li class="onepage"><a href="{{ route('pluranza.home') }}" class="ct-js-btnScroll">Inicio</a></li>
                         <li class="onepage"><a href="{{ route('pluranza.academies-participants.edit', $academy->id) }}" class="ct-js-btnScroll">Editar</a></li>
-                        <li class="onepage"><a href="{{ route('pluranza.dancers.home', $academy->id) }}" class="ct-js-btnScroll">Miembros</a></li>
+                        <li class="onepage"><a href="{{ route('pluranza.dancers.by-academy', $academy->id) }}" class="ct-js-btnScroll">Miembros</a></li>
                         <li class="onepage"><a href="#" class="ct-js-btnScroll">Resultados</a></li>
                     </ul>
                     <div class="clearfix"></div>

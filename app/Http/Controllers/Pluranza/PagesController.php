@@ -19,7 +19,7 @@ class PagesController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            $academy = Academy::find(Auth::user()->academyParticipant->id);
+            $academy = Academy::find(Auth::user()->academy->id);
         }
         return view ('pluranza.pages.index')->with(compact('academy'));
     }
