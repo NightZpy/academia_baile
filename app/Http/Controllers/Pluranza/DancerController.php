@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Pluranza;
 use App\DataTables\DancerDataTable;
 use App\Http\Requests\Pluranza\RegisterDancerFormRequest;
 use App\Mailers\AppMailer;
-use App\Pluranza\AcademyParticipant;
+use App\Pluranza\Academy;
 use App\Pluranza\Dancer;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -21,7 +21,7 @@ class DancerController extends Controller
      */
     public function index($id, DancerDataTable $dancerDataTable)
     {
-        $academy = AcademyParticipant::findOrFail($id);
+        $academy = Academy::findOrFail($id);
         $dancerDataTable->setQuery($academy->dancers);
         $dancerDataTable->setAcademyFilterId($academy->id);
         return $dancerDataTable->render('pluranza.dancers.index', compact('academy'));
@@ -35,7 +35,7 @@ class DancerController extends Controller
      */
     public function create($id)
     {
-        $academy = AcademyParticipant::findOrFail($id);
+        $academy = Academy::findOrFail($id);
         return view('pluranza.dancers.new')->with(compact('academy'));
     }
 
@@ -108,6 +108,6 @@ class DancerController extends Controller
     public function apiList($id)
     {
         if(request()->ajax())
-            return Datatables::of(AcademyParticipant::findOrFail($id)->dancers()->select('*'))->make(true);
+            return Datatables::of(Academy::findOrFail($id)->dancers()->select('*'))->make(true);
     }
 }

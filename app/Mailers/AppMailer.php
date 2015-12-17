@@ -1,7 +1,7 @@
 <?php
 namespace App\Mailers;
 use App\AcademieParticipant;
-use App\Pluranza\AcademyParticipant;
+use App\Pluranza\Academy;
 use App\Pluranza\Dancer;
 use App\User;
 use Illuminate\Contracts\Mail\Mailer;
@@ -67,7 +67,7 @@ class AppMailer
         $this->deliver('Pluranza 2016: Confirma tu cuenta!');
     }
 
-    public function sendEmailBase(AcademyParticipant $academyParticipant)
+    public function sendEmailBase(Academy $academyParticipant)
     {
         // app_path() . '/resources/assets/misc/reglas.pdf'
         $this->config($academyParticipant->email, 'emails.base');

@@ -9,9 +9,9 @@ class Parish extends Model
 	/*
 	* -------------------------- Relations ------------------------
 	*/
-    public function academiesParticipants()
+    public function academies()
     {
-    	return $this->hasMany('App\Pluranza\AcademyParticipant');
+    	return $this->hasMany('App\Pluranza\Academy');
     }
 
     public function municipality()

@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Http\Requests\Pluranza\UpdateAcademyParticipantRequest;
 use App\Http\Requests\Pluranza\RegisterAcademyParticipantRequest;
-use App\Pluranza\AcademyParticipant;
+use App\Pluranza\Academy;
 use App\Mailers\AppMailer;
 
 class AcademyParticipantController extends Controller
@@ -42,8 +42,8 @@ class AcademyParticipantController extends Controller
     public function store(RegisterAcademyParticipantRequest $request, AppMailer $mailer)
     {
         $user = User::create($request->all());
-        $aP = AcademyParticipant::create($request->all());
-        $user->academyParticipant()->save($aP);
+        $aP = Academy::create($request->all());
+        $user->academy()->save($aP);
         $mailer->sendEmailConfirmationTo($user, 'pluranza.emails.confirm');
         flash()->success('Datos guardados exitosamente, debe activar la cuenta, un correo llegará a su buzón en unos minutos.');
         return redirect()->route('users.login');
@@ -74,7 +74,7 @@ class AcademyParticipantController extends Controller
         $parishId = 0;
         $municipalities = array();
         $municipalityId = 0;
-        $academy = AcademyParticipant::find($id);
+        $academy = Academy::find($id);
         $foundation = $academy->foundation;
 
         $estates = Estate::all()->lists('name', 'id');
@@ -108,7 +108,7 @@ class AcademyParticipantController extends Controller
      */
     public function update($id, UpdateAcademyParticipantRequest $request)
     {
-        $academyParticipant = AcademyParticipant::findOrFail($id);
+        $academyParticipant = Academy::findOrFail($id);
         // $academy->fill($request->all())->save();
         $academyParticipant->update($request->all());
         return redirect()->back()->with(compact('academy'));

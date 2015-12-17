@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 
-class AcademyParticipant extends Model implements StaplerableInterface
+class Academy extends Model implements StaplerableInterface
 {
 	use EloquentTrait;
 
@@ -31,7 +31,7 @@ class AcademyParticipant extends Model implements StaplerableInterface
 	*/
 	public function eventEditions()
 	{
-		return $this->belongsToMany('App\EventEdition', 'event_participants', 'academie_participant_id', 'event_edition_id')
+		return $this->belongsToMany('App\EventEdition', 'event_participants', 'academy_id', 'event_edition_id')
 					->withPivot('active', 'bank_reference', 'activation_code')
 					->withTimestamps();
 	}
