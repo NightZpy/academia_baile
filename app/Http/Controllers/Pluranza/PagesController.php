@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Pluranza;
 
-use App\Pluranza\AcademyParticipant;
+use App\Pluranza\Academy;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,7 +19,7 @@ class PagesController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            $academy = AcademyParticipant::find(Auth::user()->academyParticipant->id);
+            $academy = Academy::find(Auth::user()->academy->id);
         }
         return view ('pluranza.pages.index')->with(compact('academy'));
     }

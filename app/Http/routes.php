@@ -104,7 +104,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		* ---------- Dancers ----------
 		*/
 		Route::group(['prefix' => 'bailarines'], function () {
-			Route::get('{id}', [
+			Route::get('/', [
 				'as' => 'pluranza.dancers.home',
 				'uses' => 'DancerController@index'
 			]);
@@ -114,9 +114,19 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 				'uses' => 'DancerController@index'
 			]);
 
-			Route::get('api/lista/{id}', [
+			Route::get('api/lista', [
 				'as' => 'pluranza.dancers.api.list',
 				'uses' => 'DancerController@apiList'
+			]);
+
+			Route::get('{id}', [
+				'as' => 'pluranza.dancers.by-academy',
+				'uses' => 'DancerController@byAcademy'
+			]);
+
+			Route::get('api/lista/{id}', [
+				'as' => 'pluranza.dancers.api.by-academy',
+				'uses' => 'DancerController@apiByAcademyList'
 			]);
 
 			Route::get('nuevo/{id}', [
@@ -128,6 +138,12 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 				'as' => 'pluranza.dancers.store',
 				'uses' => 'DancerController@store'
 			]);
+
+			Route::get('ver/{id}', ['as' => 'pluranza.dancers.show', 'uses' => 'DancerController@show']);
+
+			Route::get('editar/{id}', ['as' => 'pluranza.dancers.edit', 'uses' => 'DancerController@edit']);
+
+			Route::patch('update/{id}', ['as' => 'pluranza.dancers.update', 'uses' => 'DancerController@update']);
 		});
 	});
 });

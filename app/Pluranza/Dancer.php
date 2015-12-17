@@ -13,7 +13,7 @@ class Dancer extends Model implements StaplerableInterface
 	protected $table = 'dancers';
 	protected $fillable = ['name', 'last_name', 'ci', 'birth_date', 'email',
 						   'phone', 'photo', 'facebook', 'twitter', 'instagram',
-		                   'independent', 'director', 'academy_participant_id'];
+		                   'independent', 'director', 'academy_id'];
 
 	public function __construct(array $attributes = array()) {
 		$this->hasAttachedFile('photo', [
@@ -31,6 +31,6 @@ class Dancer extends Model implements StaplerableInterface
 	*/
 	public function academyParticipant()
 	{
-		return $this->belongsTo('App\Pluranza\AcademyParticipant');
+		return $this->belongsTo('App\Pluranza\Academy');
 	}
 }

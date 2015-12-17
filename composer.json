@@ -11,7 +11,7 @@
         "laracasts/flash": "~1.3",
         "laravelcollective/html": "5.1.*",
         "codesleeve/laravel-stapler": "1.0.*",
-        "yajra/laravel-datatables-oracle": "dev-develop"
+        "chumper/datatable": "dev-develop"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -1,4 +1,4 @@
-{!! Form::hidden('academy_participant_id', $academy->id) !!}
+{!! Form::hidden('academy_id', $academy->id) !!}
 <div class="row">
     <div class="col-sm-4">
         <div class="form-group {{ ($errors->has('name') ? 'has-error' : '') }}">

@@ -75,8 +75,8 @@ class User extends Model implements AuthenticatableContract,
     /*
 	* -------------------------- Relations ------------------------
 	*/
-    public function academyParticipant()
+    public function academy()
     {
-        return $this->hasOne('App\Pluranza\AcademyParticipant');
+        return $this->hasOne('App\Pluranza\Academy');
     }
 }

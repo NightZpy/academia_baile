@@ -2,30 +2,45 @@
 
 namespace App\Http\Controllers\Pluranza;
 
-use App\DataTables\DancerDataTable;
 use App\Http\Requests\Pluranza\RegisterDancerFormRequest;
 use App\Mailers\AppMailer;
-use App\Pluranza\AcademyParticipant;
+use App\Pluranza\Academy;
 use App\Pluranza\Dancer;
+use App\Repository\Pluranza\AcademyRepository;
+use App\Repository\Pluranza\DancerRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Yajra\Datatables\Datatables;
 
 class DancerController extends Controller
 {
+    protected $dancerRepository;
+    protected $academyRepository;
+    /**
+     * DancerController constructor.
+     */
+    public function __construct(DancerRepository $dancerRepository, AcademyRepository $academyRepository) {
+        $this->dancerRepository = $dancerRepository;
+        $this->academyRepository = $academyRepository;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id, DancerDataTable $dancerDataTable)
+    public function index()
     {
-        $academy = AcademyParticipant::findOrFail($id);
-        $dancerDataTable->setQuery($academy->dancers);
-        $dancerDataTable->setAcademyFilterId($academy->id);
-        return $dancerDataTable->render('pluranza.dancers.index', compact('academy'));
-        //return view('pluranza.dancers.index')->with(compact('academy', 'dancerDataTable'));
+        $table = $this->dancerRepository->dataTable->getAllTable();
+        return  view('pluranza.dancers.index')->with(compact('table'));
+    }
+
+    public function byAcademy($id)
+    {
+        $table = $this->dancerRepository->dataTable->getByAcademyTable([$id]);
+        $academy = $this->academyRepository->get($id);
+        return  view('pluranza.dancers.by-academy')->with(compact('table', 'academy'));
     }
 
     /**
@@ -35,7 +50,7 @@ class DancerController extends Controller
      */
     public function create($id)
     {
-        $academy = AcademyParticipant::findOrFail($id);
+        $academy = Academy::findOrFail($id);
         return view('pluranza.dancers.new')->with(compact('academy'));
     }
 
@@ -48,13 +63,15 @@ class DancerController extends Controller
     public function store(RegisterDancerFormRequest $request, AppMailer $mailer)
     {
         $dancer = Dancer::create($request->all());
+        $academy = Academy::findOrFail($request->get('academy_id'));
+        $academy->dancers()->save($dancer);
         if ($dancer->email) {
             $mailer->sendEmailToDancer($dancer, 'pluranza.emails.dancer-invitation');
             flash()->success('Datos guardados exitosamente, correo de invitación enviado al bailarín!');
         } else {
             flash()->success('Datos guardados exitosamente!');
         }
-        return redirect()->back()->withInput();
+        return redirect()->route('pluranza.dancers.by-academy', $academy->id);
     }
 
     /**
@@ -108,6 +125,12 @@ class DancerController extends Controller
     public function apiList($id)
     {
         if(request()->ajax())
-            return Datatables::of(AcademyParticipant::findOrFail($id)->dancers()->select('*'))->make(true);
+            return $this->dancerRepository->dataTable->getDefaultTableForAll();
+    }
+
+    public function apiByAcademyList($id)
+    {
+        if(request()->ajax())
+            return $this->dancerRepository->getByAcademyTable($id);
     }
 }

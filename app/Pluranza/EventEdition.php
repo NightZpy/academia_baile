@@ -10,9 +10,9 @@ class EventEdition extends Model
 	* -------------------------- Relations ------------------------
 	*/
 
-	public function participants()
+	public function academies()
 	{
-		return $this->belongsToMany('App\AcademyParticipant', 'event_participants', 'academy_participant_id', 'event_edition_id')
+		return $this->belongsToMany('App\Academy', 'event_participants', 'academy_id', 'event_edition_id')
 					->withPivot('active', 'bank_reference', 'activation_code')
 					->withTimestamps();
 	}
