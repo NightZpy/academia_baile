@@ -1,3 +1,4 @@
+<br>
 <div id="join-us" class="ct-u-owlWrapper">
     <div class="ct-shadowBox-repositioned">
         @if(!Auth::user())
@@ -12,10 +13,14 @@
         @endif
     </div>
     <!-- Main Carousel -->
-    <div class="ct-js-owl ct-u-owl ct-mainCarousel ct-mainCarousel--arrowsMiddle" data-single="true" data-height="720" data-animations="true" data-navigation="true" data-pagination="false" data-bg="true" data-snap-ignore="true">
-        <div class="item" data-bg="/assets/images/demo-content/salsa-mainCarousel-slide3.jpg" data-position="50% 50%">
-            <!-- 1' OwlSlider item -->
-        </div>
+    <div class="ct-js-owl ct-u-owl ct-mainCarousel ct-mainCarousel--arrowsMiddle" data-single="true" data-height="600" data-animations="true"
+         data-navigation="true" data-bg="true" data-snap-ignore="false">
+
+        <a href="{{ route('pluranza.home') }}">
+            <div class="item" data-bg="/assets/images/content/slider/pluranza-1.png" data-position="50% 50%">
+                <!-- 1' OwlSlider item -->
+            </div>
+        </a>
         <div class="item" data-bg="/assets/images/demo-content/salsa-mainCarousel-slide2.jpg" data-position="50% 50%">
             <!-- 2' OwlSlider item -->
         </div>
