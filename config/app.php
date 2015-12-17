@@ -153,7 +153,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
-        Chumper\Datatable\DatatableServiceProvider::class,
+        //Chumper\Datatable\DatatableServiceProvider::class,
     ],
 
     /*
@@ -205,7 +205,7 @@ return [
         'Flash'     => Laracasts\Flash\Flash::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Form'      => Collective\Html\FormFacade::class,
-        'Datatable' => 'Chumper\Datatable\Facades\DatatableFacade',
+        //'Datatable' => 'Chumper\Datatable\Facades\DatatableFacade',
     ],
 
 ];
