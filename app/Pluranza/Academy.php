@@ -10,7 +10,7 @@ class Academy extends Model implements StaplerableInterface
 {
 	use EloquentTrait;
 
-	protected $table = 'academies_participants';
+	protected $table = 'academies';
     protected $fillable = ['name', 'address', 'history', 'foundation', 'logo',
 	                       'email', 'phone', 'facebook', 'twitter', 'instagram',
 	                       'estate_id', 'municipality_id', 'parish_id', 'city_id'];
