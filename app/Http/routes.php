@@ -68,10 +68,42 @@ Route::get('usuarios/confirmar/{token}', [
 	'uses' => 'SessionController@confirm'
 ]);
 
+/*
+ * ---------- Pluranza ----------
+ */
 Route::get('/pluranza/usuarios/confirmar/{token}', [
 	'as' => 'pluranza.users.confirm',
 	'uses' => 'RegistrationController@confirmPluranza'
 ]);
+
+/*
+ * ---------- Categorias ----------
+ */
+Route::group(['prefix' => 'categorias'], function () {
+	Route::get('/', ['as' => 'categories.home', 'uses' => 'CategoryController@index']);
+	Route::get('nueva', ['as' => 'categories.new', 'uses' => 'CategoryController@create']);
+	Route::post('/', ['as' => 'categories.store', 'uses' => 'CategoryController@store']);
+	Route::get('ver/{id}', ['as' => 'categories.show', 'uses' => 'CategoryController@show']);
+	Route::get('editar/{id}', ['as' => 'categories.edit', 'uses' => 'CategoryController@edit']);
+	Route::patch('actualizar/{id}', ['as' => 'categories.update', 'uses' => 'CategoryController@update']);
+	Route::delete('{id}', ['as' => 'categories.delete', 'uses' => 'CategoryController@destroy']);
+
+	// -------------- API's --------------------
+	Route::get('api/lista', ['as' => 'categories.api.list', 'uses' => 'CategoryController@apiList']);
+});
+
+/*
+ * ---------- Niveles ----------
+ */
+/*Route::group(['prefix' => 'niveles'], function () {
+	Route::get(     '/',                ['as' => 'levels.home',     'uses' => 'LevelController@index']);
+	Route::get(     'nuevo',            ['as' => 'levels.new',      'uses' => 'LevelController@create']);
+	Route::post(    '/',                ['as' => 'levels.store',    'uses' => 'LevelController@store']);
+	Route::get(     'ver/{id}',         ['as' => 'levels.show',     'uses' => 'LevelController@show']);
+	Route::get(     'editar/{id}',      ['as' => 'levels.edit',     'uses' => 'LevelController@edit']);
+	Route::patch(   'actualizar/{id}',  ['as' => 'levels.update',   'uses' => 'LevelController@update']);
+	Route::delete(  '{id}',             ['as' => 'levels.delete',   'uses' => 'LevelController@destroy']);
+});*/
 
 /*
  * ---------- Pluranza ----------

@@ -1,4 +1,4 @@
-@extends('pluranza.main')
+@extends('admin.main')
 
 @section('content')
     <section class="ct-u-paddingBottom60 ct-backgroundContent" data-type="color" data-bg-color="#ffffff">
@@ -6,7 +6,7 @@
             <div class="row ct-u-paddingTop100">
                 <div class="col-md-12 ct-titleBox">
                     <h4 class="text-center text-uppercase ct-u-paddingTop30">
-                        Bailarines de <i>{{ $academy->name }}</i>
+                        Categorías o Géneros</i>
                     </h4>
                 </div>
             </div>
@@ -17,7 +17,7 @@
             </div>
             <div class="row ct-u-paddingTop25">
                 <div class="col-md-10">
-                    <a href="{{ route('pluranza.dancers.new', $academy->id) }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
+                    <a href="{{ route('categories.new') }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
                 </div>
             </div>
             <div class="row ct-u-paddingTop5">
