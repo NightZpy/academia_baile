@@ -131,7 +131,8 @@ class DancerController extends Controller
     public function destroy($id)
     {
         $dancer = $this->dancerRepository->get($id);
-	    flash()->success($dancer->fullName . ', ha sido eliminado correctamente!');
+        $dancerName = $dancer->name;
+	    flash()->success($dancerName . ', ha sido eliminado correctamente!');
 	    $dancer->delete();
 	    return redirect()->back();
     }

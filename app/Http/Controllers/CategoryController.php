@@ -103,7 +103,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = $this->categoryRepository->get($id);
+        $categoryName = $category->name;
+        $category->delete();
+        flash()->success( $categoryName . ', ha sido eliminada correctamente!');
+        return redirect()->back();
     }
 
 	/*
