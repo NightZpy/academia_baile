@@ -1,4 +1,4 @@
-@include('layout.includes._js')
+@include('public.layout.includes._js')
 <!-- Jquery Cascading Dropdown -->
 {!! Html::script('/assets/plugins/cascadingdropdown/jquery.cascadingdropdown.js') !!}
 <!-- BOOTSTRAP FILEUPLOAD -->

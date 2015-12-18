@@ -8,5 +8,5 @@
 <link rel="apple-touch-icon" href="/favicon2.png">
 <title>Al Compás - Academia de Baile</title>
 
-@include('layout.includes._css')
-@include('layout.includes._js-head')
+@include('public.layout.includes._css')
+@include('public.layout.includes._js-head')

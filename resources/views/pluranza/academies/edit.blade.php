@@ -15,7 +15,7 @@
             <div class="row ct-u-paddingTop25">
                 {!! Form::model($academy,
                     [
-                        'route' => ['pluranza.academies-participants.update', $academy->id],
+                        'route' => ['pluranza.academies.update', $academy->id],
                         'method' => 'PATCH',
                         'role' => 'form',
                         'files' => true

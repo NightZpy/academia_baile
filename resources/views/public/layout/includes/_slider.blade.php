@@ -3,7 +3,7 @@
     <div class="ct-shadowBox-repositioned">
         @if(!Auth::user())
             <div class="ct-shadowBox ct-backgroundContent" data-type="color" data-bg-color="rgba(255, 255, 255, .4)" data-snap-ignore="true">
-                @include('pluranza.academies-participants.partials._base-data-form')
+                @include('pluranza.academies.partials._base-data-form')
             </div>
         @endif
         @if(Auth::user() AND Auth::user()->academy)

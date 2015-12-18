@@ -14,7 +14,7 @@
 * ---------- Home routes ----------
 */
 Route::get('/', [ 'as' => 'home', function () {
-    return view('pages.index');
+    return view('public.index');
 }]);
 
 Route::post('/send-message', function() {
@@ -86,7 +86,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		'uses' => 'PagesController@index'
 	]);
 
-	Route::post('academias-participantes', ['middleware' => 'guest', 'as' => 'pluranza.academies-participants.store', 'uses' => 'AcademyParticipantController@store']);
+	Route::post('academias', ['middleware' => 'guest', 'as' => 'pluranza.academies.store', 'uses' => 'AcademyController@store']);
 
 	Route::group(['middleware' => 'auth'], function () {
 
@@ -95,9 +95,9 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		*/
 		Route::group(['prefix' => 'academias-participantes'], function () {
 
-			Route::get('editar/{id}', ['as' => 'pluranza.academies-participants.edit', 'uses' => 'AcademyParticipantController@edit']);
+			Route::get('editar/{id}', ['as' => 'pluranza.academies.edit', 'uses' => 'AcademyController@edit']);
 
-			Route::patch('actualizar/{id}', ['as' => 'pluranza.academies-participants.update', 'uses' => 'AcademyParticipantController@update']);
+			Route::patch('actualizar/{id}', ['as' => 'pluranza.academies.update', 'uses' => 'AcademyController@update']);
 		});
 
 		/*

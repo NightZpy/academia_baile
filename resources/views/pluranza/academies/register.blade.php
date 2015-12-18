@@ -14,7 +14,7 @@
                 <div class="col-md-offset-2 col-md-8">
                     @include('partials._flash')
                     {!! Form::open(array(
-                                        'url' => route('pluranza.academies-participants.store'),
+                                        'url' => route('pluranza.academies.store'),
                                         'method' => 'post',
                                         'accept-charset' => 'UTF-8'
                                         )) !!}
