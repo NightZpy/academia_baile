@@ -49,7 +49,7 @@ class BaseDataTable {
 			$this->cleanActionColumn();
 
 			if (in_array('all', $actions)) {
-				$this->addActionColumn("<a class='show btn btn-xs btn-info btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-trash'></i> Ver</a>");
+				$this->addActionColumn("<a class='show btn btn-xs btn-info btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-user'></i> Ver</a>");
 				$this->addActionColumn("<a  class='edit btn btn-xs btn-success btn-circle' href='" . route($routes['edit'], $model->id) . "' id='edit_" . $model->id . "'><i class='fa fa-pencil'></i> Editar</a>");
 
 				$deleteForm = '<form method="POST" action="' . route($routes['delete'], $model->id) . '" accept-charset="UTF-8">';
