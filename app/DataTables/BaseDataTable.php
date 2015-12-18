@@ -128,9 +128,8 @@ class BaseDataTable {
 		return $this->collection->make();
 	}
 
-	public function getDefaultTableForAll()
+	public function getDefaultTable(Collection $collection)
 	{
-		$collection = $this->getAll();
 		$this->setDatatableCollection($collection);
 		$this->setDefaultTableSettings();
 		return $this->getTableCollectionForRender();

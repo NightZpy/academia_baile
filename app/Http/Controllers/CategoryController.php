@@ -101,10 +101,10 @@ class CategoryController extends Controller
 	/*
 	 * ---------------------- APIs ---------------------
 */
-	public function apiList($id)
+	public function apiList()
 	{
 		if(request()->ajax())
-			return $this->categoryRepository->dataTable->getDefaultTableForAll();
+			return $this->categoryRepository->getAllDataTable();
 	}
 
 }

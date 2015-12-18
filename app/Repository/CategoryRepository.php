@@ -16,6 +16,11 @@ class CategoryRepository extends BaseRepository {
 		$this->dataTable = $dataTable;
 	}
 
+	public function getAllDataTable()
+	{
+		return $this->dataTable->getDefaultTable($this->getAll());
+	}
+
 	public function getByAcademyTable($id)
 	{
 		$academy = new AcademyRepository(new AcademyDataTable);

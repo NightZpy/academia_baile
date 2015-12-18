@@ -16,7 +16,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name', 128)->unique();
             $table->text('description')->nullable();
-            $table->varchar('photo', 128)->nullable();
+            $table->string('photo', 128)->nullable();
             $table->timestamps();
         });
     }

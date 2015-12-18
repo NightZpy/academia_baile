@@ -1,4 +1,4 @@
-@extends('admin.main')
+@extends('pluranza.main')
 
 @section('content')
     <section class="ct-u-paddingBottom60 ct-backgroundContent" data-type="color" data-bg-color="#ffffff">
