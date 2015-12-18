@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterCategoryFormRequest;
+use App\Http\Requests\UpdateCategoryFormRequest;
 use App\Repository\CategoryRepository;
 use Illuminate\Http\Request;
 
@@ -75,7 +76,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('categories.new');
+        $category = $this->categoryRepository->get($id);
+        return view('categories.edit')->with(compact('category'));
     }
 
     /**
@@ -85,9 +87,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCategoryFormRequest $request, $id)
     {
-        //
+        $dancer = $this->categoryRepository->get($id);
+        $dancer->update($request->all());
+        flash()->success('Datos actualizados exitosamente!');
+        return redirect()->route('categories.home');
     }
 
     /**
