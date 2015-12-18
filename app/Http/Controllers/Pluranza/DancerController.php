@@ -148,6 +148,6 @@ class DancerController extends Controller
     public function apiByAcademyList($id)
     {
         if(request()->ajax())
-            return $this->dancerRepository->getByAcademyTable($id);
+            return $this->dancerRepository->getByAcademyDataTable($id);
     }
 }

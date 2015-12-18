@@ -11,6 +11,12 @@ class CategoryDataTable extends BaseDataTable
 		];
 		$this->defaultConfig();
 		$this->setRoute('categories.api.list');
+		$actionRoutes = [
+			'show'      => 'categories.show',
+			'edit'      => 'categories.edit',
+			'delete'    => 'categories.delete'
+		];
+		$this->setDefaultActionRoutes($actionRoutes);
 	}
 
 	public function setBodyTableSettings()

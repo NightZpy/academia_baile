@@ -9,6 +9,7 @@ class BaseDataTable {
 	protected $actionColums = array();
 	protected $collection;
 	protected $route;
+	protected $actionRoutes;
 	protected $dataTable;
 
 	/**
@@ -39,11 +40,16 @@ class BaseDataTable {
 		$this->route = $route;
 	}
 
+	public function setDefaultActionRoutes($actionRoutes)
+	{
+		$this->actionRoutes = $actionRoutes;
+	}
+
 	/*
 	************************** DATATABLE COLLECTION METHODS *********************************
 	*/
-	public function setDefaultActionColumn($routes, $actions = array('all')) {
-
+	public function setDefaultActionColumn($actions = array('all')) {
+		$routes = $this->actionRoutes;
 		$this->addColumnToCollection('Acciones', function($model) use ($routes, $actions)
 		{
 			$this->cleanActionColumn();
@@ -131,11 +137,11 @@ class BaseDataTable {
 	public function getDefaultTable(Collection $collection)
 	{
 		$this->setDatatableCollection($collection);
-		$this->setDefaultTableSettings();
+		$this->setDefaultTableColumns();
 		return $this->getTableCollectionForRender();
 	}
 
-	public function setDefaultTableSettings()
+	public function setDefaultTableColumns()
 	{
 		$this->setBodyTableSettings();
 		$this->setDefaultActionColumn();
