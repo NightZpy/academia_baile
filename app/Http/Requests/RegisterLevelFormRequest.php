@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class UpdateLevelFormRequest extends Request
+class RegisterLevelFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class UpdateLevelFormRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|max:128|unique:categories,name,'.$this->id,
+            'name' => 'required|max:128|unique:levels',
             'description' => 'max:512',
             'photo' => 'image',
         ];

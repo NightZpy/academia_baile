@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RegisterCategoryFormRequest;
-use App\Http\Requests\UpdateCategoryFormRequest;
-use App\Repository\CategoryRepository;
+use App\Http\Requests\RegisterLevelFormRequest;
+use App\Http\Requests\UpdateLevelFormRequest;
+use App\Repository\LevelRepository;
+
 use App\Http\Requests;
 
-class CategoryController extends Controller
+class LevelController extends Controller
 {
-    protected $categoryRepository;
+    protected $levelRepository;
 
     /**
-     * CategoryController constructor.
-     * @param $categoryRepository
+     * LevelController constructor.
+     * @param $levelRepository
      */
-    public function __construct(CategoryRepository $categoryRepository) {
-        $this->categoryRepository = $categoryRepository;
+    public function __construct(LevelRepository $levelRepository) {
+        $this->levelRepository = $levelRepository;
     }
 
 
@@ -27,8 +28,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $table = $this->categoryRepository->dataTable->getAllTable();
-        return view('categories.index')->with(compact('table'));
+        $table = $this->levelRepository->dataTable->getAllTable();
+        return view('levels.index')->with(compact('table'));
     }
 
     /**
@@ -38,7 +39,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.new');
+        return view('levels.new');
     }
 
     /**
@@ -47,11 +48,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterCategoryFormRequest $request)
+    public function store(RegisterLevelFormRequest $request)
     {
-        $this->categoryRepository->create($request->all());
+        $this->levelRepository->create($request->all());
         flash()->success('Datos guardados exitosamente!');
-        return redirect()->route('categories.home');
+        return redirect()->route('levels.home');
     }
 
     /**
@@ -73,8 +74,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = $this->categoryRepository->get($id);
-        return view('categories.edit')->with(compact('category'));
+        $category = $this->levelRepository->get($id);
+        return view('levels.edit')->with(compact('category'));
     }
 
     /**
@@ -84,12 +85,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryFormRequest $request, $id)
+    public function update(UpdateLevelFormRequest $request, $id)
     {
-        $dancer = $this->categoryRepository->get($id);
+        $dancer = $this->levelRepository->get($id);
         $dancer->update($request->all());
         flash()->success('Datos actualizados exitosamente!');
-        return redirect()->route('categories.home');
+        return redirect()->route('levels.home');
     }
 
     /**
@@ -100,7 +101,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = $this->categoryRepository->get($id);
+        $category = $this->levelRepository->get($id);
         $categoryName = $category->name;
         $category->delete();
         flash()->success( $categoryName . ', ha sido eliminada correctamente!');
@@ -113,7 +114,7 @@ class CategoryController extends Controller
 	public function apiList()
 	{
 		if(request()->ajax())
-			return $this->categoryRepository->getAllDataTable();
+			return $this->levelRepository->getAllDataTable();
 	}
 
 }

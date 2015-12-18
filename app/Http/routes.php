@@ -95,7 +95,7 @@ Route::group(['prefix' => 'categorias'], function () {
 /*
  * ---------- Niveles ----------
  */
-/*Route::group(['prefix' => 'niveles'], function () {
+Route::group(['prefix' => 'niveles'], function () {
 	Route::get(     '/',                ['as' => 'levels.home',     'uses' => 'LevelController@index']);
 	Route::get(     'nuevo',            ['as' => 'levels.new',      'uses' => 'LevelController@create']);
 	Route::post(    '/',                ['as' => 'levels.store',    'uses' => 'LevelController@store']);
@@ -103,7 +103,10 @@ Route::group(['prefix' => 'categorias'], function () {
 	Route::get(     'editar/{id}',      ['as' => 'levels.edit',     'uses' => 'LevelController@edit']);
 	Route::patch(   'actualizar/{id}',  ['as' => 'levels.update',   'uses' => 'LevelController@update']);
 	Route::delete(  '{id}',             ['as' => 'levels.delete',   'uses' => 'LevelController@destroy']);
-});*/
+
+	// -------------- API's --------------------
+	Route::get('api/lista', ['as' => 'levels.api.list', 'uses' => 'LevelController@apiList']);
+});
 
 /*
  * ---------- Pluranza ----------

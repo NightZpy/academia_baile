@@ -6,7 +6,7 @@
             <div class="row ct-u-paddingTop100">
                 <div class="col-md-12 ct-titleBox">
                     <h4 class="text-center text-uppercase ct-u-paddingTop30">
-                        Categorías o Géneros
+                        Niveles
                     </h4>
                 </div>
             </div>
@@ -17,7 +17,7 @@
             </div>
             <div class="row ct-u-paddingTop25">
                 <div class="col-md-10">
-                    <a href="{{ route('categories.new') }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
+                    <a href="{{ route('levels.new') }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
                 </div>
             </div>
             <div class="row ct-u-paddingTop5">

@@ -22,7 +22,7 @@ class UpdateLevelFormRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|max:128|unique:categories,name,'.$this->id,
+            'name' => 'required|max:128|unique:levels,name,'.$this->id,
             'description' => 'max:512',
             'photo' => 'image',
         ];
