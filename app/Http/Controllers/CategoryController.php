@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterCategoryFormRequest;
 use App\Repository\CategoryRepository;
 use Illuminate\Http\Request;
 
@@ -48,9 +49,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RegisterCategoryFormRequest $request)
     {
-        //
+        $this->categoryRepository->create($request->all());
+        flash()->success('Datos guardados exitosamente!');
+        return redirect()->route('categories.home');
     }
 
     /**
@@ -72,7 +75,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('categories.new');
     }
 
     /**

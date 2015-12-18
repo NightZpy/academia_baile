@@ -10,9 +10,7 @@ class Category extends Model implements StaplerableInterface
 {
 	use EloquentTrait;
 
-	protected $fillable = ['name', 'description', 'photo', 'foundation', 'logo',
-		'email', 'phone', 'facebook', 'twitter', 'instagram',
-		'estate_id', 'municipality_id', 'parish_id', 'city_id'];
+	protected $fillable = ['name', 'description', 'photo'];
 
 	public function __construct(array $attributes = array()) {
 		$this->hasAttachedFile('photo', [
