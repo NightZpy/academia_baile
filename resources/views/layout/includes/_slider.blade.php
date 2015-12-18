@@ -13,7 +13,7 @@
         @endif
     </div>
     <!-- Main Carousel -->
-    <div class="ct-js-owl ct-u-owl ct-mainCarousel ct-mainCarousel--arrowsMiddle" data-single="true" data-height="600" data-animations="true"
+    <div class="ct-js-owl ct-u-owl ct-mainCarousel ct-mainCarousel--arrowsMiddle" data-single="true" data-height="844" data-animations="true"
          data-navigation="true" data-bg="true" data-snap-ignore="false">
 
         <a href="{{ route('pluranza.home') }}">
