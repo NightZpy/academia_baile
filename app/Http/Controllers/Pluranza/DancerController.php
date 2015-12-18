@@ -61,8 +61,11 @@ class DancerController extends Controller
      */
     public function store(RegisterDancerFormRequest $request, AppMailer $mailer)
     {
-        $dancer = $this->dancerRepository->create($request->all());
-        //$dancer = Dancer::create($request->all());
+        $input = $request->all();
+        $input['independent'] = ($request->has('independent') ? true : false);
+        $input['director'] = ($request->has('director') ? true : false);
+
+        $dancer = $this->dancerRepository->create($input);
         $academy = $this->academyRepository->get($request->get('academy_id'));
         $academy->dancers()->save($dancer);
         if ($dancer->email) {
@@ -110,7 +113,10 @@ class DancerController extends Controller
 	public function update($id, UpdateDancerFormRequest $request)
 	{
 		$dancer = $this->dancerRepository->get($id);
-		$dancer->update($request->all());
+        $input = $request->all();
+        $input['independent'] = ($request->has('independent') ? true : false);
+        $input['director'] = ($request->has('director') ? true : false);
+		$dancer->update($input);
 		$academy = $dancer->academy;
 		flash()->success('Datos actualizados exitosamente!');
 		return redirect()->back()->with(compact('dancer', 'academy'));
