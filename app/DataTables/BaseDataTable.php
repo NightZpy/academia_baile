@@ -24,7 +24,7 @@ class BaseDataTable {
 					"buttons" => [ "copy", "csv", "xls", "pdf", ["type"=> "print", "buttonText" => "Print me!" ]]
 				),
 				'language' => array(
-					'url' => 'https://cdn.datatables.net/plug-ins/1.10.10/i18n/Spanish.json'
+					'url' => '/assets/plugins/datatables/lang/Spanish.json'
 				)
 			));
 	}
