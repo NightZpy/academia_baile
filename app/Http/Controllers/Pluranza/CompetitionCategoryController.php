@@ -5,20 +5,37 @@ namespace App\Http\Controllers\Pluranza;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Pluranza\RegisterCompetitionCategoryFormRequest;
 use App\Http\Requests\Pluranza\UpdateCompetitionCategoryFormRequest;
+use App\Repository\CategoryRepository;
+use App\Repository\LevelRepository;
 use App\Repository\Pluranza\CompetitionCategoryRepository;
 
 use App\Http\Requests;
+use App\Repository\Pluranza\CompetitionTypeRepository;
 
 class CompetitionCategoryController extends Controller
 {
     protected $competitionCategoryRepository;
+    protected $categoryRepository;
+    protected $levelRepository;
+    protected $competitionTypeRepository;
 
     /**
      * CompetitionCategoryController constructor.
      * @param $competitionCategoryRepository
+     * @param $categoryRepository
+     * @param $levelRepository
+     * @param $competitionTypeRepository
      */
-    public function __construct(CompetitionCategoryRepository $competitionCategoryRepository) {
+    public function __construct(
+                                CompetitionCategoryRepository$competitionCategoryRepository,
+                                CategoryRepository $categoryRepository,
+                                LevelRepository $levelRepository,
+                                CompetitionTypeRepository $competitionTypeRepository)
+    {
         $this->competitionCategoryRepository = $competitionCategoryRepository;
+        $this->categoryRepository = $categoryRepository;
+        $this->levelRepository = $levelRepository;
+        $this->competitionTypeRepository = $competitionTypeRepository;
     }
 
 
@@ -40,7 +57,10 @@ class CompetitionCategoryController extends Controller
      */
     public function create()
     {
-        return view('pluranza.competition-categories.new');
+        $categories = $this->categoryRepository->getAllForSelect();
+        $levels = $this->levelRepository->getAllForSelect();
+        $competitionTypes = $this->competitionTypeRepository->getAllForSelect();
+        return view('pluranza.competition-categories.new')->with(compact('categories', 'levels', 'competitionTypes'));
     }
 
     /**
@@ -76,7 +96,10 @@ class CompetitionCategoryController extends Controller
     public function edit($id)
     {
         $competitionCategory = $this->competitionCategoryRepository->get($id);
-        return view('pluranza.competition-categories.edit')->with(compact('competitionCategory'));
+        $categories = $this->categoryRepository->getAllForSelect();
+        $levels = $this->levelRepository->getAllForSelect();
+        $competitionTypes = $this->competitionTypeRepository->getAllForSelect();
+        return view('pluranza.competition-categories.edit')->with(compact('competitionCategory', 'categories', 'levels', 'competitionTypes'));
     }
 
     /**

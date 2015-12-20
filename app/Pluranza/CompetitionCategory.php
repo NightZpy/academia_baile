@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class CompetitionCategory extends Model
 {
+	protected $fillable = ['category_id', 'level_id', 'competition_type_id'];
+
 	/*
 	* -------------------------- Relations ------------------------
 	*/

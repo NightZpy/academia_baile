@@ -7,7 +7,7 @@ class CompetitionCategoryDataTable extends BaseDataTable
 {
 	function __construct() {
 		$this->columns = [
-			'Categoía',
+			'Categoría',
 			'Nivel',
 			'Tipo',
 			'Acciones'
@@ -29,7 +29,7 @@ class CompetitionCategoryDataTable extends BaseDataTable
 
 		$this->collection->addColumn('Categoría', function($model)
 		{
-			return '<img src="' . $model->category->name;
+			return $model->category->name;
 		});
 
 		$this->collection->addColumn('Nivel', function($model)

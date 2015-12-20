@@ -17,8 +17,8 @@
             </div>
             <div class="row ct-u-paddingTop25">
                 <div class="col-md-offset-2 col-md-8">
-                    {!! Form::model($competitionType, array(
-                                        'url' => route('pluranza.competition-categories.update', $competitionType->id),
+                    {!! Form::model($competitionCategory, array(
+                                        'url' => route('pluranza.competition-categories.update', $competitionCategory->id),
                                         'method' => 'PATCH',
                                         'accept-charset' => 'UTF-8',
                                         'role' => 'form',
