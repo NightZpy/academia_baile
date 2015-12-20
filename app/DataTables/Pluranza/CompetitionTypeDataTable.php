@@ -1,5 +1,7 @@
 <?php
-namespace App\DataTables;
+namespace App\DataTables\Pluranza;
+
+use App\DataTables\BaseDataTable;
 
 class CompetitionTypeDataTable extends BaseDataTable
 {
@@ -9,11 +11,11 @@ class CompetitionTypeDataTable extends BaseDataTable
 			'Acciones'
 		];
 		$this->defaultConfig();
-		$this->setRoute('competition-types.api.list');
+		$this->setRoute('pluranza.competition-types.api.list');
 		$actionRoutes = [
-			'show'      => 'competition-types.show',
-			'edit'      => 'competition-types.edit',
-			'delete'    => 'competition-types.delete'
+			'show'      => 'pluranza.competition-types.show',
+			'edit'      => 'pluranza.competition-types.edit',
+			'delete'    => 'pluranza.competition-types.delete'
 		];
 		$this->setDefaultActionRoutes($actionRoutes);
 	}

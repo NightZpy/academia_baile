@@ -127,16 +127,16 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
     * ---------- Comptition Types ----------
 	 */
 	Route::group(['prefix' => 'tipos-competicion'], function () {
-		Route::get('/', ['as' => 'competition-types.home', 'uses' => 'CompetitionTypeController@index']);
-		Route::get('nueva', ['as' => 'competition-types.new', 'uses' => 'CompetitionTypeController@create']);
-		Route::post('/', ['as' => 'competition-types.store', 'uses' => 'CompetitionTypeController@store']);
-		Route::get('ver/{id}', ['as' => 'competition-types.show', 'uses' => 'CompetitionTypeController@show']);
-		Route::get('editar/{id}', ['as' => 'competition-types.edit', 'uses' => 'CompetitionTypeController@edit']);
-		Route::patch('actualizar/{id}', ['as' => 'competition-types.update', 'uses' => 'CompetitionTypeController@update']);
-		Route::delete('{id}', ['as' => 'competition-types.delete', 'uses' => 'CompetitionTypeController@destroy']);
+		Route::get('/', ['as' => 'pluranza.competition-types.home', 'uses' => 'CompetitionTypeController@index']);
+		Route::get('nueva', ['as' => 'pluranza.competition-types.new', 'uses' => 'CompetitionTypeController@create']);
+		Route::post('/', ['as' => 'pluranza.competition-types.store', 'uses' => 'CompetitionTypeController@store']);
+		Route::get('ver/{id}', ['as' => 'pluranza.competition-types.show', 'uses' => 'CompetitionTypeController@show']);
+		Route::get('editar/{id}', ['as' => 'pluranza.competition-types.edit', 'uses' => 'CompetitionTypeController@edit']);
+		Route::patch('actualizar/{id}', ['as' => 'pluranza.competition-types.update', 'uses' => 'CompetitionTypeController@update']);
+		Route::delete('{id}', ['as' => 'pluranza.competition-types.delete', 'uses' => 'CompetitionTypeController@destroy']);
 
 		// -------------- API's --------------------
-		Route::get('api/lista', ['as' => 'competition-types.api.list', 'uses' => 'CompetitionTypeController@apiList']);
+		Route::get('api/lista', ['as' => 'pluranza.competition-types.api.list', 'uses' => 'CompetitionTypeController@apiList']);
 	});
 
 	Route::group(['middleware' => 'auth'], function () {

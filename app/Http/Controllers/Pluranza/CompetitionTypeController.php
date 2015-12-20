@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pluranza;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Pluranza\RegisterCompetitionTypeFormRequest;
 use App\Http\Requests\Pluranza\UpdateCompetitionTypeFormRequest;
 use App\Repository\Pluranza\CompetitionTypeRepository;
@@ -29,7 +30,7 @@ class CompetitionTypeController extends Controller
     public function index()
     {
         $table = $this->competitionTypeRepository->dataTable->getAllTable();
-        return view('competition-types.index')->with(compact('table'));
+        return view('pluranza.competition-types.index')->with(compact('table'));
     }
 
     /**
@@ -39,7 +40,7 @@ class CompetitionTypeController extends Controller
      */
     public function create()
     {
-        return view('competition-types.new');
+        return view('pluranza.competition-types.new');
     }
 
     /**
@@ -52,7 +53,7 @@ class CompetitionTypeController extends Controller
     {
         $this->competitionTypeRepository->create($request->all());
         flash()->success('Datos guardados exitosamente!');
-        return redirect()->route('competition-types.home');
+        return redirect()->route('pluranza.competition-types.home');
     }
 
     /**
@@ -75,7 +76,7 @@ class CompetitionTypeController extends Controller
     public function edit($id)
     {
         $competitionType = $this->competitionTypeRepository->get($id);
-        return view('competition-types.edit')->with(compact('competitionType'));
+        return view('pluranza.competition-types.edit')->with(compact('competitionType'));
     }
 
     /**
@@ -90,7 +91,7 @@ class CompetitionTypeController extends Controller
         $dancer = $this->competitionTypeRepository->get($id);
         $dancer->update($request->all());
         flash()->success('Datos actualizados exitosamente!');
-        return redirect()->route('competition-types.home');
+        return redirect()->route('pluranza.competition-types.home');
     }
 
     /**
