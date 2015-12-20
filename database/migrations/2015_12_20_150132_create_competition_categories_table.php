@@ -17,7 +17,7 @@ class CreateCompetitionCategoriesTable extends Migration
             $table->integer('categorie_id')->unsigned();
             $table->integer('level_id')->unsigned();
             $table->integer('competition_type_id')->unsigned();
-            $table->unique(['categorie_id', 'level_id', 'competition_type_id']);
+            $table->unique(['categorie_id', 'level_id', 'competition_type_id'], 'competition_categories_unique_key');
             $table->timestamps();
         });
     }
@@ -29,6 +29,7 @@ class CreateCompetitionCategoriesTable extends Migration
      */
     public function down()
     {
+	    Schema::dropUnique('competition_categories_unique_key');
         Schema::drop('competition_categories');
     }
 }
