@@ -32,7 +32,8 @@
         "Laracasts\\Flash\\FlashServiceProvider",
         "Collective\\Html\\HtmlServiceProvider",
         "Codesleeve\\LaravelStapler\\Providers\\L5ServiceProvider",
-        "Chumper\\Datatable\\DatatableServiceProvider"
+        "Chumper\\Datatable\\DatatableServiceProvider",
+        "Felixkiss\\UniqueWithValidator\\UniqueWithValidatorServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -143,7 +144,8 @@
         "html": "Collective\\Html\\HtmlServiceProvider",
         "form": "Collective\\Html\\HtmlServiceProvider",
         "Collective\\Html\\HtmlBuilder": "Collective\\Html\\HtmlServiceProvider",
-        "Collective\\Html\\FormBuilder": "Collective\\Html\\HtmlServiceProvider"
+        "Collective\\Html\\FormBuilder": "Collective\\Html\\HtmlServiceProvider",
+        "validator": "Felixkiss\\UniqueWithValidator\\UniqueWithValidatorServiceProvider"
     },
     "when": {
         "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider": [],
@@ -159,6 +161,7 @@
         "Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider": [],
         "Illuminate\\Translation\\TranslationServiceProvider": [],
         "MisterPhilip\\MaintenanceMode\\MaintenanceCommandServiceProvider": [],
-        "Collective\\Html\\HtmlServiceProvider": []
+        "Collective\\Html\\HtmlServiceProvider": [],
+        "Felixkiss\\UniqueWithValidator\\UniqueWithValidatorServiceProvider": []
     }
 }

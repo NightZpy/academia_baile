@@ -124,6 +124,22 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 	Route::post('academias', ['middleware' => 'guest', 'as' => 'pluranza.academies.store', 'uses' => 'AcademyController@store']);
 
 	/*
+    * ---------- Comptition Category ----------
+	 */
+	Route::group(['prefix' => 'categorias-en-competencia'], function () {
+		Route::get('/', ['as' => 'pluranza.competition-categories.home', 'uses' => 'CompetitionCategoryController@index']);
+		Route::get('nueva', ['as' => 'pluranza.competition-categories.new', 'uses' => 'CompetitionCategoryController@create']);
+		Route::post('/', ['as' => 'pluranza.competition-categories.store', 'uses' => 'CompetitionCategoryController@store']);
+		Route::get('ver/{id}', ['as' => 'pluranza.competition-categories.show', 'uses' => 'CompetitionCategoryController@show']);
+		Route::get('editar/{id}', ['as' => 'pluranza.competition-categories.edit', 'uses' => 'CompetitionCategoryController@edit']);
+		Route::patch('actualizar/{id}', ['as' => 'pluranza.competition-categories.update', 'uses' => 'CompetitionCategoryController@update']);
+		Route::delete('{id}', ['as' => 'pluranza.competition-categories.delete', 'uses' => 'CompetitionCategoryController@destroy']);
+
+		// -------------- API's --------------------
+		Route::get('api/lista', ['as' => 'pluranza.competition-categories.api.list', 'uses' => 'CompetitionCategoryController@apiList']);
+	});	
+	
+	/*
     * ---------- Comptition Types ----------
 	 */
 	Route::group(['prefix' => 'tipos-competicion'], function () {
