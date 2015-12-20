@@ -16,6 +16,12 @@ class DancerDataTable extends BaseDataTable
 		];
 		$this->defaultConfig();
 		$this->setRoute('pluranza.dancers.api.list');
+		$actionRoutes = [
+			'show'      => 'pluranza.dancers.show',
+			'edit'      => 'pluranza.dancers.edit',
+			'delete'    => 'pluranza.dancers.delete'
+		];
+		$this->setDefaultActionRoutes($actionRoutes);
 	}
 
 	public function setBodyTableSettings()

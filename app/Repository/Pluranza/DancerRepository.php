@@ -24,22 +24,12 @@ class DancerRepository extends BaseRepository {
 		return $academy->get($id)->dancers;
 	}
 
-	public function getByAcademyTable($id)
+	public function getByAcademyDataTable($id)
 	{
 		$academy = new AcademyRepository(new AcademyDataTable);
 		$dancers = $academy->get($id)->dancers;
 		$this->dataTable->setDatatableCollection($dancers);
-		$this->dataTable->setBodyTableSettings();
-
-		$actionRoutes = [
-			'show'      => 'pluranza.dancers.show',
-			'edit'      => 'pluranza.dancers.edit',
-			'delete'    => 'pluranza.dancers.delete'
-		];
-
-		$this->dataTable->setDefaultActionColumn($actionRoutes);
-		return $this->dataTable->getTableCollectionForRender();
-
+		return $this->dataTable->getDefaultTable($dancers);
 	}
 }
 

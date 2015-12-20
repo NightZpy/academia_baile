@@ -2,6 +2,6 @@
 
 @section('content')
     @if(!Auth::user())
-        @include('pluranza.academies-participants.register')
+        @include('pluranza.academies.register')
     @endif
 @stop

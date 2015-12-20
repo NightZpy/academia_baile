@@ -43,7 +43,7 @@
                                         </ul>
                                     </label>
                                 @endif
-                                {!! Form::password('password', ['placeholder' => 'Contrase&ntilde;a', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+                                {!! Form::password('password', ['placeholder' => 'Contraseña', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
                             </div>
                             <button type="submit" class="btn btn-xs btn-primary btn-block text-uppercase">Ingresar</button>
                         {!! Form::close() !!}

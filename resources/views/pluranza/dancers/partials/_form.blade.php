@@ -177,8 +177,3 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-sm-offset-9 col-sm-3">
-        {!! Form::submit('Actualizar', [ 'class' => 'btn btn-xs btn-primary btn-block text-uppercase ct-u-size14']) !!}
-    </div>
-</div>

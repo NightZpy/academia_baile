@@ -11,7 +11,8 @@
         "laracasts/flash": "~1.3",
         "laravelcollective/html": "5.1.*",
         "codesleeve/laravel-stapler": "1.0.*",
-        "chumper/datatable": "dev-develop"
+        "chumper/datatable": "dev-develop",
+        "felixkiss/uniquewith-validator": "2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

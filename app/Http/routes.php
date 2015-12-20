@@ -14,7 +14,7 @@
 * ---------- Home routes ----------
 */
 Route::get('/', [ 'as' => 'home', function () {
-    return view('pages.index');
+    return view('public.index');
 }]);
 
 Route::post('/send-message', function() {
@@ -68,10 +68,45 @@ Route::get('usuarios/confirmar/{token}', [
 	'uses' => 'SessionController@confirm'
 ]);
 
+/*
+ * ---------- Pluranza ----------
+ */
 Route::get('/pluranza/usuarios/confirmar/{token}', [
 	'as' => 'pluranza.users.confirm',
 	'uses' => 'RegistrationController@confirmPluranza'
 ]);
+
+/*
+ * ---------- Categorias ----------
+ */
+Route::group(['prefix' => 'categorias'], function () {
+	Route::get('/', ['as' => 'categories.home', 'uses' => 'CategoryController@index']);
+	Route::get('nueva', ['as' => 'categories.new', 'uses' => 'CategoryController@create']);
+	Route::post('/', ['as' => 'categories.store', 'uses' => 'CategoryController@store']);
+	Route::get('ver/{id}', ['as' => 'categories.show', 'uses' => 'CategoryController@show']);
+	Route::get('editar/{id}', ['as' => 'categories.edit', 'uses' => 'CategoryController@edit']);
+	Route::patch('actualizar/{id}', ['as' => 'categories.update', 'uses' => 'CategoryController@update']);
+	Route::delete('{id}', ['as' => 'categories.delete', 'uses' => 'CategoryController@destroy']);
+
+	// -------------- API's --------------------
+	Route::get('api/lista', ['as' => 'categories.api.list', 'uses' => 'CategoryController@apiList']);
+});
+
+/*
+ * ---------- Niveles ----------
+ */
+Route::group(['prefix' => 'niveles'], function () {
+	Route::get(     '/',                ['as' => 'levels.home',     'uses' => 'LevelController@index']);
+	Route::get(     'nuevo',            ['as' => 'levels.new',      'uses' => 'LevelController@create']);
+	Route::post(    '/',                ['as' => 'levels.store',    'uses' => 'LevelController@store']);
+	Route::get(     'ver/{id}',         ['as' => 'levels.show',     'uses' => 'LevelController@show']);
+	Route::get(     'editar/{id}',      ['as' => 'levels.edit',     'uses' => 'LevelController@edit']);
+	Route::patch(   'actualizar/{id}',  ['as' => 'levels.update',   'uses' => 'LevelController@update']);
+	Route::delete(  '{id}',             ['as' => 'levels.delete',   'uses' => 'LevelController@destroy']);
+
+	// -------------- API's --------------------
+	Route::get('api/lista', ['as' => 'levels.api.list', 'uses' => 'LevelController@apiList']);
+});
 
 /*
  * ---------- Pluranza ----------
@@ -86,7 +121,39 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		'uses' => 'PagesController@index'
 	]);
 
-	Route::post('academias-participantes', ['middleware' => 'guest', 'as' => 'pluranza.academies-participants.store', 'uses' => 'AcademyParticipantController@store']);
+	Route::post('academias', ['middleware' => 'guest', 'as' => 'pluranza.academies.store', 'uses' => 'AcademyController@store']);
+
+	/*
+    * ---------- Comptition Category ----------
+	 */
+	Route::group(['prefix' => 'categorias-en-competencia'], function () {
+		Route::get('/', ['as' => 'pluranza.competition-categories.home', 'uses' => 'CompetitionCategoryController@index']);
+		Route::get('nueva', ['as' => 'pluranza.competition-categories.new', 'uses' => 'CompetitionCategoryController@create']);
+		Route::post('/', ['as' => 'pluranza.competition-categories.store', 'uses' => 'CompetitionCategoryController@store']);
+		Route::get('ver/{id}', ['as' => 'pluranza.competition-categories.show', 'uses' => 'CompetitionCategoryController@show']);
+		Route::get('editar/{id}', ['as' => 'pluranza.competition-categories.edit', 'uses' => 'CompetitionCategoryController@edit']);
+		Route::patch('actualizar/{id}', ['as' => 'pluranza.competition-categories.update', 'uses' => 'CompetitionCategoryController@update']);
+		Route::delete('{id}', ['as' => 'pluranza.competition-categories.delete', 'uses' => 'CompetitionCategoryController@destroy']);
+
+		// -------------- API's --------------------
+		Route::get('api/lista', ['as' => 'pluranza.competition-categories.api.list', 'uses' => 'CompetitionCategoryController@apiList']);
+	});	
+	
+	/*
+    * ---------- Comptition Types ----------
+	 */
+	Route::group(['prefix' => 'tipos-competicion'], function () {
+		Route::get('/', ['as' => 'pluranza.competition-types.home', 'uses' => 'CompetitionTypeController@index']);
+		Route::get('nueva', ['as' => 'pluranza.competition-types.new', 'uses' => 'CompetitionTypeController@create']);
+		Route::post('/', ['as' => 'pluranza.competition-types.store', 'uses' => 'CompetitionTypeController@store']);
+		Route::get('ver/{id}', ['as' => 'pluranza.competition-types.show', 'uses' => 'CompetitionTypeController@show']);
+		Route::get('editar/{id}', ['as' => 'pluranza.competition-types.edit', 'uses' => 'CompetitionTypeController@edit']);
+		Route::patch('actualizar/{id}', ['as' => 'pluranza.competition-types.update', 'uses' => 'CompetitionTypeController@update']);
+		Route::delete('{id}', ['as' => 'pluranza.competition-types.delete', 'uses' => 'CompetitionTypeController@destroy']);
+
+		// -------------- API's --------------------
+		Route::get('api/lista', ['as' => 'pluranza.competition-types.api.list', 'uses' => 'CompetitionTypeController@apiList']);
+	});
 
 	Route::group(['middleware' => 'auth'], function () {
 
@@ -95,9 +162,9 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		*/
 		Route::group(['prefix' => 'academias-participantes'], function () {
 
-			Route::get('editar/{id}', ['as' => 'pluranza.academies-participants.edit', 'uses' => 'AcademyParticipantController@edit']);
+			Route::get('editar/{id}', ['as' => 'pluranza.academies.edit', 'uses' => 'AcademyController@edit']);
 
-			Route::patch('actualizar/{id}', ['as' => 'pluranza.academies-participants.update', 'uses' => 'AcademyParticipantController@update']);
+			Route::patch('actualizar/{id}', ['as' => 'pluranza.academies.update', 'uses' => 'AcademyController@update']);
 		});
 
 		/*

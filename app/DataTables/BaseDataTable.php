@@ -9,6 +9,7 @@ class BaseDataTable {
 	protected $actionColums = array();
 	protected $collection;
 	protected $route;
+	protected $actionRoutes;
 	protected $dataTable;
 
 	/**
@@ -24,7 +25,7 @@ class BaseDataTable {
 					"buttons" => [ "copy", "csv", "xls", "pdf", ["type"=> "print", "buttonText" => "Print me!" ]]
 				),
 				'language' => array(
-					'url' => 'https://cdn.datatables.net/plug-ins/1.10.10/i18n/Spanish.json'
+					'url' => '/assets/plugins/datatables/lang/Spanish.json'
 				)
 			));
 	}
@@ -39,17 +40,22 @@ class BaseDataTable {
 		$this->route = $route;
 	}
 
+	public function setDefaultActionRoutes($actionRoutes)
+	{
+		$this->actionRoutes = $actionRoutes;
+	}
+
 	/*
 	************************** DATATABLE COLLECTION METHODS *********************************
 	*/
-	public function setDefaultActionColumn($routes, $actions = array('all')) {
-
+	public function setDefaultActionColumn($actions = array('all')) {
+		$routes = $this->actionRoutes;
 		$this->addColumnToCollection('Acciones', function($model) use ($routes, $actions)
 		{
 			$this->cleanActionColumn();
 
 			if (in_array('all', $actions)) {
-				$this->addActionColumn("<a class='show btn btn-xs btn-info btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-trash'></i> Ver</a>");
+				$this->addActionColumn("<a class='show btn btn-xs btn-info btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-user'></i> Ver</a>");
 				$this->addActionColumn("<a  class='edit btn btn-xs btn-success btn-circle' href='" . route($routes['edit'], $model->id) . "' id='edit_" . $model->id . "'><i class='fa fa-pencil'></i> Editar</a>");
 
 				$deleteForm = '<form method="POST" action="' . route($routes['delete'], $model->id) . '" accept-charset="UTF-8">';
@@ -128,15 +134,14 @@ class BaseDataTable {
 		return $this->collection->make();
 	}
 
-	public function getDefaultTableForAll()
+	public function getDefaultTable(Collection $collection)
 	{
-		$collection = $this->getAll();
 		$this->setDatatableCollection($collection);
-		$this->setDefaultTableSettings();
+		$this->setDefaultTableColumns();
 		return $this->getTableCollectionForRender();
 	}
 
-	public function setDefaultTableSettings()
+	public function setDefaultTableColumns()
 	{
 		$this->setBodyTableSettings();
 		$this->setDefaultActionColumn();

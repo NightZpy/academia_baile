@@ -10,11 +10,11 @@
     <link rel="apple-touch-icon" href="/favicon2.png">
     <title>Pluranza 2016 @yield('title', '')</title>
     @include('pluranza.admin.partials._css')
-    @include('layout.includes._js-head')
+    @include('public.layout.includes._js-head')
 </head>
 {{-- <body class="cssAnimate ct-headroom--scrollUpMenu  salsa"> --}}
 <body class="cssAnimate ct-headroom--fixedMenu onepager salsa">
-    @include('layout.includes._loader')
+    @include('public.layout.includes._loader')
     @if(Auth::user() AND Auth::user()->academy)
         @include('pluranza.admin.partials._menu-movil')
     @else
@@ -27,7 +27,7 @@
             @include('pluranza.public.partials._header')
         @endif
         @yield('content')
-        @include('layout.includes._footer')
+        @include('public.layout.includes._footer')
     </div>
     @include('pluranza.admin.partials._js')
 </body>

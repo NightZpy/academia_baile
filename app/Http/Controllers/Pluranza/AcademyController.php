@@ -6,12 +6,12 @@ use App\Estate;
 use App\Municipality;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Http\Requests\Pluranza\UpdateAcademyParticipantRequest;
-use App\Http\Requests\Pluranza\RegisterAcademyParticipantRequest;
+use App\Http\Requests\Pluranza\UpdateAcademyRequest;
+use App\Http\Requests\Pluranza\RegisterAcademyRequest;
 use App\Pluranza\Academy;
 use App\Mailers\AppMailer;
 
-class AcademyParticipantController extends Controller
+class AcademyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,7 +39,7 @@ class AcademyParticipantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterAcademyParticipantRequest $request, AppMailer $mailer)
+    public function store(RegisterAcademyRequest $request, AppMailer $mailer)
     {
         $user = User::create($request->all());
         $aP = Academy::create($request->all());
@@ -96,7 +96,7 @@ class AcademyParticipantController extends Controller
                 }
             }
         }
-        return view('pluranza.academies-participants.edit')->with(compact('academy', 'estates', 'estateId', 'municipalities', 'municipalityId', 'parishes', 'parishId', 'cities', 'cityId', 'foundation'));
+        return view('pluranza.academies.edit')->with(compact('academy', 'estates', 'estateId', 'municipalities', 'municipalityId', 'parishes', 'parishId', 'cities', 'cityId', 'foundation'));
     }
 
     /**
@@ -106,7 +106,7 @@ class AcademyParticipantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, UpdateAcademyParticipantRequest $request)
+    public function update($id, UpdateAcademyRequest $request)
     {
         $academyParticipant = Academy::findOrFail($id);
         // $academy->fill($request->all())->save();
