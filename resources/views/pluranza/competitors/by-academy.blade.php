@@ -17,7 +17,7 @@
             </div>
             <div class="row ct-u-paddingTop25">
                 <div class="col-md-10">
-                    <a href="{{ route('competitors', $academy->id) }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
+                    <a href="{{ route('pluranza.competitors.new', $academy->id) }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
                 </div>
             </div>
             <div class="row ct-u-paddingTop5">

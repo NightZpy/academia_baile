@@ -23,7 +23,6 @@ class CompetitorController extends Controller
         $this->academyRepository = $academyRepository;
     }
 
-
     /**
      * Display a listing of the resource.
      *

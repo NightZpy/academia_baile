@@ -1,6 +1,7 @@
 <?php
 namespace App\Repository\Pluranza;
 
+use App\DataTables\Pluranza\AcademyDataTable;
 use App\Pluranza\Competitor;
 use App\DataTables\Pluranza\CompetitorDataTable;
 use App\Repository\BaseRepository;
