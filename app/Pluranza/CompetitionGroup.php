@@ -17,12 +17,12 @@ class CompetitionGroup extends Model
 	*/
 	public function dancer()
 	{
-		return $this->belongsTo('App\Pluranza\Dancer');
+		return $this->belongsTo(Dancer::class);
 	}
 
 	public function competitionCategory()
 	{
-		return $this->belongsTo('App\Pluranza\CompetitionCategory');
+		return $this->belongsTo(CompetitionCategory::class);
 	}
 
 	public function category()
@@ -42,6 +42,6 @@ class CompetitionGroup extends Model
 
 	public function eventEdition()
 	{
-		return $this->belongsTo('App\Pluranza\EventEdition');
+		return $this->belongsTo(EventEdition::class);
 	}
 }
