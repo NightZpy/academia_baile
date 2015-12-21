@@ -217,11 +217,11 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		});
 
 		/*
-		* ---------- Comptition Group ----------
+		* ---------- Competitor ----------
 	    */
 		Route::group(['prefix' => 'competidores'], function () {
 			Route::get('/', ['as' => 'pluranza.competitors.home', 'uses' => 'CompetitorController@index']);
-			Route::get('nueva', ['as' => 'pluranza.competitors.new', 'uses' => 'CompetitorController@create']);
+			Route::get('nueva/{id}', ['as' => 'pluranza.competitors.new', 'uses' => 'CompetitorController@create']);
 			Route::post('/', ['as' => 'pluranza.competitors.store', 'uses' => 'CompetitorController@store']);
 			Route::get('ver/{id}', ['as' => 'pluranza.competitors.show', 'uses' => 'CompetitorController@show']);
 			Route::get('editar/{id}', ['as' => 'pluranza.competitors.edit', 'uses' => 'CompetitorController@edit']);

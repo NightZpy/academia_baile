@@ -12,6 +12,8 @@ use App\Repository\Pluranza\CompetitionCategoryRepository;
 use App\Http\Requests;
 use App\Repository\Pluranza\CompetitionTypeRepository;
 
+use Auth;
+
 class CompetitionCategoryController extends Controller
 {
     protected $competitionCategoryRepository;

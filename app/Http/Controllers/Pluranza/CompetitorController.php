@@ -6,6 +6,7 @@ use App\Http\Requests\Pluranza\RegisterCompetitorFormRequest;
 use App\Http\Requests\Pluranza\UpdateCompetitorFormRequest;
 use App\Mailers\AppMailer;
 use App\Repository\Pluranza\AcademyRepository;
+use App\Repository\Pluranza\CompetitionCategoryRepository;
 use App\Repository\Pluranza\CompetitorRepository;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -14,13 +15,18 @@ class CompetitorController extends Controller
 {
     protected $competitorRepository;
     protected $academyRepository;
+    protected $competitionCategoryRepository;
 
     /**
      * CompetitorController constructor.
      */
-    public function __construct(CompetitorRepository $competitorRepository, AcademyRepository $academyRepository) {
+    public function __construct(
+                                CompetitorRepository $competitorRepository,
+                                AcademyRepository $academyRepository,
+                                CompetitionCategoryRepository $competitionCategoryRepository) {
         $this->competitorRepository = $competitorRepository;
         $this->academyRepository = $academyRepository;
+        $this->competitionCategoryRepository = $competitionCategoryRepository;
     }
 
     /**
@@ -49,7 +55,9 @@ class CompetitorController extends Controller
     public function create($id)
     {
         $academy = $this->academyRepository->get($id);
-        return view('pluranza.competitors.new')->with(compact('academy'));
+        $dancers = $academy->dancers->lists('fullName', 'id');
+        $categories = $this->competitionCategoryRepository->getCategoriesForSelect();
+        return view('pluranza.competitors.new')->with(compact('dancers', 'categories'));
     }
 
     /**

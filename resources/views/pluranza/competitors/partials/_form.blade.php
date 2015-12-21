@@ -1,179 +1,59 @@
 {!! Form::hidden('academy_id', $academy->id) !!}
 <div class="row">
-    <div class="col-sm-4">
-        <div class="form-group {{ ($errors->has('name') ? 'has-error' : '') }}">
-            @if ($errors->has('name'))
-                <label class="control-label" for="name">
-                    <ul>
-                        @foreach($errors->get('name') as $error)
-                            <li>{!! $error !!}</li>
-                        @endforeach
-                    </ul>
-                </label>
-            @endif
-            {!! Form::text('name', old('name'), array('placeholder' => 'Nombre', 'class' => 'form-control input-sm')) !!}
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="form-group {{ ($errors->has('last_name') ? 'has-error' : '') }}">
-            @if ($errors->has('last_name'))
-                <label class="control-label" for="last_name">
-                    <ul>
-                        @foreach($errors->get('last_name') as $error)
-                            <li>{!! $error !!}</li>
-                        @endforeach
-                    </ul>
-                </label>
-            @endif
-            {!! Form::text('last_name', old('last_name'), array('placeholder' => 'Apellido', 'class' => 'form-control input-sm')) !!}
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="form-group {{ ($errors->has('ci') ? 'has-error' : '') }}">
-            @if ($errors->has('ci'))
-                <label class="control-label" for="ci">
-                    <ul>
-                        @foreach($errors->get('ci') as $error)
-                            <li>{!! $error !!}</li>
-                        @endforeach
-                    </ul>
-                </label>
-            @endif
-            {!! Form::text('ci', old('ci'), array('placeholder' => 'Cédula', 'class' => 'form-control input-sm')) !!}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-4">
-        <div class="form-group {{ ($errors->has('email') ? 'has-error' : '') }}">
-            @if ($errors->has('email'))
-                <label class="control-label" for="email">
-                    <ul>
-                        @foreach($errors->get('email') as $error)
-                            <li>{!! $error !!}</li>
-                        @endforeach
-                    </ul>
-                </label>
-            @endif
-            {!! Form::text('email', old('email'), array('placeholder' => 'Email', 'class' => 'form-control input-sm')) !!}
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="form-group {{ ($errors->has('phone') ? 'has-error' : '') }}">
-            @if ($errors->has('phone'))
-                <label class="control-label" for="phone">
-                    <ul>
-                        @foreach($errors->get('phone') as $error)
-                            <li>{!! $error !!}</li>
-                        @endforeach
-                    </ul>
-                </label>
-            @endif
-            {!! Form::text('phone', old('phone'), array('placeholder' => 'Teléfono', 'class' => 'form-control input-sm')) !!}
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="form-group {{ ($errors->has('birth_date') ? 'has-error' : '') }}">
-            @if ($errors->has('birth_date'))
-                <label class="control-label" for="birth_date">
-                    <ul>
-                        @foreach($errors->get('birth_date') as $error)
-                            <li>{!! $error !!}</li>
-                        @endforeach
-                    </ul>
-                </label>
-            @endif
-            {!! Form::date('birth_date', old('birth_date'), array('placeholder' => 'Fecha de fundaci&#243;n', 'class' => 'form-control input-sm')) !!}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-4">
-        <div class="form-group {{ ($errors->has('facebook') ? 'has-error' : '') }}">
-            @if ($errors->has('facebook'))
-                <label class="control-label" for="facebook">
-                    <ul>
-                        @foreach($errors->get('facebook') as $error)
-                            <li>{!! $error !!}</li>
-                        @endforeach
-                    </ul>
-                </label>
-            @endif
-            {!! Form::text('facebook', old('facebook'), array('placeholder' => 'Facebook de la Academia', 'class' => 'form-control input-sm')) !!}
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="form-group {{ ($errors->has('twitter') ? 'has-error' : '') }}">
-            @if ($errors->has('twitter'))
-                <label class="control-label" for="twitter">
-                    <ul>
-                        @foreach($errors->get('twitter') as $error)
-                            <li>{!! $error !!}</li>
-                        @endforeach
-                    </ul>
-                </label>
-            @endif
-            {!! Form::text('twitter', old('twitter'), array('placeholder' => 'Twitter de la Academia', 'class' => 'form-control input-sm')) !!}
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="form-group {{ ($errors->has('instagram') ? 'has-error' : '') }}">
-            @if ($errors->has('instagram'))
-                <label class="control-label" for="instagram">
-                    <ul>
-                        @foreach($errors->get('instagram') as $error)
-                            <li>{!! $error !!}</li>
-                        @endforeach
-                    </ul>
-                </label>
-            @endif
-            {!! Form::text('instagram', old('instagram'), array('placeholder' => 'Instagram de la Academia', 'class' => 'form-control input-sm')) !!}
-        </div>
-    </div>
-</div>
-<div class="row">
     <div class="col-sm-3">
-        <div class="form-group {{ ($errors->has('independent') ? 'has-error' : '') }}">
-            <label class="control-label" for="independent">
-                ¿Independiente?
-                @if ($errors->has('independent'))
+        <div class="form-group {{ ($errors->has('category_id') ? 'has-error' : '') }}">
+            @if ($errors->has('category_id'))
+                <label class="control-label" for="category_id">
                     <ul>
-                        @foreach($errors->get('independent') as $error)
+                        @foreach($errors->get('category_id') as $error)
                             <li>{!! $error !!}</li>
                         @endforeach
                     </ul>
-                @endif
-            </label>
-            {!! Form::checkbox('independent', null, old('independent'), array('class' => 'form-control input-sm')) !!}
+                </label>
+            @endif
+            {!! Form::select('category_id', $categories, ( $categoryId > 0 ? $categoryId : old('category_id')), ['placeholder' => 'Selecciona un estado', 'class' => 'form-control input-sm estate-select']) !!}
         </div>
     </div>
     <div class="col-sm-3">
-        <div class="form-group {{ ($errors->has('director') ? 'has-error' : '') }}">
-            <label class="control-label" for="director">
-                ¿Director?
-                @if ($errors->has('director'))
+        <div class="form-group {{ ($errors->has('level_id') ? 'has-error' : '') }}">
+            @if ($errors->has('level_id'))
+                <label class="control-label" for="level_id">
                     <ul>
-                        @foreach($errors->get('director') as $error)
-                            <li>{!! $error !!}</li>
-                        @endforeach
-                    </ul>
-                @endif
-            </label>
-            {!! Form::checkbox('director', null, old('director'), array('class' => 'form-control input-sm')) !!}
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="form-group {{ ($errors->has('photo') ? 'has-error' : '') }}">
-            @if ($errors->has('photo'))
-                <label class="control-label" for="photo">
-                    <ul>
-                        @foreach($errors->get('photo') as $error)
+                        @foreach($errors->get('level_id') as $error)
                             <li>{!! $error !!}</li>
                         @endforeach
                     </ul>
                 </label>
             @endif
-            {!! Form::file('photo', array('placeholder' => 'Foto', 'class' => 'file-upload')) !!}
+            {!! Form::select('level_id', $levels, ( $levelId > 0 ? $levelId : old('level_id')), ['placeholder' => 'Selecciona un municipio', 'class' => 'form-control input-sm municipality-select']) !!}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group {{ ($errors->has('competition_type_id') ? 'has-error' : '') }}">
+            @if ($errors->has('competition_type_id'))
+                <label class="control-label" for="competition_type_id">
+                    <ul>
+                        @foreach($errors->get('competition_type_id') as $error)
+                            <li>{!! $error !!}</li>
+                        @endforeach
+                    </ul>
+                </label>
+            @endif
+            {!! Form::select('competition_type_id', $competitionTypes, ( $competitionTypeId > 0 ? $competitionTypeId : old('competition_type_id')), ['placeholder' => 'Selecciona una parroquia', 'class' => 'form-control input-sm parish-select']) !!}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group {{ ($errors->has('dancer_id') ? 'has-error' : '') }}">
+            @if ($errors->has('dancer_id'))
+                <label class="control-label" for="dancer_id">
+                    <ul>
+                        @foreach($errors->get('dancer_id') as $error)
+                            <li>{!! $error !!}</li>
+                        @endforeach
+                    </ul>
+                </label>
+            @endif
+            {!! Form::select('dancer_id', $dancers, ( $dancerId > 0 ? $dancerId : old('dancer_id')), ['placeholder' => 'Selecciona una parroquia', 'class' => 'form-control input-sm parish-select']) !!}
         </div>
     </div>
 </div>

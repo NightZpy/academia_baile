@@ -18,13 +18,12 @@
             <div class="row ct-u-paddingTop25">
                 <div class="col-md-offset-2 col-md-8">
                     {!! Form::open(array(
-                                        'url' => route('pluranza.dancers.store'),
+                                        'url' => route('pluranza.competitors.store'),
                                         'method' => 'post',
                                         'accept-charset' => 'UTF-8',
                                         'role' => 'form',
-                                        'files' => true
                                         )) !!}
-                        @include('pluranza.dancers.partials._form')
+                        @include('pluranza.competitors.partials._form')
                         <div class="row">
                             <div class="col-sm-offset-9 col-sm-3">
                                 {!! Form::submit('Guardar', [ 'class' => 'btn btn-xs btn-primary btn-block text-uppercase ct-u-size14']) !!}
