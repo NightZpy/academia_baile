@@ -12,7 +12,8 @@
         "laravelcollective/html": "5.1.*",
         "codesleeve/laravel-stapler": "1.0.*",
         "chumper/datatable": "dev-develop",
-        "felixkiss/uniquewith-validator": "2.*"
+        "felixkiss/uniquewith-validator": "2.*",
+        "znck/belongs-to-through": "~2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

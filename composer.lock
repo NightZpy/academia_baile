@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "913eaebb18f05da36cba70503738bae9",
+    "hash": "7c77a9f56eef4f33f456fbb8e0f29f23",
     "packages": [
         {
             "name": "chumper/datatable",
@@ -2268,6 +2268,55 @@
                 "environment"
             ],
             "time": "2015-05-30 15:59:26"
+        },
+        {
+            "name": "znck/belongs-to-through",
+            "version": "v2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/znck/belongs-to-through.git",
+                "reference": "03f7b4010fd3b7907262a8733789fc333b779d05"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/znck/belongs-to-through/zipball/03f7b4010fd3b7907262a8733789fc333b779d05",
+                "reference": "03f7b4010fd3b7907262a8733789fc333b779d05",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": ">4.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Znck\\Eloquent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rahul Kadyan",
+                    "email": "hi@znck.me"
+                }
+            ],
+            "description": "Adds belongsToThrough relation to laravel models",
+            "homepage": "https://github.com/znck/belongs-to-through",
+            "keywords": [
+                "belongsToThrough",
+                "eloquent",
+                "laravel",
+                "model",
+                "models",
+                "znck"
+            ],
+            "time": "2015-12-10 06:26:51"
         }
     ],
     "packages-dev": [
