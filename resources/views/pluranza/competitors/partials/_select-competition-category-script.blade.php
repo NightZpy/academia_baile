@@ -16,7 +16,7 @@
                     source: function(request, response) {
                         var categoryId = $('.category-select').val();
                         alert(categoryId);
-                        $.getJSON('/pluranza/categorias-en-competencia/por-categoria/' + categoryId, request, function(data) {
+                        $.getJSON('/pluranza/categorias-en-competencia/api/lista/por-categoria/' + categoryId, request, function(data) {
                             var selectOnlyOption = data.length <= 1;
                             response($.map(data, function(item, index) {
                                 return {
@@ -37,7 +37,7 @@
                     requireAll: true,
                     source: function (request, response) {
                         var levelId = $('.level-select').val();
-                        $.getJSON('/pluranza/categorias-en-competencia/por-nivel/' + levelId, request, function (data) {
+                        $.getJSON('/pluranza/categorias-en-competencia/api/lista/por-nivel/' + levelId, request, function (data) {
                             response($.map(data, function (item, index) {
                                 return {
                                     label: item,

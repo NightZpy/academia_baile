@@ -137,7 +137,10 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 
 		// -------------- API's --------------------
 		Route::get('api/lista', ['as' => 'pluranza.competition-categories.api.list', 'uses' => 'CompetitionCategoryController@apiList']);
-	});	
+		Route::get('api/lista/por-categoria/{id}', ['as' => 'pluranza.competition-categories.api.by-category', 'uses' => 'CompetitionCategoryController@apiByCategoryList']);
+		Route::get('api/lista/por-nivel/{id}', ['as' => 'pluranza.competition-categories.api.by-level', 'uses' => 'CompetitionCategoryController@apiByLevelList']);
+
+	});
 	
 	/*
     * ---------- Comptition Types ----------
@@ -240,6 +243,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 				'as' => 'pluranza.competitors.api.by-academy',
 				'uses' => 'CompetitorController@apiByAcademyList'
 			]);
+
 		});
 	});
 });

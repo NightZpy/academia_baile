@@ -135,11 +135,23 @@ class CompetitionCategoryController extends Controller
 
 	/*
 	 * ---------------------- APIs ---------------------
-*/
+    */
 	public function apiList()
 	{
 		if(request()->ajax())
 			return $this->competitionCategoryRepository->getAllDataTable();
 	}
+
+    public function apiByCategoryList($id)
+    {
+        if(request()->ajax())
+            return array('hola', 'avion', 'carro');
+    }
+
+    public function apiByLevelList($id)
+    {
+        if(request()->ajax())
+            return array('hola', 'avion', 'carro');
+    }
 
 }
