@@ -3,7 +3,7 @@ namespace App\DataTables\Pluranza;
 
 use App\DataTables\BaseDataTable;
 
-class CompetitionGroupDataTable extends BaseDataTable
+class CompetitorDataTable extends BaseDataTable
 {
 	function __construct() {
 		$this->columns = [
@@ -15,11 +15,11 @@ class CompetitionGroupDataTable extends BaseDataTable
 			'Acciones'
 		];
 		$this->defaultConfig();
-		$this->setRoute('pluranza.competition-groups.api.list');
+		$this->setRoute('pluranza.competitors.api.list');
 		$actionRoutes = [
-			'show'      => 'pluranza.competition-groups.show',
-			'edit'      => 'pluranza.competition-groups.edit',
-			'delete'    => 'pluranza.competition-groups.delete'
+			'show'      => 'pluranza.competitors.show',
+			'edit'      => 'pluranza.competitors.edit',
+			'delete'    => 'pluranza.competitors.delete'
 		];
 		$this->setDefaultActionRoutes($actionRoutes);
 	}
@@ -53,5 +53,10 @@ class CompetitionGroupDataTable extends BaseDataTable
 		{
 			return $model->competitionType->name;
 		});
+	}
+
+	public function getByAcademyTable($params = [])
+	{
+		return $this->getAllTable('pluranza.competitors.api.by-academy', $params);
 	}
 }

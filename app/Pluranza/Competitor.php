@@ -6,7 +6,7 @@ use App\Category;
 use App\Level;
 use Illuminate\Database\Eloquent\Model;
 
-class CompetitionGroup extends Model
+class Competitor extends Model
 {
 	use \Znck\Eloquent\Traits\BelongsToThrough;
 
@@ -15,6 +15,12 @@ class CompetitionGroup extends Model
 	/*
 	* -------------------------- Relations ------------------------
 	*/
+
+	public function academy()
+	{
+		return $this->belongsToThrough(Academy::class, Dancer::class);
+	}
+
 	public function dancer()
 	{
 		return $this->belongsTo(Dancer::class);
@@ -27,17 +33,17 @@ class CompetitionGroup extends Model
 
 	public function category()
 	{
-		$this->belongsToThrough(Category::class, CompetitionCategory::class);
+		return $this->belongsToThrough(Category::class, CompetitionCategory::class);
 	}
 
 	public function level()
 	{
-		$this->belongsToThrough(Level::class, CompetitionCategory::class);
+		return $this->belongsToThrough(Level::class, CompetitionCategory::class);
 	}
 
 	public function competitionType()
 	{
-		$this->belongsToThrough(CompetitionType::class, CompetitionCategory::class);
+		return $this->belongsToThrough(CompetitionType::class, CompetitionCategory::class);
 	}
 
 	public function eventEdition()

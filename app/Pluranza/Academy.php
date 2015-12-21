@@ -29,6 +29,11 @@ class Academy extends Model implements StaplerableInterface
 	/*
 	* -------------------------- Relations ------------------------
 	*/
+	public function competitors()
+	{
+		return $this->hasManyThrough(Competitor::class, Dancer::class);
+	}
+
 	public function eventEditions()
 	{
 		return $this->belongsToMany('App\EventEdition', 'event_participants', 'academy_id', 'event_edition_id')
