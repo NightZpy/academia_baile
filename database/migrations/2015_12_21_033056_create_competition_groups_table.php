@@ -17,6 +17,7 @@ class CreateCompetitionGroupsTable extends Migration
             $table->integer('dancer_id')->unsigned();
             $table->integer('competition_category_id')->unsigned();
             $table->integer('event_edition_id')->unsigned();
+            $table->unique(['dancer_id', 'competition_category_id', 'event_edition_id'], 'competition_groups_unique_key');
             $table->timestamps();
         });
     }
