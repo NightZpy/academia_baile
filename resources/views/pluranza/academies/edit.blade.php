@@ -245,3 +245,5 @@
         </div>
     </section>
 @stop
+
+@include('pluranza.academies.partials._select-address-script')

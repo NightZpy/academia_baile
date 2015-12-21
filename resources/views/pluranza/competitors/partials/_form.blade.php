@@ -1,5 +1,5 @@
 {!! Form::hidden('academy_id', $academy->id) !!}
-<div class="row">
+<div class="row competitor-select">
     <div class="col-sm-3">
         <div class="form-group {{ ($errors->has('category_id') ? 'has-error' : '') }}">
             @if ($errors->has('category_id'))
@@ -11,7 +11,7 @@
                     </ul>
                 </label>
             @endif
-            {!! Form::select('category_id', $categories, ( $categoryId > 0 ? $categoryId : old('category_id')), ['placeholder' => 'Selecciona un estado', 'class' => 'form-control input-sm estate-select']) !!}
+            {!! Form::select('category_id', (isset($categories) ? $categories : array()), ( isset($categoryId) AND $categoryId > 0 ? $categoryId : old('category_id')), ['placeholder' => 'Selecciona un estado', 'class' => 'form-control input-sm category-select']) !!}
         </div>
     </div>
     <div class="col-sm-3">
@@ -25,7 +25,7 @@
                     </ul>
                 </label>
             @endif
-            {!! Form::select('level_id', $levels, ( $levelId > 0 ? $levelId : old('level_id')), ['placeholder' => 'Selecciona un municipio', 'class' => 'form-control input-sm municipality-select']) !!}
+            {!! Form::select('level_id', (isset($levels) ? $levels : array()), ( isset($levelId) AND $levelId > 0 ? $levelId : old('level_id')), ['placeholder' => 'Selecciona un municipio', 'class' => 'form-control input-sm level-select']) !!}
         </div>
     </div>
     <div class="col-sm-3">
@@ -39,7 +39,7 @@
                     </ul>
                 </label>
             @endif
-            {!! Form::select('competition_type_id', $competitionTypes, ( $competitionTypeId > 0 ? $competitionTypeId : old('competition_type_id')), ['placeholder' => 'Selecciona una parroquia', 'class' => 'form-control input-sm parish-select']) !!}
+            {!! Form::select('competition_type_id', (isset($competitionTypes) ? $competitionTypes : array()), ( isset($competitionTypeId) AND $competitionTypeId > 0 ? $competitionTypeId : old('competition_type_id')), ['placeholder' => 'Selecciona una parroquia', 'class' => 'form-control input-sm competition-type-select']) !!}
         </div>
     </div>
     <div class="col-sm-3">
@@ -53,7 +53,7 @@
                     </ul>
                 </label>
             @endif
-            {!! Form::select('dancer_id', $dancers, ( $dancerId > 0 ? $dancerId : old('dancer_id')), ['placeholder' => 'Selecciona una parroquia', 'class' => 'form-control input-sm parish-select']) !!}
+            {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['multiple' => 'multiple', 'placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm']) !!}
         </div>
     </div>
 </div>
