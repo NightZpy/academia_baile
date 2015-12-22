@@ -18,12 +18,12 @@ class Competitor extends Model
 
 	public function academies()
 	{
-		return $this->belongsToMany(Academy::class);
+		return $this->belongsTo(Academy::class);
 	}
 
-	public function dancer()
+	public function dancers()
 	{
-		return $this->hasMany(Dancer::class);
+		return $this->belongsToMany(Dancer::class);
 	}
 
 	public function competitionCategory()

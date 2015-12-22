@@ -31,7 +31,7 @@ class Academy extends Model implements StaplerableInterface
 	*/
 	public function competitors()
 	{
-		return $this->hasManyThrough(Competitor::class, Dancer::class);
+		return $this->hasMany(Competitor::class);
 	}
 
 	public function eventEditions()
