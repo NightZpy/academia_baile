@@ -39,7 +39,7 @@ class CompetitorRepository extends BaseRepository {
 		$competitor->update($data);
 		$competitor->competition_category_id = $competitionCategory->id;
 		$competitor->save();
-		$competitor->dancers()->sync($data['dancer_id'], false);
+		$competitor->dancers()->sync($data['dancer_id']);
 		return $competitor;
 	}
 

@@ -112,7 +112,7 @@
                                             </ul>
                                         </label>
                                     @endif
-                                    {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($competitor->dancers) ? $competitor->dancers->pluck('id') : old('dancer_id[]')), ['multiple' => 'multiple', 'placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+                                    {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( $competitor->dancers->count() > 0 ? $competitor->dancers->pluck('id')->all() : old('dancer_id[]')), ['multiple' => true, 'placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
                                 </div>
                             </div>
                         @endif
