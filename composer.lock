@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7c77a9f56eef4f33f456fbb8e0f29f23",
+    "hash": "d4d1c2bdcdd32abeb0fa948562d8a77e",
     "packages": [
         {
             "name": "chumper/datatable",
@@ -622,16 +622,16 @@
         },
         {
             "name": "laracasts/flash",
-            "version": "1.3.3",
+            "version": "1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laracasts/flash.git",
-                "reference": "a2e237ae34fcc73c4b0755fe51d1ac2063be781e"
+                "reference": "e0a048b911092e15920ce66f4b6a54b6befa30a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laracasts/flash/zipball/a2e237ae34fcc73c4b0755fe51d1ac2063be781e",
-                "reference": "a2e237ae34fcc73c4b0755fe51d1ac2063be781e",
+                "url": "https://api.github.com/repos/laracasts/flash/zipball/e0a048b911092e15920ce66f4b6a54b6befa30a3",
+                "reference": "e0a048b911092e15920ce66f4b6a54b6befa30a3",
                 "shasum": ""
             },
             "require": {
@@ -661,7 +661,7 @@
                 }
             ],
             "description": "Easy flash notifications",
-            "time": "2015-02-01 20:07:15"
+            "time": "2015-12-22 15:52:08"
         },
         {
             "name": "laravel/framework",
@@ -924,51 +924,6 @@
                 "storage"
             ],
             "time": "2015-12-19 20:16:43"
-        },
-        {
-            "name": "misterphilip/maintenance-mode",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/MisterPhilip/maintenance-mode.git",
-                "reference": "ae69de8ef6e2ffdeb94451b6446fc17afe00ec51"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/MisterPhilip/maintenance-mode/zipball/ae69de8ef6e2ffdeb94451b6446fc17afe00ec51",
-                "reference": "ae69de8ef6e2ffdeb94451b6446fc17afe00ec51",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "5.0 - 5.1",
-                "nesbot/carbon": "~1.19",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "MisterPhilip\\MaintenanceMode": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Philip Lawrence",
-                    "email": "philip@misterphilip.com",
-                    "homepage": "http://misterphilip.com"
-                }
-            ],
-            "description": "An enhanced drop-in replacement for Laravel 5's maintenance mode",
-            "keywords": [
-                "l5",
-                "laravel",
-                "laravel5",
-                "maintenance"
-            ],
-            "time": "2015-08-19 02:25:14"
         },
         {
             "name": "monolog/monolog",

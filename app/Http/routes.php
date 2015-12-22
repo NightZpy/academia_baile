@@ -10,16 +10,30 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
+/*
+* ---------- Maintenance Mode routes ----------
+*/
+
+Route::group(array('middleware' => 'auth', 'prefix' => 'admin'), function()
+{
+	Route::get('down-app', function()
+	{
+		touch(storage_path().'/meta/my.down');
+	});
+
+	Route::get('up-app', function()
+	{
+		@unlink(storage_path().'/meta/my.down');
+	});
+});
+
 /*
 * ---------- Home routes ----------
 */
 Route::get('/', [ 'as' => 'home', function () {
     return view('public.index');
 }]);
-
-Route::post('/send-message', function() {
-	return 'true';
-});
 
 /*
 * ---------- Estates ----------
