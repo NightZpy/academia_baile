@@ -35,6 +35,11 @@ class Dancer extends Model implements StaplerableInterface
 		return $this->belongsTo('App\Pluranza\Academy');
 	}
 
+	public function competitors()
+	{
+		return $this->belongsToMany(Competitor::class);
+	}
+
 	/*
 	 * ------------------------- Accessors ---------------------------
 	 */
@@ -47,5 +52,18 @@ class Dancer extends Model implements StaplerableInterface
 	{
 		return Carbon::createFromFormat('Y-m-d', $this->birth_date)->age;
 		//return Carbon::createFromDate($fecha[0], $fecha[1], $fecha[2])->age;
+	}
+
+	/*
+	 * ------------ Scopes ------------------
+	 */
+	public function scopeFemale($query)
+	{
+		return $query->whereGender('f');
+	}
+
+	public function scopeMasculine($query)
+	{
+		return $query->whereGender('m');
 	}
 }

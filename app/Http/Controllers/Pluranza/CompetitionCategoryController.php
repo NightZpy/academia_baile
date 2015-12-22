@@ -12,6 +12,8 @@ use App\Repository\Pluranza\CompetitionCategoryRepository;
 use App\Http\Requests;
 use App\Repository\Pluranza\CompetitionTypeRepository;
 
+use Auth;
+
 class CompetitionCategoryController extends Controller
 {
     protected $competitionCategoryRepository;
@@ -133,11 +135,23 @@ class CompetitionCategoryController extends Controller
 
 	/*
 	 * ---------------------- APIs ---------------------
-*/
+    */
 	public function apiList()
 	{
 		if(request()->ajax())
 			return $this->competitionCategoryRepository->getAllDataTable();
 	}
+
+    public function apiByCategoryList($id)
+    {
+        if(request()->ajax())
+            return $this->competitionCategoryRepository->getLevelByCategoryForSelect($id);
+    }
+
+    public function apiByLevelList($id)
+    {
+        if(request()->ajax())
+            return $this->competitionCategoryRepository->getCompetitionTypeByLevelForSelect($id);
+    }
 
 }

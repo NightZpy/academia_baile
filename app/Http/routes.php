@@ -137,7 +137,10 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 
 		// -------------- API's --------------------
 		Route::get('api/lista', ['as' => 'pluranza.competition-categories.api.list', 'uses' => 'CompetitionCategoryController@apiList']);
-	});	
+		Route::get('api/lista/por-categoria/{id}', ['as' => 'pluranza.competition-categories.api.by-category', 'uses' => 'CompetitionCategoryController@apiByCategoryList']);
+		Route::get('api/lista/por-nivel/{id}', ['as' => 'pluranza.competition-categories.api.by-level', 'uses' => 'CompetitionCategoryController@apiByLevelList']);
+
+	});
 	
 	/*
     * ---------- Comptition Types ----------
@@ -213,6 +216,33 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 			Route::patch('actualizar/{id}', ['as' => 'pluranza.dancers.update', 'uses' => 'DancerController@update']);
 
 			Route::delete('{id}', ['as' => 'pluranza.dancers.delete', 'uses' => 'DancerController@destroy']);
+
+		});
+
+		/*
+		* ---------- Competitor ----------
+	    */
+		Route::group(['prefix' => 'competidores'], function () {
+			Route::get('/', ['as' => 'pluranza.competitors.home', 'uses' => 'CompetitorController@index']);
+			Route::get('nueva/{id}', ['as' => 'pluranza.competitors.new', 'uses' => 'CompetitorController@create']);
+			Route::post('/', ['as' => 'pluranza.competitors.store', 'uses' => 'CompetitorController@store']);
+			Route::get('ver/{id}', ['as' => 'pluranza.competitors.show', 'uses' => 'CompetitorController@show']);
+			Route::get('editar/{id}', ['as' => 'pluranza.competitors.edit', 'uses' => 'CompetitorController@edit']);
+			Route::patch('actualizar/{id}', ['as' => 'pluranza.competitors.update', 'uses' => 'CompetitorController@update']);
+			Route::delete('{id}', ['as' => 'pluranza.competitors.delete', 'uses' => 'CompetitorController@destroy']);
+
+			// -------------- API's --------------------
+			Route::get('api/lista', ['as' => 'pluranza.competitors.api.list', 'uses' => 'CompetitorController@apiList']);
+
+			Route::get('{id}', [
+				'as' => 'pluranza.competitors.by-academy',
+				'uses' => 'CompetitorController@byAcademy'
+			]);
+
+			Route::get('api/lista/{id}', [
+				'as' => 'pluranza.competitors.api.by-academy',
+				'uses' => 'CompetitorController@apiByAcademyList'
+			]);
 
 		});
 	});

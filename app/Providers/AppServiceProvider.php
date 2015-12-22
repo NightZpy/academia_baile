@@ -15,10 +15,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //$data = ['email' => 'nightzpy@gmail.com', 'password' => '1234'];
-        //Auth::attempt($this->getCredentials($data), false);
-        //$academieParticipant = Auth::user()->academieParticipant;
-        //view()->share(compact('academy'));
+        // Using Closure based composers...
+        view()->composer('*', function ($view) {
+            if (auth()->check()) {
+                $academy = auth()->user()->academy;
+                $view->with(compact('academy'));
+            }
+        });
     }
 
     /**
