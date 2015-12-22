@@ -42,9 +42,10 @@ class CompetitorController extends Controller
 
     public function byAcademy($id)
     {
+        $competitionTypes = $this->competitionCategoryRepository->getCompetitionTypes();
         $table = $this->competitorRepository->dataTable->getByAcademyTable([$id]);
         $academy = $this->academyRepository->get($id);
-        return  view('pluranza.competitors.by-academy')->with(compact('table', 'academy'));
+        return  view('pluranza.competitors.by-academy')->with(compact('table', 'academy', 'competitionTypes'));
     }
 
     /**

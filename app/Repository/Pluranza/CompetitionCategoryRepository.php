@@ -51,9 +51,25 @@ class CompetitionCategoryRepository extends BaseRepository {
 		return $this->getLevelByCategory($id)->lists('name', 'id');
 	}
 
+	public function getCompetitionTypes()
+	{
+		//$competitionCategories = $this->getAll()->groupBy('competition_type_id')->get();
+		$competitionCategories = CompetitionCategory::groupBy('competition_type_id')->get();
+		$competitionTypes = new Collection();
+		foreach ($competitionCategories as $competitionCategory)
+			$competitionTypes->add($competitionCategory->competitionType);
+		return $competitionTypes;
+	}
+
+	public function getCompetitionTypesForSelect()
+	{
+		return $this->getCompetitionTypes()->lists('name', 'id');
+	}
+
+
 	public function getCompetitionTypeByLevel($id)
 	{
-		$competitionCategories =  $this->model->whereLevelId($id)->get();
+		$competitionCategories =  $this->model->whereLevelId($id)->groupBy('competition_type_id')->get();
 		$competitionTypes = new Collection();
 		foreach ($competitionCategories as $competitionCategory)
 			$competitionTypes->add($competitionCategory->competitionType);
