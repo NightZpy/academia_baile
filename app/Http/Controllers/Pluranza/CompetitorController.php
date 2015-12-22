@@ -100,9 +100,10 @@ class CompetitorController extends Controller
      */
     public function show($id)
     {
-	    $competitor = $this->competitorRepository->get($id);
-	    $academy = $competitor->academy;
-	    return view('pluranza.competitors.show')->with(compact('competitor', 'academy'));
+        $competitor = $this->competitorRepository->get($id);
+        $academy = $competitor->academy;
+        $table = $this->competitorRepository->dataTable->getByAcademyTable([$id]);
+        return  view('pluranza.competitors.by-academy')->with(compact('table', 'academy', 'competitionTypes'));
     }
 
     /**
@@ -115,7 +116,21 @@ class CompetitorController extends Controller
     {
         $competitor = $this->competitorRepository->get($id);
         $academy = $competitor->academy;
-        return view('pluranza.competitors.edit')->with(compact('competitor', 'academy'));
+        $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitor->competitionType->id);
+        $levels = $this->competitionCategoryRepository->getLevelByCategoryForSelect($competitor->level->id);
+
+        if (strtolower($competitor->competitionType->name) == 'pareja') {
+            $masculineDancers = $academy->dancers()->masculine()->lists('name', 'id');
+            $femaleDancers = $academy->dancers()
+                ->female()
+                //->select('dancers.id AS id', DB::raw('CONCAT(dancers.name, " ", dancers.last_name) AS full_name'))
+                ->lists('name', 'id');
+            $dancers = ['masculine' => $masculineDancers, 'female' => $femaleDancers];
+        } else {
+            $dancers = $academy->dancers->lists('fullName', 'id');
+        }
+
+        return view('pluranza.competitors.edit')->with(compact('competitor', 'academy', 'levels', 'categories', 'dancers'));
     }
 
     /**

@@ -16,7 +16,7 @@ class Competitor extends Model
 	* -------------------------- Relations ------------------------
 	*/
 
-	public function academies()
+	public function academy()
 	{
 		return $this->belongsTo(Academy::class);
 	}
