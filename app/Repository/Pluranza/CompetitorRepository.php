@@ -32,6 +32,17 @@ class CompetitorRepository extends BaseRepository {
 		return $competitor;
 	}
 
+	public function updateCustom($data = array(), $id)
+	{
+		$competitionCategory = $this->competitionCategoryRepository->getByAll($data['category_id'], $data['level_id'], $data['competition_type_id']);
+		$competitor = $this->get($id);
+		$competitor->update($data);
+		$competitor->competition_category_id = $competitionCategory->id;
+		$competitor->save();
+		$competitor->dancers()->sync($data['dancer_id'], false);
+		return $competitor;
+	}
+
 	public function getAllDataTable()
 	{
 		return $this->dataTable->getDefaultTable($this->getAll());

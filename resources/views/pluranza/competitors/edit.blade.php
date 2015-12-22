@@ -19,7 +19,7 @@
             <div class="row ct-u-paddingTop25">
                 <div class="col-md-offset-2 col-md-8">
                     {!! Form::model($competitor, array(
-                                        'url' => route('pluranza.competitors.update', $academy->id),
+                                        'url' => route('pluranza.competitors.update', $competitor->id),
                                         'method' => 'PATCH',
                                         'accept-charset' => 'UTF-8',
                                         'role' => 'form',

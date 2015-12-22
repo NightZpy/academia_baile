@@ -62,7 +62,7 @@ class CompetitionCategoryRepository extends BaseRepository {
 
 	public function getLevelByCategory($id)
 	{
-		$competitionCategories =  $this->model->whereCategoryId($id)->get();
+		$competitionCategories =  $this->model->whereCategoryId($id)->groupBy('level_id')->get();
 		$levels = new Collection();
 		foreach ($competitionCategories as $competitionCategory)
 			$levels->add($competitionCategory->level);

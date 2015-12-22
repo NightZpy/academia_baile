@@ -142,14 +142,11 @@ class CompetitorController extends Controller
      */
 	public function update($id, UpdateCompetitorFormRequest $request)
 	{
-		$competitor = $this->competitorRepository->get($id);
         $input = $request->all();
-        $input['independent'] = ($request->has('independent') ? true : false);
-        $input['director'] = ($request->has('director') ? true : false);
-		$competitor->update($input);
-		$academy = $competitor->academy;
-		flash()->success('Datos actualizados exitosamente!');
-		return redirect()->back()->with(compact('competitor', 'academy'));
+        $academy = $this->academyRepository->get($request->get('academy_id'));
+        $this->competitorRepository->updateCustom($input, $id);
+        flash()->success('Datos actualizados exitosamente!');
+        return redirect()->route('pluranza.competitors.by-academy', $academy->id);
 	}
 
     /**
