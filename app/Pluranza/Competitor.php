@@ -10,20 +10,20 @@ class Competitor extends Model
 {
 	use \Znck\Eloquent\Traits\BelongsToThrough;
 
-	protected $fillable = ['dancer_id', 'competition_category_id', 'event_edition_id'];
+	protected $fillable = ['name', 'academy_id', 'competition_category_id', 'event_edition_id'];
 
 	/*
 	* -------------------------- Relations ------------------------
 	*/
 
-	public function academy()
+	public function academies()
 	{
-		return $this->belongsToThrough(Academy::class, Dancer::class);
+		return $this->belongsToMany(Academy::class);
 	}
 
 	public function dancer()
 	{
-		return $this->belongsTo(Dancer::class);
+		return $this->hasMany(Dancer::class);
 	}
 
 	public function competitionCategory()

@@ -15,10 +15,10 @@ class CreateCompetitorsTable extends Migration
         Schema::create('competitors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('dancer_id')->unsigned();
+            $table->integer('academy_id')->unsigned();
             $table->integer('competition_category_id')->unsigned();
             $table->integer('event_edition_id')->unsigned();
-            $table->unique(['dancer_id', 'competition_category_id', 'event_edition_id'], 'competitors_unique_key');
+            $table->unique(['academy_id', 'competition_category_id', 'event_edition_id'], 'competitors_unique_key');
             $table->timestamps();
         });
     }

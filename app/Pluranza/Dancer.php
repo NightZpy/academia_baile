@@ -35,6 +35,11 @@ class Dancer extends Model implements StaplerableInterface
 		return $this->belongsTo('App\Pluranza\Academy');
 	}
 
+	public function competitors()
+	{
+		return $this->belongsToMany(Competitor::class);
+	}
+
 	/*
 	 * ------------------------- Accessors ---------------------------
 	 */
