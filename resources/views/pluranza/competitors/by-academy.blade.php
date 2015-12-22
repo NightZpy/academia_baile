@@ -15,23 +15,31 @@
                     @include('partials._flash')
                 </div>
             </div>
-            <div class="row ct-u-paddingTop25">
-                <div class="col-md-8">
-                    @foreach($competitionTypes as $competitionType)
-                        <div class="form-group pull-right">
-                            <label class="control-label" for="instagram">
-                        	    {!! Form::radio('competition_type_id', $competitionType->id, null,  ['id' => 'competition_type_id']) !!}
-                                {!! $competitionType->name !!}
-                            </label>
-                        </div>
-                    @endforeach
+            @if($competitionTypes)
+                <div class="row ct-u-paddingTop25">
+                    {!! Form::model($academy,
+                        [
+                            'route' => ['pluranza.competitors.new', $academy->id],
+                            'method' => 'PATCH',
+                            'role' => 'form',
+                            'files' => true
+                        ])
+                    !!}
+                    <div class="col-md-8">
+                        @foreach($competitionTypes as $competitionType)
+                            <div class="form-group pull-right">
+                                <label class="control-label" for="instagram">
+                                    {!! Form::radio('competition_type_id', $competitionType->id, null,  ['id' => 'competition_type_id']) !!}
+                                    {!! $competitionType->name !!}
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="col-md-2">
+                        {!! Form::submit('Agregar', [ 'class' => 'btn btn-sm btn-danger btn-circle pull-right text-uppercase ct-u-size14']) !!}
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    @if($competitionTypes)
-                        <a href="{{ route('pluranza.competitors.new', $academy->id) }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
-                    @endif
-                </div>
-            </div>
+            @endif
             <div class="row ct-u-paddingTop5">
                 <div class="col-md-offset-2 col-md-8">
                     @include('partials._table')

@@ -5,9 +5,9 @@
         <div class="container">
             <div class="row ct-u-paddingTop100">
                 <div class="col-md-12 ct-titleBox">
-                    <h4 class="text-center text-uppercase ct-u-paddingTop30">
-                        Registrar bailarín en <i>{{ $academy->name }}</i>
-                    </h4>
+                    <h5 class="text-center ct-u-paddingTop30">
+                        Registrar competidores para la competencia <strong>({{ $competitionType->name }})</strong>, para <i>{{ $academy->name }}</i>
+                    </h5>
                 </div>
             </div>
             <div class="row">
@@ -23,7 +23,67 @@
                                         'accept-charset' => 'UTF-8',
                                         'role' => 'form',
                                         )) !!}
-                        @include('pluranza.competitors.partials._form')
+                        {!! Form::hidden('academy_id', $academy->id) !!}
+                        {!! Form::hidden('competition_type_id', $competitionType->id) !!}
+                        <div class="row competitor-select">
+                            <div class="col-sm-3">
+                                <div class="form-group {{ ($errors->has('name') ? 'has-error' : '') }}">
+                                    @if ($errors->has('name'))
+                                        <label class="control-label" for="name">
+                                            <ul>
+                                                @foreach($errors->get('name') as $error)
+                                                    <li>{!! $error !!}</li>
+                                                @endforeach
+                                            </ul>
+                                        </label>
+                                    @endif
+                                    {!! Form::text('name', old('name'), array('placeholder' => 'Nombre', 'class' => 'form-control input-sm')) !!}
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group {{ ($errors->has('category_id') ? 'has-error' : '') }}">
+                                    @if ($errors->has('category_id'))
+                                        <label class="control-label" for="category_id">
+                                            <ul>
+                                                @foreach($errors->get('category_id') as $error)
+                                                    <li>{!! $error !!}</li>
+                                                @endforeach
+                                            </ul>
+                                        </label>
+                                    @endif
+                                    {!! Form::select('category_id', (isset($categories) ? $categories : array()), old('category_id'), ['placeholder' => 'Selecciona una categoría', 'class' => 'form-control input-sm category-select']) !!}
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group {{ ($errors->has('level_id') ? 'has-error' : '') }}">
+                                    @if ($errors->has('level_id'))
+                                        <label class="control-label" for="level_id">
+                                            <ul>
+                                                @foreach($errors->get('level_id') as $error)
+                                                    <li>{!! $error !!}</li>
+                                                @endforeach
+                                            </ul>
+                                        </label>
+                                    @endif
+                                    {!! Form::select('level_id', array(), old('level_id'), ['placeholder' => 'Selecciona un nivel', 'class' => 'form-control input-sm level-select']) !!}
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group {{ ($errors->has('dancer_id') ? 'has-error' : '') }}">
+                                    @if ($errors->has('dancer_id'))
+                                        <label class="control-label" for="dancer_id">
+                                            <ul>
+                                                @foreach($errors->get('dancer_id') as $error)
+                                                    <li>{!! $error !!}</li>
+                                                @endforeach
+                                            </ul>
+                                        </label>
+                                    @endif
+                                    {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['multiple' => 'multiple', 'placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm']) !!}
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-sm-offset-9 col-sm-3">
                                 {!! Form::submit('Guardar', [ 'class' => 'btn btn-xs btn-primary btn-block text-uppercase ct-u-size14']) !!}
@@ -36,4 +96,4 @@
     </section>
 @stop
 
-@include('pluranza.competitors.partials._select-competition-category-script')
+@include('pluranza.competitors.partials._select-competition-category-script-new')
