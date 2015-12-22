@@ -16,6 +16,7 @@ class CreateDancersTable extends Migration
             $table->increments('id');
             $table->string('name', 128);
             $table->string('last_name', 128);
+            $table->char('gender', 1)->default('f');
             $table->string('ci', 16);
             $table->date('birth_date');
             $table->string('email', 128)->nullable()->unique();

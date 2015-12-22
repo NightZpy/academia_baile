@@ -20,20 +20,30 @@
                     {!! Form::model($academy,
                         [
                             'route' => ['pluranza.competitors.new', $academy->id],
-                            'method' => 'PATCH',
+                            'method' => 'GET',
                             'role' => 'form',
                             'files' => true
                         ])
                     !!}
+                    {!! Form::hidden('academy_id', $academy->id) !!}
                     <div class="col-md-8">
-                        @foreach($competitionTypes as $competitionType)
-                            <div class="form-group pull-right">
+                        <div class="form-group pull-right {{ ($errors->has('competition_type_id') ? 'has-error' : '') }}">
+                            @if ($errors->has('competition_type_id'))
+                                <label class="control-label" for="competition_type_id">
+                                    <ul>
+                                        @foreach($errors->get('competition_type_id') as $error)
+                                            <li>{!! $error !!}</li>
+                                        @endforeach
+                                    </ul>
+                                </label>
+                            @endif
+                            @foreach($competitionTypes as $competitionType)
                                 <label class="control-label" for="instagram">
                                     {!! Form::radio('competition_type_id', $competitionType->id, null,  ['id' => 'competition_type_id']) !!}
                                     {!! $competitionType->name !!}
                                 </label>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                     <div class="col-md-2">
                         {!! Form::submit('Agregar', [ 'class' => 'btn btn-sm btn-danger btn-circle pull-right text-uppercase ct-u-size14']) !!}
@@ -48,3 +58,13 @@
         </div>
     </section>
 @stop
+
+@push('scripts')
+<script>
+    /*jQuery(document).ready(function() {
+        $('#myform').submit(function () {
+            // your code here
+        });
+    });*/
+</script>
+@endpush

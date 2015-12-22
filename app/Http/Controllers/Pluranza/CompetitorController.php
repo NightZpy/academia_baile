@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Pluranza;
 
+use App\Http\Requests\Pluranza\CreateCompetitorFormRequest;
 use App\Http\Requests\Pluranza\RegisterCompetitorFormRequest;
 use App\Http\Requests\Pluranza\UpdateCompetitorFormRequest;
-use App\Mailers\AppMailer;
 use App\Repository\Pluranza\AcademyRepository;
 use App\Repository\Pluranza\CompetitionCategoryRepository;
 use App\Repository\Pluranza\CompetitionTypeRepository;
 use App\Repository\Pluranza\CompetitorRepository;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 
 class CompetitorController extends Controller
 {
@@ -58,13 +58,23 @@ class CompetitorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, $id)
+    public function create(CreateCompetitorFormRequest $request, $id)
     {
-        $competitionType = $this->competitionTypeRepository->get($request->get('competition_type_id'));
         $academy = $this->academyRepository->get($id);
-        $dancers = $academy->dancers->lists('fullName', 'id');
+        $competitionType = $this->competitionTypeRepository->get($request->get('competition_type_id'));
+        $name = $this->competitorRepository->getAutomaticName($competitionType);
+        if (strtolower($competitionType->name) == 'pareja') {
+            $masculineDancers = $academy->dancers()->masculine()->lists('name', 'id');
+            $femaleDancers = $academy->dancers()
+                                     ->female()
+                                     //->select('dancers.id AS id', DB::raw('CONCAT(dancers.name, " ", dancers.last_name) AS full_name'))
+                                     ->lists('name', 'id');
+            $dancers = ['masculine' => $masculineDancers, 'female' => $femaleDancers];
+        } else {
+            $dancers = $academy->dancers->lists('fullName', 'id');
+        }
         $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitionType->id);
-        return view('pluranza.competitors.new')->with(compact('dancers', 'categories', 'academy', 'competitionType'));
+        return view('pluranza.competitors.new')->with(compact('dancers', 'categories', 'academy', 'competitionType', 'name'));
     }
 
     /**
@@ -73,21 +83,12 @@ class CompetitorController extends Controller
      * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterCompetitorFormRequest $request, AppMailer $mailer)
+    public function store(RegisterCompetitorFormRequest $request)
     {
         $input = $request->all();
-        $input['independent'] = ($request->has('independent') ? true : false);
-        $input['director'] = ($request->has('director') ? true : false);
-
-        $competitor = $this->competitorRepository->create($input);
         $academy = $this->academyRepository->get($request->get('academy_id'));
-        $academy->competitors()->save($competitor);
-        if ($competitor->email) {
-            $mailer->sendEmailToCompetitor($competitor, 'pluranza.emails.competitor-invitation');
-            flash()->success('Datos guardados exitosamente, correo de invitación enviado al bailarín!');
-        } else {
-            flash()->success('Datos guardados exitosamente!');
-        }
+
+        flash()->success('Datos guardados exitosamente!');
         return redirect()->route('pluranza.competitors.by-academy', $academy->id);
     }
 

@@ -15,6 +15,9 @@ class CreateCompetitionTypesTable extends Migration
         Schema::create('competition_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 128)->unique();
+            $table->integer('quantity')->unsigned()->default(2);
+            $table->integer('min_quantity')->unsigned()->default(1);
+            $table->integer('max_quantity')->unsigned()->default(100);
             $table->timestamps();
         });
     }
