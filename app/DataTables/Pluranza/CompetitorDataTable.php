@@ -7,8 +7,7 @@ class CompetitorDataTable extends BaseDataTable
 {
 	function __construct() {
 		$this->columns = [
-			'Foto',
-			'Bailarin',
+			'Nombre',
 			'Categoría',
 			'Nivel',
 			'Tipo',
@@ -26,17 +25,12 @@ class CompetitorDataTable extends BaseDataTable
 
 	public function setBodyTableSettings()
 	{
-		$this->collection->searchColumns('Bailarín', 'Categoría', 'Nivel', 'Tipo');
-		$this->collection->orderColumns('Bailarín', 'Categoría', 'Nivel', 'Tipo');
+		$this->collection->searchColumns('Nombre', 'Categoría', 'Nivel', 'Tipo');
+		$this->collection->orderColumns('Nombre', 'Categoría', 'Nivel', 'Tipo');
 
-		$this->collection->addColumn('Foto', function($model)
+		$this->collection->addColumn('Nombre', function($model)
 		{
-			return '<img src="' . $model->dancer->photo->url('thumb') . '" alt="' . $model->fullName . '">';
-		});
-
-		$this->collection->addColumn('Bailarín', function($model)
-		{
-			return $model->dancer->fullName;
+			return $model->name;
 		});
 
 		$this->collection->addColumn('Categoría', function($model)

@@ -18,6 +18,15 @@ class CompetitionCategoryRepository extends BaseRepository {
 		$this->dataTable = $dataTable;
 	}
 
+	public function getByAll($categoryId, $levelId, $competitionTypeId)
+	{
+		return $this->model
+					->whereCategoryId($categoryId)
+					->whereLevelId($levelId)
+					->whereCompetitionTypeId($competitionTypeId)
+					->first();
+	}
+
 	public function getAllDataTable()
 	{
 		return $this->dataTable->getDefaultTable($this->getAll());

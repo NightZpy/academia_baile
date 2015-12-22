@@ -73,7 +73,7 @@
                         <div class="row">
                             @if (strtolower($competitionType->name) == 'pareja')
                                 <div class="col-sm-4">
-                                    <div class="form-group {{ ($errors->has('dancer_id["female"]') ? 'has-error' : '') }}">
+                                    <div class="form-group {{ ($errors->has('dancer_id[female]') ? 'has-error' : '') }}">
                                         @if ($errors->has('dancer_id'))
                                             <label class="control-label" for="dancer_id['female']">
                                                 <ul>
@@ -83,11 +83,11 @@
                                                 </ul>
                                             </label>
                                         @endif
-                                        {!! Form::select('dancer_id["female"]', (isset($dancers['female']) ? $dancers['female'] : array()), old('dancer_id["female"]'), ['placeholder' => 'Selecciona bailarina', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+                                        {!! Form::select('dancer_id[female]', (isset($dancers['female']) ? $dancers['female'] : array()), old('dancer_id["female"]'), ['placeholder' => 'Selecciona bailarina', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <div class="form-group {{ ($errors->has('dancer_id["masculine"]') ? 'has-error' : '') }}">
+                                    <div class="form-group {{ ($errors->has('dancer_id[masculine]') ? 'has-error' : '') }}">
                                         @if ($errors->has('dancer_id'))
                                             <label class="control-label" for="dancer_id['masculine']">
                                                 <ul>
@@ -97,7 +97,7 @@
                                                 </ul>
                                             </label>
                                         @endif
-                                        {!! Form::select('dancer_id["masculine"]', (isset($dancers['masculine']) ? $dancers['masculine'] : array()), old('dancer_id["masculine"]'), ['placeholder' => 'Selecciona bailarín', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+                                        {!! Form::select('dancer_id[masculine]', (isset($dancers['masculine']) ? $dancers['masculine'] : array()), old('dancer_id["masculine"]'), ['placeholder' => 'Selecciona bailarín', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
                                     </div>
                                 </div>
                             @else

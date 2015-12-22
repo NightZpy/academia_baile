@@ -87,7 +87,7 @@ class CompetitorController extends Controller
     {
         $input = $request->all();
         $academy = $this->academyRepository->get($request->get('academy_id'));
-
+        $this->competitorRepository->create($input);
         flash()->success('Datos guardados exitosamente!');
         return redirect()->route('pluranza.competitors.by-academy', $academy->id);
     }

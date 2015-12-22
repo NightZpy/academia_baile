@@ -2,6 +2,7 @@
 namespace App\Repository\Pluranza;
 
 use App\DataTables\Pluranza\AcademyDataTable;
+use App\Pluranza\CompetitionCategory;
 use App\Pluranza\CompetitionType;
 use App\Pluranza\Competitor;
 use App\DataTables\Pluranza\CompetitorDataTable;
@@ -11,12 +12,24 @@ class CompetitorRepository extends BaseRepository {
 
 	public $dataTable;
 
+	protected $competitionCategoryRepository;
+
 	/**
 	 * DancerRepository constructor.
 	 */
-	public function __construct(CompetitorDataTable $dataTable) {
+	public function __construct(CompetitorDataTable $dataTable, CompetitionCategoryRepository $competitionCategoryRepository) {
 		$this->setModel(new Competitor);
 		$this->dataTable = $dataTable;
+		$this->competitionCategoryRepository = $competitionCategoryRepository;
+	}
+
+	public function create($data = array())
+	{
+		$competitionCategory = $this->competitionCategoryRepository->getByAll($data['category_id'], $data['level_id'], $data['competition_type_id']);
+		$competitor = parent::create($data);
+		$competitionCategory->competitors()->save($competitor);
+		$competitor->dancers()->attach($data['dancer_id']);
+		return $competitor;
 	}
 
 	public function getAllDataTable()

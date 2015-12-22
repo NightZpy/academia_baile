@@ -11,6 +11,11 @@ class CompetitionCategory extends Model
 	/*
 	* -------------------------- Relations ------------------------
 	*/
+	public function competitors()
+	{
+		return $this->hasMany(Competitor::class);
+	}
+
 	public function category()
 	{
 		return $this->belongsTo('App\Category');
