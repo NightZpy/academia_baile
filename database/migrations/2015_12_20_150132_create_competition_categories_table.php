@@ -14,6 +14,7 @@ class CreateCompetitionCategoriesTable extends Migration
     {
         Schema::create('competition_categories', function (Blueprint $table) {
             $table->increments('id');
+            $table->decimal('price', 10, 0)->->default(0);
             $table->integer('category_id')->unsigned();
             $table->integer('level_id')->unsigned();
             $table->integer('competition_type_id')->unsigned();
