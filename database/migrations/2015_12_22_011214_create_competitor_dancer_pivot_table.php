@@ -14,9 +14,9 @@ class CreateCompetitorDancerPivotTable extends Migration
     {
         Schema::create('competitor_dancer', function (Blueprint $table) {
             $table->integer('competitor_id')->unsigned()->index();
-            // $table->foreign('competitor_id')->references('id')->on('competitors')->onDelete('cascade');
+            $table->foreign('competitor_id')->references('id')->on('competitors')->onDelete('cascade');
             $table->integer('dancer_id')->unsigned()->index();
-            // $table->foreign('dancer_id')->references('id')->on('dancers')->onDelete('cascade');
+            $table->foreign('dancer_id')->references('id')->on('dancers')->onDelete('cascade');
             $table->primary(['competitor_id', 'dancer_id']);
         });
     }
