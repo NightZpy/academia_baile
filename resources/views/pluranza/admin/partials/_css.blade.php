@@ -18,3 +18,5 @@
 {!! Html::style('/assets/css/salsa.css') !!}
 
 {!! Html::style('/assets/css/custom.css') !!}
+
+@yield('styles')

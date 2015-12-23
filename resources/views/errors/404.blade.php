@@ -18,22 +18,22 @@
             <div class="row">
                 <div class="col-md-12">
                     <h5 class="ct-titleBox text-uppercase ct-u-paddingTop40">
-                        Error 404 Página no encontrada
+                        Error 404: Página no encontrada
                     </h5>
                 </div>
             </div>
             <div class="row ct-u-paddingTop100 ct-u-paddingBottom40">
                 <div class="col-sm-12">
                     <div class="text-center">
-                        <h3>Creo que estas bailando fuera de tiempo!</h3>
+                        <h3>¡Creo que estás bailando fuera de tiempo!</h3>
                         <br>
                         <span class="ct-404error ct-u-colorMotive">
                             <span class="animated activate bounce" data-fx="bounce" data-time="250">4</span>
                             <span class="animated activate bounce" data-fx="bounce" data-time="300">0</span>
                             <span class="animated activate bounce" data-fx="bounce" data-time="350">4</span>
                         </span>
-                        <h4 class="text-uppercase animated ct-u-colorGrey" data-fx="fadeInUp" data-time="400">Est� p�gina no puede ser encontrada.</h4>
-                        <a href="{{ URL::previous() }}" class="ct-js-btnScroll btn btn-primary ct-u-paddingTop10">Volver a bailar a tiempo!</a>
+                        <h4 class="text-uppercase animated ct-u-colorGrey" data-fx="fadeInUp" data-time="400">Est?p?ina no puede ser encontrada.</h4>
+                        <a href="{{ URL::previous() }}" class="ct-js-btnScroll btn btn-primary ct-u-paddingTop10">Volver a bailar a tiempo</a>
                     </div>
                 </div>
             </div>

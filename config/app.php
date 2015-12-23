@@ -152,7 +152,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
         Chumper\Datatable\DatatableServiceProvider::class,
-        //Felixkiss\UniqueWithValidator\UniqueWithValidatorServiceProvider::class,
+        Felixkiss\UniqueWithValidator\UniqueWithValidatorServiceProvider::class,
     ],
 
     /*

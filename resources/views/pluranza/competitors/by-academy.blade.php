@@ -27,7 +27,7 @@
                     !!}
                     {!! Form::hidden('academy_id', $academy->id) !!}
                     <div class="col-md-8">
-                        <div class="form-group pull-right {{ ($errors->has('competition_type_id') ? 'has-error' : '') }}">
+                        <div class="btn-group pull-right {{ ($errors->has('competition_type_id') ? 'has-error' : '') }}" data-toggle="buttons" role="group">
                             @if ($errors->has('competition_type_id'))
                                 <label class="control-label" for="competition_type_id">
                                     <ul>
@@ -38,7 +38,8 @@
                                 </label>
                             @endif
                             @foreach($competitionTypes as $competitionType)
-                                <label class="control-label" for="instagram">
+                                <label class="btn btn-sm btn-default
+                                 btn-circle text-uppercase ct-u-size14">
                                     {!! Form::radio('competition_type_id', $competitionType->id, null,  ['id' => 'competition_type_id']) !!}
                                     {!! $competitionType->name !!}
                                 </label>
@@ -59,12 +60,17 @@
     </section>
 @stop
 
-@push('scripts')
-<script>
-    /*jQuery(document).ready(function() {
-        $('#myform').submit(function () {
-            // your code here
-        });
-    });*/
-</script>
+@push('styles')
+<style>
+
+label.btn.btn-sm.btn-default {
+    background-color: ;
+    color: white;
+}
+
+label.btn.btn-sm.btn-default.active {
+    background-color: red;
+    font-weight: bold;
+}
+</style>
 @endpush

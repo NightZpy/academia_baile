@@ -17,14 +17,14 @@
          data-navigation="true" data-bg="true" data-snap-ignore="false">
 
         <a href="{{ route('pluranza.home') }}">
-            <div class="item" data-bg="/assets/images/content/slider/pluranza-1.png" data-position="50% 50%">
+            <div class="item" data-bg="/assets/images/content/slider/alcompas.png" data-position="50% 50%">
                 <!-- 1' OwlSlider item -->
             </div>
         </a>
-        <div class="item" data-bg="/assets/images/demo-content/salsa-mainCarousel-slide2.jpg" data-position="50% 50%">
+        <div class="item" data-bg="/assets/images/content/slider/pluranza.png" data-position="50% 50%">
             <!-- 2' OwlSlider item -->
         </div>
-        <div class="item" data-bg="/assets/images/demo-content/salsa-mainCarousel-slide1.jpg" data-position="50% 50%">
+        <div class="item" data-bg="/assets/images/content/slider/pluranza-1.png" data-position="50% 50%">
             <!-- 3' OwlSlider item -->
         </div>
     </div>
