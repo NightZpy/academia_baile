@@ -64,12 +64,12 @@
 <style>
 
 label.btn.btn-sm.btn-default {
-    background-color: ;
+    background-color: black;
     color: white;
 }
 
 label.btn.btn-sm.btn-default.active {
-    background-color: red;
+    background-color: lightgray;
     font-weight: bold;
 }
 </style>
