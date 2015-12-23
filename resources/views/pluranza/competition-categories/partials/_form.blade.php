@@ -1,5 +1,23 @@
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
+        <div class="form-group {{ ($errors->has('price') ? 'has-error' : '') }}">
+            @if ($errors->has('price'))
+                <label class="control-label" for="price">
+                    <ul>
+                        @foreach($errors->get('price') as $error)
+                            <li>{!! $error !!}</li>
+                        @endforeach
+                    </ul>
+                </label>
+            @endif
+            <div class="input-group">
+                <span class="input-group-addon">Bs.</span>
+                {!! Form::text('price', old('price'), array('placeholder' => 'Costo', 'class' => 'form-control input-sm', 'aria-label' => 'Costo (en Bolívares Venezolanos)')) !!}
+                <span class="input-group-addon">,00</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-offset-4 col-sm-4">
         <div class="form-group {{ ($errors->has('category_id') ? 'has-error' : '') }}">
             @if ($errors->has('category_id'))
                 <label class="control-label" for="category_id">

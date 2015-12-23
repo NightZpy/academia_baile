@@ -38,7 +38,7 @@ class SessionController extends Controller
             flash('Bienvenido!');
             $user = Auth::user();
             $route = 'home';
-            if ($user->academyParticipant)
+            if ($user->academy)
                 $route = 'pluranza.home';
             return redirect()->route($route);
         }
@@ -53,7 +53,7 @@ class SessionController extends Controller
     public function logout()
     {
         Auth::logout();
-        flash('Has cerrado exitosamente la sesión.');
+        flash('Has cerrado exitosamente la sesiï¿½n.');
         return redirect()->route('home');
     }
     /**

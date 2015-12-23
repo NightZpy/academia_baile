@@ -30,4 +30,12 @@ class CompetitionCategory extends Model
 	{
 		return $this->belongsTo('App\Pluranza\CompetitionType');
 	}
+
+	/*
+	 * ------------------------ Accessors --------------------------
+	 */
+	public function getPriceBsAttribute()
+	{
+		return number_format($this->price, '2', ',', '.') . ' Bs';
+	}
 }

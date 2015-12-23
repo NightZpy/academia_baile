@@ -13,9 +13,23 @@
             <div class="row">
                 <div class="col-md-offset-3 col-md-6">
                     @include('partials._flash')
+                    @include('partials._errors')
                 </div>
             </div>
             @if($competitionTypes)
+                <div class="row ct-u-paddingTop10">
+                    <div class="col-md-offset-3">
+                        <div class="col-md-3">
+                            <p>Por pagar: <i>{{ $academy->debtBs }}</i></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>Cancelado: <i>{{ $academy->paidBs }}</i></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>Total: <i>{{ $academy->totalBs }}</i></p>
+                        </div>
+                    </div>
+                </div>
                 <div class="row ct-u-paddingTop25">
                     {!! Form::model($academy,
                         [
@@ -28,15 +42,6 @@
                     {!! Form::hidden('academy_id', $academy->id) !!}
                     <div class="col-md-8">
                         <div class="btn-group pull-right {{ ($errors->has('competition_type_id') ? 'has-error' : '') }}" data-toggle="buttons" role="group">
-                            @if ($errors->has('competition_type_id'))
-                                <label class="control-label" for="competition_type_id">
-                                    <ul>
-                                        @foreach($errors->get('competition_type_id') as $error)
-                                            <li>{!! $error !!}</li>
-                                        @endforeach
-                                    </ul>
-                                </label>
-                            @endif
                             @foreach($competitionTypes as $competitionType)
                                 <label class="btn btn-sm btn-default
                                  btn-circle text-uppercase ct-u-size14">
@@ -69,7 +74,7 @@ label.btn.btn-sm.btn-default {
 }
 
 label.btn.btn-sm.btn-default.active {
-    background-color: lightgray;
+    background-color: grey;
     font-weight: bold;
 }
 </style>

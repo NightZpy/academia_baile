@@ -74,4 +74,38 @@ class Academy extends Model implements StaplerableInterface
 	/*
 	 * -------------------------------- Accessors --------------------------------
 	 */
+	public function getTotalAttribute()
+	{
+		$total = 0;
+		foreach ($this->competitors as $competitor)
+			$total += $competitor->price;
+		return $total;
+	}
+
+	public function getTotalBsAttribute()
+	{
+		return number_format($this->total, '2', ',', '.') . ' Bs';
+	}
+
+	public function getDebtAttribute()
+	{
+		return 0;
+	}
+
+	public function getDebtBsAttribute()
+	{
+		return number_format($this->debt, '2', ',', '.') . ' Bs';
+	}
+
+	public function getPaidAttribute()
+	{
+		return 0;
+	}
+
+	public function getPaidBsAttribute()
+	{
+		return number_format($this->paid, '2', ',', '.') . ' Bs';
+	}
+
+
 }

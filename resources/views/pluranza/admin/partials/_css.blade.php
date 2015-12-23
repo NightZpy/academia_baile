@@ -20,3 +20,9 @@
 {!! Html::style('/assets/css/custom.css') !!}
 
 @yield('styles')
+
+<style>
+    li.paginate_button.active {
+        background-color: grey;
+    }
+</style>

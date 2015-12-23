@@ -11,6 +11,7 @@ class CompetitorDataTable extends BaseDataTable
 			'Categoría',
 			'Nivel',
 			'Tipo',
+			'Precio',
 			'Acciones'
 		];
 		$this->defaultConfig();
@@ -25,8 +26,8 @@ class CompetitorDataTable extends BaseDataTable
 
 	public function setBodyTableSettings()
 	{
-		$this->collection->searchColumns('Nombre', 'Categoría', 'Nivel', 'Tipo');
-		$this->collection->orderColumns('Nombre', 'Categoría', 'Nivel', 'Tipo');
+		$this->collection->searchColumns('Nombre', 'Categoría', 'Nivel', 'Tipo', 'Precio');
+		$this->collection->orderColumns('Nombre', 'Categoría', 'Nivel', 'Tipo', 'Precio');
 
 		$this->collection->addColumn('Nombre', function($model)
 		{
@@ -46,6 +47,11 @@ class CompetitorDataTable extends BaseDataTable
 		$this->collection->addColumn('Tipo', function($model)
 		{
 			return $model->competitionType->name;
+		});
+
+		$this->collection->addColumn('Precio', function($model)
+		{
+			return $model->competitionCategory->priceBs;
 		});
 	}
 
