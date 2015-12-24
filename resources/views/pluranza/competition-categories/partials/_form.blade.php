@@ -13,7 +13,6 @@
             <div class="input-group">
                 <span class="input-group-addon">Bs.</span>
                 {!! Form::text('price', old('price'), array('placeholder' => 'Costo', 'class' => 'form-control input-sm', 'aria-label' => 'Costo (en Bolívares Venezolanos)')) !!}
-                <span class="input-group-addon">,00</span>
             </div>
         </div>
     </div>
@@ -56,7 +55,7 @@
                     </ul>
                 </label>
             @endif
-            {!! Form::select('competition_type_id', $competitionTypes, ( isset($competitionCategory) AND  $competitionCategory->competition_type_id > 0 ? $competitionCategory->competition_type_id : old('competition_type_id')), ['placeholder' => 'Selecciona una parroquia', 'class' => 'form-control input-sm']) !!}
+            {!! Form::select('competition_type_id', $competitionTypes, ( isset($competitionCategory) AND  $competitionCategory->competition_type_id > 0 ? $competitionCategory->competition_type_id : old('competition_type_id')), ['placeholder' => 'Selecciona un tipo', 'class' => 'form-control input-sm']) !!}
         </div>
     </div>
 </div>

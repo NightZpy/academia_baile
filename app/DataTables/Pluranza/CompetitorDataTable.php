@@ -15,6 +15,7 @@ class CompetitorDataTable extends BaseDataTable
 			'Acciones'
 		];
 		$this->defaultConfig();
+		$this->setDefaultActions(['edit', 'delete']);
 		$this->setRoute('pluranza.competitors.api.list');
 		$actionRoutes = [
 			'show'      => 'pluranza.competitors.show',

@@ -1,9 +1,9 @@
-.white {
-	background-color: white;
-}
-
 .navbar-brand {
 	padding: 0; 
+}
+
+.navbar-public-white {
+	background-color: white;
 }
 
 .button-fixed {
@@ -14,4 +14,20 @@
 	height: 45px;
 	border: 1px solid transparent;
 	z-index: 999;
+}
+
+.white-nav-bar-text {
+	color: white;
+}
+
+.black-nav-bar-text {
+	background-color: black;
+}
+
+.ct-navbarMobile.ct-navbarMobile--inverse {
+	background-color: black;
+}
+
+.ct-navbarMobile .navbar-toggle .icon-bar {
+	background-color: white;
 }

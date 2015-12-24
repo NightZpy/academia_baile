@@ -19,6 +19,9 @@
         <div class="item" data-bg="/assets/images/content/slider/pluranza-main.jpg" data-position="50% 50%">
             <!-- 3' OwlSlider item -->
         </div>
+        <div class="item" data-bg="/assets/images/content/slider/orquestas.jpg" data-position="50% 50%">
+            <!-- 3' OwlSlider item -->
+        </div>
         <div class="item" data-bg="/assets/images/content/slider/invitados.jpg" data-position="50% 50%">
             <!-- 3' OwlSlider item -->
         </div>

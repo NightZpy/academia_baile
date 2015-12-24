@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class BaseDataTable {
 	protected $columns;
-	protected $actionColums = array();
+	protected $actionColums = array('all');
 	protected $collection;
 	protected $route;
 	protected $actionRoutes;
@@ -45,11 +45,18 @@ class BaseDataTable {
 		$this->actionRoutes = $actionRoutes;
 	}
 
+	public function setDefaultActions($actions = array('all'))
+	{
+		$this->actionColums = $actions;
+	}
+
 	/*
 	************************** DATATABLE COLLECTION METHODS *********************************
 	*/
-	public function setDefaultActionColumn($actions = array('all')) {
+	public function setDefaultActionColumn() {
 		$routes = $this->actionRoutes;
+		$actions = $this->actionColums;
+
 		$this->addColumnToCollection('Acciones', function($model) use ($routes, $actions)
 		{
 			$this->cleanActionColumn();

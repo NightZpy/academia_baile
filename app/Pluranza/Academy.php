@@ -29,6 +29,11 @@ class Academy extends Model implements StaplerableInterface
 	/*
 	* -------------------------- Relations ------------------------
 	*/
+	public function payments()
+	{
+		return $this->hasMany(Payment::class);
+	}
+
 	public function competitors()
 	{
 		return $this->hasMany(Competitor::class);
@@ -78,7 +83,7 @@ class Academy extends Model implements StaplerableInterface
 	{
 		$total = 0;
 		foreach ($this->competitors as $competitor)
-			$total += $competitor->price;
+			$total += $competitor->competitionCategory->price;
 		return $total;
 	}
 
@@ -89,7 +94,7 @@ class Academy extends Model implements StaplerableInterface
 
 	public function getDebtAttribute()
 	{
-		return 0;
+		return $this->total - $this->paid;
 	}
 
 	public function getDebtBsAttribute()
@@ -99,7 +104,10 @@ class Academy extends Model implements StaplerableInterface
 
 	public function getPaidAttribute()
 	{
-		return 0;
+		$total = 0;
+		foreach ($this->payments as $payment)
+			$total += $payment->amount;
+		return $total;
 	}
 
 	public function getPaidBsAttribute()
