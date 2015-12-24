@@ -16,6 +16,7 @@ class PaymentDataTable extends BaseDataTable
 			'Acciones'
 		];
 		$this->defaultConfig();
+		$this->setDefaultActions(['edit', 'delete']);
 		$this->setRoute('pluranza.payments.api.list');
 		$actionRoutes = [
 			'show'      => 'pluranza.payments.show',
