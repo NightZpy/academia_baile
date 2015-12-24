@@ -36,6 +36,13 @@ class PaymentController extends Controller
         return view('pluranza.payments.index')->with(compact('table'));
     }
 
+    public function byAcademy($id)
+    {
+        $table = $this->paymentRepository->dataTable->getByAcademyTable([$id]);
+        $academy = $this->academyRepository->get($id);
+        return  view('pluranza.payments.by-academy')->with(compact('table', 'academy'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -125,5 +132,11 @@ class PaymentController extends Controller
 		if(request()->ajax())
 			return $this->paymentRepository->getAllDataTable();
 	}
+
+    public function apiByAcademyList($id)
+    {
+        if(request()->ajax())
+            return $this->paymentRepository->getByAcademyDataTable($id);
+    }
 
 }

@@ -29,6 +29,11 @@ class Academy extends Model implements StaplerableInterface
 	/*
 	* -------------------------- Relations ------------------------
 	*/
+	public function payments()
+	{
+		return $this->hasMany(Payment::class);
+	}
+
 	public function competitors()
 	{
 		return $this->hasMany(Competitor::class);

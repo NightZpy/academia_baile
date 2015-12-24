@@ -31,6 +31,11 @@ class PaymentDataTable extends BaseDataTable
 		$this->collection->searchColumns('Monto', 'Fecha', 'Código de referencia', 'Estatús', 'Competidor');
 		$this->collection->orderColumns('Monto', 'Fecha', 'Estatús', 'Competidor');
 
+		$this->collection->addColumn('Voucher', function($model)
+		{
+			return '<img src="' . $model->voucher->url('thumb') . '" alt="' . ($model->competitor ? $model->competitor->name : $model->academy->name) . '">';
+		});
+
 		$this->collection->addColumn('Monto', function($model)
 		{
 			return $model->amountBs;
@@ -55,5 +60,10 @@ class PaymentDataTable extends BaseDataTable
 		{
 			return $model->competitor->name;
 		});
+	}
+
+	public function getByAcademyTable($params = [])
+	{
+		return $this->getAllTable('pluranza.payments.api.by-academy', $params);
 	}
 }
