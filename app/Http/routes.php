@@ -259,5 +259,12 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 			]);
 
 		});
+
+		/*
+		* ---------- Pagos ----------
+	    */
+		Route::group(['prefix' => 'pagos'], function () {
+			Route::get('pagar/{id}', ['as' => 'pluranza.payments.new', 'uses' => 'PaymentController@create']);
+		});
 	});
 });

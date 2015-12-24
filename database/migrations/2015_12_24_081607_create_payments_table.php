@@ -18,6 +18,7 @@ class CreatePaymentsTable extends Migration
             $table->string('reference_code', 128)->nullable();
             $table->datetime('date')->nullable();
             $table->string('voucher', 128)->nullable();
+            $table->enum('status', ['accept', 'refuse', 'pending'])->default('pending');
             $table->integer('academy_id');
             $table->foreign('academy_id')->references('id')->on('academies');
             $table->integer('competitor_id')->nullable();

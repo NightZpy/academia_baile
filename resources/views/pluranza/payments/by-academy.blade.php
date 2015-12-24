@@ -29,7 +29,7 @@
                             <p>Total: <i>{{ $academy->totalBs }}</i></p>
                         </div>
                         <div class="col-md-2">
-                            <a href="{{ route('pluranza.payments.new', $academy->id) }}" class="ct-js-btnScroll btn btn-xs btn-danger btn-circle text-uppercase ct-u-size14 pull-left"><i class="fa fa-money fa-2x"></i> Pagar</a>
+                            <a href="{{ route('users.login') }}" class="ct-js-btnScroll btn btn-xs btn-danger btn-circle text-uppercase ct-u-size14 pull-left"><i class="fa fa-money fa-2x"></i> Pagar</a>
                         </div>
                     </div>
                 </div>
