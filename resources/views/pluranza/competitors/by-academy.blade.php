@@ -18,15 +18,18 @@
             </div>
             @if($competitionTypes)
                 <div class="row ct-u-paddingTop10">
-                    <div class="col-md-offset-3">
+                    <div class="col-md-offset-3 col-md-6">
                         <div class="col-md-3">
-                            <p>Por pagar: <i>{{ $academy->debtBs }}</i></p>
+                            <p>Debe: <i>{{ $academy->debtBs }}</i></p>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <p>Cancelado: <i>{{ $academy->paidBs }}</i></p>
                         </div>
                         <div class="col-md-3">
                             <p>Total: <i>{{ $academy->totalBs }}</i></p>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{{ route('users.login') }}" class="ct-js-btnScroll btn btn-xs btn-danger btn-circle text-uppercase ct-u-size14 pull-left"><i class="fa fa-money fa-2x"></i> Pagar</a>
                         </div>
                     </div>
                 </div>
@@ -40,8 +43,8 @@
                         ])
                     !!}
                     {!! Form::hidden('academy_id', $academy->id) !!}
-                    <div class="col-md-8">
-                        <div class="btn-group pull-right {{ ($errors->has('competition_type_id') ? 'has-error' : '') }}" data-toggle="buttons" role="group">
+                    <div class="col-md-offset-2 col-md-6">
+                        <div class="btn-group pull-left {{ ($errors->has('competition_type_id') ? 'has-error' : '') }}" data-toggle="buttons" role="group">
                             @foreach($competitionTypes as $competitionType)
                                 <label class="btn btn-sm btn-default
                                  btn-circle text-uppercase ct-u-size14">
@@ -52,7 +55,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        {!! Form::submit('Agregar', [ 'class' => 'btn btn-sm btn-danger btn-circle pull-right text-uppercase ct-u-size14']) !!}
+                        {!! Form::submit('Agregar', [ 'class' => 'btn btn-sm btn-danger btn-circle pull-right text-uppercase ct-u-size14 ']) !!}
                     </div>
                 </div>
             @endif
