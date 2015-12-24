@@ -265,6 +265,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 	    */
 		Route::group(['prefix' => 'pagos'], function () {
 			Route::get('pagar/{id}', ['as' => 'pluranza.payments.new', 'uses' => 'PaymentController@create']);
+			Route::post('/', ['as' => 'pluranza.payments.store', 'uses' => 'PaymentController@store']);
 		});
 	});
 });

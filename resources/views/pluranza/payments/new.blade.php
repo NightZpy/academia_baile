@@ -6,7 +6,7 @@
             <div class="row ct-u-paddingTop100">
                 <div class="col-md-12 ct-titleBox">
                     <h5 class="text-center ct-u-paddingTop30">
-                        Registrar competidores para la academia <i>{{ $academy->amount }}</i>
+                        Registrar pago para <i>{{ $academy->name }}</i>
                     </h5>
                 </div>
             </div>
@@ -43,82 +43,70 @@
                                         <span class="input-group-addon">.00</span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group {{ ($errors->has('category_id') ? 'has-error' : '') }}">
-                                    @if ($errors->has('category_id'))
-                                        <label class="control-label" for="category_id">
+                                <div class="form-group {{ ($errors->has('reference_code') ? 'has-error' : '') }}">
+                                    @if ($errors->has('reference_code'))
+                                        <label class="control-label" for="reference_code">
                                             <ul>
-                                                @foreach($errors->get('category_id') as $error)
+                                                @foreach($errors->get('reference_code') as $error)
                                                     <li>{!! $error !!}</li>
                                                 @endforeach
                                             </ul>
                                         </label>
                                     @endif
-                                    {!! Form::select('category_id', (isset($categories) ? $categories : array()), old('category_id'), ['placeholder' => 'Selecciona una categoría', 'class' => 'form-control input-sm category-select']) !!}
+                                    {!! Form::text('reference_code', (isset($reference_code) ? $reference_code : old('reference_code')), array('placeholder' => 'Código de referencia', 'class' => 'form-control input-sm')) !!}
                                 </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group {{ ($errors->has('level_id') ? 'has-error' : '') }}">
-                                    @if ($errors->has('level_id'))
-                                        <label class="control-label" for="level_id">
+                                <div class="form-group {{ ($errors->has('date') ? 'has-error' : '') }}">
+                                    @if ($errors->has('date'))
+                                        <label class="control-label" for="date">
                                             <ul>
-                                                @foreach($errors->get('level_id') as $error)
+                                                @foreach($errors->get('date') as $error)
                                                     <li>{!! $error !!}</li>
                                                 @endforeach
                                             </ul>
                                         </label>
                                     @endif
-                                    {!! Form::select('level_id', array(), old('level_id'), ['placeholder' => 'Selecciona un nivel', 'class' => 'form-control input-sm level-select']) !!}
+                                    {!! Form::date('date', (isset($date) ? $date : old('date')), array('placeholder' => 'Fecha', 'class' => 'form-control input-sm')) !!}
+                                </div>
+                                <div class="form-group {{ ($errors->has('status') ? 'has-error' : '') }}">
+                                    @if ($errors->has('status'))
+                                        <label class="control-label" for="status">
+                                            <ul>
+                                                @foreach($errors->get('status') as $error)
+                                                    <li>{!! $error !!}</li>
+                                                @endforeach
+                                            </ul>
+                                        </label>
+                                    @endif
+                                    {!! Form::select('status', (isset($status) ? $status : array()), old('status'), ['placeholder' => 'Selecciona un estatús', 'class' => 'form-control input-sm category-select']) !!}
+                                </div>
+                                <div class="form-group {{ ($errors->has('competitor_id') ? 'has-error' : '') }}">
+                                    @if ($errors->has('competitor_id'))
+                                        <label class="control-label" for="competitor_id">
+                                            <ul>
+                                                @foreach($errors->get('competitor_id') as $error)
+                                                    <li>{!! $error !!}</li>
+                                                @endforeach
+                                            </ul>
+                                        </label>
+                                    @endif
+                                    <label for="competidor_id">(Sólo si se paga un competidor en específico)</label>
+                                    {!! Form::select('competitor_id', (isset($competitor_id) ? $competitor_id : array()), old('competitor_id'), ['placeholder' => 'Selecciona un competidor', 'class' => 'form-control input-sm category-select']) !!}
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            @if (strtolower($competitionType->amount) == 'pareja')
-                                <div class="col-sm-4">
-                                    <div class="form-group {{ ($errors->has('dancer_id[female]') ? 'has-error' : '') }}">
-                                        @if ($errors->has('dancer_id'))
-                                            <label class="control-label" for="dancer_id['female']">
-                                                <ul>
-                                                    @foreach($errors->get('dancer_id')['female'] as $error)
-                                                        <li>{!! $error !!}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </label>
-                                        @endif
-                                        {!! Form::select('dancer_id[female]', (isset($dancers['female']) ? $dancers['female'] : array()), old('dancer_id["female"]'), ['placeholder' => 'Selecciona bailarina', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
-                                    </div>
+                            <div class="col-sm-6">
+                                <div class="form-group {{ ($errors->has('voucher') ? 'has-error' : '') }}">
+                                    @if ($errors->has('voucher'))
+                                        <label class="control-label" for="voucher">
+                                            <ul>
+                                                @foreach($errors->get('voucher') as $error)
+                                                    <li>{!! $error !!}</li>
+                                                @endforeach
+                                            </ul>
+                                        </label>
+                                    @endif
+                                    {!! Form::file('voucher', array('placeholder' => 'Voucher', 'class' => 'file-upload')) !!}
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group {{ ($errors->has('dancer_id[masculine]') ? 'has-error' : '') }}">
-                                        @if ($errors->has('dancer_id'))
-                                            <label class="control-label" for="dancer_id['masculine']">
-                                                <ul>
-                                                    @foreach($errors->get('dancer_id')['masculine'] as $error)
-                                                        <li>{!! $error !!}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </label>
-                                        @endif
-                                        {!! Form::select('dancer_id[masculine]', (isset($dancers['masculine']) ? $dancers['masculine'] : array()), old('dancer_id["masculine"]'), ['placeholder' => 'Selecciona bailarín', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
-                                    </div>
-                                </div>
-                            @else
-                                <div class="col-sm-4">
-                                    <div class="form-group {{ ($errors->has('dancer_id') ? 'has-error' : '') }}">
-                                        @if ($errors->has('dancer_id'))
-                                            <label class="control-label" for="dancer_id">
-                                                <ul>
-                                                    @foreach($errors->get('dancer_id') as $error)
-                                                        <li>{!! $error !!}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </label>
-                                        @endif
-                                        {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['multiple' => 'multiple', 'placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
-                                    </div>
-                                </div>
-                            @endif
+                            </div>
                         </div>
 
                         <div class="row">
