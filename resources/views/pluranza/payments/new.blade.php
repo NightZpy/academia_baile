@@ -23,6 +23,7 @@
                                         'method' => 'POST',
                                         'accept-charset' => 'UTF-8',
                                         'role' => 'form',
+                                        'files' => true
                                     )) !!}
                         {!! Form::hidden('academy_id', $academy->id) !!}
                         @include('pluranza.payments.partials._form')

@@ -23,6 +23,7 @@
                                         'method' => 'PATCH',
                                         'accept-charset' => 'UTF-8',
                                         'role' => 'form',
+                                        'files' => true
                                     )) !!}
                         @include('pluranza.payments.partials._form')
                         <div class="row">

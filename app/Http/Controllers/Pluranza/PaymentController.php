@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Pluranza;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Pluranza\RegisterPaymentFormRequest;
-use App\Http\Requests\Pluranza\UpdatePaymentFormRequest;
 use App\Repository\Pluranza\AcademyRepository;
 use App\Repository\Pluranza\PaymentRepository;
 
 use App\Http\Requests;
+use Auth;
 
 class PaymentController extends Controller
 {
@@ -57,7 +57,9 @@ class PaymentController extends Controller
      */
     public function store(RegisterPaymentFormRequest $request)
     {
-        $this->paymentRepository->create($request->all());
+        $input = $request->all();
+        $input['academy_id'] = Auth::user()->academy->id;
+        $this->paymentRepository->create($input);
         flash()->success('Datos guardados exitosamente!');
         return redirect()->route('pluranza.payments.home');
     }
@@ -92,7 +94,7 @@ class PaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePaymentFormRequest $request, $id)
+    public function update(RegisterPaymentFormRequest $request, $id)
     {
         $dancer = $this->paymentRepository->get($id);
         $dancer->update($request->all());
