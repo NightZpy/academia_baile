@@ -56,6 +56,7 @@ class BaseDataTable {
 	public function setDefaultActionColumn() {
 		$routes = $this->actionRoutes;
 		$actions = $this->actionColums;
+
 		$this->addColumnToCollection('Acciones', function($model) use ($routes, $actions)
 		{
 			$this->cleanActionColumn();
