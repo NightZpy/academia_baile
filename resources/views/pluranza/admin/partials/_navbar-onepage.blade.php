@@ -1,4 +1,4 @@
-<nav class="navbar yamm white" role="navigation" data-startnavbar="0" data-offset="114"><!-- NavBar [begin] -->
+<nav class="navbar yamm black-nav-bar-text" role="navigation" data-startnavbar="0" data-offset="114"><!-- NavBar [begin] -->
     <div class="container-fluid">
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="row">
@@ -6,7 +6,7 @@
                 <div class="col-lg-2 col-md-3 col-sm-4">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="{{ route('home') }}">
-                            <img src="/assets/images/logo.png" alt="Logo">
+                            <img src="/assets/images/logo-pluranza.png" alt="Logo">
                         </a>
                     </div>
                 </div>
