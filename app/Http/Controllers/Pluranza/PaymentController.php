@@ -44,7 +44,9 @@ class PaymentController extends Controller
     public function create($id)
     {
         $academy = $this->academyRepository->get($id);
-        return view('pluranza.payments.new')->with(compact('academy'));
+        $competitors = $academy->competitors->pluck('name', 'id');
+        // $status = ['accept' => 'Aceptado', 'refuse' => 'Rechazado', 'pending' => 'Pendiente'];
+        return view('pluranza.payments.new')->with(compact('academy', 'competitors'));
     }
 
     /**
