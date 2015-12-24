@@ -18,7 +18,7 @@
             </div>
             @if($competitionTypes)
                 <div class="row ct-u-paddingTop10">
-                    <div class="col-md-offset-3 col-md-6">
+                    <div class="col-md-offset-2 col-md-8">
                         <div class="col-md-3">
                             <p>Debe: <i>{{ $academy->debtBs }}</i></p>
                         </div>

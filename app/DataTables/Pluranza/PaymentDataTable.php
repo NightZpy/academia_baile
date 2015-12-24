@@ -53,7 +53,7 @@ class PaymentDataTable extends BaseDataTable
 
 		$this->collection->addColumn('Estatús', function($model)
 		{
-			return $model->status;
+			return $model->statusEsp;
 		});
 
 		$this->collection->addColumn('Competidor', function($model)
@@ -101,7 +101,6 @@ class PaymentDataTable extends BaseDataTable
 			return implode(" ", $this->getActionColumn());
 		});
 	}
-
 
 	public function getByAcademyTable($params = [])
 	{
