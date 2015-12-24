@@ -120,5 +120,3 @@
         </div>
     </section>
 @stop
-
-@include('pluranza.competitors.partials._select-competition-category-script-new')
