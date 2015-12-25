@@ -11,6 +11,8 @@ class BaseDataTable {
 	protected $route;
 	protected $actionRoutes;
 	protected $dataTable;
+	protected $orderColumn;
+	protected $orderType;
 
 	/**
 	 * BaseDataTable constructor.
@@ -28,6 +30,8 @@ class BaseDataTable {
 					'url' => '/assets/plugins/datatables/lang/Spanish.json'
 				)
 			));
+		$this->orderColumn = 1;
+		$this->orderType = 'asc';
 	}
 
 	public function getColumnCount()
@@ -92,19 +96,36 @@ class BaseDataTable {
 		});
 	}
 
-	public function getAllTable($route = null, $params = array(), $orderColumn = 1, $type = 'asc', $tableId = 'datatable')
+	public function getAllTable($route = null, $params = array(), $tableId = 'datatable')
 	{
 		if(!$route)
 			$route = $this->route;
 
 		$this->dataTable->addColumn($this->columns);
-		$this->dataTable->setOptions('order', [[$orderColumn , $type]]);
+		$this->dataTable->setOptions('order', [[$this->orderColumn , $this->orderType]]);
 		//$this->dataTable->setCustomValues('table-id', 'datatable-' . $tableId);
 		if($tableId != 'datatable')
 			$this->dataTable->setId('datatable-' . $tableId);
 		$this->dataTable->setUrl(route($route, $params));
 		$this->dataTable->noScript();
 		return $this->dataTable;
+	}
+
+	/**
+	 * @param mixed $orderType
+	 * @return BaseDataTable
+	 */
+	public function setOrderType($orderType)
+	{
+		$this->orderType = $orderType;
+	}
+
+	/**
+	 * @param mixed $orderColumn
+	 */
+	public function setOrderColumn($orderColumn)
+	{
+		$this->orderColumn = $orderColumn;
 	}
 
 	public function setCollection($collection)

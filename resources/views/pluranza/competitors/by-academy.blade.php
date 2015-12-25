@@ -3,7 +3,7 @@
 @section('content')
     <section class="ct-u-paddingBottom60 ct-backgroundContent" data-type="color" data-bg-color="#ffffff">
         <div class="container">
-            <div class="row ct-u-paddingTop100">
+            <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 ct-titleBox">
                     <h4 class="text-center text-uppercase ct-u-paddingTop30">
                         Grupos en competición de: <i>{{ $academy->name }}</i>
@@ -16,23 +16,8 @@
                     @include('partials._errors')
                 </div>
             </div>
+            @include('pluranza.payments.partials._header')
             @if($competitionTypes)
-                <div class="row ct-u-paddingTop10">
-                    <div class="col-md-offset-2 col-md-8">
-                        <div class="col-md-3">
-                            <p>Debe: <i>{{ $academy->debtBs }}</i></p>
-                        </div>
-                        <div class="col-md-4">
-                            <p>Cancelado: <i>{{ $academy->paidBs }}</i></p>
-                        </div>
-                        <div class="col-md-3">
-                            <p>Total: <i>{{ $academy->totalBs }}</i></p>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="{{ route('pluranza.payments.new', $academy->id) }}" class="ct-js-btnScroll btn btn-xs btn-danger btn-circle text-uppercase ct-u-size14 pull-left"><i class="fa fa-money fa-2x"></i> Pagar</a>
-                        </div>
-                    </div>
-                </div>
                 <div class="row ct-u-paddingTop25">
                     {!! Form::model($academy,
                         [
@@ -44,7 +29,7 @@
                     !!}
                     {!! Form::hidden('academy_id', $academy->id) !!}
                     <div class="col-md-offset-2 col-md-6">
-                        <div class="btn-group pull-left {{ ($errors->has('competition_type_id') ? 'has-error' : '') }}" data-toggle="buttons" role="group">
+                        <div class="btn-group pull-right {{ ($errors->has('competition_type_id') ? 'has-error' : '') }}" data-toggle="buttons" role="group">
                             @foreach($competitionTypes as $competitionType)
                                 <label class="btn btn-sm btn-default
                                  btn-circle text-uppercase ct-u-size14">

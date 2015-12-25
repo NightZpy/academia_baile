@@ -31,3 +31,7 @@
 .ct-navbarMobile .navbar-toggle .icon-bar {
 	background-color: white;
 }
+
+.ct-navbar--top .navbar {
+	background-color: black;
+}

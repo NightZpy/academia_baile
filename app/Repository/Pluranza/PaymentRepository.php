@@ -18,6 +18,14 @@ class PaymentRepository extends BaseRepository {
 		$this->dataTable = $dataTable;
 	}
 
+	public function updateCustom($data = array(), $id)
+	{
+		$payment = $this->get($id);
+		$data['status'] = 'pending';
+		$payment->update($data);
+		return $payment;
+	}
+
 	public function getAllDataTable()
 	{
 		return $this->dataTable->getDefaultTable($this->getAll());
@@ -31,7 +39,7 @@ class PaymentRepository extends BaseRepository {
 
 	public function getByAcademyDataTable($id)
 	{
-		$payments = $this->getByACademy($id);
+		$payments = $this->getByACademy($id)->sortByDesc('created_at');
 		$this->dataTable->setDatatableCollection($payments);
 		return $this->dataTable->getDefaultTable($payments);
 	}

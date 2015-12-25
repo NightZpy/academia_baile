@@ -1,4 +1,4 @@
-<div class="ct-navbarMobile ct-navbarMobile--inverse black-nav-bar-text">
+<div class="ct-navbarMobile ct-navbarMobile--inverse">
     <button type="button" class="navbar-toggle">
     <span class="sr-only">Toggle navigation</span>
     <span class="icon-bar"></span>

@@ -40,7 +40,7 @@ class RegistrationController extends Controller
             'password' => 'required'
         ]);
         $user = User::create($request->all());
-        $mailer->sendEmailConfirmationTo($user);
+        $mailer->sendEmailConfirmationTo($user, 'pluranza.emails.confirm');
         flash('Se ha registrado con éxito. Información con detalles ha sido enviada al correo electronico especificado!');
         return redirect()->route('users.login');
     }

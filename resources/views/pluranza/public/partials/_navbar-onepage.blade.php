@@ -1,4 +1,4 @@
-<nav class="navbar yamm black-nav-bar-text" role="navigation" data-startnavbar="0" data-offset="114"><!-- NavBar [begin] -->
+<nav class="navbar yamm" role="navigation" data-startnavbar="0" data-offset="114"><!-- NavBar [begin] -->
     <div class="container-fluid">
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="row">

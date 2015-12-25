@@ -117,10 +117,12 @@ function parseBoolean(str, $defaultValue) {
         // Link Scroll to Section // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         function goToByScroll(id) {
-            $('html,body').animate({scrollTop: $(id).offset().top - 70}, 'slow');
+            if ($(id).offset().top)
+                $('html,body').animate({scrollTop: $(id).offset().top - 70}, 'slow');
         }
         function goToByScrollMobile(id) {
-            $('html,body').animate({scrollTop: $(id).offset().top}, 'slow');
+            if ($(id).offset().top)
+                $('html,body').animate({scrollTop: $(id).offset().top}, 'slow');
         }
         $('body .ct-js-btnScroll').on('click', function () {
             goToByScroll($(this).attr('href'));
