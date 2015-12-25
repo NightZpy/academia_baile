@@ -15,6 +15,10 @@
 * ---------- Maintenance Mode routes ----------
 */
 
+Route::get('/test', function() {
+	return asset('assets/images/emails/logo.png');
+});
+
 Route::group(array('middleware' => 'auth', 'prefix' => 'admin'), function()
 {
 	Route::get('down-app', function()
