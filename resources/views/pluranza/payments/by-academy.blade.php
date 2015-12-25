@@ -10,6 +10,7 @@
                     </h4>
                 </div>
             </div>
+            @include('pluranza.payments.partials._header')
             <div class="row ct-u-paddingTop25">
                 <div class="col-md-10">
                     <a href="{{ route('pluranza.payments.new', $academy->id) }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
