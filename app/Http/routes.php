@@ -275,6 +275,8 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 			Route::get('editar/{id}', ['as' => 'pluranza.payments.edit', 'uses' => 'PaymentController@edit']);
 			Route::patch('actualizar/{id}', ['as' => 'pluranza.payments.update', 'uses' => 'PaymentController@update']);
 			Route::delete('{id}', ['as' => 'pluranza.payments.delete', 'uses' => 'PaymentController@destroy']);
+			Route::get('confirmar/{id}', ['as' => 'pluranza.payments.confirm', 'uses' => 'PaymentController@confirm']);
+			Route::get('rechazar/{id}', ['as' => 'pluranza.payments.refuse', 'uses' => 'PaymentController@refuse']);
 
 			// -------------- API's --------------------
 			Route::get('api/lista', ['as' => 'pluranza.payments.api.list', 'uses' => 'PaymentController@apiList']);

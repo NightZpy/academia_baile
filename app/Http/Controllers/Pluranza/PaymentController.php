@@ -103,8 +103,7 @@ class PaymentController extends Controller
      */
     public function update(RegisterPaymentFormRequest $request, $id)
     {
-        $dancer = $this->paymentRepository->get($id);
-        $dancer->update($request->all());
+        $this->paymentRepository->update($request->all(), $id);
         flash()->success('Datos actualizados exitosamente!');
         return redirect()->route('pluranza.payments.home');
     }
@@ -121,6 +120,24 @@ class PaymentController extends Controller
         $paymentName = $payment->name;
         $payment->delete();
         flash()->success( $paymentName . ', ha sido eliminada correctamente!');
+        return redirect()->back();
+    }
+
+    public function confirm($id)
+    {
+        $payment = $this->paymentRepository->get($id);
+        $payment->status = 'accept';
+        $payment->save();
+        flash()->success( 'El pago de ' . $payment->academy->name . ', ha sido aceptado!');
+        return redirect()->back();
+    }
+
+    public function refuse($id)
+    {
+        $payment = $this->paymentRepository->get($id);
+        $payment->status = 'refuse';
+        $payment->save();
+        flash()->success( 'El pago de ' . $payment->academy->name . ', ha sido rechazado!');
         return redirect()->back();
     }
 

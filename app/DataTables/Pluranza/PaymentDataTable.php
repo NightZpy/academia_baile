@@ -16,12 +16,16 @@ class PaymentDataTable extends BaseDataTable
 			'Acciones'
 		];
 		$this->defaultConfig();
-		$this->setDefaultActions(['edit', 'delete']);
+		$this->setDefaultActions(['edit', 'delete', 'confirm', 'refuse']);
 		$this->setRoute('pluranza.payments.api.list');
+		$this->setOrderColumn(2);
+		$this->setOrderType('desc');
 		$actionRoutes = [
 			'show'      => 'pluranza.payments.show',
 			'edit'      => 'pluranza.payments.edit',
-			'delete'    => 'pluranza.payments.delete'
+			'delete'    => 'pluranza.payments.delete',
+			'confirm'   => 'pluranza.payments.confirm',
+			'refuse'   => 'pluranza.payments.refuse'
 		];
 		$this->setDefaultActionRoutes($actionRoutes);
 	}
@@ -58,7 +62,9 @@ class PaymentDataTable extends BaseDataTable
 
 		$this->collection->addColumn('Competidor', function($model)
 		{
-			return $model->competitor->name;
+			if ($model->competitor)
+				return $model->competitor->name;
+			return $model->academy->name;
 		});
 	}
 
@@ -83,6 +89,9 @@ class PaymentDataTable extends BaseDataTable
 					$deleteForm .= '<button type="submit" class="delete btn btn-xs btn-primary"><i class="fa fa-trash"></i> Eliminar</button>';
 					$deleteForm .= '</form>';
 					$this->addActionColumn($deleteForm);
+
+					$this->addActionColumn("<a  class='confirm btn btn-xs btn-darkGray btn-circle' href='" . route($routes['confirm'], $model->id) . "' id='confirm_" . $model->id . "'><i class='fa fa-check'></i> Confirmar</a>");
+					$this->addActionColumn("<a  class='confirm btn btn-xs btn-darkGray btn-circle' href='" . route($routes['refuse'], $model->id) . "' id='refuse_" . $model->id . "'><i class='fa fa-ban'></i> Rechazar</a>");
 				} else {
 					if (in_array('show', $actions)) $this->addActionColumn("<a class='show btn btn-xs btn-warning btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_" . $model->id . "'><i class='fa fa-user'></i> Ver</a>");
 
@@ -96,6 +105,10 @@ class PaymentDataTable extends BaseDataTable
 						$deleteForm .= '</form>';
 						$this->addActionColumn($deleteForm);
 					}
+
+					if (in_array('confirm', $actions)) $this->addActionColumn("<a  class='confirm btn btn-xs btn-darkGray btn-circle' href='" . route($routes['confirm'], $model->id) . "' id='confirm_" . $model->id . "'><i class='fa fa-check'></i> Confirmar</a>");
+
+					if (in_array('refuse', $actions))  $this->addActionColumn("<a  class='confirm btn btn-xs btn-darkGray btn-circle' href='" . route($routes['refuse'], $model->id) . "' id='refuse_" . $model->id . "'><i class='fa fa-ban'></i> Rechazar</a>");
 				}
 				$this->addActionColumn('</div>');
 			}
