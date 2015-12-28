@@ -2,6 +2,7 @@
 
 namespace App\Pluranza;
 
+use Carbon\Carbon;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Illuminate\Database\Eloquent\Model;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model implements StaplerableInterface {
 	use EloquentTrait;
 
-	protected $fillable = ['amount', 'reference_code', 'date', 'voucher', 'academy_id', 'competitor_id'];
+	protected $fillable = ['amount', 'reference_code', 'pay_date', 'voucher', 'academy_id', 'competitor_id'];
 
 	public function __construct(array $attributes = array())
 	{
@@ -55,5 +56,10 @@ class Payment extends Model implements StaplerableInterface {
 	public function getAmountBsAttribute()
 	{
 		return number_format($this->amount, 2, ',', '.');
+	}
+
+	public function getPayDateAttribute($value)
+	{
+		return Carbon::parse($value)->format('Y-m-d');
 	}
 }

@@ -26,7 +26,7 @@ class RegisterPaymentFormRequest extends Request
         return [
             'amount' => 'required|numeric',
             'reference_code' => 'max:128|min:2|alpha_num',
-            'date' => 'required|date',
+            'pay_date' => 'required|date',
             'voucher' => 'image',
             'competitor_id' => 'exists:competitors,id'
         ];

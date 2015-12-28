@@ -16,7 +16,12 @@
                     @include('partials._errors')
                 </div>
             </div>
-            @include('pluranza.payments.partials._header')
+            @role(['admin', 'director'])
+            @route('pluranza.competitors.by-academy')
+                @include('pluranza.payments.partials._header')
+            @endroute
+            @endrole
+            @include('pluranza.competitors.partials._add-competitor-header')
             <div class="row ct-u-paddingTop5">
                 <div class="col-md-offset-2 col-md-8">
                     @include('partials._table')

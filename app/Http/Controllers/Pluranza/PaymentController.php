@@ -40,7 +40,7 @@ class PaymentController extends Controller
     {
         $table = $this->paymentRepository->dataTable->getByAcademyTable([$id]);
         $academy = $this->academyRepository->get($id);
-        return  view('pluranza.payments.by-academy')->with(compact('table', 'academy'));
+        return  view('pluranza.payments.index')->with(compact('table', 'academy'));
     }
 
     /**

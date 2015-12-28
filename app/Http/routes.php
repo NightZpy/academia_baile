@@ -274,7 +274,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		});
 
 		Route::group(['middleware' => ['role:admin|director']], function () {
-			Route::get('{id}', ['as' => 'pluranza.payments.by-academy', 'uses' => 'PaymentController@byAcademy']);
+			Route::get('por-academia/{id}', ['as' => 'pluranza.payments.by-academy', 'uses' => 'PaymentController@byAcademy']);
 			Route::get('pagar/{id}', ['as' => 'pluranza.payments.new', 'uses' => 'PaymentController@create']);
 			Route::post('/', ['as' => 'pluranza.payments.store', 'uses' => 'PaymentController@store']);
 			Route::get('ver/{id}', ['as' => 'pluranza.payments.show', 'uses' => 'PaymentController@show']);
@@ -282,7 +282,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 			Route::patch('actualizar/{id}', ['as' => 'pluranza.payments.update', 'uses' => 'PaymentController@update']);
 			Route::delete('{id}', ['as' => 'pluranza.payments.delete', 'uses' => 'PaymentController@destroy']);
 			// -------------- API's --------------------
-			Route::get('api/lista/{id}', ['as' => 'pluranza.payments.api.by-academy', 'uses' => 'PaymentController@apiByAcademyList']);
+			Route::get('api/lista/por-academia/{id}', ['as' => 'pluranza.payments.api.by-academy', 'uses' => 'PaymentController@apiByAcademyList']);
 		});
 	});
 });

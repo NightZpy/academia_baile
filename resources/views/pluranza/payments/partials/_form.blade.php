@@ -28,17 +28,17 @@
             @endif
             {!! Form::text('reference_code', (isset($reference_code) ? $reference_code : old('reference_code')), array('placeholder' => 'Código de referencia', 'class' => 'form-control input-sm')) !!}
         </div>
-        <div class="form-group {{ ($errors->has('date') ? 'has-error' : '') }}">
-            @if ($errors->has('date'))
-                <label class="control-label" for="date">
+        <div class="form-group {{ ($errors->has('pay_date') ? 'has-error' : '') }}">
+            @if ($errors->has('pay_date'))
+                <label class="control-label" for="pay_date">
                     <ul>
-                        @foreach($errors->get('date') as $error)
+                        @foreach($errors->get('pay_date') as $error)
                             <li>{!! $error !!}</li>
                         @endforeach
                     </ul>
                 </label>
             @endif
-            {!! Form::date('date', (isset($date) ? $date : old('date')), array('placeholder' => 'Fecha', 'class' => 'form-control input-sm')) !!}
+            {!! Form::date('pay_date', (isset($pay_date) ? $pay_date : old('pay_date')), array('placeholder' => 'Fecha', 'class' => 'form-control input-sm')) !!}
         </div>
         <div class="form-group {{ ($errors->has('competitor_id') ? 'has-error' : '') }}">
             @if ($errors->has('competitor_id'))
