@@ -14,15 +14,25 @@ class CompetitorDataTable extends BaseDataTable
 			'Tipo',
 			'Acciones'
 		];
+
+		if (Entrust::hasRole('director') && request()->route()->getName() == 'pluranza.competitors.by-academy') {
+			$array = array_slice($this->columns, 0, count($this->columns) - 1, true);
+			array_push($array, 'Precio');
+			array_push($array, 'Acciones');
+			$this->columns = $array;
+		}
+
 		$this->defaultConfig();
 		$this->setRoute('pluranza.competitors.api.list');
 		$actionRoutes = ['show' => 'pluranza.competitors.show'];
 		$actions = ['show'];
 
 		if (Entrust::hasRole(['admin', 'director'])) {
-			$actionRoutes['edit']     = 'pluranza.competitors.edit';
-			$actionRoutes['delete']    = 'pluranza.competitors.delete';
-			$actions = array_merge($actions, ['edit', 'delete']);
+			if (Entrust::hasRole('admin') || request()->route()->getName() == 'pluranza.competitors.by-academy') {
+				$actions = array_merge($actions, ['edit', 'delete']);
+				$actionRoutes['edit'] = 'pluranza.competitors.edit';
+				$actionRoutes['delete'] = 'pluranza.competitors.delete';
+			}
 		}
 		$this->setDefaultActions($actions);
 		$this->setDefaultActionRoutes($actionRoutes);
@@ -30,8 +40,10 @@ class CompetitorDataTable extends BaseDataTable
 
 	public function setBodyTableSettings()
 	{
-		$this->collection->searchColumns('Nombre', 'Categoría', 'Nivel', 'Tipo', 'Precio');
-		$this->collection->orderColumns('Nombre', 'Categoría', 'Nivel', 'Tipo', 'Precio');
+		$filters = $this->columns;
+		unset($filters[count($filters) - 1]);
+		$this->collection->searchColumns($filters);
+		$this->collection->orderColumns($filters);
 
 		$this->collection->addColumn('Nombre', function($model)
 		{
@@ -53,10 +65,11 @@ class CompetitorDataTable extends BaseDataTable
 			return $model->competitionType->name;
 		});
 
-		$this->collection->addColumn('Precio', function($model)
-		{
-			return $model->competitionCategory->priceBs;
-		});
+		if (Entrust::hasRole('director') && request()->route()->getName() == 'pluranza.competitors.by-academy') {
+			$this->collection->addColumn('Precio', function ($model) {
+				return $model->competitionCategory->priceBs;
+			});
+		}
 	}
 
 	public function getByAcademyTable($params = [])
