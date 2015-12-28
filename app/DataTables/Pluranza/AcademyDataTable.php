@@ -43,6 +43,11 @@ class AcademyDataTable extends BaseDataTable
 			return '<img src="' . $model->logo->url('thumb') . '" alt="' . $model->name . '">';
 		});
 
+		$this->collection->addColumn('Nombre', function($model)
+		{
+			return $model->name;
+		});
+
 		$this->collection->addColumn('Fundación', function($model)
 		{
 			return $model->foundationFormated;
@@ -55,7 +60,7 @@ class AcademyDataTable extends BaseDataTable
 
 		$this->collection->addColumn('Facebook', function($model)
 		{
-			return '<a href="' . $model->facebook . '">Ir</a>';
+			return ($model->facebook ? '<a href="' . $model->facebook . '">Ir</a>' : 'Sin asignar');
 		});
 
 		$this->collection->addColumn('Estado', function($model)

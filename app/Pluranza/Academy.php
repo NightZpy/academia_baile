@@ -125,7 +125,7 @@ class Academy extends Model implements StaplerableInterface
 		return number_format($this->paid, '2', ',', '.') . ' Bs';
 	}
 
-	public function getFoundationFormatAttribute()
+	public function getFoundationFormatedAttribute()
 	{
 		return ($this->foundation ? $this->foundation->format('d-m-Y') : '--/--/--');
 	}
