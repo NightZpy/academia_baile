@@ -244,7 +244,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		Route::get('por-academia/{id}', ['as' => 'pluranza.competitors.by-academy', 'uses' => 'CompetitorController@byAcademy']);
 		// -------------- API's --------------------
 		Route::get('api/lista', ['as' => 'pluranza.competitors.api.list', 'uses' => 'CompetitorController@apiList']);
-		Route::get('api/lista/{id}', ['as' => 'pluranza.competitors.api.by-academy', 'uses' => 'CompetitorController@apiByAcademyList']);
+		Route::get('api/lista/por-academia/{id}', ['as' => 'pluranza.competitors.api.by-academy', 'uses' => 'CompetitorController@apiByAcademyList']);
 
 		Route::group(['middleware' => ['role:admin|director']], function () {
 			Route::get('nueva/', ['as' => 'pluranza.competitors.new', 'uses' => 'CompetitorController@create']);

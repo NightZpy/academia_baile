@@ -15,7 +15,11 @@ class CompetitorDataTable extends BaseDataTable
 			'Acciones'
 		];
 
-		if (Entrust::hasRole('director') && request()->route()->getName() == 'pluranza.competitors.by-academy') {
+		if (Entrust::hasRole('director') &&
+			(
+				request()->route()->getName() == 'pluranza.competitors.by-academy' ||
+				request()->route()->getName() == 'pluranza.competitors.api.by-academy')
+			) {
 			$array = array_slice($this->columns, 0, count($this->columns) - 1, true);
 			array_push($array, 'Precio');
 			array_push($array, 'Acciones');
@@ -28,7 +32,9 @@ class CompetitorDataTable extends BaseDataTable
 		$actions = ['show'];
 
 		if (Entrust::hasRole(['admin', 'director'])) {
-			if (Entrust::hasRole('admin') || request()->route()->getName() == 'pluranza.competitors.by-academy') {
+			if (Entrust::hasRole('admin') ||
+				request()->route()->getName() == 'pluranza.competitors.by-academy' ||
+				request()->route()->getName() == 'pluranza.competitors.api.by-academy') {
 				$actions = array_merge($actions, ['edit', 'delete']);
 				$actionRoutes['edit'] = 'pluranza.competitors.edit';
 				$actionRoutes['delete'] = 'pluranza.competitors.delete';
@@ -65,7 +71,7 @@ class CompetitorDataTable extends BaseDataTable
 			return $model->competitionType->name;
 		});
 
-		if (Entrust::hasRole('director') && request()->route()->getName() == 'pluranza.competitors.by-academy') {
+		if (Entrust::hasRole('director') && request()->route()->getName() == 'pluranza.competitors.api.by-academy') {
 			$this->collection->addColumn('Precio', function ($model) {
 				return $model->competitionCategory->priceBs;
 			});
