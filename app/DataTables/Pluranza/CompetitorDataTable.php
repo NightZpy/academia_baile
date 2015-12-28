@@ -2,6 +2,7 @@
 namespace App\DataTables\Pluranza;
 
 use App\DataTables\BaseDataTable;
+use Entrust;
 
 class CompetitorDataTable extends BaseDataTable
 {
@@ -15,13 +16,16 @@ class CompetitorDataTable extends BaseDataTable
 			'Acciones'
 		];
 		$this->defaultConfig();
-		$this->setDefaultActions(['edit', 'delete']);
 		$this->setRoute('pluranza.competitors.api.list');
-		$actionRoutes = [
-			'show'      => 'pluranza.competitors.show',
-			'edit'      => 'pluranza.competitors.edit',
-			'delete'    => 'pluranza.competitors.delete'
-		];
+		$actionRoutes = ['show' => 'pluranza.competitors.show'];
+		$actions = ['show'];
+
+		if (Entrust::hasRole('admin', 'director')) {
+			$actionRoutes['edit']     = 'pluranza.competitors.edit';
+			$actionRoutes['delete']    = 'pluranza.competitors.delete';
+			$actions = array_merge($actions, ['edit', 'delete']);
+		}
+		$this->setDefaultActions($actions);
 		$this->setDefaultActionRoutes($actionRoutes);
 	}
 

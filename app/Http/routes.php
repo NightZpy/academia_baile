@@ -135,8 +135,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
 	Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 
 		/*
-	* ---------- Academies ----------
-	*/
+		* ---------- Academies ----------
+		*/
 		Route::group(['prefix' => 'academias'], function () {
 			Route::delete('{id}', ['as' => 'pluranza.academies.delete', 'uses' => 'Academy@destroy']);
 		});
@@ -172,7 +172,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
 			Route::get('api/lista', ['as' => 'pluranza.competition-categories.api.list', 'uses' => 'CompetitionCategoryController@apiList']);
 			Route::get('api/lista/por-categoria/{id}', ['as' => 'pluranza.competition-categories.api.by-category', 'uses' => 'CompetitionCategoryController@apiByCategoryList']);
 			Route::get('api/lista/por-nivel/{id}', ['as' => 'pluranza.competition-categories.api.by-level', 'uses' => 'CompetitionCategoryController@apiByLevelList']);
-
 		});
 	});
 });
@@ -205,6 +204,15 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 	});
 
 	/*
+		* ---------- Comptition Category ----------
+		 */
+	Route::group(['prefix' => 'categorias-en-competencia', 'middleware' => ['role:admin|director']], function () {
+		// -------------- API's --------------------
+		Route::get('api/lista/por-categoria/{id}', ['as' => 'pluranza.competition-categories.api.by-category', 'uses' => 'CompetitionCategoryController@apiByCategoryList']);
+		Route::get('api/lista/por-nivel/{id}', ['as' => 'pluranza.competition-categories.api.by-level', 'uses' => 'CompetitionCategoryController@apiByLevelList']);
+	});
+
+	/*
 	* ---------- Dancers ----------
 	*/
 	Route::group(['prefix' => 'bailarines'], function () {
@@ -215,7 +223,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		Route::get('{id}', ['as' => 'pluranza.dancers.by-academy', 'uses' => 'DancerController@byAcademy']);
 		Route::get('api/lista/{id}', ['as' => 'pluranza.dancers.api.by-academy', 'uses' => 'DancerController@apiByAcademyList']);
 
-		Route::group(['prefix' => 'bailarines', 'middleware' => ['role:admin|director']], function () {
+		Route::group(['middleware' => ['role:admin|director']], function () {
 			Route::get('nuevo/{id}', ['as' => 'pluranza.dancers.new', 'uses' => 'DancerController@create']);
 			Route::post('/', ['as' => 'pluranza.dancers.store', 'uses' => 'DancerController@store']);
 			Route::get('editar/{id}', ['as' => 'pluranza.dancers.edit', 'uses' => 'DancerController@edit']);
@@ -235,7 +243,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		Route::get('api/lista', ['as' => 'pluranza.competitors.api.list', 'uses' => 'CompetitorController@apiList']);
 		Route::get('api/lista/{id}', ['as' => 'pluranza.competitors.api.by-academy', 'uses' => 'CompetitorController@apiByAcademyList']);
 
-		Route::group(['prefix' => 'bailarines', 'middleware' => ['role:admin|director']], function () {
+		Route::group(['middleware' => ['role:admin|director']], function () {
 			Route::get('nueva/{id}', ['as' => 'pluranza.competitors.new', 'uses' => 'CompetitorController@create']);
 			Route::post('/', ['as' => 'pluranza.competitors.store', 'uses' => 'CompetitorController@store']);
 			Route::get('editar/{id}', ['as' => 'pluranza.competitors.edit', 'uses' => 'CompetitorController@edit']);
@@ -249,7 +257,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
     */
 	Route::group(['prefix' => 'pagos'], function () {
 
-		Route::group(['prefix' => 'bailarines', 'middleware' => ['role:admin']], function () {
+		Route::group(['middleware' => ['role:admin']], function () {
 			Route::get('/', ['as' => 'pluranza.payments.home', 'uses' => 'PaymentController@index']);
 			Route::get('confirmar/{id}', ['as' => 'pluranza.payments.confirm', 'uses' => 'PaymentController@confirm']);
 			Route::get('rechazar/{id}', ['as' => 'pluranza.payments.refuse', 'uses' => 'PaymentController@refuse']);
@@ -257,7 +265,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 			Route::get('api/lista', ['as' => 'pluranza.payments.api.list', 'uses' => 'PaymentController@apiList']);
 		});
 
-		Route::group(['prefix' => 'bailarines', 'middleware' => ['role:admin|director']], function () {
+		Route::group(['middleware' => ['role:admin|director']], function () {
 			Route::get('{id}', ['as' => 'pluranza.payments.by-academy', 'uses' => 'PaymentController@byAcademy']);
 			Route::get('pagar/{id}', ['as' => 'pluranza.payments.new', 'uses' => 'PaymentController@create']);
 			Route::post('/', ['as' => 'pluranza.payments.store', 'uses' => 'PaymentController@store']);

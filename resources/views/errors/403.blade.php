@@ -30,7 +30,7 @@
                         <span class="ct-404error ct-u-colorMotive">
                             <span class="animated activate bounce" data-fx="bounce" data-time="250">4</span>
                             <span class="animated activate bounce" data-fx="bounce" data-time="300">0</span>
-                            <span class="animated activate bounce" data-fx="bounce" data-time="350">4</span>
+                            <span class="animated activate bounce" data-fx="bounce" data-time="350">3</span>
                         </span>
                         <h4 class="text-uppercase animated ct-u-colorGrey" data-fx="fadeInUp" data-time="400">Est?p?ina no puede ser encontrada.</h4>
                         <a href="{{ route('pluranza.home') }}" class="ct-js-btnScroll btn btn-primary ct-u-paddingTop10">Volver a bailar a tiempo</a>
