@@ -109,11 +109,10 @@ class CategoryController extends Controller
 
 	/*
 	 * ---------------------- APIs ---------------------
-*/
+    */
 	public function apiList()
 	{
 		if(request()->ajax())
 			return $this->categoryRepository->getAllDataTable();
 	}
-
 }

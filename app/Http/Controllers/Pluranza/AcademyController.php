@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Pluranza;
+use App\Repository\Pluranza\AcademyRepository;
 use App\User;
 use App\Estate;
 use App\Municipality;
@@ -13,6 +14,16 @@ use App\Mailers\AppMailer;
 
 class AcademyController extends Controller
 {
+    protected $academyRepository;
+
+    /**
+     * AcademyController constructor.
+     * @param $academyRepository
+     */
+    public function __construct(AcademyRepository $academyRepository) {
+        $this->academyRepository = $academyRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +31,8 @@ class AcademyController extends Controller
      */
     public function index()
     {
-        //
+        $table = $this->academyRepository->dataTable->getAllTable();
+        return view('pluranza.academies.index')->with(compact('table'));
     }
 
     /**
@@ -123,5 +135,14 @@ class AcademyController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /*
+	 * ---------------------- APIs ---------------------
+    */
+    public function apiList()
+    {
+        if(request()->ajax())
+            return $this->academyRepository->getAllDataTable();
     }
 }

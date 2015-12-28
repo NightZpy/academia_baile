@@ -7,14 +7,19 @@ use App\Repository\BaseRepository;
 
 class AcademyRepository extends BaseRepository {
 
-	protected $academyDataTable;
+	public $dataTable;
 
 	/**
 	 * DancerRepository constructor.
 	 */
 	public function __construct(AcademyDataTable $academyDataTable) {
 		$this->setModel(new Academy);
-		$this->academyDataTable = $academyDataTable;
+		$this->dataTable = $academyDataTable;
+	}
+
+	public function getAllDataTable()
+	{
+		return $this->dataTable->getDefaultTable($this->getAll());
 	}
 }
 

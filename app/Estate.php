@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Pluranza\Academy;
 use Illuminate\Database\Eloquent\Model;
 
 class Estate extends Model
@@ -9,23 +10,23 @@ class Estate extends Model
 	/*
 	* -------------------------- Relations ------------------------
 	*/
-    public function academiesParticipants()
+    public function academies()
     {
-    	return $this->hasMany('App\Pluranza\AcademyParticipant');
+    	return $this->hasMany(Academy::class);
     }
 
     public function municipalities()
     {
-    	return $this->hasMany('App\Municipality');
+    	return $this->hasMany(Municipality::class);
     }
 
     public function parishes()
     {
-    	return $this->hasMany('App\Parish');
+    	return $this->hasMany(Parish::class);
     }      
 
 	public function cities()
     {
-    	return $this->hasMany('App\City');
+    	return $this->hasMany(City::class);
     } 
 }

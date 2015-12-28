@@ -2,6 +2,11 @@
 
 namespace App\Pluranza;
 
+use App\City;
+use App\Estate;
+use App\Municipality;
+use App\Parish;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
@@ -48,32 +53,37 @@ class Academy extends Model implements StaplerableInterface
 
     public function estate()
     {
-    	return $this->belongsTo('App\Estate');
+    	return $this->belongsTo(Estate::class);
     }
 
     public function municipality()
     {
-    	return $this->belongsTo('App\Municipality');
+    	return $this->belongsTo(Municipality::class);
     }
 
     public function parish()
     {
-    	return $this->belongsTo('App\Parish');
+    	return $this->belongsTo(Parish::class);
     }      
 
 	public function city()
     {
-    	return $this->belongsTo('App\City');
+    	return $this->belongsTo(City::class);
     }
 
 	public function user()
 	{
-		return $this->belongsTo('App\User');
+		return $this->belongsTo(User::class);
 	}
 
 	public function dancers()
 	{
-		return $this->hasMany('App\Pluranza\Dancer');
+		return $this->hasMany(Dancer::class);
+	}
+
+	public function director()
+	{
+		return $this->hasOne(Dancer::class)->whereDirector(1);
 	}
 
 	/*
@@ -113,6 +123,11 @@ class Academy extends Model implements StaplerableInterface
 	public function getPaidBsAttribute()
 	{
 		return number_format($this->paid, '2', ',', '.') . ' Bs';
+	}
+
+	public function getFoundationFormatedAttribute()
+	{
+		return ($this->foundation ? $this->foundation->format('d-m-Y') : '--/--/--');
 	}
 
 
