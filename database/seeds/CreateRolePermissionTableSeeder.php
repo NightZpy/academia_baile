@@ -200,34 +200,6 @@ class CreateRolePermission extends Seeder
         $showPayment->display_name = "Ver pagos";
         $showPayment->save();
 
-        $editPayment = new Permission();
-        $editPayment->name = 'edit-payment';
-        $editPayment->display_name = "Editar pagos";
-        $editPayment->save();
-
-        $deletePayment = new Permission();
-        $deletePayment->name = 'delete-payment';
-        $deletePayment->display_name = "Eliminar pagos";
-        $deletePayment->save();
-
-        /*
-         * --------------- Payment ---------------------
-         */
-        $homeOwnPayment = new Permission();
-        $homeOwnPayment->name = 'home-own-payment';
-        $homeOwnPayment->display_name = "Ver pagos de su academia";
-        $homeOwnPayment->save();
-
-        $addPayment = new Permission();
-        $addPayment->name = 'add-payment';
-        $addPayment->display_name = "Agregar pagos";
-        $addPayment->save();
-
-        $showPayment = new Permission();
-        $showPayment->name = 'show-payment';
-        $showPayment->display_name = "Ver pagos";
-        $showPayment->save();
-
 	    $showOwnPayment = new Permission();
 	    $showOwnPayment->name = 'show-own-payment';
 	    $showOwnPayment->display_name = "Ver pagos propios";
