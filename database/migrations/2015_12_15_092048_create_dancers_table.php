@@ -27,6 +27,7 @@ class CreateDancersTable extends Migration
             $table->string('instagram', 128)->nullable()->unique();
             $table->boolean('independent')->default(false);
             $table->boolean('director')->default(false);
+            $table->text('biography')->nullable();
             $table->integer('academy_id')->nullable();
             //$table->foreign('academy_id')->references('id')->on('academies');
             $table->timestamps();
