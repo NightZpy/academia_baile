@@ -2,6 +2,7 @@
 namespace App\DataTables\Pluranza;
 
 use App\DataTables\BaseDataTable;
+use Entrust;
 
 class PaymentDataTable extends BaseDataTable
 {
@@ -16,17 +17,23 @@ class PaymentDataTable extends BaseDataTable
 			'Acciones'
 		];
 		$this->defaultConfig();
-		$this->setDefaultActions(['edit', 'delete', 'confirm', 'refuse']);
 		$this->setRoute('pluranza.payments.api.list');
 		$this->setOrderColumn(2);
 		$this->setOrderType('desc');
+
 		$actionRoutes = [
-			'show'      => 'pluranza.payments.show',
 			'edit'      => 'pluranza.payments.edit',
 			'delete'    => 'pluranza.payments.delete',
-			'confirm'   => 'pluranza.payments.confirm',
-			'refuse'   => 'pluranza.payments.refuse'
 		];
+		$actions = ['edit', 'delete'];
+
+		if (Entrust::hasRole('admin')) {
+			$actionRoutes['confirm']    = 'pluranza.payments.confirm';
+			$actionRoutes['refuse']     = 'pluranza.payments.refuse';
+			$actions = array_merge($actions, ['confirm', 'refuse']);
+		}
+
+		$this->setDefaultActions($actions);
 		$this->setDefaultActionRoutes($actionRoutes);
 	}
 
@@ -37,7 +44,7 @@ class PaymentDataTable extends BaseDataTable
 
 		$this->collection->addColumn('Voucher', function($model)
 		{
-			return '<img src="' . $model->voucher->url('thumb') . '" alt="' . ($model->competitor ? $model->competitor->name : $model->academy->name) . '">';
+			return '<a target="_blank" href="' . $model->voucher->url() . '"><img src="' . $model->voucher->url('thumb') . '" alt="' . ($model->competitor ? $model->competitor->name : $model->academy->name) . '"></a>';
 		});
 
 		$this->collection->addColumn('Monto', function($model)

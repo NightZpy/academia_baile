@@ -40,7 +40,7 @@ class SessionController extends Controller
             $route = 'home';
             if ($user->academy)
                 $route = 'pluranza.home';
-            return redirect()->route($route);
+            return redirect()->intended(route($route));
         }
         flash('No pudo ingresar, intente de nuevo!');
         return redirect()->route('users.login');

@@ -13,10 +13,38 @@
                 <div class="col-lg-8 col-md-7 col-sm-6">
                     <ul class="nav navbar-nav navbar-right ct-navbar--fadeIn">
                         <li class="onepage"><a href="{{ route('pluranza.home') }}" class="ct-js-btnScroll">Inicio</a></li>
-                        <li class="onepage"><a href="{{ route('pluranza.academies.edit', $academy->id) }}" class="ct-js-btnScroll">Editar</a></li>
-                        <li class="onepage"><a href="{{ route('pluranza.dancers.by-academy', $academy->id) }}" class="ct-js-btnScroll">Miembros</a></li>
-                        <li class="onepage"><a href="{{ route('pluranza.competitors.by-academy', $academy->id) }}" class="ct-js-btnScroll">Competidores</a></li>
-                        <li class="onepage"><a href="#" class="ct-js-btnScroll">Resultados</a></li>
+                        @role('admin')
+                        <li class="dropdown" role="presentation">
+                            <a href="#" class="dropdown-toggle">Academias<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="onepage"><a href="{{ route('pluranza.academies.home') }}" class="ct-js-btnScroll">Todas</a></li>
+                                <li class="onepage"><a href="{{ route('pluranza.dancers.home') }}" class="ct-js-btnScroll">Bailarines</a></li>
+                                <li class="onepage"><a href="{{ route('pluranza.competitors.home') }}" class="ct-js-btnScroll">Competidores</a></li>
+                                <li class="onepage"><a href="{{ route('pluranza.payments.home') }}" class="ct-js-btnScroll">Pagos</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" role="presentation">
+                            <a href="#" class="dropdown-toggle">Configuración<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="onepage"><a href="{{ route('categories.home') }}" class="ct-js-btnScroll">Categorías</a></li>
+                                <li class="onepage"><a href="{{ route('levels.home') }}" class="ct-js-btnScroll">Niveles</a></li>
+                                <li class="onepage"><a href="{{ route('pluranza.competition-types.home') }}" class="ct-js-btnScroll">Tipos de competencias</a></li>
+                                <li class="onepage"><a href="{{ route('pluranza.competition-categories.home') }}" class="ct-js-btnScroll">Categorías en competencia</a></li>
+                                <li class="onepage"><a href="#" class="ct-js-btnScroll">Reglas</a></li>
+                            </ul>
+                        </li>
+                        @endrole
+
+                        @role('director')
+                            <li class="onepage"><a href="{{ route('pluranza.academies.edit', $academy->id) }}" class="ct-js-btnScroll">Editar</a></li>
+                            <li class="onepage"><a href="{{ route('pluranza.dancers.by-academy', $academy->id) }}" class="ct-js-btnScroll">Miembros</a></li>
+                            <li class="onepage"><a href="{{ route('pluranza.competitors.by-academy', $academy->id) }}" class="ct-js-btnScroll">Competidores</a></li>
+                        @endrole
+
+                        @role('dancer')
+
+                        @endrole
+                        {{--<li class="onepage"><a href="#" class="ct-js-btnScroll">Resultados</a></li>--}}
                     </ul>
                     <div class="clearfix"></div>
                 </div>

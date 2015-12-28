@@ -15,6 +15,7 @@ class CreateCompetitorsTable extends Migration
         Schema::create('competitors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('song', 128)->nullable();
             $table->integer('academy_id')->unsigned();
             $table->integer('competition_category_id')->unsigned();
             $table->integer('event_edition_id')->unsigned();
