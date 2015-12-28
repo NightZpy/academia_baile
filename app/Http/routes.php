@@ -44,7 +44,7 @@ Route::get('/', [ 'as' => 'home', function () {
 * ---------- Estates ----------
 */
 Route::get('estados', function () {
-	return response()->json(\App\Estate::all()->lists('estado', 'id_estado'));
+	return response()->json(\App\Estate::all()->lists('name', 'id'));
 });
 
 Route::get('municipios/por-estado/{id}', function ($id) {
@@ -201,6 +201,9 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		Route::get('editar/{id}', ['middleware' => ['role:admin|director'], 'as' => 'pluranza.academies.edit', 'uses' => 'AcademyController@edit']);
 
 		Route::patch('actualizar/{id}', ['middleware' => ['role:admin|director'], 'as' => 'pluranza.academies.update', 'uses' => 'AcademyController@update']);
+
+		// -------------- API's --------------------
+		Route::get('api/lista', ['as' => 'pluranza.academies.api.list', 'uses' => 'AcademyController@apiList']);
 	});
 
 	/*
