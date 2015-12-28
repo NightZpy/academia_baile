@@ -144,10 +144,10 @@ class DancerController extends Controller
     /*
      * ---------------------- APIs ---------------------
      */
-    public function apiList($id)
+    public function apiList()
     {
         if(request()->ajax())
-            return $this->dancerRepository->dataTable->getDefaultTableForAll();
+            return $this->dancerRepository->getAllDataTable();
     }
 
     public function apiByAcademyList($id)

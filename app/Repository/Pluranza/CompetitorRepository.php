@@ -10,8 +10,6 @@ use App\Repository\BaseRepository;
 
 class CompetitorRepository extends BaseRepository {
 
-	public $dataTable;
-
 	protected $competitionCategoryRepository;
 
 	/**
@@ -41,11 +39,6 @@ class CompetitorRepository extends BaseRepository {
 		$competitor->save();
 		$competitor->dancers()->sync($data['dancer_id']);
 		return $competitor;
-	}
-
-	public function getAllDataTable()
-	{
-		return $this->dataTable->getDefaultTable($this->getAll());
 	}
 
 	public function getByAcademy($id)

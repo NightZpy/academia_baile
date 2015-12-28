@@ -3,6 +3,7 @@ namespace App\Repository;
 
 class BaseRepository {
 	protected $model;
+	public $dataTable;
 
 	public function setModel($model)
 	{
@@ -34,6 +35,11 @@ class BaseRepository {
 				return $this->getAll()->lists('nombre', 'id');
 			return $this->getAll()->lists('name', 'id');
 		}
+	}
+
+	public function getAllDataTable()
+	{
+		return $this->dataTable->getDefaultTable($this->getAll());
 	}
 
 	public function delete($id)

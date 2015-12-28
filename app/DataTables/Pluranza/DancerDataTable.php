@@ -1,6 +1,7 @@
 <?php
 namespace App\DataTables\Pluranza;
 use App\DataTables\BaseDataTable;
+use Entrust;
 
 class DancerDataTable extends BaseDataTable
 {
@@ -10,24 +11,31 @@ class DancerDataTable extends BaseDataTable
 			'Nombre',
 			'Edad',
 			'Email',
-			/*'Categoría',
-			'Nivel',*/
 			'Acciones'
 		];
+
 		$this->defaultConfig();
 		$this->setRoute('pluranza.dancers.api.list');
-		$actionRoutes = [
-			'show'      => 'pluranza.dancers.show',
-			'edit'      => 'pluranza.dancers.edit',
-			'delete'    => 'pluranza.dancers.delete'
-		];
+		$actionRoutes = ['show' => 'pluranza.dancers.show'];
+		$actions = ['show'];
+
+		if (Entrust::hasRole(['admin', 'director'])) {
+			if (Entrust::hasRole('admin') ||
+				request()->route()->getName() == 'pluranza.dancers.by-academy' ||
+				request()->route()->getName() == 'pluranza.dancers.api.by-academy') {
+				$actions = array_merge($actions, ['edit', 'delete']);
+				$actionRoutes['edit'] = 'pluranza.dancers.edit';
+				$actionRoutes['delete'] = 'pluranza.dancers.delete';
+			}
+		}
+		$this->setDefaultActions($actions);
 		$this->setDefaultActionRoutes($actionRoutes);
 	}
 
 	public function setBodyTableSettings()
 	{
-		$this->collection->searchColumns('Nombre', 'Edad', 'Email'/*, 'Categoría', 'Nivel'*/);
-		$this->collection->orderColumns('Nombre', 'Edad', 'Email'/*, 'Categoría', 'Nivel'*/);
+		$this->collection->searchColumns('Nombre', 'Edad', 'Email');
+		$this->collection->orderColumns('Nombre', 'Edad', 'Email');
 
 		$this->collection->addColumn('Foto', function($model)
 		{
@@ -48,16 +56,6 @@ class DancerDataTable extends BaseDataTable
 		{
 			return $model->email;
 		});
-
-		/*$this->collection->addColumn('Categoría', function($model)
-		{
-			return 'categoría';
-		});
-
-		$this->collection->addColumn('Nivel', function($model)
-		{
-			return 'nivel';
-		});*/
 	}
 
 	public function getByAcademyTable($params = [])

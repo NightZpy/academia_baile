@@ -221,7 +221,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 	Route::group(['prefix' => 'bailarines'], function () {
 
 		Route::get('ver/{id}', ['as' => 'pluranza.dancers.show', 'uses' => 'DancerController@show']);
-		Route::get('/', ['middleware' => ['role:admin'], 'as' => 'pluranza.dancers.home', 'uses' => 'DancerController@index']);
+		Route::get('/', ['as' => 'pluranza.dancers.home', 'uses' => 'DancerController@index']);
 		Route::get('por-academia/{id}', ['as' => 'pluranza.dancers.by-academy', 'uses' => 'DancerController@byAcademy']);
 
 		// -------------- API's --------------------
@@ -245,6 +245,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		Route::get('ver/{id}', ['as' => 'pluranza.competitors.show', 'uses' => 'CompetitorController@show']);
 		Route::get('/', ['as' => 'pluranza.competitors.home', 'uses' => 'CompetitorController@index']);
 		Route::get('por-academia/{id}', ['as' => 'pluranza.competitors.by-academy', 'uses' => 'CompetitorController@byAcademy']);
+
 		// -------------- API's --------------------
 		Route::get('api/lista', ['as' => 'pluranza.competitors.api.list', 'uses' => 'CompetitorController@apiList']);
 		Route::get('api/lista/por-academia/{id}', ['as' => 'pluranza.competitors.api.by-academy', 'uses' => 'CompetitorController@apiByAcademyList']);

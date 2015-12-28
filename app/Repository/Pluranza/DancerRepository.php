@@ -8,8 +8,6 @@ use App\Repository\BaseRepository;
 
 class DancerRepository extends BaseRepository {
 
-	public $dataTable;
-
 	/**
 	 * DancerRepository constructor.
 	 */
