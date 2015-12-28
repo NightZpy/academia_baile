@@ -124,10 +124,20 @@ class CreateRolePermission extends Seeder
         $editDancer->display_name = "Editar bailarín";
         $editDancer->save();
 
+        $editOwnDancer = new Permission();
+        $editOwnDancer->name = 'edit-own-dancer';
+        $editOwnDancer->display_name = "Editar sus bailarines";
+        $editOwnDancer->save();
+
         $deleteDancer = new Permission();
         $deleteDancer->name = 'delete-dancer';
         $deleteDancer->display_name = "Eliminar bailarín";
         $deleteDancer->save();
+
+        $deleteOwnDancer = new Permission();
+        $deleteOwnDancer->name = 'delete-own-dancer';
+        $deleteOwnDancer->display_name = "Eliminar sus bailarines";
+        $deleteOwnDancer->save();
 
         /*
          * --------------- Competitor ---------------------
@@ -147,43 +157,30 @@ class CreateRolePermission extends Seeder
         $showCompetitor->display_name = "Ver competidor";
         $showCompetitor->save();
 
+        $showOwnCompetitor = new Permission();
+        $showOwnCompetitor->name = 'show-own-competitor';
+        $showOwnCompetitor->display_name = "Ver su competidor";
+        $showOwnCompetitor->save();
+
         $editCompetitor = new Permission();
         $editCompetitor->name = 'edit-competitor';
         $editCompetitor->display_name = "Editar competidor";
         $editCompetitor->save();
+
+        $editOwnCompetitor = new Permission();
+        $editOwnCompetitor->name = 'edit-own-competitor';
+        $editOwnCompetitor->display_name = "Editar su competidor";
+        $editOwnCompetitor->save();
 
         $deleteCompetitor = new Permission();
         $deleteCompetitor->name = 'delete-competitor';
         $deleteCompetitor->display_name = "Eliminar competidor";
         $deleteCompetitor->save();
 
-        /*
-         * --------------- Payment ---------------------
-         */
-        $homeOwnPayment = new Permission();
-        $homeOwnPayment->name = 'home-own-payment';
-        $homeOwnPayment->display_name = "Ver pagos de su academia";
-        $homeOwnPayment->save();
-
-        $addPayment = new Permission();
-        $addPayment->name = 'add-payment';
-        $addPayment->display_name = "Agregar pagos";
-        $addPayment->save();
-
-        $showPayment = new Permission();
-        $showPayment->name = 'show-payment';
-        $showPayment->display_name = "Ver pagos";
-        $showPayment->save();
-
-        $editPayment = new Permission();
-        $editPayment->name = 'edit-payment';
-        $editPayment->display_name = "Editar pagos";
-        $editPayment->save();
-
-        $deletePayment = new Permission();
-        $deletePayment->name = 'delete-payment';
-        $deletePayment->display_name = "Eliminar pagos";
-        $deletePayment->save();
+        $deleteOwnCompetitor = new Permission();
+        $deleteOwnCompetitor->name = 'delete-own-competitor';
+        $deleteOwnCompetitor->display_name = "Eliminar su competidor";
+        $deleteOwnCompetitor->save();
 
         /*
          * --------------- Payment ---------------------
@@ -212,6 +209,49 @@ class CreateRolePermission extends Seeder
         $deletePayment->name = 'delete-payment';
         $deletePayment->display_name = "Eliminar pagos";
         $deletePayment->save();
+
+        /*
+         * --------------- Payment ---------------------
+         */
+        $homeOwnPayment = new Permission();
+        $homeOwnPayment->name = 'home-own-payment';
+        $homeOwnPayment->display_name = "Ver pagos de su academia";
+        $homeOwnPayment->save();
+
+        $addPayment = new Permission();
+        $addPayment->name = 'add-payment';
+        $addPayment->display_name = "Agregar pagos";
+        $addPayment->save();
+
+        $showPayment = new Permission();
+        $showPayment->name = 'show-payment';
+        $showPayment->display_name = "Ver pagos";
+        $showPayment->save();
+
+	    $showOwnPayment = new Permission();
+	    $showOwnPayment->name = 'show-own-payment';
+	    $showOwnPayment->display_name = "Ver pagos propios";
+	    $showOwnPayment->save();
+
+        $editPayment = new Permission();
+        $editPayment->name = 'edit-payment';
+        $editPayment->display_name = "Editar pagos";
+        $editPayment->save();
+
+	    $editOwnPayment = new Permission();
+	    $editOwnPayment->name = 'edit-own-payment';
+	    $editOwnPayment->display_name = "Editar pagos propios";
+	    $editOwnPayment->save();
+
+        $deletePayment = new Permission();
+        $deletePayment->name = 'delete-payment';
+        $deletePayment->display_name = "Eliminar pagos";
+        $deletePayment->save();
+
+	    $deleteOwnPayment = new Permission();
+	    $deleteOwnPayment->name = 'delete-own-payment';
+	    $deleteOwnPayment->display_name = "Eliminar pagos propios";
+	    $deleteOwnPayment->save();
 
         /*
          * --------------- Result ---------------------
@@ -269,6 +309,11 @@ class CreateRolePermission extends Seeder
 	    $editAcademy->display_name = "Editar academias";
 	    $editAcademy->save();
 
+        $editOwnAcademy = new Permission();
+        $editOwnAcademy->name = 'edit-own-academy';
+        $editOwnAcademy->display_name = "Editar su academia";
+        $editOwnAcademy->save();
+
 	    $deleteAcademy = new Permission();
 	    $deleteAcademy->name = 'delete-academy';
 	    $deleteAcademy->display_name = "Eliminar academias";
@@ -282,5 +327,12 @@ class CreateRolePermission extends Seeder
 		    $confirmPay, $refusePay, $addPayment, $editPayment, $deletePayment, $showPayment,
 		    $homeAcademy, $showAcademy, $addAcademy, $editAcademy, $deleteAcademy,
 	    ]);
+
+        $director->attachPermissions([
+            $addDancer, $editOwnDancer, $deleteOwnDancer, $homeOwnDancer,
+            $homeOwnAcademy, $editOwnAcademy,
+            $addCompetitor, $editOwnCompetitor, $deleteOwnCompetitor,
+            $addPayment, $editOwnPayment, $deleteOwnPayment
+        ]);
     }
 }
