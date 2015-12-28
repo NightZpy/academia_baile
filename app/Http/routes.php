@@ -241,13 +241,14 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 	Route::group(['prefix' => 'competidores'], function () {
 		Route::get('ver/{id}', ['as' => 'pluranza.competitors.show', 'uses' => 'CompetitorController@show']);
 		Route::get('/', ['as' => 'pluranza.competitors.home', 'uses' => 'CompetitorController@index']);
-		Route::get('{id}', ['as' => 'pluranza.competitors.by-academy', 'uses' => 'CompetitorController@byAcademy']);
+		Route::get('por-academia/{id}', ['as' => 'pluranza.competitors.by-academy', 'uses' => 'CompetitorController@byAcademy']);
 		// -------------- API's --------------------
 		Route::get('api/lista', ['as' => 'pluranza.competitors.api.list', 'uses' => 'CompetitorController@apiList']);
 		Route::get('api/lista/{id}', ['as' => 'pluranza.competitors.api.by-academy', 'uses' => 'CompetitorController@apiByAcademyList']);
 
 		Route::group(['middleware' => ['role:admin|director']], function () {
-			Route::get('nueva/{id}', ['as' => 'pluranza.competitors.new', 'uses' => 'CompetitorController@create']);
+			Route::get('nueva/', ['as' => 'pluranza.competitors.new', 'uses' => 'CompetitorController@create']);
+			Route::get('por-academia/nueva/{id}', ['as' => 'pluranza.competitors.new.by-academy', 'uses' => 'CompetitorController@createByAcademy']);
 			Route::post('/', ['as' => 'pluranza.competitors.store', 'uses' => 'CompetitorController@store']);
 			Route::get('editar/{id}', ['as' => 'pluranza.competitors.edit', 'uses' => 'CompetitorController@edit']);
 			Route::patch('actualizar/{id}', ['as' => 'pluranza.competitors.update', 'uses' => 'CompetitorController@update']);

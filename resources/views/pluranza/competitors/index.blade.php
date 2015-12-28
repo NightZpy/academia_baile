@@ -3,23 +3,20 @@
 @section('content')
     <section class="ct-u-paddingBottom60 ct-backgroundContent" data-type="color" data-bg-color="#ffffff">
         <div class="container">
-            <div class="row ct-u-paddingTop100">
+            <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 ct-titleBox">
                     <h4 class="text-center text-uppercase ct-u-paddingTop30">
-                        Grupos en competición de: <i>{{ $academy->name }}</i>
+                            Competidores @if(isset($academy)) de <i> {{ $academy->name }}</i> @endif
                     </h4>
-                </div>
-            </div>
-            <div class="row ct-u-paddingTop25">
-                <div class="col-md-10">
-                    <a href="{{ route('competitors', $academy->id) }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-offset-3 col-md-6">
                     @include('partials._flash')
+                    @include('partials._errors')
                 </div>
             </div>
+            @include('pluranza.payments.partials._header')
             <div class="row ct-u-paddingTop5">
                 <div class="col-md-offset-2 col-md-8">
                     @include('partials._table')

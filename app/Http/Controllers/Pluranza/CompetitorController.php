@@ -41,8 +41,9 @@ class CompetitorController extends Controller
      */
     public function index()
     {
+        $competitionTypes = $this->competitionCategoryRepository->getCompetitionTypes();
         $table = $this->competitorRepository->dataTable->getAllTable();
-        return  view('pluranza.competitors.index')->with(compact('table'));
+        return  view('pluranza.competitors.index')->with(compact('table', 'competitionTypes'));
     }
 
     public function byAcademy($id)
@@ -50,7 +51,7 @@ class CompetitorController extends Controller
         $competitionTypes = $this->competitionCategoryRepository->getCompetitionTypes();
         $table = $this->competitorRepository->dataTable->getByAcademyTable([$id]);
         $academy = $this->academyRepository->get($id);
-        return  view('pluranza.competitors.by-academy')->with(compact('table', 'academy', 'competitionTypes'));
+        return  view('pluranza.competitors.index')->with(compact('table', 'academy', 'competitionTypes'));
     }
 
     /**
@@ -58,7 +59,15 @@ class CompetitorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(CreateCompetitorFormRequest $request, $id)
+    public function create(CreateCompetitorFormRequest $request)
+    {
+        $competitionType = $this->competitionTypeRepository->get($request->get('competition_type_id'));
+        $name = $this->competitorRepository->getAutomaticName($competitionType);
+        $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitionType->id);
+        return view('pluranza.competitors.new')->with(compact('categories', 'competitionType', 'name'));
+    }
+
+    public function createByAcademy(CreateCompetitorFormRequest $request, $id)
     {
         $academy = $this->academyRepository->get($id);
         $competitionType = $this->competitionTypeRepository->get($request->get('competition_type_id'));
@@ -66,9 +75,9 @@ class CompetitorController extends Controller
         if (strtolower($competitionType->name) == 'pareja') {
             $masculineDancers = $academy->dancers()->masculine()->lists('name', 'id');
             $femaleDancers = $academy->dancers()
-                                     ->female()
-                                     //->select('dancers.id AS id', DB::raw('CONCAT(dancers.name, " ", dancers.last_name) AS full_name'))
-                                     ->lists('name', 'id');
+                ->female()
+                //->select('dancers.id AS id', DB::raw('CONCAT(dancers.name, " ", dancers.last_name) AS full_name'))
+                ->lists('name', 'id');
             $dancers = ['masculine' => $masculineDancers, 'female' => $femaleDancers];
         } else {
             $dancers = $academy->dancers->lists('fullName', 'id');
@@ -167,10 +176,10 @@ class CompetitorController extends Controller
     /*
      * ---------------------- APIs ---------------------
      */
-    public function apiList($id)
+    public function apiList()
     {
         if(request()->ajax())
-            return $this->competitorRepository->dataTable->getDefaultTableForAll();
+            return $this->competitorRepository->getAllDataTable();
     }
 
     public function apiByAcademyList($id)

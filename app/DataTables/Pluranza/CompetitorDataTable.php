@@ -12,7 +12,6 @@ class CompetitorDataTable extends BaseDataTable
 			'Categoría',
 			'Nivel',
 			'Tipo',
-			'Precio',
 			'Acciones'
 		];
 		$this->defaultConfig();
@@ -20,7 +19,7 @@ class CompetitorDataTable extends BaseDataTable
 		$actionRoutes = ['show' => 'pluranza.competitors.show'];
 		$actions = ['show'];
 
-		if (Entrust::hasRole('admin', 'director')) {
+		if (Entrust::hasRole(['admin', 'director'])) {
 			$actionRoutes['edit']     = 'pluranza.competitors.edit';
 			$actionRoutes['delete']    = 'pluranza.competitors.delete';
 			$actions = array_merge($actions, ['edit', 'delete']);
