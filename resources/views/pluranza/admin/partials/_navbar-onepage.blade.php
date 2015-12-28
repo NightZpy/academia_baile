@@ -39,13 +39,12 @@
                             <li class="onepage"><a href="{{ route('pluranza.academies.edit', $academy->id) }}" class="ct-js-btnScroll">Editar</a></li>
                             <li class="onepage"><a href="{{ route('pluranza.dancers.by-academy', $academy->id) }}" class="ct-js-btnScroll">Miembros</a></li>
                             <li class="onepage"><a href="{{ route('pluranza.competitors.by-academy', $academy->id) }}" class="ct-js-btnScroll">Competidores</a></li>
-                            <li class="onepage"><a href="#" class="ct-js-btnScroll">Resultados</a></li>
                         @endrole
 
                         @role('dancer')
 
                         @endrole
-                        <li class="onepage"><a href="#" class="ct-js-btnScroll">Resultados</a></li>
+                        {{--<li class="onepage"><a href="#" class="ct-js-btnScroll">Resultados</a></li>--}}
                     </ul>
                     <div class="clearfix"></div>
                 </div>
