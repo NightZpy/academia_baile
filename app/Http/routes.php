@@ -189,18 +189,18 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		'uses' => 'PagesController@index'
 	]);
 
-	Route::post('academias', ['middleware' => ['guest', 'role:admin'], 'as' => 'pluranza.academies.store', 'uses' => 'AcademyController@store']);
-
 	/*
 	* ---------- Academies ----------
 	*/
 	Route::group(['prefix' => 'academias'], function () {
 
 		Route::get('/', ['as' => 'pluranza.academies.home', 'uses' => 'AcademyController@index']);
-
+		Route::get('nuevo/{id}', [['middleware' => ['role:admin'], 'as' => 'pluranza.academies.new', 'uses' => 'AcademyController@create']);
+		Route::post('/', ['middleware' => ['guest', 'role:admin'], 'as' => 'pluranza.academies.store', 'uses' => 'AcademyController@store']);
+		Route::get('ver/{id}', ['as' => 'pluranza.academies.show', 'uses' => 'AcademyController@show']);
 		Route::get('editar/{id}', ['middleware' => ['role:admin|director'], 'as' => 'pluranza.academies.edit', 'uses' => 'AcademyController@edit']);
-
 		Route::patch('actualizar/{id}', ['middleware' => ['role:admin|director'], 'as' => 'pluranza.academies.update', 'uses' => 'AcademyController@update']);
+		Route::delete('{id}', ['middleware' => ['role:admin'], 'as' => 'pluranza.academies.delete', 'uses' => 'AcademyController@destroy']);
 
 		// -------------- API's --------------------
 		Route::get('api/lista', ['as' => 'pluranza.academies.api.list', 'uses' => 'AcademyController@apiList']);
