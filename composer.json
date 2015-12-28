@@ -13,7 +13,7 @@
         "chumper/datatable": "dev-develop",
         "felixkiss/uniquewith-validator": "2.*",
         "znck/belongs-to-through": "~2.0",
-        "zizaco/entrust": "dev-laravel-5"
+        "zizaco/entrust": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
