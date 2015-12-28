@@ -39,7 +39,7 @@ class DancerController extends Controller
     {
         $table = $this->dancerRepository->dataTable->getByAcademyTable([$id]);
         $academy = $this->academyRepository->get($id);
-        return  view('pluranza.dancers.by-academy')->with(compact('table', 'academy'));
+        return  view('pluranza.dancers.index')->with(compact('table', 'academy'));
     }
 
     /**
@@ -49,10 +49,14 @@ class DancerController extends Controller
      */
     public function create($id)
     {
+
+    }
+
+    public function createByAcademy($id)
+    {
         $academy = $this->academyRepository->get($id);
         return view('pluranza.dancers.new')->with(compact('academy'));
     }
-
     /**
      * Store a newly created resource in storage.
      *

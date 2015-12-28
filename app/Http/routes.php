@@ -221,13 +221,16 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 	Route::group(['prefix' => 'bailarines'], function () {
 
 		Route::get('ver/{id}', ['as' => 'pluranza.dancers.show', 'uses' => 'DancerController@show']);
-		Route::get('/', ['as' => 'pluranza.dancers.home', 'uses' => 'DancerController@index']);
+		Route::get('/', ['middleware' => ['role:admin'], 'as' => 'pluranza.dancers.home', 'uses' => 'DancerController@index']);
+		Route::get('por-academia/{id}', ['as' => 'pluranza.dancers.by-academy', 'uses' => 'DancerController@byAcademy']);
+
+		// -------------- API's --------------------
 		Route::get('api/lista', ['as' => 'pluranza.dancers.api.list', 'uses' => 'DancerController@apiList']);
-		Route::get('{id}', ['as' => 'pluranza.dancers.by-academy', 'uses' => 'DancerController@byAcademy']);
-		Route::get('api/lista/{id}', ['as' => 'pluranza.dancers.api.by-academy', 'uses' => 'DancerController@apiByAcademyList']);
+		Route::get('api/lista/por-academia/{id}', ['as' => 'pluranza.dancers.api.by-academy', 'uses' => 'DancerController@apiByAcademyList']);
 
 		Route::group(['middleware' => ['role:admin|director']], function () {
-			Route::get('nuevo/{id}', ['as' => 'pluranza.dancers.new', 'uses' => 'DancerController@create']);
+			Route::get('nuevo/{id}', ['middleware' => ['role:admin'], 'as' => 'pluranza.dancers.new', 'uses' => 'DancerController@create']);
+			Route::get('por-academia/nuevo/{id}', ['as' => 'pluranza.dancers.new.by-academy', 'uses' => 'DancerController@createByAcademy']);
 			Route::post('/', ['as' => 'pluranza.dancers.store', 'uses' => 'DancerController@store']);
 			Route::get('editar/{id}', ['as' => 'pluranza.dancers.edit', 'uses' => 'DancerController@edit']);
 			Route::patch('actualizar/{id}', ['as' => 'pluranza.dancers.update', 'uses' => 'DancerController@update']);
@@ -247,7 +250,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		Route::get('api/lista/por-academia/{id}', ['as' => 'pluranza.competitors.api.by-academy', 'uses' => 'CompetitorController@apiByAcademyList']);
 
 		Route::group(['middleware' => ['role:admin|director']], function () {
-			Route::get('nueva/', ['as' => 'pluranza.competitors.new', 'uses' => 'CompetitorController@create']);
+			Route::get('nueva/', ['middleware' => ['role:admin'], 'as' => 'pluranza.competitors.new', 'uses' => 'CompetitorController@create']);
 			Route::get('por-academia/nueva/{id}', ['as' => 'pluranza.competitors.new.by-academy', 'uses' => 'CompetitorController@createByAcademy']);
 			Route::post('/', ['as' => 'pluranza.competitors.store', 'uses' => 'CompetitorController@store']);
 			Route::get('editar/{id}', ['as' => 'pluranza.competitors.edit', 'uses' => 'CompetitorController@edit']);

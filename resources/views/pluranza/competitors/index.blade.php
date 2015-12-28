@@ -6,7 +6,7 @@
             <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 ct-titleBox">
                     <h4 class="text-center text-uppercase ct-u-paddingTop30">
-                            Competidores @if(isset($academy)) de <i> {{ $academy->name }}</i> @endif
+                        Competidores @if(isset($academy)) de <i> {{ $academy->name }}</i> @endif
                     </h4>
                 </div>
             </div>
