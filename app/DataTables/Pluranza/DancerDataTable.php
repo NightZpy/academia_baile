@@ -10,8 +10,8 @@ class DancerDataTable extends BaseDataTable
 			'Nombre',
 			'Edad',
 			'Email',
-			'Categoría',
-			'Nivel',
+			/*'Categoría',
+			'Nivel',*/
 			'Acciones'
 		];
 		$this->defaultConfig();
@@ -26,12 +26,12 @@ class DancerDataTable extends BaseDataTable
 
 	public function setBodyTableSettings()
 	{
-		$this->collection->searchColumns('Nombre', 'Edad', 'Email', 'Categoría', 'Nivel');
-		$this->collection->orderColumns('Nombre', 'Edad', 'Email', 'Categoría', 'Nivel');
+		$this->collection->searchColumns('Nombre', 'Edad', 'Email'/*, 'Categoría', 'Nivel'*/);
+		$this->collection->orderColumns('Nombre', 'Edad', 'Email'/*, 'Categoría', 'Nivel'*/);
 
 		$this->collection->addColumn('Foto', function($model)
 		{
-			return '<img src="' . $model->photo->url('thumb') . '" alt="' . $model->fullName . '">';
+			return '<a target="_blank" href="' . $model->photo->url() . '"><img src="' . $model->photo->url('thumb') . '" alt="' . $model->fullName . '"></a>';
 		});
 
 		$this->collection->addColumn('Nombre', function($model)
@@ -49,7 +49,7 @@ class DancerDataTable extends BaseDataTable
 			return $model->email;
 		});
 
-		$this->collection->addColumn('Categoría', function($model)
+		/*$this->collection->addColumn('Categoría', function($model)
 		{
 			return 'categoría';
 		});
@@ -57,7 +57,7 @@ class DancerDataTable extends BaseDataTable
 		$this->collection->addColumn('Nivel', function($model)
 		{
 			return 'nivel';
-		});
+		});*/
 	}
 
 	public function getByAcademyTable($params = [])

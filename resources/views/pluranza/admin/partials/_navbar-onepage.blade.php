@@ -30,6 +30,7 @@
                                 <li class="onepage"><a href="{{ route('levels.home') }}" class="ct-js-btnScroll">Niveles</a></li>
                                 <li class="onepage"><a href="{{ route('pluranza.competition-types.home') }}" class="ct-js-btnScroll">Tipos de competencias</a></li>
                                 <li class="onepage"><a href="{{ route('pluranza.competition-categories.home') }}" class="ct-js-btnScroll">Categorías en competencia</a></li>
+                                <li class="onepage"><a href="#" class="ct-js-btnScroll">Reglas</a></li>
                             </ul>
                         </li>
                         @endrole

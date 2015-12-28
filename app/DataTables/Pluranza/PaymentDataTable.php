@@ -44,7 +44,7 @@ class PaymentDataTable extends BaseDataTable
 
 		$this->collection->addColumn('Voucher', function($model)
 		{
-			return '<img src="' . $model->voucher->url('thumb') . '" alt="' . ($model->competitor ? $model->competitor->name : $model->academy->name) . '">';
+			return '<a target="_blank" href="' . $model->voucher->url() . '"><img src="' . $model->voucher->url('thumb') . '" alt="' . ($model->competitor ? $model->competitor->name : $model->academy->name) . '"></a>';
 		});
 
 		$this->collection->addColumn('Monto', function($model)
