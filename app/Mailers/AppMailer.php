@@ -4,6 +4,7 @@ use App\AcademieParticipant;
 use App\Pluranza\Academy;
 use App\Pluranza\Dancer;
 use App\User;
+use Faker\Provider\sr_Latn_RS\Payment;
 use Illuminate\Contracts\Mail\Mailer;
 class AppMailer
 {
@@ -75,6 +76,13 @@ class AppMailer
         $this->deliver();
     }
 
+    public function sendPaymentUpdateStatus(Payment $payment, $view = null, $subject = null, $attach = null)
+    {
+        $this->config($payment->academy->user->email, $view);
+        $this->data = compact('payment');
+        $this->deliver($subject);
+    }
+
     public function sendEmailToDancer(Dancer $dancer, $view = null)
     {
         $this->config($dancer->email, $view);
@@ -102,6 +110,9 @@ class AppMailer
             $message->from(env('MAIL_FROM', null), env('MAIL_FROM_NAME', null))->to($to);
             if($subject)
                 $message->subject($subject);
+            else
+                $message->subject('Pluranza 2016!');
+
             if($attach)
                 $message->attach($attach);
         });
