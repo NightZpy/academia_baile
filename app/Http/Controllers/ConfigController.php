@@ -51,7 +51,8 @@ class ConfigController extends Controller
     {
         $this->configRepository->create($request->all());
         flash()->success('Datos guardados exitosamente!');
-        return redirect()->route('configurations.home');
+        return redirect()->route('pluranza.home');
+        //return redirect()->route('configurations.home');
     }
 
     /**
@@ -73,8 +74,8 @@ class ConfigController extends Controller
      */
     public function edit($id)
     {
-        $category = $this->configRepository->get($id);
-        return view('configurations.edit')->with(compact('category'));
+        $configuration = $this->configRepository->get($id);
+        return view('configurations.edit')->with(compact('configuration'));
     }
 
     /**
@@ -86,10 +87,11 @@ class ConfigController extends Controller
      */
     public function update(UpdateConfigFormRequest $request, $id)
     {
-        $dancer = $this->configRepository->get($id);
-        $dancer->update($request->all());
+        $configuration = $this->configRepository->get($id);
+        $configuration->update($request->all());
         flash()->success('Datos actualizados exitosamente!');
-        return redirect()->route('configurations.home');
+        return redirect()->route('pluranza.home');
+        //return redirect()->route('configurations.home');
     }
 
     /**
@@ -100,10 +102,9 @@ class ConfigController extends Controller
      */
     public function destroy($id)
     {
-        $category = $this->configRepository->get($id);
-        $categoryName = $category->name;
-        $category->delete();
-        flash()->success( $categoryName . ', ha sido eliminada correctamente!');
+        $configuration = $this->configRepository->get($id);
+        $configuration->delete();
+        flash()->success( 'Configuración eliminada correctamente!');
         return redirect()->back();
     }
 
