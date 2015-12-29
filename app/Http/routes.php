@@ -16,7 +16,7 @@
 */
 
 Route::get('/test', function() {
-	return asset('assets/images/emails/logo.png');
+	//return '<a href="' . \App\Configuration::first()->rules->url() . '">pdf</a>';
 });
 
 

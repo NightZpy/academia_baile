@@ -13,6 +13,7 @@ class Configuration extends Model implements StaplerableInterface
 	protected $fillable = ['rules', 'max_competitors'];
 
 	public function __construct(array $attributes = array()) {
+		$this->hasAttachedFile('rules');
 		parent::__construct($attributes);
 	}
 }

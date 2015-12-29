@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class RegisterCategoryFormRequest extends Request
+class RegisterConfigurationFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,7 @@ class RegisterCategoryFormRequest extends Request
     {
         return [
             'max_competitors' => 'required|integer',
-            'rules' => 'required|mimes:pdf|size:3000'
+            'rules' => 'required|mimes:pdf|max:3000'
         ];
     }
 }

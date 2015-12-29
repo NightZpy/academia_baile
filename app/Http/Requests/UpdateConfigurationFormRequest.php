@@ -23,7 +23,7 @@ class UpdateConfigurationFormRequest extends Request
     {
         return [
             'max_competitors' => 'required|integer',
-            'rules' => 'required|mimes:pdf|size:3000'
+            'rules' => 'required|mimes:pdf|max:3000'
         ];
     }
 }
