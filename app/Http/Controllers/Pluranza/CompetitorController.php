@@ -15,7 +15,7 @@ use DB;
 
 class CompetitorController extends Controller
 {
-    protected $competitorRepository;
+    protected $repository;
     protected $academyRepository;
     protected $competitionCategoryRepository;
     protected $competitionTypeRepository;
@@ -24,11 +24,11 @@ class CompetitorController extends Controller
      * CompetitorController constructor.
      */
     public function __construct(
-                                CompetitorRepository $competitorRepository,
+                                CompetitorRepository $repository,
                                 AcademyRepository $academyRepository,
                                 CompetitionCategoryRepository $competitionCategoryRepository,
                                 CompetitionTypeRepository $competitionTypeRepository) {
-        $this->competitorRepository = $competitorRepository;
+        $this->repository = $repository;
         $this->academyRepository = $academyRepository;
         $this->competitionCategoryRepository = $competitionCategoryRepository;
         $this->competitionTypeRepository = $competitionTypeRepository;
@@ -42,14 +42,14 @@ class CompetitorController extends Controller
     public function index()
     {
         $competitionTypes = $this->competitionCategoryRepository->getCompetitionTypes();
-        $table = $this->competitorRepository->dataTable->getAllTable();
+        $table = $this->repository->dataTable->getAllTable();
         return  view('pluranza.competitors.index')->with(compact('table', 'competitionTypes'));
     }
 
     public function byAcademy($id)
     {
         $competitionTypes = $this->competitionCategoryRepository->getCompetitionTypes();
-        $table = $this->competitorRepository->dataTable->getByAcademyTable([$id]);
+        $table = $this->repository->dataTable->getByAcademyTable([$id]);
         $academy = $this->academyRepository->get($id);
         return  view('pluranza.competitors.index')->with(compact('table', 'academy', 'competitionTypes'));
     }
@@ -62,7 +62,7 @@ class CompetitorController extends Controller
     public function create(CreateCompetitorFormRequest $request)
     {
         $competitionType = $this->competitionTypeRepository->get($request->get('competition_type_id'));
-        $name = $this->competitorRepository->getAutomaticName($competitionType);
+        $name = $this->repository->getAutomaticName($competitionType);
         $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitionType->id);
         return view('pluranza.competitors.new')->with(compact('categories', 'competitionType', 'name'));
     }
@@ -71,7 +71,7 @@ class CompetitorController extends Controller
     {
         $academy = $this->academyRepository->get($id);
         $competitionType = $this->competitionTypeRepository->get($request->get('competition_type_id'));
-        $name = $this->competitorRepository->getAutomaticName($competitionType);
+        $name = $this->repository->getAutomaticName($competitionType);
         if (strtolower($competitionType->name) == 'pareja') {
             $masculineDancers = $academy->dancers()->masculine()->lists('name', 'id');
             $femaleDancers = $academy->dancers()
@@ -96,8 +96,13 @@ class CompetitorController extends Controller
     {
         $input = $request->all();
         $academy = $this->academyRepository->get($request->get('academy_id'));
-        $this->competitorRepository->create($input);
-        flash()->success('Datos guardados exitosamente!');
+
+        if ($this->repository->exists($input, $input['dancer_id'])) {
+            flash()->success('¡No puedes registrar el mismo tipo de cempetidor o los bailarines ya estan siendo ocupados!');
+            return redirect()->back()->withInput($input);
+        }
+        $this->repository->create($input);
+        flash()->success('!Datos guardados exitosamente!');
         return redirect()->route('pluranza.competitors.by-academy', $academy->id);
     }
 
@@ -109,9 +114,9 @@ class CompetitorController extends Controller
      */
     public function show($id)
     {
-        $competitor = $this->competitorRepository->get($id);
+        $competitor = $this->repository->get($id);
         $academy = $competitor->academy;
-        $table = $this->competitorRepository->dataTable->getByAcademyTable([$id]);
+        $table = $this->repository->dataTable->getByAcademyTable([$id]);
         return  view('pluranza.competitors.by-academy')->with(compact('table', 'academy', 'competitionTypes'));
     }
 
@@ -123,7 +128,7 @@ class CompetitorController extends Controller
      */
     public function edit($id)
     {
-        $competitor = $this->competitorRepository->get($id);
+        $competitor = $this->repository->get($id);
         $academy = $competitor->academy;
         $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitor->competitionType->id);
         $levels = $this->competitionCategoryRepository->getLevelByCategoryForSelect($competitor->level->id);
@@ -153,7 +158,7 @@ class CompetitorController extends Controller
 	{
         $input = $request->all();
         $academy = $this->academyRepository->get($request->get('academy_id'));
-        $this->competitorRepository->updateCustom($input, $id);
+        $this->repository->updateCustom($input, $id);
         flash()->success('Datos actualizados exitosamente!');
         return redirect()->route('pluranza.competitors.by-academy', $academy->id);
 	}
@@ -166,7 +171,7 @@ class CompetitorController extends Controller
      */
     public function destroy($id)
     {
-        $competitor = $this->competitorRepository->get($id);
+        $competitor = $this->repository->get($id);
         $competitorName = $competitor->name;
 	    flash()->success($competitorName . ', ha sido eliminado correctamente!');
 	    $competitor->delete();
@@ -179,12 +184,12 @@ class CompetitorController extends Controller
     public function apiList()
     {
         if(request()->ajax())
-            return $this->competitorRepository->getAllDataTable();
+            return $this->repository->getAllDataTable();
     }
 
     public function apiByAcademyList($id)
     {
         if(request()->ajax())
-            return $this->competitorRepository->getByAcademyDataTable($id);
+            return $this->repository->getByAcademyDataTable($id);
     }
 }

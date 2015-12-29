@@ -19,7 +19,7 @@ class CreateCompetitorsTable extends Migration
             $table->integer('academy_id')->unsigned();
             $table->integer('competition_category_id')->unsigned();
             $table->integer('event_edition_id')->unsigned();
-            $table->unique(['academy_id', 'competition_category_id', 'event_edition_id'], 'competitors_unique_key');
+            $table->unique(['academy_id', 'competition_category_id', 'event_edition_id', 'name'], 'competitors_unique_key');
             $table->timestamps();
         });
     }

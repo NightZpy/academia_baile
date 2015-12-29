@@ -26,7 +26,7 @@ class RegisterCompetitorFormRequest extends Request
     {
         //dd($this->request->all());
         $rules = [
-            'academy_id' => 'required|integer|exists:academies,id|unique_with:competitors,name',
+            'academy_id' => 'required|integer|exists:academies,id|unique_with:competitors,name,competition_category_id',
             'name' => 'required|max:128',
             'competition_type_id' => 'required|integer|exists:competition_types,id',
             'category_id' => 'required|integer|exists:categories,id',
