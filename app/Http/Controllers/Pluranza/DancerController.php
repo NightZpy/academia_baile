@@ -72,12 +72,12 @@ class DancerController extends Controller
         $dancer = $this->dancerRepository->create($input);
         $academy = $this->academyRepository->get($request->get('academy_id'));
         $academy->dancers()->save($dancer);
-        if ($dancer->email) {
+        /*if ($dancer->email) {
             $mailer->sendEmailToDancer($dancer, 'pluranza.emails.dancer-invitation');
             flash()->success('Datos guardados exitosamente, correo de invitación enviado al bailarín!');
-        } else {
+        } else {*/
             flash()->success('Datos guardados exitosamente!');
-        }
+        //}
         return redirect()->route('pluranza.dancers.by-academy', $academy->id);
     }
 

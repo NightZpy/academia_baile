@@ -1301,7 +1301,7 @@
                                         style="text-decoration: none;transition: opacity 0.2s ease-in;color: #555;"
                                         href="{{ route("home", $user->token) }}"><img
                                             style="border: 0;-ms-interpolation-mode: bicubic;display: block;max-width: 190px;"
-                                            src="{{  asset('http://alcompas.com.ve/assets/images/emails/logo.png') }}"
+                                            src="{{  asset('http://alcompas.com.ve/assets/images/logo.png') }}"
                                             alt="Al Compás - Academia de Baile" width="190" height="55"></a></div>
                         </td>
                     </tr>

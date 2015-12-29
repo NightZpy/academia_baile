@@ -101,8 +101,13 @@ class CompetitorController extends Controller
             flash()->success('¡No puedes registrar el mismo tipo de cempetidor o los bailarines ya estan siendo ocupados!');
             return redirect()->back()->withInput($input);
         }
-        $this->repository->create($input);
-        flash()->success('!Datos guardados exitosamente!');
+
+	    $competitor = $this->repository->create($input);
+	    foreach ($competitor->dancers as $dancer)
+		    if ($dancer->email)
+		        $mailer->sendEmailToDancer($dancer, 'pluranza.emails.dancer-invitation');
+
+	    flash()->success('Datos guardados exitosamente, correo de invitación enviado a los competidores.');
         return redirect()->route('pluranza.competitors.by-academy', $academy->id);
     }
 

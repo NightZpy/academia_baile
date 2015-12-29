@@ -54,6 +54,21 @@ class Dancer extends Model implements StaplerableInterface
 	}
 
 	/*
+	 * ------------------------ Mutators ------------------------
+	 */
+	public function setFacebookAttribute($value) {
+		$this->facebook = (empty($value) ? NULL : $value );
+	}
+
+	public function setTwitterAttribute($value) {
+		$this->twitter = (empty($value) ? NULL : $value );
+	}
+
+	public function setInstagramAttribute($value) {
+		$this->instagram = (empty($value) ? NULL : $value );
+	}
+
+	/*
 	 * ------------ Scopes ------------------
 	 */
 	public function scopeFemale($query)
