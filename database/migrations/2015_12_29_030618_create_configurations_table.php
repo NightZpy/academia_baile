@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConfigTable extends Migration
+class CreateConfigurationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateConfigTable extends Migration
      */
     public function up()
     {
-        Schema::create('config', function (Blueprint $table) {
+        Schema::create('configurations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('rules', 128);
             $table->integer('max_competitors');
@@ -27,6 +27,6 @@ class CreateConfigTable extends Migration
      */
     public function down()
     {
-        Schema::drop('config');
+        Schema::drop('configurations');
     }
 }
