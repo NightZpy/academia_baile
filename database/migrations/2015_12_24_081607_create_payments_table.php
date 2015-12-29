@@ -16,7 +16,7 @@ class CreatePaymentsTable extends Migration
             $table->increments('id');
             $table->decimal('amount', 10, 2)->default(0.0);
             $table->string('reference_code', 128)->nullable();
-            $table->datetime('pay_date')->default(DB::raw('NOW()'));
+            $table->datetime('pay_date')->nullable();//default(DB::raw('NOW()'));
             $table->string('voucher', 128)->nullable();
             $table->enum('status', ['accept', 'refuse', 'pending'])->default('pending');
             $table->integer('academy_id')->unsigned();
