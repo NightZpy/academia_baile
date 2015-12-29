@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RegisterConfigFormRequest;
+use App\Http\Requests\RegisterConfigurationFormRequest;
 use App\Http\Requests\UpdateConfigFormRequest;
-use App\Repository\ConfigRepository;
+use App\Repository\ConfigurationRepository;
 use App\Http\Requests;
 
-class ConfigController extends Controller
+class ConfigurationController extends Controller
 {
-    protected $configRepository;
+    protected $configurationRepository;
 
     /**
      * ConfigController constructor.
-     * @param $configRepository
+     * @param $configurationRepository
      */
-    public function __construct(ConfigRepository $configRepository) {
-        $this->configRepository = $configRepository;
+    public function __construct(ConfigurationRepository $configurationRepository) {
+        $this->configurationRepository = $configurationRepository;
     }
 
 
@@ -27,7 +27,7 @@ class ConfigController extends Controller
      */
     public function index()
     {
-        $table = $this->configRepository->dataTable->getAllTable();
+        $table = $this->configurationRepository->dataTable->getAllTable();
         return view('configurations.index')->with(compact('table'));
     }
 
@@ -47,9 +47,9 @@ class ConfigController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterConfigFormRequest $request)
+    public function store(RegisterConfigurationFormRequest $request)
     {
-        $this->configRepository->create($request->all());
+        $this->configurationRepository->create($request->all());
         flash()->success('Datos guardados exitosamente!');
         return redirect()->route('pluranza.home');
         //return redirect()->route('configurations.home');
@@ -74,7 +74,7 @@ class ConfigController extends Controller
      */
     public function edit($id)
     {
-        $configuration = $this->configRepository->get($id);
+        $configuration = $this->configurationRepository->get($id);
         return view('configurations.edit')->with(compact('configuration'));
     }
 
@@ -85,9 +85,9 @@ class ConfigController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateConfigFormRequest $request, $id)
+    public function update(UpdateConfigurationFormRequest $request, $id)
     {
-        $configuration = $this->configRepository->get($id);
+        $configuration = $this->configurationRepository->get($id);
         $configuration->update($request->all());
         flash()->success('Datos actualizados exitosamente!');
         return redirect()->route('pluranza.home');
@@ -102,7 +102,7 @@ class ConfigController extends Controller
      */
     public function destroy($id)
     {
-        $configuration = $this->configRepository->get($id);
+        $configuration = $this->configurationRepository->get($id);
         $configuration->delete();
         flash()->success( 'Configuración eliminada correctamente!');
         return redirect()->back();
@@ -114,6 +114,6 @@ class ConfigController extends Controller
 	public function apiList()
 	{
 		if(request()->ajax())
-			return $this->configRepository->getAllDataTable();
+			return $this->configurationRepository->getAllDataTable();
 	}
 }
