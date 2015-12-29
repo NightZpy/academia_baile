@@ -16,7 +16,7 @@
 */
 
 Route::get('/test', function() {
-	return asset('assets/images/emails/logo.png');
+	//return '<a href="' . \App\Configuration::first()->rules->url() . '">pdf</a>';
 });
 
 
@@ -132,7 +132,24 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
 		Route::get('api/lista', ['as' => 'levels.api.list', 'uses' => 'LevelController@apiList']);
 	});
 
+	/*
+	* ---------- Configuration ----------
+	*/
+	Route::group(['prefix' => 'configurations'], function () {
+		Route::get('/', ['as' => 'configurations.home', 'uses' => 'ConfigurationController@index']);
+		Route::get('nueva', ['as' => 'configurations.new', 'uses' => 'ConfigurationController@create']);
+		Route::post('/', ['as' => 'configurations.store', 'uses' => 'ConfigurationController@store']);
+		Route::get('ver/{id}', ['as' => 'configurations.show', 'uses' => 'ConfigurationController@show']);
+		Route::get('editar/{id}', ['as' => 'configurations.edit', 'uses' => 'ConfigurationController@edit']);
+		Route::patch('actualizar/{id}', ['as' => 'configurations.update', 'uses' => 'ConfigurationController@update']);
+		Route::delete('{id}', ['as' => 'configurations.delete', 'uses' => 'ConfigurationController@destroy']);
+
+		// -------------- API's --------------------
+		Route::get('api/lista', ['as' => 'configurations.api.list', 'uses' => 'ConfigurationController@apiList']);
+	});
+
 	Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
+
 
 		/*
 		* ---------- Academies ----------
