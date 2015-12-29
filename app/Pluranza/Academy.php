@@ -17,8 +17,8 @@ class Academy extends Model implements StaplerableInterface
 
 	protected $table = 'academies';
     protected $fillable = ['name', 'address', 'history', 'foundation', 'logo',
-	                       'email', 'phone', 'facebook', 'twitter', 'instagram',
-	                       'estate_id', 'municipality_id', 'parish_id', 'city_id'];
+	                       'email', 'phone', 'facebook', 'twitter', 'instagram','independent',
+	                        'estate_id', 'municipality_id', 'parish_id', 'city_id'];
 
 	public function __construct(array $attributes = array()) {
 		$this->hasAttachedFile('logo', [

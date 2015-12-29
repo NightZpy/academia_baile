@@ -132,36 +132,23 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-3">
-        <div class="form-group {{ ($errors->has('independent') ? 'has-error' : '') }}">
-            <label class="control-label" for="independent">
-                ¿Independiente?
-                @if ($errors->has('independent'))
-                    <ul>
-                        @foreach($errors->get('independent') as $error)
-                            <li>{!! $error !!}</li>
-                        @endforeach
-                    </ul>
-                @endif
-            </label>
-            {!! Form::checkbox('independent', null, old('independent'), array('class' => 'form-control input-sm')) !!}
+    @if (!$academy->haveDirector)
+        <div class="col-sm-3">
+            <div class="form-group {{ ($errors->has('director') ? 'has-error' : '') }}">
+                <label class="control-label" for="director">
+                    ¿Director?
+                    @if ($errors->has('director'))
+                        <ul>
+                            @foreach($errors->get('director') as $error)
+                                <li>{!! $error !!}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </label>
+                {!! Form::checkbox('director', null, old('director'), array('class' => 'form-control input-sm')) !!}
+            </div>
         </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="form-group {{ ($errors->has('director') ? 'has-error' : '') }}">
-            <label class="control-label" for="director">
-                ¿Director?
-                @if ($errors->has('director'))
-                    <ul>
-                        @foreach($errors->get('director') as $error)
-                            <li>{!! $error !!}</li>
-                        @endforeach
-                    </ul>
-                @endif
-            </label>
-            {!! Form::checkbox('director', null, old('director'), array('class' => 'form-control input-sm')) !!}
-        </div>
-    </div>
+    @endif
     <div class="col-sm-6">
         <div class="form-group {{ ($errors->has('photo') ? 'has-error' : '') }}">
             @if ($errors->has('photo'))

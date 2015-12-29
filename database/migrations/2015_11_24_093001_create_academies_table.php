@@ -25,6 +25,7 @@ class CreateAcademiesTable extends Migration
             $table->string('facebook', 128)->nullable()->unique();
             $table->string('twitter', 128)->nullable()->unique();
             $table->string('instagram', 128)->nullable()->unique();
+            $table->boolean('independent')->default(false);
             $table->integer('user_id')->unsigned()->unique();
 
             $table->integer('estate_id')->length(11)->unsigned();

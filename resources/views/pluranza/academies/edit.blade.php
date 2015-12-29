@@ -192,7 +192,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="form-group {{ ($errors->has('facebook') ? 'has-error' : '') }}">
                             @if ($errors->has('facebook'))
                                 <label class="control-label" for="facebook">
@@ -206,7 +206,7 @@
                             {!! Form::text('facebook', old('facebook'), array('placeholder' => 'Facebook de la Academia', 'class' => 'form-control input-sm')) !!}
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="form-group {{ ($errors->has('twitter') ? 'has-error' : '') }}">
                             @if ($errors->has('twitter'))
                                 <label class="control-label" for="twitter">
@@ -220,7 +220,7 @@
                             {!! Form::text('twitter', old('twitter'), array('placeholder' => 'Twitter de la Academia', 'class' => 'form-control input-sm')) !!}
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="form-group {{ ($errors->has('instagram') ? 'has-error' : '') }}">
                             @if ($errors->has('instagram'))
                                 <label class="control-label" for="instagram">
@@ -232,6 +232,21 @@
                                 </label>
                             @endif
                             {!! Form::text('instagram', old('instagram'), array('placeholder' => 'Instagram de la Academia', 'class' => 'form-control input-sm')) !!}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group {{ ($errors->has('independent') ? 'has-error' : '') }}">
+                            <label class="control-label" for="independent">
+                                ¿Independiente?
+                                @if ($errors->has('independent'))
+                                    <ul>
+                                        @foreach($errors->get('independent') as $error)
+                                            <li>{!! $error !!}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </label>
+                            {!! Form::checkbox('independent', null, old('independent'), array('class' => 'form-control input-sm')) !!}
                         </div>
                     </div>
                 </div>

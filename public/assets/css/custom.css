@@ -13,7 +13,7 @@
 	width: 45px;
 	height: 45px;
 	border: 1px solid transparent;
-	z-index: 999;
+	z-index:darkgrey;
 }
 
 .white-nav-bar-text {
@@ -34,4 +34,20 @@
 
 .ct-navbar--top .navbar {
 	background-color: black;
+}
+
+input::-webkit-input-placeholder {
+	color: lightcoral !important;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+	color: lightcoral !important;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+	color: lightcoral !important;
+}
+
+input:-ms-input-placeholder {
+	color: lightcoral !important;
 }
