@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pluranza;
 use App\Repository\Pluranza\AcademyRepository;
+use App\Role;
 use App\User;
 use App\Estate;
 use App\Municipality;
@@ -56,6 +57,7 @@ class AcademyController extends Controller
         $user = User::create($request->all());
         $aP = Academy::create($request->all());
         $user->academy()->save($aP);
+        if(User::count() == 1) $user->attachRole(Role::whereName('admin')->first());
         $mailer->sendEmailConfirmationTo($user, 'pluranza.emails.confirm');
         flash()->success('Datos guardados exitosamente, debe activar la cuenta, un correo llegará a su buzón en unos minutos.');
         return redirect()->route('users.login');
