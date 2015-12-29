@@ -37,17 +37,33 @@
 }
 
 input::-webkit-input-placeholder {
-	color: lightcoral !important;
+	color: darkgray !important;
 }
 
 input:-moz-placeholder { /* Firefox 18- */
-	color: lightcoral !important;
+	color: darkgray !important;
 }
 
 input::-moz-placeholder {  /* Firefox 19+ */
-	color: lightcoral !important;
+	color: darkgray !important;
 }
 
 input:-ms-input-placeholder {
-	color: lightcoral !important;
+	color: darkgray !important;
+}
+
+textarea::-webkit-input-placeholder {
+	color: darkgray !important;
+}
+
+textarea:-moz-placeholder { /* Firefox 18- */
+	color: darkgray !important;
+}
+
+textarea::-moz-placeholder {  /* Firefox 19+ */
+	color: darkgray !important;
+}
+
+textarea:-ms-input-placeholder {
+	color: darkgray !important;
 }

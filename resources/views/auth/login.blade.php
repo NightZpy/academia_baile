@@ -50,8 +50,8 @@
                     </div>
                     <div class="modal-footer">
                         <div class="help-block ct-u-size12 ct-u-colorLighterGray text-left">
-                            &iquest;Haz perdido tu contrase&ntilde;a?
                             <a href="">&iexcl;Recuperar contrase&ntilde;a!</a>
+                            <a href="{{ route('pluranza.academies.store') }}">¡Registrarse!</a>
                         </div>
                     </div>
                 </div>

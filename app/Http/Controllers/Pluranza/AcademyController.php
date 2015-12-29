@@ -43,7 +43,7 @@ class AcademyController extends Controller
      */
     public function create()
     {
-        //
+        return view('pluranza.academies.register');
     }
 
     /**

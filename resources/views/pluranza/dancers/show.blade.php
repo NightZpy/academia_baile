@@ -19,7 +19,7 @@
                         @if($dancer->director)
                              Director
                         @endif
-                        @if($dancer->independent)
+                        @if($dancer->academy->independent)
                              Independiente
                         @endif
                     </h5>

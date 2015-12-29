@@ -212,7 +212,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 	Route::group(['prefix' => 'academias'], function () {
 
 		Route::get('/', ['as' => 'pluranza.academies.home', 'uses' => 'AcademyController@index']);
-		Route::get('nuevo', ['middleware' => ['role:admin'], 'as' => 'pluranza.academies.new', 'uses' => 'AcademyController@create']);
+		Route::get('nuevo', ['as' => 'pluranza.academies.new', 'uses' => 'AcademyController@create']);
 		Route::post('/', ['as' => 'pluranza.academies.store', 'uses' => 'AcademyController@store']);
 		Route::get('ver/{id}', ['as' => 'pluranza.academies.show', 'uses' => 'AcademyController@show']);
 		Route::get('editar/{id}', ['middleware' => ['role:admin|director'], 'as' => 'pluranza.academies.edit', 'uses' => 'AcademyController@edit']);

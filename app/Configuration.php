@@ -10,7 +10,7 @@ class Configuration extends Model implements StaplerableInterface
 {
 	use EloquentTrait;
 
-	protected $fillable = ['rules', 'max_competitors'];
+	protected $fillable = ['rules', 'max_competitors', 'title', 'long_title', 'slogan', 'description'];
 
 	public function __construct(array $attributes = array()) {
 		$this->hasAttachedFile('rules');
