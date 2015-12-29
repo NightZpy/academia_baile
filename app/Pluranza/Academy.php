@@ -130,5 +130,19 @@ class Academy extends Model implements StaplerableInterface
 		return ($this->foundation ? $this->foundation->format('d-m-Y') : '--/--/--');
 	}
 
+	/*
+	 * ------------------------ Mutators ------------------------
+	 */
+	public function setFacebookAttribute($value) {
+		$this->facebook = (empty($value) ? NULL : $value );
+	}
+
+	public function setTwitterAttribute($value) {
+		$this->twitter = (empty($value) ? NULL : $value );
+	}
+
+	public function setInstagramAttribute($value) {
+		$this->instagram = (empty($value) ? NULL : $value );
+	}
 
 }
