@@ -21,6 +21,7 @@ class RegisterConfigurationFormRequest extends Request
      */
     public function rules()
     {
+        dd($this->all());
         return [
             'max_competitors' => 'required|integer',
             'rules' => 'required|mimes:pdf|max:3000'
