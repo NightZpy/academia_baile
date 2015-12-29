@@ -154,7 +154,7 @@ return [
         Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
         Chumper\Datatable\DatatableServiceProvider::class,
         Felixkiss\UniqueWithValidator\UniqueWithValidatorServiceProvider::class,
-        Zizaco\Entrust\EntrustServiceProvider::class
+        //Zizaco\Entrust\EntrustServiceProvider::class
     ],
 
     /*
@@ -207,7 +207,7 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
         'Form'      => Collective\Html\FormFacade::class,
         'Datatable' => 'Chumper\Datatable\Facades\DatatableFacade',
-        'Entrust' => Zizaco\Entrust\EntrustFacade::class,
+        //'Entrust' => Zizaco\Entrust\EntrustFacade::class,
     ],
 
 ];
