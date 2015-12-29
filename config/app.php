@@ -155,7 +155,7 @@ return [
         Chumper\Datatable\DatatableServiceProvider::class,
         Felixkiss\UniqueWithValidator\UniqueWithValidatorServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        //Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
@@ -209,7 +209,7 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Datatable' => 'Chumper\Datatable\Facades\DatatableFacade',
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
-        'Debugbar'  => Barryvdh\Debugbar\Facade::class
+        //'Debugbar'  => Barryvdh\Debugbar\Facade::class
     ],
 
 ];
