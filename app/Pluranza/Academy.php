@@ -107,12 +107,13 @@ class Academy extends Model implements StaplerableInterface
 
 	public function getDebtAttribute()
 	{
-		return $this->total - $this->paid;
+		$debt = $this->total - $this->paid;
+		return ($debt);
 	}
 
 	public function getDebtBsAttribute()
 	{
-		return number_format($this->debt, '2', ',', '.') . ' Bs';
+		return ($this->debt != 0 ? number_format($this->debt, '2', ',', '.') . ' Bs' : '¡No tiene deuda!');
 	}
 
 	public function getPaidAttribute()

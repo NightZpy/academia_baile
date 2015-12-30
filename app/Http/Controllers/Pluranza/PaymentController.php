@@ -7,7 +7,8 @@ use App\Http\Requests\Pluranza\RegisterPaymentFormRequest;
 use App\Mailers\AppMailer;
 use App\Repository\Pluranza\AcademyRepository;
 use App\Repository\Pluranza\PaymentRepository;
-
+use App\Role;
+use App\User;
 use App\Http\Requests;
 use Auth;
 
@@ -65,11 +66,13 @@ class PaymentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterPaymentFormRequest $request)
+    public function store(RegisterPaymentFormRequest $request, AppMailer $mailer)
     {
         $input = $request->all();
         $input['academy_id'] = Auth::user()->academy->id;
-        $this->paymentRepository->create($input);
+        $payment = $this->paymentRepository->create($input);
+        $admin = Role::whereName('admin')->first()->users->first();
+        $mailer->sendEmailNewPaymentToAdmin($payment, $admin, 'pluranza.payments.emails.payment');
         flash()->success('Datos guardados exitosamente!');
         return redirect()->route('pluranza.payments.home');
     }
@@ -141,7 +144,7 @@ class PaymentController extends Controller
         $payment = $this->paymentRepository->get($id);
         $payment->status = 'refuse';
         $payment->save();
-        $this->appMailer->sendPaymentUpdateStatus($payment, 'pluranza.payments.emails.confirm-refuse', 'Pluranza 2016: Pago rechazado!');
+        $this->appMailer->sendPaymentUpdateStatus($payment, 'pluranza.payments.emails.refuse-payment', 'Pluranza 2016: Pago rechazado!');
         flash()->success( 'El pago de ' . $payment->academy->name . ', ha sido rechazado!');
         return redirect()->back();
     }

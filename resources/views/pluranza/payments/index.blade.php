@@ -1,7 +1,7 @@
 @extends('pluranza.main')
 
 @section('content')
-    <section class="ct-u-paddingBottom60 ct-backgroundContent" data-type="color" data-bg-color="#ffffff">
+    <section class="ct-u-paddingBottom10 ct-backgroundContent" data-type="color" data-bg-color="#ffffff">
         <div class="container">
             <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 ct-titleBox">
@@ -12,7 +12,6 @@
             </div>
             <div class="row">
                 <div class="col-md-offset-3 col-md-6">
-                    @include('partials._flash')
                     @include('partials._errors')
                 </div>
             </div>

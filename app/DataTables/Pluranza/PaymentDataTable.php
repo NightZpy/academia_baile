@@ -64,7 +64,12 @@ class PaymentDataTable extends BaseDataTable
 
 		$this->collection->addColumn('Estatús', function($model)
 		{
-			return $model->statusEsp;
+			if($model->status == 'accept')
+				return "<p style='color: green; font-weight: bold;'>" . $model->statusEsp . "</p>";
+			if($model->status == 'refuse')
+				return "<p style='color: red; font-weight: bold;'>" . $model->statusEsp . "</p>";
+			if($model->status == 'pending')
+				return "<p style='color: blue; font-weight: bold;'>" . $model->statusEsp . "</p>";
 		});
 
 		$this->collection->addColumn('Competidor', function($model)

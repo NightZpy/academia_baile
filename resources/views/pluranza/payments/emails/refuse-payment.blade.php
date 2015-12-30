@@ -1299,9 +1299,9 @@
                                  style="font-weight: 700;font-family: Avenir,sans-serif;color: #555;font-size: 0px !important;line-height: 0 !important;"
                                  align="left" id="emb-email-header"><a
                                         style="text-decoration: none;transition: opacity 0.2s ease-in;color: #555;"
-                                        href="{{ route("home", $user->token) }}"><img
+                                        href="{{ route("home") }}"><img
                                             style="border: 0;-ms-interpolation-mode: bicubic;display: block;max-width: 190px;"
-                                            src="{{  asset('http://alcompas.com.ve/assets/images/logo.png') }}"
+                                            src="{{  asset('/assets/images/logo.png') }}"
                                             alt="Al Compás - Academia de Baile" width="190" height="55"></a></div>
                         </td>
                     </tr>
@@ -1379,6 +1379,8 @@
                                         <p style='font-style: normal;font-weight: 400;Margin-bottom: 24px;Margin-top: 16px;font-size: 15px;line-height: 24px;font-family: "Open Sans",sans-serif;color: #60666d;text-align: center;'>
                                             Tu pago con código de referencia <i><strong>{{ $payment->reference_code }}</strong></i>, ha sido rechazado, debes
                                             <a href="{{ route('pluranza.payments.by-academy', $payment->academy->id) }}"></a> la información.</p>
+                                            <p style='font-style: normal;font-weight: 400;Margin-bottom: 24px;Margin-top: 16px;font-size: 15px;line-height: 24px;font-family: "Open Sans",sans-serif;color: #60666d;text-align: center;'><a href="{{ route('pluranza.payments.edit', $payment->id) }}">Revisar el pago.</a></p>
+                                            <p style='font-style: normal;font-weight: 400;Margin-bottom: 24px;Margin-top: 16px;font-size: 15px;line-height: 24px;font-family: "Open Sans",sans-serif;color: #60666d;text-align: center;'><a href="{{ route('pluranza.payments.by-academy', $payment->academy->id) }}">Ver tus pagos.</a></p>
 
                                     </td>
                                 </tr>

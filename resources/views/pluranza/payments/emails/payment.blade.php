@@ -1374,16 +1374,39 @@
                                         style="padding: 0;vertical-align: top;padding-left: 32px;padding-right: 32px;word-break: break-word;word-wrap: break-word;">
 
                                         <h2 style='font-style: normal;font-weight: 700;Margin-bottom: 0;Margin-top: 0;font-size: 24px;line-height: 32px;font-family: "Open Sans",sans-serif;color: #44a8c7;text-align: center;'>
-                                            <span style="color:#ff0000">Tu pago ha sido confirmado</span></h2>
+                                            <span style="color:#ff0000">Un pago ha sido realizado</span></h2>
 
-                                        <p style='font-style: normal;font-weight: 400;Margin-bottom: 24px;Margin-top: 16px;font-size: 15px;line-height: 24px;font-family: "Open Sans",sans-serif;color: #60666d;text-align: center;'>
-                                            Tu pago con código de referencia <i><strong>{{ $payment->reference_code }}</strong></i>, ha sido confirmado con éxito.</p>
-                                            <p style='font-style: normal;font-weight: 400;Margin-bottom: 24px;Margin-top: 16px;font-size: 15px;line-height: 24px;font-family: "Open Sans",sans-serif;color: #60666d;text-align: center;'><a href="{{ route('pluranza.payments.by-academy', $payment->academy->id) }}">Ver tus pagos.</a></p>
+                                        <p style='font-style: normal;font-weight: 400;Margin-bottom: 24px;Margin-top: 16px;font-size: 15px;line-height: 24px;font-family: "Open Sans",sans-serif;color: #60666d;text-align: center;'>Código de referencia <i><strong>{{ $payment->reference_code }}</strong></i>.
+                                        </p>Academia: <i><strong>{{ $payment->academy->name }}</strong></i>.</p>
+                                        </p><a href="{{ route('pluranza.payments.by-academy', $payment->academy->id) }}">Ver pagos de esta academia.</a></p>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            @if ( $payment->voucher->url() )
+                            <table class="contents"
+                                   style="border-collapse: collapse;border-spacing: 0;table-layout: fixed;width: 100%;">
+                                <tbody>
+                                <tr>
+                                    <td class="padded"
+                                        style="padding: 0;vertical-align: top;padding-left: 32px;padding-right: 32px;word-break: break-word;word-wrap: break-word;">
+
+                                        <div class="image"
+                                             style='font-size: 12px;mso-line-height-rule: at-least;font-style: normal;font-weight: 400;Margin-bottom: 24px;Margin-top: 0;font-family: "Open Sans",sans-serif;color: #60666d;'
+                                             align="center">
+                                            <a style="transition: opacity 0.2s ease-in;color: #5c91ad;"
+                                               href="{{ $payment->voucher->url() }}"><img
+                                                        style="border: 0;-ms-interpolation-mode: bicubic;display: block;max-width: 600px;"
+                                                        src="{{ $payment->voucher->url('medium') }}"
+                                                        alt="Imagen voucher de pago"
+                                                        width="536" height="235"></a>
+                                        </div>
 
                                     </td>
                                 </tr>
                                 </tbody>
                             </table>
+                            @endif
                             <div class="column-bottom"
                                  style="font-size: 16px;line-height: 16px;transition-timing-function: cubic-bezier(0, 0, 0.2, 1);transition-duration: 150ms;transition-property: all;">
                                 &nbsp;</div>

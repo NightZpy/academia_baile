@@ -2,10 +2,10 @@
 namespace App\Mailers;
 use App\AcademieParticipant;
 use App\Pluranza\Academy;
+use App\Pluranza\Payment;
 use App\Pluranza\Dancer;
 use App\Pluranza\Competitor;
 use App\User;
-use Faker\Provider\sr_Latn_RS\Payment;
 use Illuminate\Contracts\Mail\Mailer;
 class AppMailer
 {
@@ -81,6 +81,13 @@ class AppMailer
     {
         $this->config($payment->academy->user->email, $view);
         $this->data = compact('payment');
+        $this->deliver($subject);
+    }
+
+    public function sendEmailNewPaymentToAdmin(Payment $payment, User $admin, $view = null, $subject = null, $attach = null) {
+        $this->config($admin->email, $view);
+        $this->data = compact('payment');
+        $subject = "PLURANZA 2016: " . $payment->academy->name . " ha realizado un pago.";
         $this->deliver($subject);
     }
 
