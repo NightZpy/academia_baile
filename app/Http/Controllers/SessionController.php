@@ -14,6 +14,7 @@ class SessionController extends Controller
      */
     public function __construct()
     {
+        $this->redirectPath = route('users.login');
         $this->middleware('guest', ['except' => 'logout']);
     }
     /**
@@ -53,7 +54,7 @@ class SessionController extends Controller
     public function logout()
     {
         Auth::logout();
-        flash('Has cerrado exitosamente la sesi�n.');
+        flash('Has cerrado exitosamente la sesión.');
         return redirect()->route('home');
     }
     /**

@@ -53,12 +53,12 @@
                         @endrole
 
                         @if(Auth::check())
-                            <li class="dropdown" role="presentation">
+                            {{--<li class="dropdown" role="presentation">
                                 <a href="#" class="dropdown-toggle">Perfil<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li class="onepage"><a href="{{ route('categories.home') }}" class="ct-js-btnScroll">Géneros</a></li>
                                 </ul>
-                            </li>
+                            </li>--}}
                         @endif
                         {{--<li class="onepage"><a href="#" class="ct-js-btnScroll">Resultados</a></li>--}}
                     </ul>

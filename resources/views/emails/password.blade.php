@@ -1374,10 +1374,10 @@
                                         style="padding: 0;vertical-align: top;padding-left: 32px;padding-right: 32px;word-break: break-word;word-wrap: break-word;">
 
                                         <h2 style='font-style: normal;font-weight: 700;Margin-bottom: 0;Margin-top: 0;font-size: 24px;line-height: 32px;font-family: "Open Sans",sans-serif;color: #44a8c7;text-align: center;'>
-                                            <span style="color:#ff0000">Confirma tu cuenta</span></h2>
+                                            <span style="color:#ff0000">Recuperación de contraseña</span></h2>
 
                                         <p style='font-style: normal;font-weight: 400;Margin-bottom: 24px;Margin-top: 16px;font-size: 15px;line-height: 24px;font-family: "Open Sans",sans-serif;color: #60666d;text-align: center;'>
-                                            Para activar tu cuenta, debes presionar el siguiente bot&#243;n.</p>
+                                            Pare recuperar su contraseña, debe presionar el siguiente bot&#243;n.</p>
 
                                     </td>
                                 </tr>
@@ -1395,10 +1395,10 @@
                                              style="Margin-bottom: 24px;Margin-top: 0;text-align: center;">
                                             <![if !mso]><a
                                                     style='border-radius: 3px;display: inline-block;font-size: 14px;font-weight: 700;line-height: 24px;padding: 13px 35px 12px 35px;text-align: center;text-decoration: none !important;transition: opacity 0.2s ease-in;color: #fff;font-family: "Open Sans",sans-serif;background-color: #ff0000;'
-                                                    href="{{ route("pluranza.users.confirm", $user->token) }}">Confirmar</a><![endif]>
+                                                    href="{{ route("users.password.reset-token", $token) }}">Recuperar</a><![endif]>
                                             <!--[if mso]>
                                             <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml"
-                                                         href="{{ route("pluranza.users.confirm", $user->token) }}"
+                                                         href="{{ route("users.password.reset-token", $token) }}"
                                                          style="width:142px" arcsize="7%" fillcolor="#FF0000"
                                                          stroke="f">
                                                 <v:textbox style="mso-fit-shape-to-text:t" inset="0px,12px,0px,11px">
@@ -1425,7 +1425,7 @@
                                                 abajo.</em></p>
 
                                         <p style='font-style: normal;font-weight: 400;Margin-bottom: 0;Margin-top: 24px;font-size: 15px;line-height: 24px;font-family: "Open Sans",sans-serif;color: #60666d;text-align: center;'>
-                                            <span style="color:#ff0000">{{ route("pluranza.users.confirm", $user->token) }}</span></p>
+                                            <span style="color:#ff0000">{{ route("users.password.reset-token", $token) }}</span></p>
 
                                     </td>
                                 </tr>

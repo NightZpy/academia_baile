@@ -1,18 +1,17 @@
 @extends('pluranza.main')
 
 @section('content')
-    <section class="ct-u-paddingBottom60 ct-backgroundContent" data-type="color" data-bg-color="#ffffff">
+    <section class="ct-u-paddingBottom10 ct-backgroundContent" data-type="color" data-bg-color="#ffffff">
         <div class="container">
             <div class="row">
                 <div class="col-sm-offset-4 col-sm-4">
-                    <div class="row ct-u-paddingTop100">
+                    <div class="row ct-u-paddingTop10">
                         <div class="col-md-12 text-center ct-titleBox">
                             <h4 class="text-uppercase ct-u-paddingTop30">
                                 Ingresar
                             </h4>
                         </div>
                     </div>
-                    @include('partials._flash')
                     <div class="row ct-u-paddingTop25">
                         {!! Form::open(
                             [
@@ -49,9 +48,9 @@
                         {!! Form::close() !!}
                     </div>
                     <div class="modal-footer">
-                        <div class="help-block ct-u-size12 ct-u-colorLighterGray text-left">
-                            <a href="">&iexcl;Recuperar contrase&ntilde;a!</a>
-                            <a href="{{ route('pluranza.academies.store') }}">¡Registrarse!</a>
+                        <div class="help-block ct-u-size20 ct-u-colorLighterGray">
+                            <a class="text-left" href="{{ route('users.password.reset') }}"class="ct-js-btnScroll">&iexcl;Recuperar contrase&ntilde;a!</a>
+                            <a class="text-right" href="{{ route('pluranza.academies.new') }}"class="ct-js-btnScroll">¡Registrarse!</a>
                         </div>
                     </div>
                 </div>

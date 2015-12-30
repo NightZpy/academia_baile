@@ -16,7 +16,7 @@
 */
 
 Route::get('/test', function() {
-	return route('pluranza.competition-categories.api.by-category-competition-type', [3, 3]);
+	return bcrypt('123456');
 });
 
 
@@ -62,31 +62,24 @@ Route::get('ciudades/por-estado/{id}', function ($id) {
 /*
 * ---------- Users ----------
 */
-Route::get('usuarios/login', [
-	'as' => 'users.login',
-	'uses' => 'SessionController@login'
-]);
+Route::group(['prefix' => 'usuarios'], function () {
+	Route::get('login', ['as' => 'users.login', 'uses' => 'SessionController@login']);
 
-Route::post('usuarios/api/login', [
-	'as' => 'users.api.login',
-	'uses' => 'SessionController@postApiLogin'
-]);
+	Route::post('api/login', ['as' => 'users.api.login', 'uses' => 'SessionController@postApiLogin']);
 
-Route::post('usuarios/login', [
-	'as' => 'users.login',
-	'uses' => 'SessionController@postLogin'
-]);
+	Route::post('login', ['as' => 'users.login', 'uses' => 'Auth\AuthController@postLogin'/*'SessionController@postLogin'*/]);
 
-Route::get('usuarios/logout', [
-	'middleware' => 'auth',
-	'as' => 'users.logout',
-	'uses' => 'SessionController@logout'
-]);
+	Route::get('logout', ['middleware' => 'auth', 'as' => 'users.logout', 'uses' => 'SessionController@logout']);
 
-Route::get('usuarios/confirmar/{token}', [
-	'as' => 'users.confirm',
-	'uses' => 'SessionController@confirm'
-]);
+	Route::get('confirmar/{token}', ['as' => 'users.confirm', 'uses' => 'SessionController@confirm']);
+
+	Route::get('password/email', ['as' => 'users.password.reset', 'uses' => 'Auth\PasswordController@getEmail']);
+	Route::post('password/email', ['as' => 'users.password.send-reset', 'uses' => 'Auth\PasswordController@postEmail']);
+
+// Password reset routes...
+	Route::get('password/reset/{token}', ['as' => 'users.password.reset-token', 'uses' => 'Auth\PasswordController@getReset']);
+	Route::post('password/reset', ['as' => 'users.password.reset-check-token', 'uses' => 'Auth\PasswordController@postReset']);
+});
 
 /*
  * ---------- Pluranza ----------

@@ -28,7 +28,7 @@ class RegisterAcademyRequest extends Request
             'email' => 'required|email|max:128|confirmed|unique:academies',
             'email_confirmation' => 'required|email|max:128',
             'phone' => 'required|numeric',
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed|min:6'
         ];
     }
 }
