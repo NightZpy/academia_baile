@@ -18,7 +18,15 @@
                 <li><a href="{{ route('pluranza.competition-types.home') }}" class="ct-js-btnScroll--mobile">Categorías</a></li>
                 <li><a href="{{ route('levels.home') }}" class="ct-js-btnScroll--mobile">Niveles</a></li>
                 <li><a href="{{ route('pluranza.competition-categories.home') }}" class="ct-js-btnScroll--mobile">Costos por inscripción</a></li>
-                <li><a href="{{ route('configurations.new') }}" class="ct-js-btnScroll--mobile">Datos base de pluranza</a></li>
+                @if(isset($configuration))
+                    <li class="onepage"><a href="{{ route('configurations.edit', $configuration->id) }}" class="ct-js-btnScroll--mobile">Editar datos base de pluranza</a></li>
+                @else
+                    <li class="background-color-red">
+                        <a href="{{ route('configurations.new') }}" class="ct-js-btnScroll--mobile">
+                            Agregar datos base de pluranza
+                        </a>
+                    </li>
+                @endif
             </ul>
         </li>
         @endrole

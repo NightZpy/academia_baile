@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterConfigurationFormRequest;
-use App\Http\Requests\UpdateConfigFormRequest;
+use App\Http\Requests\UpdateConfigurationFormRequest;
 use App\Repository\ConfigurationRepository;
 use App\Http\Requests;
 

@@ -17,7 +17,7 @@ class CreateConfigurationsTable extends Migration
             $table->string('title', 64);
             $table->string('long_title', 128);
             $table->string('slogan', 128);
-            $table->string('description', 256);
+            $table->text('description');
             $table->string('rules', 128);
             $table->integer('max_competitors');
             $table->timestamps();

@@ -3,13 +3,15 @@
         <div class="row ct-u-paddingBottom40">
             <div class="col-md-12">
                 <div class="ct-u-sectionHeader text-center ct-u-paddingBottom20">
-                    <h2 class="ct-sectionTitle">PLURANZA 2016 <br><span class="ct-fw-300">Festival Internacional de Ritmos Latinos</span></h2>
+                    <h2 class="ct-sectionTitle">{{ $configuration->title }} <br><span class="ct-fw-300">{{ $configuration->long_title }}</span></h2>
 
                     <p class="ct-u-size18 ct-u-paddingTop30 ct-u-paddingBottom20 text-justify-xs">
-                        <span class="ct-u-colorMotive ct-fw-400">Una frase del festival aquí para incentivar a la gente.</span><br>
-                        <span class="ct-fw-300">De que trata el festival aquí.</span>
+                        <span class="ct-u-colorMotive ct-fw-400">{{ $configuration->slogan }}</span><br>
+                        <span class="ct-fw-300">{{ $configuration->description }}</span>
                     </p>
-                    <a href="{{ route('pluranza.academies.new') }}" class="btn btn-lg btn-primary text-uppercase ct-js-btnScroll">¡Inscribete aquí!</a>
+                    @if (!Auth::check())
+                        <a href="{{ route('pluranza.academies.new') }}" class="btn btn-lg btn-primary text-uppercase ct-js-btnScroll">¡Inscribete aquí!</a>
+                    @endif
                 </div>
             </div>
         </div>

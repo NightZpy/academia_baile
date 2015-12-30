@@ -22,8 +22,12 @@ class UpdateConfigurationFormRequest extends Request
     public function rules()
     {
         return [
-            'max_competitors' => 'required|integer',
-            'rules' => 'required|mimes:pdf|max:3000'
+           'max_competitors' => 'required|integer',
+            'rules' => 'mimes:pdf|max:3000',
+            'title' => 'required|max:64',
+            'long_title' => 'required|max:128',
+            'slogan' => 'required|max:128',
+            'description' => 'required|max:512',
         ];
     }
 }

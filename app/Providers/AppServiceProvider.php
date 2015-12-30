@@ -19,13 +19,14 @@ class AppServiceProvider extends ServiceProvider
     {
         // Using Closure based composers...
         view()->composer('*', function ($view) {
+            $configuration = Configuration::first();
             if (auth()->check()) {
                 if (auth()->user()->academy) {
                     $academy = auth()->user()->academy;
-                    $configuration = Configuration::first();
-                    $view->with(compact('academy', 'configuration'));
+                    $view->with(compact('academy'));
                 }
             }
+            $view->with(compact('configuration'));
         });
     }
 

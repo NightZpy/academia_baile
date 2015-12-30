@@ -23,7 +23,12 @@ class RegisterConfigurationFormRequest extends Request
     {
         return [
             'max_competitors' => 'required|integer',
-            'rules' => 'required|mimes:pdf|max:3000'
+            'rules' => 'required|mimes:pdf|max:3000',
+            'title' => 'required|max:64',
+            'long_title' => 'required|max:128',
+            'slogan' => 'required|max:128',
+            'description' => 'required|max:512',
         ];
+
     }
 }
