@@ -6,7 +6,7 @@
             <div class="row ct-u-paddingTop100">
                 <div class="col-md-12 ct-titleBox">
                     <h4 class="text-center text-uppercase ct-u-paddingTop30">
-                        Registrar categoría en competencia
+                        Registrar costo por inscripción
                     </h4>
                 </div>
             </div>

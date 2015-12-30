@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pluranza;
 use App\Http\Requests\Pluranza\CreateCompetitorFormRequest;
 use App\Http\Requests\Pluranza\RegisterCompetitorFormRequest;
 use App\Http\Requests\Pluranza\UpdateCompetitorFormRequest;
+use App\Mailers\AppMailer;
 use App\Repository\Pluranza\AcademyRepository;
 use App\Repository\Pluranza\CompetitionCategoryRepository;
 use App\Repository\Pluranza\CompetitionTypeRepository;
@@ -92,7 +93,7 @@ class CompetitorController extends Controller
      * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterCompetitorFormRequest $request)
+    public function store(RegisterCompetitorFormRequest $request, AppMailer $mailer)
     {
         $input = $request->all();
         $academy = $this->academyRepository->get($request->get('academy_id'));

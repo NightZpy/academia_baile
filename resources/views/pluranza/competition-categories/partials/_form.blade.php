@@ -27,7 +27,7 @@
                     </ul>
                 </label>
             @endif
-            {!! Form::select('category_id', $categories, ( isset($competitionCategory) AND  $competitionCategory->category_id > 0 ? $competitionCategory->category_id : old('category_id')), ['placeholder' => 'Selecciona una categoría', 'class' => 'form-control input-sm']) !!}
+            {!! Form::select('category_id', $categories, ( isset($competitionCategory) AND  $competitionCategory->category_id > 0 ? $competitionCategory->category_id : old('category_id')), ['placeholder' => 'Selecciona un género', 'class' => 'form-control input-sm']) !!}
         </div>
     </div>
     <div class="col-sm-offset-4 col-sm-4">
@@ -55,7 +55,7 @@
                     </ul>
                 </label>
             @endif
-            {!! Form::select('competition_type_id', $competitionTypes, ( isset($competitionCategory) AND  $competitionCategory->competition_type_id > 0 ? $competitionCategory->competition_type_id : old('competition_type_id')), ['placeholder' => 'Selecciona un tipo', 'class' => 'form-control input-sm']) !!}
+            {!! Form::select('competition_type_id', $competitionTypes, ( isset($competitionCategory) AND  $competitionCategory->competition_type_id > 0 ? $competitionCategory->competition_type_id : old('competition_type_id')), ['placeholder' => 'Selecciona una categoría', 'class' => 'form-control input-sm']) !!}
         </div>
     </div>
 </div>

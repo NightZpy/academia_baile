@@ -9,9 +9,9 @@ class CompetitorDataTable extends BaseDataTable
 	function __construct() {
 		$this->columns = [
 			'Nombre',
-			'Categoría',
+			'Género',
 			'Nivel',
-			'Tipo',
+			'Categoría',
 			'Acciones'
 		];
 
@@ -56,17 +56,17 @@ class CompetitorDataTable extends BaseDataTable
 			return $model->name;
 		});
 
-		$this->collection->addColumn('Categoría', function($model)
+		$this->collection->addColumn('Género', function($model)
 		{
 			return $model->category->name;
 		});
 
 		$this->collection->addColumn('Nivel', function($model)
 		{
-			return $model->level->name;
+			return ucfirst($model->level->name);
 		});
 
-		$this->collection->addColumn('Tipo', function($model)
+		$this->collection->addColumn('Categoría', function($model)
 		{
 			return $model->competitionType->name;
 		});

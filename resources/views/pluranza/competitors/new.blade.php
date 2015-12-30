@@ -52,7 +52,7 @@
                                             </ul>
                                         </label>
                                     @endif
-                                    {!! Form::select('category_id', (isset($categories) ? $categories : array()), old('category_id'), ['placeholder' => 'Selecciona una categoría', 'class' => 'form-control input-sm category-select']) !!}
+                                    {!! Form::select('category_id', (isset($categories) ? $categories : array()), old('category_id'), ['placeholder' => 'Selecciona un género', 'class' => 'form-control input-sm category-select']) !!}
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -112,7 +112,11 @@
                                                 </ul>
                                             </label>
                                         @endif
-                                        {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['multiple' => 'multiple', 'placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+                                        @if (strtolower($competitionType->name) == 'solista')
+                                            {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+                                        @else
+                                            {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['multiple' => 'multiple', 'placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+                                        @endif
                                     </div>
                                 </div>
                             @endif

@@ -52,7 +52,7 @@
                                         </ul>
                                     </label>
                                 @endif
-                                {!! Form::select('category_id', (isset($categories) ? $categories : array()), ($competitor->category->id > 0 ? $competitor->category->id : old('category_id')), ['placeholder' => 'Selecciona una categoría', 'class' => 'form-control input-sm category-select']) !!}
+                                {!! Form::select('category_id', (isset($categories) ? $categories : array()), ($competitor->category->id > 0 ? $competitor->category->id : old('category_id')), ['placeholder' => 'Selecciona un género', 'class' => 'form-control input-sm category-select']) !!}
                             </div>
                         </div>
                         <div class="col-sm-4">

@@ -22,4 +22,12 @@ class Level extends Model implements StaplerableInterface
 
 		parent::__construct($attributes);
 	}
+
+	/*
+	 * -------------------------------- Accessors --------------------------------
+	 */
+	public function getNameAttribute($value)
+	{
+		return ucfirst($value);
+	}
 }
