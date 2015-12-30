@@ -5,7 +5,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div class="col-lg-2 col-md-3 col-sm-2">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="{{ route('home') }}">
+                        <a class="navbar-brand ct-js-btnScroll" href="{{ route('home') }}">
                             <img src="/assets/images/logo-pluranza.png" alt="Logo">
                         </a>
                     </div>
