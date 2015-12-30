@@ -22,8 +22,6 @@ class AppServiceProvider extends ServiceProvider
                 if (auth()->user()->academy) {
                     $academy = auth()->user()->academy;
                     $view->with(compact('academy'));
-                    if (!$academy->isDataComplete)
-                        flash()->error('¡Debe completar la información de su academia!');
                 }
             }
         });

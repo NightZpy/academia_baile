@@ -99,16 +99,12 @@ class CompetitorController extends Controller
         $academy = $this->academyRepository->get($request->get('academy_id'));
 
         if ($this->repository->exists($input, $input['dancer_id'])) {
-            flash()->success('¡No puedes registrar el mismo tipo de cempetidor o los bailarines ya estan siendo ocupados!');
+            flash()->error('¡No puedes registrar un nuevo competidor con un nombre de otro, el mismo tipo de cempetidor o los bailarines ya estan siendo ocupados!');
             return redirect()->back()->withInput($input);
         }
-
-	    $competitor = $this->repository->create($input);
-	    foreach ($competitor->dancers as $dancer)
-		    if ($dancer->email)
-		        $mailer->sendEmailToDancer($dancer, 'pluranza.emails.dancer-invitation');
-
-	    flash()->success('Datos guardados exitosamente, correo de invitación enviado a los competidores.');
+        $competitor = $this->repository->create($input);
+        $mailer->sendEmailToCompetitor($competitor, 'pluranza.emails.dancer-invitation');
+        flash()->success('Datos guardados exitosamente, correo de invitación enviado a los competidores.');
         return redirect()->route('pluranza.competitors.by-academy', $academy->id);
     }
 

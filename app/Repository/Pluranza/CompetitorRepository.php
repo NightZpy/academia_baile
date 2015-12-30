@@ -37,7 +37,8 @@ class CompetitorRepository extends BaseRepository {
 										$join->on('competitor_dancer.dancer_id', '=', 'dancers.id')
 											 ->whereIn('dancers.id', $dancers);
 									})
-									->where('competitors.academy_id', '<>', $data['academy_id'])
+									->where('competitors.competition_category_id', '=', $competitionCategory->id)
+									->orWhere('competitors.academy_id', '<>', $data['academy_id'])
 									->count();
 		return $exists || $dancerExists;
 	}
@@ -81,7 +82,17 @@ class CompetitorRepository extends BaseRepository {
 			 ->join('competition_categories', 'competitors.competition_category_id', '=', 'competition_categories.id')
 			 ->where('competition_categories.competition_type_id', '=', $competitionType->id)
 			 ->count();
-		return ucfirst($competitionType->name . ' ' . ($quantity + 1));
+		if ($quantity > 0) {
+			$lastName = $this->model
+				->join('competition_categories', 'competitors.competition_category_id', '=', 'competition_categories.id')
+				->where('competition_categories.competition_type_id', '=', $competitionType->id)
+				->orderBy('competitors.created_at', 'desc')
+				->first()->name;
+			$name = $competitionType->name . ' ' . (filter_var($lastName, FILTER_SANITIZE_NUMBER_INT) + 1);
+		} else {
+			$name = $name = $competitionType->name . ' ' . ($quantity + 1);
+		}
+		return ucfirst($name);
 	}
 }
 

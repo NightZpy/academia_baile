@@ -142,10 +142,10 @@ class CompetitionCategoryController extends Controller
 			return $this->competitionCategoryRepository->getAllDataTable();
 	}
 
-    public function apiByCategoryList($id)
+    public function apiByCategoryListCompetitionType($categoryId, $competitionCategoryId)
     {
         if(request()->ajax())
-            return $this->competitionCategoryRepository->getLevelByCategoryForSelect($id);
+            return $this->competitionCategoryRepository->getLevelByCategoryAndCompetitionTypeForSelect($categoryId, $competitionCategoryId);
     }
 
     public function apiByLevelList($id)

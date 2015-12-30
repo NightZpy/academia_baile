@@ -3,6 +3,7 @@ namespace App\Mailers;
 use App\AcademieParticipant;
 use App\Pluranza\Academy;
 use App\Pluranza\Dancer;
+use App\Pluranza\Competitor;
 use App\User;
 use Faker\Provider\sr_Latn_RS\Payment;
 use Illuminate\Contracts\Mail\Mailer;
@@ -88,6 +89,16 @@ class AppMailer
         $this->config($dancer->email, $view);
         $this->data = compact('dancer');
         $this->deliver('Pluranza 2016: Has sido invitado!');
+    }
+
+    public function sendEmailToCompetitor(Competitor $competitor, $view = null) {
+        foreach ($competitor->dancers as $dancer) {
+            if ($dancer->email) {
+                $this->config($dancer->email, $view);
+                $this->data = compact('dancer', 'competitor');
+                $this->deliver('Pluranza 2016: Has sido invitado!');
+            }
+        }
     }
 
     public function config($email, $view)

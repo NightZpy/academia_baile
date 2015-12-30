@@ -16,7 +16,7 @@
 */
 
 Route::get('/test', function() {
-	//return '<a href="' . \App\Configuration::first()->rules->url() . '">pdf</a>';
+	return route('pluranza.competition-categories.api.by-category-competition-type', [3, 3]);
 });
 
 
@@ -185,10 +185,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
 			Route::patch('actualizar/{id}', ['as' => 'pluranza.competition-categories.update', 'uses' => 'CompetitionCategoryController@update']);
 			Route::delete('{id}', ['as' => 'pluranza.competition-categories.delete', 'uses' => 'CompetitionCategoryController@destroy']);
 
-			// -------------- API's --------------------
-			Route::get('api/lista', ['as' => 'pluranza.competition-categories.api.list', 'uses' => 'CompetitionCategoryController@apiList']);
-			Route::get('api/lista/por-categoria/{id}', ['as' => 'pluranza.competition-categories.api.by-category', 'uses' => 'CompetitionCategoryController@apiByCategoryList']);
-			Route::get('api/lista/por-nivel/{id}', ['as' => 'pluranza.competition-categories.api.by-level', 'uses' => 'CompetitionCategoryController@apiByLevelList']);
 		});
 	});
 });
@@ -228,7 +224,9 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		 */
 	Route::group(['prefix' => 'categorias-en-competencia', 'middleware' => ['role:admin|director']], function () {
 		// -------------- API's --------------------
-		Route::get('api/lista/por-categoria/{id}', ['as' => 'pluranza.competition-categories.api.by-category', 'uses' => 'CompetitionCategoryController@apiByCategoryList']);
+		// -------------- API's --------------------
+		Route::get('api/lista', ['as' => 'pluranza.competition-categories.api.list', 'uses' => 'CompetitionCategoryController@apiList']);
+		Route::get('api/lista/por-categoria-tipo-competencia/{categoryId}/{competitionTypeId}', ['as' => 'pluranza.competition-categories.api.by-category-competition-type', 'uses' => 'CompetitionCategoryController@apiByCategoryListCompetitionType']);
 		Route::get('api/lista/por-nivel/{id}', ['as' => 'pluranza.competition-categories.api.by-level', 'uses' => 'CompetitionCategoryController@apiByLevelList']);
 	});
 
