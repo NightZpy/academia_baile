@@ -18,17 +18,18 @@
                 <li><a href="{{ route('pluranza.competition-types.home') }}" class="ct-js-btnScroll--mobile">Categorías</a></li>
                 <li><a href="{{ route('levels.home') }}" class="ct-js-btnScroll--mobile">Niveles</a></li>
                 <li><a href="{{ route('pluranza.competition-categories.home') }}" class="ct-js-btnScroll--mobile">Costos por inscripción</a></li>
-                <li><a href="{{ route('configurations.new') }}" class="ct-js-btnScroll--mobile">Reglas</a></li>
+                <li><a href="{{ route('configurations.new') }}" class="ct-js-btnScroll--mobile">Datos base de pluranza</a></li>
             </ul>
         </li>
         @endrole
         @role('director')
-        <li>
+        @if(!$academy->isDataComplete)
+            <li class="background-color-red">
+        @else
+            <li>
+        @endif
             <a href="{{ route('pluranza.academies.edit', $academy->id) }}" class="ct-js-btnScroll--mobile">
                 Editar
-                @if(!$academy->isDataComplete)
-                    <span class="badge background-color-red"><i class="fa fa-exclamation-triangle"></i></span>
-                @endif
             </a>
         </li>
         <li><a href="{{ route('pluranza.dancers.by-academy', $academy->id) }}" class="ct-js-btnScroll--mobile">Miembros</a></li>
@@ -40,10 +41,9 @@
         @endrole
 
         @if(Auth::check())
-            <li>
+            <li class="background-color-red">
                 <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll--mobile">
                     Reglas de competencia
-                    <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
                 </a>
             </li>
             {{--<li class="dropdown" role="presentation">

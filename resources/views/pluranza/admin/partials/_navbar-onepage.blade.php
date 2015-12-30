@@ -30,7 +30,7 @@
                                     <li class="onepage"><a href="{{ route('pluranza.competition-types.home') }}" class="ct-js-btnScroll">Categorías</a></li>
                                     <li class="onepage"><a href="{{ route('levels.home') }}" class="ct-js-btnScroll">Niveles</a></li>
                                     <li class="onepage"><a href="{{ route('pluranza.competition-categories.home') }}" class="ct-js-btnScroll">Costos por inscripción</a></li>
-                                    <li class="onepage"><a href="{{ route('configurations.new') }}" class="ct-js-btnScroll">Reglas</a></li>
+                                    <li class="onepage"><a href="{{ route('configurations.new') }}" class="ct-js-btnScroll">Datos base de pluranza</a></li>
                                 </ul>
                             </li>
                         @endrole
