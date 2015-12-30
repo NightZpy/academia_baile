@@ -40,8 +40,8 @@
                             response($.map(data, function (item, index) {
                                 return {
                                     label: item,
-                                    value: index,
-                                    selected: index == 0 // Select first available option
+                                    value: index
+                                    //selected: index == 0 // Select first available option
                                 };
                             }));
                         });
@@ -72,6 +72,18 @@
                 }
             ]
         });
+    });
+    $(window).bind("load", function() {
+        if ($('.estate-select option').length > 0) {
+            if ($( ".parish-select option:selected" ).length) {
+                var element = $('option:selected', '.parish-select').val();
+                if (element > 0) {
+                    $('option:selected', '.parish-select').removeAttr('selected');
+                    $('.parish-select').find('option[value='+element+']').attr('selected', true);
+                }
+            }
+            $('.parish-select').prop("disabled", false);
+        }
     });
 </script>
 @endpush
