@@ -54,7 +54,7 @@
 
                         @if(Auth::check())
                             <li class="onepage">
-                                <a href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
+                                <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
                                     Reglas de competencia
                                     <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
                                 </a>
