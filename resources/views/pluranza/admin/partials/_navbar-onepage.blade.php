@@ -24,7 +24,13 @@
                                 </ul>
                             </li>
                             <li class="dropdown" role="presentation">
-                                <a href="#" class="dropdown-toggle">Configuración<b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle">
+                                    Configuración<b class="caret">
+                                    @if(!isset($configuration))
+                                            <span class="badge background-color-red"><i class="fa fa-exclamation-triangle"></i></span>
+                                    @endif
+                                    </b>
+                                </a>
                                 <ul class="dropdown-menu">
                                     <li class="onepage"><a href="{{ route('categories.home') }}" class="ct-js-btnScroll">Géneros</a></li>
                                     <li class="onepage"><a href="{{ route('pluranza.competition-types.home') }}" class="ct-js-btnScroll">Categorías</a></li>
@@ -62,12 +68,14 @@
                         @endrole
 
                         @if(Auth::check())
-                            <li class="onepage">
-                                <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
-                                    Reglas de competencia
-                                    <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
-                                </a>
-                            </li>
+                            @if(isset($configuration))
+                                <li class="onepage">
+                                    <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
+                                        Reglas de competencia
+                                        <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
+                                    </a>
+                                </li>
+                            @endif
                             {{--<li class="dropdown" role="presentation">
                                 <a href="#" class="dropdown-toggle">Perfil<b class="caret"></b></a>
                                 <ul class="dropdown-menu">

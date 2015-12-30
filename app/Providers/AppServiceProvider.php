@@ -26,7 +26,9 @@ class AppServiceProvider extends ServiceProvider
                     $view->with(compact('academy'));
                 }
             }
-            $view->with(compact('configuration'));
+            if(Configuration::count() >= 1)
+                $view->with(compact('configuration'));
+            // un comment
         });
     }
 

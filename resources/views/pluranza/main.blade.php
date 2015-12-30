@@ -49,6 +49,7 @@
             @include('pluranza.public.partials._header')
         @endif
         @include('partials._academy-incomplete')
+        @include('partials._configuration-incomplete')
         @include('partials._flash')
         @yield('content')
         @include('public.layout.includes._footer')

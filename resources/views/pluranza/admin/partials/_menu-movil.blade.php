@@ -11,8 +11,14 @@
                 <li><a href="{{ route('pluranza.payments.home') }}" class="ct-js-btnScroll--mobile">Pagos</a></li>
             </ul>
         </li>
-        <li class="dropdown" role="presentation">
-            <a href="#" class="dropdown-toggle">Configuración<b class="caret"></b></a>
+        @if(!isset($configuration))
+            <li class="dropdown background-color-red" role="presentation">
+        @else
+            <li class="dropdown" role="presentation">
+        @endif
+            <a href="#" class="dropdown-toggle">
+                Configuración<b class="caret"></b>
+            </a>
             <ul class="dropdown-menu">
                 <li><a href="{{ route('categories.home') }}" class="ct-js-btnScroll--mobile">Géneros</a></li>
                 <li><a href="{{ route('pluranza.competition-types.home') }}" class="ct-js-btnScroll--mobile">Categorías</a></li>
@@ -49,11 +55,13 @@
         @endrole
 
         @if(Auth::check())
-            <li class="background-color-red">
-                <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll--mobile">
-                    Reglas de competencia
-                </a>
-            </li>
+            @if(isset($configuration))
+                <li class="background-color-red">
+                    <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll--mobile">
+                        Reglas de competencia
+                    </a>
+                </li>
+            @endif
             {{--<li class="dropdown" role="presentation">
                 <a href="#" class="dropdown-toggle">Perfil<b class="caret"></b></a>
                 <ul class="dropdown-menu">

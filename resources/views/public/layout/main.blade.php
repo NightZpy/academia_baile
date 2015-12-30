@@ -14,6 +14,7 @@
 	@include('public.layout.includes._loader')
 	@include('public.layout.includes._menu-movil')
  	<div id="ct-js-wrapper" class="ct-pageWrapper">
+		@include('partials._configuration-incomplete')
 		@yield('content')
 	 	<!-- Back to top -->	 	
 	 	<a href="#" id="toTop" style="display: block;"><i class="fa fa-chevron-up"></i></a>

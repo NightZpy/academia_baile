@@ -1,20 +1,22 @@
 <section class="ct-u-paddingTop20 ct-u-paddingBottom100">
     <div class="container">
-        <div class="row ct-u-paddingBottom40">
-            <div class="col-md-12">
-                <div class="ct-u-sectionHeader text-center ct-u-paddingBottom20">
-                    <h2 class="ct-sectionTitle">{{ $configuration->title }} <br><span class="ct-fw-300">{{ $configuration->long_title }}</span></h2>
+        @if(isset($configuration))
+            <div class="row ct-u-paddingBottom40">
+                <div class="col-md-12">
+                    <div class="ct-u-sectionHeader text-center ct-u-paddingBottom20">
+                        <h2 class="ct-sectionTitle">{{ $configuration->title }} <br><span class="ct-fw-300">{{ $configuration->long_title }}</span></h2>
 
-                    <p class="ct-u-size18 ct-u-paddingTop30 ct-u-paddingBottom20 text-justify-xs">
-                        <span class="ct-u-colorMotive ct-fw-400">{{ $configuration->slogan }}</span><br>
-                        <span class="ct-fw-300">{{ $configuration->description }}</span>
-                    </p>
-                    @if (!Auth::check())
-                        <a href="{{ route('pluranza.academies.new') }}" class="btn btn-lg btn-primary text-uppercase ct-js-btnScroll">¡Inscribete aquí!</a>
-                    @endif
+                        <p class="ct-u-size18 ct-u-paddingTop30 ct-u-paddingBottom20 text-justify-xs">
+                            <span class="ct-u-colorMotive ct-fw-400">{{ $configuration->slogan }}</span><br>
+                            <span class="ct-fw-300">{{ $configuration->description }}</span>
+                        </p>
+                        @if (!Auth::check())
+                            <a href="{{ route('pluranza.academies.new') }}" class="btn btn-lg btn-primary text-uppercase ct-js-btnScroll">¡Inscribete aquí!</a>
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
         <div class="row">
             <div class="col-sm-12">
                 <div class="ct-owlCarousel-frame center-block">
