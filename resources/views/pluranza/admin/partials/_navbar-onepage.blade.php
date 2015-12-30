@@ -53,6 +53,12 @@
                         @endrole
 
                         @if(Auth::check())
+                            <li class="onepage">
+                                <a href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
+                                    Reglas de competencia
+                                    <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
+                                </a>
+                            </li>
                             {{--<li class="dropdown" role="presentation">
                                 <a href="#" class="dropdown-toggle">Perfil<b class="caret"></b></a>
                                 <ul class="dropdown-menu">

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
+use App\Configuration;
 use Auth;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,7 +22,8 @@ class AppServiceProvider extends ServiceProvider
             if (auth()->check()) {
                 if (auth()->user()->academy) {
                     $academy = auth()->user()->academy;
-                    $view->with(compact('academy'));
+                    $configuration = Configuration::first();
+                    $view->with(compact('academy', 'configuration'));
                 }
             }
         });

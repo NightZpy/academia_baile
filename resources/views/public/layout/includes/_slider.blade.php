@@ -28,8 +28,8 @@
         <div class="item" data-bg="/assets/images/content/slider/alcompas.png" data-position="50% 50%">
             <!-- 1' OwlSlider item -->
         </div>
-        <div class="item" data-bg="/assets/images/content/slider/pluranza.png" data-position="50% 50%">
+        {{--<div class="item" data-bg="/assets/images/content/slider/pluranza.png" data-position="50% 50%">
             <!-- 2' OwlSlider item -->
-        </div>
+        </div>--}}
     </div>
 </div>

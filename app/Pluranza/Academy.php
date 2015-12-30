@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 use Iatstuti\Database\Support\NullableFields;
+use Carbon\Carbon;
 
 class Academy extends Model implements StaplerableInterface
 {
@@ -131,7 +132,7 @@ class Academy extends Model implements StaplerableInterface
 
 	public function getFoundationFormatedAttribute()
 	{
-		return ($this->foundation ? $this->foundation->format('d-m-Y') : '--/--/--');
+		return ($this->foundation ? Carbon::createFromFormat('Y-m-d', $this->foundation)->format('d-m-Y') : '--/--/--');
 	}
 
 	public function getIsDataCompleteAttribute()
