@@ -53,6 +53,10 @@ class BaseRepository {
 		return $this->model->findOrFail($id);
 	}
 
+	public function correctMimeType($fileName, $mime) {
+		return \Storage::mimeType($fileName) == $mime;
+	}
+
 	public function update($data = array()){}
 	public function deleteImageDirectory($id){}
 }

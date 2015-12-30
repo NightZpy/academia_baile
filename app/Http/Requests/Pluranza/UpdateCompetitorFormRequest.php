@@ -24,10 +24,11 @@ class UpdateCompetitorFormRequest extends Request
      */
     public function rules()
     {
-        //dd($this->request->all());
         $rules = [
             'academy_id' => 'required|integer|exists:academies,id|',//unique_with:competitors,name,'.$this->id,
             'name' => 'required|max:128',
+            'song' => 'max:12288|mimes:mpga,mp2,mp2a,mp3,m2a,m3a',
+            'song_name' => 'max:128|min:5',
             'competition_type_id' => 'required|integer|exists:competition_types,id',
             'category_id' => 'required|integer|exists:categories,id',
             'level_id' => 'required|integer|exists:levels,id',

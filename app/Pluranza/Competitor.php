@@ -5,12 +5,39 @@ namespace App\Pluranza;
 use App\Category;
 use App\Level;
 use Illuminate\Database\Eloquent\Model;
+use Codesleeve\Stapler\ORM\StaplerableInterface;
+use Codesleeve\Stapler\ORM\EloquentTrait;
 
-class Competitor extends Model
+class Competitor extends Model implements StaplerableInterface
 {
-	use \Znck\Eloquent\Traits\BelongsToThrough;
+	use \Znck\Eloquent\Traits\BelongsToThrough, EloquentTrait;
 
-	protected $fillable = ['name', 'academy_id', 'competition_category_id', 'event_edition_id'];
+	protected $fillable = ['name', 'song', 'song_name', 'academy_id', 'competition_category_id', 'event_edition_id'];
+
+	public function __construct(array $attributes = array()) {
+		$this->hasAttachedFile('song');
+		parent::__construct($attributes);
+	}
+
+	/**
+	 * The "booting" method of the model.
+	 *
+	 * @return void
+	 */
+	public static function boot()
+	{
+		// Call the bootStapler() method to register stapler as an observer for this model.
+		static::bootStapler();
+
+		// Now, before the record is saved, set the filename attribute on the model:
+		static::saving(function($model)
+		{
+			$pathInfo = pathinfo($model->song->originalFileName());
+			//$newFilename = Str::slug($pathInfo['filename']) . '.' . $pathInfo['extension'];
+			$newFilename = str_slug($model->academy->name . '-' . $model->name) . '.' . $pathInfo['extension'];
+			$model->song->instanceWrite('file_name', $newFilename);
+		});
+	}
 
 	/*
 	* -------------------------- Relations ------------------------
@@ -49,5 +76,13 @@ class Competitor extends Model
 	public function eventEdition()
 	{
 		return $this->belongsTo(EventEdition::class);
+	}
+
+	/*
+	 * ------------------- Accessors ---------------
+	 */
+	public function getSongNameAttribute() {
+		$name = ($this->attributes['song_name'] ? $this->attributes['song_name'] : $this->song_file_name);
+		return  ucfirst(str_replace('-', ' ', $name));
 	}
 }

@@ -158,9 +158,11 @@ class CompetitorController extends Controller
      */
 	public function update($id, UpdateCompetitorFormRequest $request)
 	{
-        $input = $request->all();
+        $input = $request->all();;
         $academy = $this->academyRepository->get($request->get('academy_id'));
-        $this->repository->updateCustom($input, $id);
+        if ($request->has('song'))
+            $this->repository->get($id)->song->destroy();
+        $competitor = $this->repository->updateCustom($input, $id);
         flash()->success('Datos actualizados exitosamente!');
         return redirect()->route('pluranza.competitors.by-academy', $academy->id);
 	}

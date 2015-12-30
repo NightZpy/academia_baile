@@ -12,6 +12,7 @@ class CompetitorDataTable extends BaseDataTable
 			'Género',
 			'Nivel',
 			'Categoría',
+			'Canción',
 			'Acciones'
 		];
 
@@ -88,6 +89,12 @@ class CompetitorDataTable extends BaseDataTable
 		{
 			return $model->competitionType->name;
 		});
+
+		$this->collection->addColumn('Canción', function($model)
+		{
+			return '<a target="_blank" href="' . $model->song->url() . '">' . $model->song_name . '</a>';
+		});
+
 
 		if (Entrust::hasRole('director') && request()->route()->getName() == 'pluranza.competitors.api.by-academy') {
 			$this->collection->addColumn('Precio', function ($model) {

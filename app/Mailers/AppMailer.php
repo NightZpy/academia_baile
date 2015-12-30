@@ -89,9 +89,8 @@ class AppMailer
         $this->data = compact('payment');
         if ($subject == null) {
             $subject = "PLURANZA 2016: " . $payment->academy->name . " ha realizado un pago.";
-            /Debugbar::info('Subject: ' . $subject);
         }
-        /Debugbar::info('Subject: ' . $subject);
+        \Debugbar::info('Subject: ' . $subject);
         $this->deliver($subject);
     }
 
