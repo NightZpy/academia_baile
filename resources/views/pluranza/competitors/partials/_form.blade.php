@@ -2,7 +2,11 @@
     <h5 class="text-center ct-titleBox">Obligatorio (*)</h5>
 </div>
 {!! Form::hidden('academy_id', $academy->id) !!}
-{!! Form::hidden('competition_type_id',  isset($competitor) ? $competitor->competitionType->id : $competitionType->id) !!}
+@if (isset($competitionType))
+    {!! Form::hidden('competition_type_id',  $competitionType->id) !!}
+@elseif (isset($competitor))
+    {!! Form::hidden('competition_type_id',  $competitor->competitionType->id) !!}
+@endif
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
         <div class="form-group {{ ($errors->has('name') ? 'has-error' : '') }}">
@@ -61,7 +65,7 @@
     </div>
 </div>
 <div class="row">
-    @if ( (isset($competitor) AND strtolower($competitor->competitionType->name) == 'pareja') OR $competitionType->name == 'pareja')
+    @if ( (isset($competitor) AND strtolower($competitor->competitionType->name) == 'pareja') OR (isset($competitionType) AND $competitionType->name == 'pareja'))
         <div class="col-sm-offset-4 col-sm-4">
             <div class="form-group {{ ($errors->has('dancer_id[female]') ? 'has-error' : '') }}">
                 @if ($errors->has('dancer_id'))
@@ -110,7 +114,7 @@
                         </ul>
                     </label>
                 @endif
-                @if ((isset($competitor) AND strtolower($competitor->competitionType->name) == 'solista') OR  strtolower($competitionType->name) == 'solista')
+                @if ((isset($competitor) AND strtolower($competitor->competitionType->name) == 'solista') OR  (isset($competitionType) AND strtolower($competitionType->name) == 'solista'))
                     <label class="control-label" for="song">
                         Bailarín o Bailarina (*)
                     </label>

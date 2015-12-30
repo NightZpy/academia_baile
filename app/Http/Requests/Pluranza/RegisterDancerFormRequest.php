@@ -27,15 +27,17 @@ class RegisterDancerFormRequest extends Request
             'name' => 'required|max:128',
             'last_name' => 'required|max:128',
             'ci' => 'required|max:16',
+            'gender' => 'in:m,f',
             'birth_date' => 'required',
             'email' => 'required|email|max:128|unique:dancers',
             'phone' => 'numeric',
-            'photo' => 'image',
+            'photo' => 'image|max:1024',
             'facebook' => 'max:128|unique:dancers',
             'twitter' => 'max:128|unique:dancers',
             'instagram' => 'max:128|unique:dancers',
             'independent' => 'in:off,on',
             'director' => 'in:off,on',
+            'biography' => 'max:1024|min:64',
             'academy_id' => 'required|exists:academies,id'
         ];
     }
