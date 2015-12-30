@@ -12,7 +12,6 @@
             </div>
             <div class="row">
                 <div class="col-md-offset-3 col-md-6">
-                    @include('partials._flash')
                     @include('partials._errors')
                 </div>
             </div>

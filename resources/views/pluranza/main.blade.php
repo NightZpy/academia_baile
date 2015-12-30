@@ -48,6 +48,8 @@
         @else
             @include('pluranza.public.partials._header')
         @endif
+        @include('partials._flash')
+        @include('partials._errors')
         @yield('content')
         @include('public.layout.includes._footer')
     </div>

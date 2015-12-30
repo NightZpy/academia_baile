@@ -10,15 +10,19 @@ use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
+use Iatstuti\Database\Support\NullableFields;
 
 class Academy extends Model implements StaplerableInterface
 {
-	use EloquentTrait;
+	use EloquentTrait, NullableFields;
 
 	protected $table = 'academies';
     protected $fillable = ['name', 'address', 'history', 'foundation', 'logo',
 	                       'email', 'phone', 'facebook', 'twitter', 'instagram','independent',
 	                        'estate_id', 'municipality_id', 'parish_id', 'city_id'];
+	protected $nullable = ['address', 'history', 'foundation', 'logo',
+							'facebook', 'twitter', 'instagram',
+							'independent', 'estate_id', 'municipality_id'];
 
 	public function __construct(array $attributes = array()) {
 		$this->hasAttachedFile('logo', [
@@ -27,7 +31,6 @@ class Academy extends Model implements StaplerableInterface
 				'thumb' => '100x100'
 			]
 		]);
-
 		parent::__construct($attributes);
 	}
 
@@ -130,19 +133,10 @@ class Academy extends Model implements StaplerableInterface
 		return ($this->foundation ? $this->foundation->format('d-m-Y') : '--/--/--');
 	}
 
-	/*
-	 * ------------------------ Mutators ------------------------
-	 */
-	public function setFacebookAttribute($value) {
-		$this->facebook = (empty($value) ? NULL : $value );
-	}
-
-	public function setTwitterAttribute($value) {
-		$this->twitter = (empty($value) ? NULL : $value );
-	}
-
-	public function setInstagramAttribute($value) {
-		$this->instagram = (empty($value) ? NULL : $value );
+	public function getIsDataCompleteAttribute()
+	{
+		return (!empty($this->address) && !empty($this->history) && !empty($this->foundation) && !empty($this->logo_file_name) &&
+				!empty($this->phone) && !empty($this->estate_id)  && !empty($this->municipality_id));
 	}
 
 }

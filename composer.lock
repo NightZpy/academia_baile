@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5273f80987bc1e10eef21cb8d577e950",
+    "hash": "63567c502ecf815f85d3fe0a653680fe",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -471,6 +471,44 @@
                 "laravel"
             ],
             "time": "2015-11-25 02:41:52"
+        },
+        {
+            "name": "iatstuti/laravel-nullable-fields",
+            "version": "0.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deringer/laravel-nullable-fields.git",
+                "reference": "dfbba2ff96b57aedc7f72e027a505c1935187df9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deringer/laravel-nullable-fields/zipball/dfbba2ff96b57aedc7f72e027a505c1935187df9",
+                "reference": "dfbba2ff96b57aedc7f72e027a505c1935187df9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.0|~5.1",
+                "php": ">=5.4.0"
+            },
+            "type": "utility",
+            "autoload": {
+                "psr-4": {
+                    "Iatstuti\\Database\\Support\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dyrynda",
+                    "email": "michael@iatstuti.net",
+                    "homepage": "https://iatstuti.net"
+                }
+            ],
+            "description": "This trait allows you to easily flag attributes that should be set as null when being persisted to the database using the Laravel PHP Framework.",
+            "time": "2015-11-14 05:43:54"
         },
         {
             "name": "imagine/imagine",

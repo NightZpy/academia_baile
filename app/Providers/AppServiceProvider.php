@@ -19,8 +19,12 @@ class AppServiceProvider extends ServiceProvider
         // Using Closure based composers...
         view()->composer('*', function ($view) {
             if (auth()->check()) {
-                $academy = auth()->user()->academy;
-                $view->with(compact('academy'));
+                if (auth()->user()->academy) {
+                    $academy = auth()->user()->academy;
+                    $view->with(compact('academy'));
+                    if (!$academy->isDataComplete)
+                        flash()->error('¡Debe completar la información de su academia!');
+                }
             }
         });
     }

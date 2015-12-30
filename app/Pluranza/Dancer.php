@@ -6,14 +6,16 @@ use Carbon\Carbon;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Illuminate\Database\Eloquent\Model;
+use Iatstuti\Database\Support\NullableFields;
 
 class Dancer extends Model implements StaplerableInterface
 {
-	use EloquentTrait;
+	use EloquentTrait, NullableFields;
 
 	protected $fillable = ['name', 'last_name', 'ci', 'birth_date', 'email',
 						   'phone', 'photo', 'facebook', 'twitter', 'instagram',
 		                   'director', 'academy_id'];
+	protected $nullable = ['email', 'phone', 'photo', 'facebook', 'twitter', 'instagram', 'academy_id'];
 
 	public function __construct(array $attributes = array()) {
 		$this->hasAttachedFile('photo', [

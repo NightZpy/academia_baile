@@ -1,10 +1,9 @@
 @extends('pluranza.main')
 
 @section('content')
-    @include('partials._flash')
-    <section class="ct-u-paddingBottom60 ct-backgroundContent" data-type="color" data-bg-color="#ffffff">
+    <section class="ct-u-paddingBottom10 ct-backgroundContent" data-type="color" data-bg-color="#ffffff">
         <div class="container">
-            <div class="row ct-u-paddingTop100">
+            <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 text-center ct-titleBox">
                     <h4 class="text-uppercase ct-u-paddingTop30">
                         Academia <i>{!! $academy->name !!}</i>
