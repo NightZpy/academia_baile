@@ -7,13 +7,21 @@ use Entrust;
 class CompetitorDataTable extends BaseDataTable
 {
 	function __construct() {
-		$this->columns = [
+		$columns = [
 			'Nombre',
 			'Género',
 			'Nivel',
 			'Categoría',
 			'Acciones'
 		];
+
+		if (!Entrust::hasRole('director'))
+			$this->columns = ['Academia'];
+
+		if (!Entrust::hasRole('director'))
+			$this->columns = array_merge(['Academia'], $columns);
+		else
+			$this->columns = $columns;
 
 		if (Entrust::hasRole('director') &&
 			(
@@ -48,8 +56,18 @@ class CompetitorDataTable extends BaseDataTable
 	{
 		$filters = $this->columns;
 		unset($filters[count($filters) - 1]);
+		if (!Entrust::hasRole('director'))
+			$filters = array_merge(['Academia'], $filters);
+
 		$this->collection->searchColumns($filters);
 		$this->collection->orderColumns($filters);
+
+		if (!Entrust::hasRole('director')) {
+			$this->collection->addColumn('Academia', function($model)
+			{
+				return $model->academy->name;
+			});
+		}
 
 		$this->collection->addColumn('Nombre', function($model)
 		{

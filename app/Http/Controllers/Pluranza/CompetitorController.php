@@ -133,7 +133,7 @@ class CompetitorController extends Controller
         $competitor = $this->repository->get($id);
         $academy = $competitor->academy;
         $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitor->competitionType->id);
-        $levels = $this->competitionCategoryRepository->getLevelByCategoryForSelect($competitor->level->id);
+        $levels = $this->competitionCategoryRepository->getLevelByCategoryAndCompetitionTypeForSelect($competitor->category->id, $competitor->competitionType->id);
 
         if (strtolower($competitor->competitionType->name) == 'pareja') {
             $masculineDancers = $academy->dancers()->masculine()->lists('name', 'id');

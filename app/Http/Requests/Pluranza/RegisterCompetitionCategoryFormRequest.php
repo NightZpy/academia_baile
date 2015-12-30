@@ -24,7 +24,7 @@ class RegisterCompetitionCategoryFormRequest extends Request
     public function rules()
     {
         return [
-            'price' => 'required|numeric',
+            'price' => 'required|integer',
             'category_id' => 'required|unique_with:competition_categories,level_id,competition_type_id',
             'level_id' => 'required',
             'competition_type_id' => 'required'

@@ -18,7 +18,6 @@
                         var categoryId = $('.category-select').val();
                         var competitionTypeId = $('input[name="competition_type_id"]').val();
                         var url = '/pluranza/categorias-en-competencia/api/lista/por-categoria-tipo-competencia/' + categoryId + '/' + competitionTypeId;
-                        console.log(url);
                         $.getJSON(url, request, function(data) {
                             var selectOnlyOption = data.length <= 1;
                             response($.map(data, function(item, index) {

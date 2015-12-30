@@ -62,4 +62,12 @@ class Payment extends Model implements StaplerableInterface {
 	{
 		return Carbon::parse($value)->format('Y-m-d');
 	}
+
+	/*
+	 * ------------------------- mutators -------------------------
+	 */
+	public function setAmountAttribute($amount)
+	{
+		$this->attributes['amount'] = filter_var($amount, FILTER_SANITIZE_NUMBER_INT);
+	}
 }

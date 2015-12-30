@@ -38,4 +38,12 @@ class CompetitionCategory extends Model
 	{
 		return number_format($this->price, '2', ',', '.') . ' Bs';
 	}
+	/*
+	 * ----------------- Mutators
+	 */
+
+	public function setPriceAttribute($price)
+	{
+		$this->attributes['price'] = filter_var($price, FILTER_SANITIZE_NUMBER_INT);
+	}
 }

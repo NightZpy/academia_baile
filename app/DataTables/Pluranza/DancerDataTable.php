@@ -6,13 +6,21 @@ use Entrust;
 class DancerDataTable extends BaseDataTable
 {
 	function __construct() {
-		$this->columns = [
+		$columns = [
 			'Foto',
 			'Nombre',
 			'Edad',
 			'Email',
 			'Acciones'
 		];
+
+		if (!Entrust::hasRole('director'))
+			$this->columns = ['Academia'];
+
+		if (!Entrust::hasRole('director'))
+			$this->columns = array_merge(['Academia'], $columns);
+		else
+			$this->columns = $columns;
 
 		$this->defaultConfig();
 		$this->setRoute('pluranza.dancers.api.list');
@@ -34,8 +42,19 @@ class DancerDataTable extends BaseDataTable
 
 	public function setBodyTableSettings()
 	{
-		$this->collection->searchColumns('Nombre', 'Edad', 'Email');
-		$this->collection->orderColumns('Nombre', 'Edad', 'Email');
+		$columns = ['Nombre', 'Edad', 'Email'];
+		if (!Entrust::hasRole('director'))
+			$columns = array_merge(['Academia'], $columns);
+
+		$this->collection->searchColumns($columns);
+		$this->collection->orderColumns($columns);
+
+		if (!Entrust::hasRole('director')) {
+			$this->collection->addColumn('Academia', function($model)
+			{
+				return $model->academy->name;
+			});
+		}
 
 		$this->collection->addColumn('Foto', function($model)
 		{

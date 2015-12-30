@@ -24,8 +24,8 @@ class RegisterPaymentFormRequest extends Request
     public function rules()
     {
         return [
-            'amount' => 'required|numeric',
-            'reference_code' => 'max:128|min:2|alpha_num',
+            'amount' => 'required|integer',
+            'reference_code' => 'max:128|min:2|alpha_num|unique:payments,reference_code',
             'pay_date' => 'required|date',
             'voucher' => 'image',
             'competitor_id' => 'exists:competitors,id'

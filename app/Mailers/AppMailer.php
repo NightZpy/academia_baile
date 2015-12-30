@@ -87,8 +87,17 @@ class AppMailer
     public function sendEmailNewPaymentToAdmin(Payment $payment, User $admin, $view = null, $subject = null, $attach = null) {
         $this->config($admin->email, $view);
         $this->data = compact('payment');
-        $subject = "PLURANZA 2016: " . $payment->academy->name . " ha realizado un pago.";
+        if ($subject == null) {
+            $subject = "PLURANZA 2016: " . $payment->academy->name . " ha realizado un pago.";
+            /Debugbar::info('Subject: ' . $subject);
+        }
+        /Debugbar::info('Subject: ' . $subject);
         $this->deliver($subject);
+    }
+
+    public function sendEmailUpdatePaymentToAdmin(Payment $payment, User $admin, $view = null, $subject = null, $attach = null) {
+        $subject = (!$subject ? "PLURANZA 2016: " . $payment->academy->name . " ha actualizado un pago rechazado." : $subject );
+        $this->sendEmailNewPaymentToAdmin($payment, $admin, $view, $subject);
     }
 
     public function sendEmailToDancer(Dancer $dancer, $view = null)

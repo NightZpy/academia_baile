@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pluranza;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Pluranza\RegisterPaymentFormRequest;
+use App\Http\Requests\Pluranza\UpdatePaymentFormRequest;
 use App\Mailers\AppMailer;
 use App\Repository\Pluranza\AcademyRepository;
 use App\Repository\Pluranza\PaymentRepository;
@@ -107,9 +108,15 @@ class PaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RegisterPaymentFormRequest $request, $id)
+    public function update(UpdatePaymentFormRequest $request, AppMailer $mailer, $id)
     {
-        $this->paymentRepository->update($request->all(), $id);
+        $input = $request->all();
+        $input['academy_id'] = Auth::user()->academy->id;
+        $status = $this->paymentRepository->get($id)->status;
+        $payment = $this->paymentRepository->updateCustom($input, $id);
+        $admin = Role::whereName('admin')->first()->users->first();
+        if($status == 'refuse')
+            $mailer->sendEmailUpdatePaymentToAdmin($payment, $admin, 'pluranza.payments.emails.payment');
         flash()->success('Datos actualizados exitosamente!');
         return redirect()->route('pluranza.payments.home');
     }

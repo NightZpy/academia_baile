@@ -4,7 +4,7 @@ namespace App\Http\Requests\Pluranza;
 
 use App\Http\Requests\Request;
 
-class UpdateCompetitionCategoryFormRequest extends Request
+class UpdatePaymentFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,11 @@ class UpdateCompetitionCategoryFormRequest extends Request
     public function rules()
     {
         return [
-            'price' => 'required|integer',
-            'category_id' => 'required|unique_with:competition_categories,level_id,competition_type_id,'.$this->id,
-            'level_id' => 'required',
-            'competition_type_id' => 'required',
+            'amount' => 'required|integer',
+            'reference_code' => 'max:128|min:2|alpha_num|unique:payments,reference_code,' . $this->id,
+            'pay_date' => 'required|date',
+            'voucher' => 'image',
+            'competitor_id' => 'exists:competitors,id'
         ];
     }
 }
