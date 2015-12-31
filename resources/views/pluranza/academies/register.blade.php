@@ -134,8 +134,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-offset-8 col-md-3">
-                            {!! Form::submit('Enviar Informaci&#243;n', [ 'class' => 'btn btn-xs btn-primary btn-block text-uppercase ct-u-size14']) !!}
+                        <div class="col-md-offset-4 col-md-4">
+                            {!! Form::submit('Enviar Información', [ 'class' => 'btn btn-xs btn-primary btn-block text-uppercase ct-u-size14']) !!}
                         </div>
                     </div>
                     {!! Form::close() !!}

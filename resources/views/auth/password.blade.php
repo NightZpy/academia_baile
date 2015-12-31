@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-offset-3 col-md-6">
+                                <div class="col-md-offset-4 col-md-4">
                                     <div class="form-group {{ ($errors->has('g-recaptcha-response') ? 'has-error background-error-color' : '') }}">
                                         @if ($errors->has('g-recaptcha-response'))
                                             <label class="control-label" for="g-recaptcha-response">
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                         <div class="row">
-                            <div class="col-md-offset-3 col-md-6">
+                            <div class="col-md-offset-4 col-md-4">
                                 <button type="submit" class="btn btn-xs btn-primary btn-block text-uppercase">Enviar enlace de recuperación</button>
                             </div>
                         </div>
