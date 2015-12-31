@@ -173,14 +173,7 @@
                                     <label class="control-label" for="municipality_id">
                                         Municipio donde se ubican <b class="red">(*)</b>
                                     </label>
-                                        <?php
-                                            if (isset($municipalities) AND  $academy->municipality_id > 0 ):
-                                                $municipalityId = $academy->municipality_id;
-                                            else:
-                                                $municipalityId = old('category_id');
-                                            endif;
-                                        ?>
-                                    {!! Form::select('municipality_id', $municipalities, $municipalityId, ['placeholder' => 'Selecciona un municipio', 'class' => 'form-control input-sm municipality-select']) !!}
+                                    {!! Form::select('municipality_id', $municipalities, ( $municipalityId > 0 ? $municipalityId : old('municipality_id')), ['placeholder' => 'Selecciona un municipio', 'class' => 'form-control input-sm municipality-select']) !!}
                                 </div>
                             </div>
                         </div>

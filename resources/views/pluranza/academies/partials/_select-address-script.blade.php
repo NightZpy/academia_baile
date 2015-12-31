@@ -21,7 +21,6 @@
                                 return {
                                     label: item,
                                     value: index,
-                                    selected: selectOnlyOption // Select if only option
                                 };
                             }));
                         });
@@ -45,7 +44,6 @@
                                 return {
                                     label: item,
                                     value: index,
-                                    selected: selectOnlyOption
                                 };
                             }));
                         });
@@ -62,7 +60,6 @@
                                 return {
                                     label: item,
                                     value: index,
-                                    selected: index == 0 // Select first available option
                                 };
                             }));
                         });
