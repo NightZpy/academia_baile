@@ -44,6 +44,18 @@
                                 @endif
                                 {!! Form::password('password', ['placeholder' => 'Contraseña', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
                             </div>
+                            <div class="form-group {{ ($errors->has('g-recaptcha-response') ? 'has-error background-error-color' : '') }}">
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <label class="control-label" for="g-recaptcha-response">
+                                        <ul>
+                                            @foreach($errors->get('g-recaptcha-response') as $error)
+                                                <li>{!! $error !!}</li>
+                                            @endforeach
+                                        </ul>
+                                    </label>
+                                @endif
+                                {!! app('captcha')->display() !!}
+                            </div>
                             <button type="submit" class="btn btn-xs btn-primary btn-block text-uppercase">Ingresar</button>
                         {!! Form::close() !!}
                     </div>
