@@ -55,7 +55,7 @@ class AcademyDataTable extends BaseDataTable
 
 		$this->collection->addColumn('Director', function($model)
 		{
-			return ($model->firstDirector ? $model->firstDirector->fullName : 'Sin asignar');
+			return ($model->firstDirector ? '<a target="_blank" href="' . route('pluranza.dancers.show', $model->firstDirector->id) . '">' . $model->firstDirector->fullName . '</a>'; : 'Sin asignar');
 		});
 
 		$this->collection->addColumn('Facebook', function($model)
