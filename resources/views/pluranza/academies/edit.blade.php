@@ -26,7 +26,7 @@
                 <div class="col-sm-offset-1 col-sm-5">
                     <div class="row">
                         <div class="col-sm-offset-2 col-sm-8">
-                            <div class="form-group {{ ($errors->has('name') ? 'has-error' : '') }}">
+                            <div class="form-group {{ ($errors->has('name') ?  'has-error background-error-color' : '') }}">
                                 @if ($errors->has('name'))
                                     <label class="control-label" for="name">
                                         <ul>
@@ -39,13 +39,13 @@
                                 <label class="control-label ct-titleBox" for="logo">
                                     Nombre de la academia (Si es independiente, coloque su nombre)(*)
                                 </label>
-                                {!! Form::text('name', old('name'), array('placeholder' => 'Nombre de la Academia', 'class' => 'form-control input-sm')) !!}
+                                {!! Form::text('name', old('name'), array('placeholder' => 'Nombre de la Academia', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-offset-2 col-sm-8">
-                            <div class="form-group {{ ($errors->has('email') ? 'has-error' : '') }}">
+                            <div class="form-group {{ ($errors->has('email') ?  'has-error background-error-color' : '') }}">
                                 @if ($errors->has('email'))
                                     <label class="control-label" for="email">
                                         <ul>
@@ -58,13 +58,13 @@
                                 <label class="control-label ct-titleBox" for="logo">
                                     Correo electrónico (Obligatorio para contacto)(*)
                                 </label>
-                                {!! Form::text('email', old('email'), array('placeholder' => 'Email de la Academia', 'class' => 'form-control input-sm', 'disabled' => 'disabled')) !!}
+                                {!! Form::text('email', old('email'), array('placeholder' => 'Email de la Academia', 'class' => 'form-control input-sm', 'disabled' => 'disabled', 'required' => 'required')) !!}
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-offset-2 col-sm-8">
-                            <div class="form-group {{ ($errors->has('phone') ? 'has-error' : '') }}">
+                            <div class="form-group {{ ($errors->has('phone') ? 'has-error background-error-color' : '') }}">
                                 @if ($errors->has('phone'))
                                     <label class="control-label" for="phone">
                                         <ul>
@@ -82,8 +82,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-offset-2 col-sm-8">
-                            <div class="form-group {{ ($errors->has('foundation') ? 'has-error' : '') }}">
+                        <div class="col-sm-offset-2 col-sm-8  {{ ($errors->has('foundation') ?  'has-error background-error-color' : '') }}">
+                            <div class="form-group">
                                 @if ($errors->has('foundation'))
                                     <label class="control-label" for="foundation">
                                         <ul>
@@ -102,7 +102,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-offset-2 col-sm-8">
-                            <div class="form-group {{ ($errors->has('history') ? 'has-error' : '') }}">
+                            <div class="form-group {{ ($errors->has('history') ?  'has-error background-error-color' : '') }}">
                                 @if ($errors->has('history'))
                                     <label class="control-label" for="history">
                                         <ul>
@@ -125,7 +125,7 @@
                     <div class="address-select">
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="form-group {{ ($errors->has('estate_id') ? 'has-error' : '') }}">
+                                <div class="form-group {{ ($errors->has('estate_id') ?  'has-error background-error-color' : '') }}">
                                     @if ($errors->has('estate_id'))
                                         <label class="control-label" for="estate_id">
                                             <ul>
@@ -138,11 +138,11 @@
                                     <label class="control-label ct-titleBox" for="estate_id">
                                         Estado donde se ubican (*)
                                     </label>
-                                    {!! Form::select('estate_id', $estates, ( $estateId > 0 ? $estateId : old('estate_id')), ['placeholder' => 'Selecciona un estado', 'class' => 'form-control input-sm estate-select']) !!}
+                                    {!! Form::select('estate_id', $estates, ( $estateId > 0 ? $estateId : old('estate_id')), ['placeholder' => 'Selecciona un estado', 'class' => 'form-control input-sm estate-select', 'required' => 'required']) !!}
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group {{ ($errors->has('municipality_id') ? 'has-error' : '') }}">
+                                <div class="form-group {{ ($errors->has('municipality_id') ?  'has-error background-error-color' : '') }}">
                                     @if ($errors->has('municipality_id'))
                                         <label class="control-label" for="municipality_id">
                                             <ul>
@@ -161,7 +161,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="form-group {{ ($errors->has('parish_id') ? 'has-error' : '') }}">
+                                <div class="form-group {{ ($errors->has('parish_id') ?  'has-error background-error-color' : '') }}">
                                     @if ($errors->has('parish_id'))
                                         <label class="control-label" for="parish_id">
                                             <ul>
@@ -178,7 +178,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group {{ ($errors->has('city_id') ? 'has-error' : '') }}">
+                                <div class="form-group {{ ($errors->has('city_id') ?  'has-error background-error-color' : '') }}">
                                     @if ($errors->has('city_id'))
                                         <label class="control-label" for="city_id">
                                             <ul>
@@ -198,7 +198,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="form-group {{ ($errors->has('address') ? 'has-error' : '') }}">
+                            <div class="form-group {{ ($errors->has('address') ?  'has-error background-error-color' : '') }}">
                                 @if ($errors->has('address'))
                                     <label class="control-label" for="address">
                                         <ul>
@@ -217,7 +217,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="form-group {{ ($errors->has('facebook') ? 'has-error' : '') }}">
+                            <div class="form-group {{ ($errors->has('facebook') ?  'has-error background-error-color' : '') }}">
                                 @if ($errors->has('facebook'))
                                     <label class="control-label" for="facebook">
                                         <ul>
@@ -234,7 +234,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="form-group {{ ($errors->has('twitter') ? 'has-error' : '') }}">
+                            <div class="form-group {{ ($errors->has('twitter') ?  'has-error background-error-color' : '') }}">
                                 @if ($errors->has('twitter'))
                                     <label class="control-label" for="twitter">
                                         <ul>
@@ -253,7 +253,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="form-group {{ ($errors->has('instagram') ? 'has-error' : '') }}">
+                            <div class="form-group {{ ($errors->has('instagram') ?  'has-error background-error-color' : '') }}">
                                 @if ($errors->has('instagram'))
                                     <label class="control-label" for="instagram">
                                         <ul>
@@ -287,7 +287,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-offset-3 col-sm-6">
-                        <div class="form-group {{ ($errors->has('logo') ? 'has-error' : '') }}">
+                        <div class="form-group {{ ($errors->has('logo') ?  'has-error background-error-color' : '') }}">
                             @if ($errors->has('logo'))
                                 <label class="control-label" for="logo">
                                     <ul>

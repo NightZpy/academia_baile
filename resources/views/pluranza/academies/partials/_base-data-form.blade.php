@@ -24,10 +24,10 @@
             {!! Form::email('email_confirmation', old('email_confirmation'), array('placeholder' => 'Confirmar Email', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
         </div>
         <div class="form-group">
-            {!! Form::password('password', ['placeholder' => 'Contrase&ntilde;a', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+            {!! Form::password('password', ['placeholder' => 'Contraseña', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
         </div>
     <div class="form-group">
-        {!! Form::password('password_confirmation', ['placeholder' => 'Confirmar contrase&ntilde;a', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+        {!! Form::password('password_confirmation', ['placeholder' => 'Confirmar contraseña', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
     </div>
 
         <button type="submit" class="btn btn-xs btn-primary btn-block text-uppercase ct-u-size14">Registrar</button>

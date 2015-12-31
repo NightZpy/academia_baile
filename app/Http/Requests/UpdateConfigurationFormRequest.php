@@ -27,7 +27,7 @@ class UpdateConfigurationFormRequest extends Request
             'title' => 'required|max:64',
             'long_title' => 'required|max:128',
             'slogan' => 'required|max:128',
-            'description' => 'required|max:512',
+            'description' => 'required|max:1024',
         ];
     }
 }

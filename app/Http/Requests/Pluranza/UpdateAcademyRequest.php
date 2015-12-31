@@ -21,21 +21,24 @@ class UpdateAcademyRequest extends Request
      *
      * @return array
      */
+
     public function rules()
     {
         return [
-            'address' => 'max:256',
-            'description' => 'max:1024',
-            //'foundation' => 'date_format:d/m/Y',
+            'name' => 'required|max:64|unique:academies,name,'.$this->id,
+            'email' => 'max:128|unique:academies,email,,'.$this->id,
+            'phone' => 'required|integer|digits_between:5,24',
+            'address' => 'min:5|max:256',
+            'description' => 'min:20|max:1024',
+            //'foundation' => 'date_format:d/m/Y',s
             'logo' => 'image',
-            'phone' => 'required|numeric',
             'facebook' => 'max:128|unique:academies,facebook,'.$this->id,
             'twitter' => 'max:128|unique:academies,twitter,'.$this->id,
             'instagram' => 'max:128|unique:academies,instagram,'.$this->id,
-            'estate' => 'exists:estates,id_estado',
-            'municipalities' => 'exists:municipalities,id_municipio',
-            'parishes' => 'exists:parishes,id_parroquia',
-            'cities' => 'exists:cities,id_ciudad'
+            'estate_id' => 'requried|exists:estates,id',
+            'municipality_id' => 'required|exists:municipalities,id',
+            'parish_id' => 'exists:parishes,id',
+            'city_id' => 'exists:cities,id'
         ];
     }
 }

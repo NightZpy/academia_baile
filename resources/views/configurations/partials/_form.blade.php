@@ -87,7 +87,7 @@
                 </label>
             @endif
             <label class="control-label" for="description">
-                Descripción (Máximo 256 carácteres)*
+                Descripción (Máximo 512 carácteres)(*)
             </label>
             {!! Form::textarea('description', old('description'), array('placeholder' => 'Descripción', 'class' => 'form-control input-sm')) !!}
         </div>
