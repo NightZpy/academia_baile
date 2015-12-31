@@ -330,3 +330,29 @@
     }
 </style>
 @endpush
+@push('scripts')
+<script>
+    var handleBootstrapFileInput = function() {
+        try {
+            $(".file-upload").fileinput({
+                'showUpload': false,
+                'showRemove': false,
+                @if ($academy->logo->url())
+                    initialPreview: "<img src='{{ $academy->logo->url() }}' class='file-preview-image' alt='{{ $academy->name }}' title='{{ $academy->name }}'>",
+                @endif
+                previewFileType: "image",
+                removeClass: "btn btn-xs btn-danger text-uppercase ct-u-size14",
+                removeLabel: " Eliminar",
+                removeIcon: '<i class="fa fa-trash"></i>'
+            });
+
+        } catch(e) {
+            alert('fileinput.js no soporta navegadores antiguos!');
+        }
+    }
+
+    jQuery(document).ready(function() {
+        handleBootstrapFileInput();
+    });
+</script>
+@endpush

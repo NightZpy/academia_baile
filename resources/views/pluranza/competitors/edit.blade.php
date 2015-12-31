@@ -38,3 +38,30 @@
 @stop
 
 @include('pluranza.competitors.partials._select-competition-category-script-new')
+
+@push('scripts')
+<script>
+    var handleBootstrapFileInput = function() {
+        try {
+            $(".file-upload").fileinput({
+                'showUpload': false,
+                'showRemove': false,
+                @if ($competitor->song->url())
+                initialPreview: "<audio controls><source src='{{ $competitor->song->url() }}' type='audio/mp3' class='file-preview-other' title='{{ $competitor->song_name }}'></audio>",
+                @endif
+                previewFileType: "image",
+                removeClass: "btn btn-xs btn-danger text-uppercase ct-u-size14",
+                removeLabel: " Eliminar",
+                removeIcon: '<i class="fa fa-trash"></i>'
+            });
+
+        } catch(e) {
+            alert('fileinput.js no soporta navegadores antiguos!');
+        }
+    }
+
+    jQuery(document).ready(function() {
+        fileInput = handleBootstrapFileInput();
+    });
+</script>
+@endpush

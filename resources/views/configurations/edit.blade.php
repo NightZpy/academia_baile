@@ -36,3 +36,41 @@
         </div>
     </section>
 @stop
+
+@push('scripts')
+<script>
+    var handleBootstrapFileInput = function() {
+        try {
+            $(".file-upload").fileinput({
+                'showUpload': false,
+                'showRemove': false,
+                @if ($configuration->rules->url())
+                initialPreview: "<object data='{{ route('home') . $configuration->rules->url() }}' type='application/pdf' width='160px' height='160px' internalinstanceid='68'>" +
+                "<param name='movie' value='{{ $configuration->rules->originalFileName() }}'>" +
+                "<param name='controller' value='true'>" +
+                "<param name='allowFullScreen' value='true'>" +
+                "<param name='allowScriptAccess' value='always'>" +
+                "<param name='autoPlay' value='false'>" +
+                "<param name='autoStart' value='false'>" +
+                "<param name='quality' value='high'>" +
+                "<div class='file-preview-other'>" +
+                "<i class='glyphicon glyphicon-file'>''</i>" +
+                "</div>" +
+                "</object>",
+                @endif
+                previewFileType: "any",
+                removeClass: "btn btn-xs btn-danger text-uppercase ct-u-size14",
+                removeLabel: " Eliminar",
+                removeIcon: '<i class="fa fa-trash"></i>'
+            });
+
+        } catch(e) {
+            alert('fileinput.js no soporta navegadores antiguos!');
+        }
+    }
+
+    jQuery(document).ready(function() {
+        handleBootstrapFileInput();
+    });
+</script>
+@endpush

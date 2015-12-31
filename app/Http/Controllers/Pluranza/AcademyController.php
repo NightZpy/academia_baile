@@ -124,8 +124,13 @@ class AcademyController extends Controller
     public function update($id, UpdateAcademyRequest $request)
     {
         $academy = Academy::findOrFail($id);
+        $updateAt = $academy->updated_at;
         $academy->fill($request->all())->save();
-        //$academy->update($request->all());
+        if ($updateAt != $academy->updated_at)
+            flash()->success('Sus datos han sido actualizados correctamente.');
+        else
+            flash()->success('Sus datos no pudieron ser actualizados.');
+
         return redirect()->back()->with(compact('academy'));
     }
 

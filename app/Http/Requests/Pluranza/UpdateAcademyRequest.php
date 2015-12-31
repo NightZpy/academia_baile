@@ -32,10 +32,10 @@ class UpdateAcademyRequest extends Request
             'description' => 'min:20|max:1024',
             //'foundation' => 'date_format:d/m/Y',s
             'logo' => 'image',
-            'facebook' => 'max:128|unique:academies,facebook,'.$this->id,
-            'twitter' => 'max:128|unique:academies,twitter,'.$this->id,
-            'instagram' => 'max:128|unique:academies,instagram,'.$this->id,
-            'estate_id' => 'requried|exists:estates,id',
+            'facebook' => 'url|max:128|unique:academies,facebook,'.$this->id,
+            'twitter' => 'url|max:128|unique:academies,twitter,'.$this->id,
+            'instagram' => 'url|max:128|unique:academies,instagram,'.$this->id,
+            'estate_id' => 'required|exists:estates,id',
             'municipality_id' => 'required|exists:municipalities,id',
             'parish_id' => 'exists:parishes,id',
             'city_id' => 'exists:cities,id'
