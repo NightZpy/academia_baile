@@ -228,11 +228,11 @@
                 </label>
             @endif
             <label class="control-label" for="song">
-                ¡Queremos saber quien baila, cuentanos sobre él! (No más de 1024 carácteres, ni menos de 64)
+                ¡Queremos saber quien baila, cuentanos sobre él!
             </label>
             {!! Form::textarea('biography', old('biography'), array('placeholder' => '¿Quién es?', 'class' => 'form-control input-sm')) !!}
             @route('pluranza.dancers.edit')
-                <b class="biography-counter background-red white"></b> carácteres restantes.
+                <b class="biography-counter background-red white"></b> caracteres restantes.
             @endroute
         </div>
     </div>
