@@ -230,6 +230,9 @@
                 ¡Queremos saber quien baila, cuentanos sobre él! (No más de 1024 carácteres, ni menos de 64)
             </label>
             {!! Form::textarea('biography', old('biography'), array('placeholder' => '¿Quién es?', 'class' => 'form-control input-sm')) !!}
+            @route('pluranza.dancers.edit')
+                <b class="biography-counter background-red white"></b> carácteres restantes.
+            @endroute
         </div>
     </div>
 </div>

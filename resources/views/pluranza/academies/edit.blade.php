@@ -20,8 +20,25 @@
                         'files' => true
                     ])
                 !!}
+                @include('partials._errors-min')
                 <div class="row">
-                    <h5 class="text-center ct-titleBox">Obligatorio (*)</h5>
+                    <h5 class="text-center ct-titleBox">Obligatorio <b class="red">(*)</b></h5>
+                </div>
+                <div class="row">
+                    <div class="col-sm-offset-4 col-sm-4 text-center">
+                        <div class="btn-group" data-toggle="buttons" role="group">
+                            <?php
+                            $active = '';
+                            if ((isset($academy) AND $academy->independent) OR old('independent')):
+                                $active = 'active';
+                            endif
+                            ?>
+                            <label class="btn btn-sm btn-default btn-circle text-uppercase ct-u-size14 {{ $active }}">
+                                {!! Form::checkbox('independent', null, old('director'), array('class' => 'form-control input-sm')) !!}
+                                Soy Independiente
+                            </label>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-offset-1 col-sm-5">
                     <div class="row">
@@ -36,8 +53,8 @@
                                         </ul>
                                     </label>
                                 @endif
-                                <label class="control-label ct-titleBox" for="logo">
-                                    Nombre de la academia (Si es independiente, coloque su nombre)(*)
+                                <label class="control-label" for="logo">
+                                    Nombre de la academia (Si es independiente, coloque su nombre)<b class="red">(*)</b>
                                 </label>
                                 {!! Form::text('name', old('name'), array('placeholder' => 'Nombre de la Academia', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
                             </div>
@@ -55,8 +72,8 @@
                                         </ul>
                                     </label>
                                 @endif
-                                <label class="control-label ct-titleBox" for="logo">
-                                    Correo electrónico (Obligatorio para contacto)(*)
+                                <label class="control-label" for="logo">
+                                    Correo electrónico (Obligatorio para contacto)<b class="red">(*)</b>
                                 </label>
                                 {!! Form::text('email', old('email'), array('placeholder' => 'Email de la Academia', 'class' => 'form-control input-sm', 'disabled' => 'disabled', 'required' => 'required')) !!}
                             </div>
@@ -74,8 +91,8 @@
                                         </ul>
                                     </label>
                                 @endif
-                                <label class="control-label ct-titleBox" for="logo">
-                                    Teléfono (Obligatorio para contacto)(*)
+                                <label class="control-label" for="logo">
+                                    Teléfono (Obligatorio para contacto)<b class="red">(*)</b>
                                 </label>
                                 {!! Form::text('phone', old('phone'), array('placeholder' => 'Teléfono de la Academia', 'class' => 'form-control input-sm')) !!}
                             </div>
@@ -93,7 +110,7 @@
                                         </ul>
                                     </label>
                                 @endif
-                                <label class="control-label ct-titleBox" for="logo">
+                                <label class="control-label" for="logo">
                                     Fecha de fundación (Si es independiente: desde que baila)
                                 </label>
                                 {!! Form::date('foundation', ( $foundation > 0 ? $foundation : old('foundation')), array('placeholder' => 'Fecha de fundaciión', 'class' => 'form-control input-sm')) !!}
@@ -112,10 +129,11 @@
                                         </ul>
                                     </label>
                                 @endif
-                                <label class="control-label ct-titleBox" for="logo">
-                                    Describe la travesía de tu academia en menos de 1024 carácteres.
+                                <label class="control-label" for="logo">
+                                    Describe la travesía de tu academia en menos de <b class="background-red white" id="counter"></b> carácteres.
                                 </label>
                                 {!! Form::textarea('history', old('history'), array('placeholder' => 'Breve historia de la academia', 'class' => 'form-control input-sm')) !!}
+                                <b class="history-counter background-red white"></b> carácteres restantes.
                             </div>
                         </div>
                     </div>
@@ -135,8 +153,8 @@
                                             </ul>
                                         </label>
                                     @endif
-                                    <label class="control-label ct-titleBox" for="estate_id">
-                                        Estado donde se ubican (*)
+                                    <label class="control-label" for="estate_id">
+                                        Estado <b class="red">(*)</b>
                                     </label>
                                     {!! Form::select('estate_id', $estates, ( $estateId > 0 ? $estateId : old('estate_id')), ['placeholder' => 'Selecciona un estado', 'class' => 'form-control input-sm estate-select', 'required' => 'required']) !!}
                                 </div>
@@ -152,8 +170,8 @@
                                             </ul>
                                         </label>
                                     @endif
-                                    <label class="control-label ct-titleBox" for="municipality_id">
-                                        Municipio donde se ubican (*)
+                                    <label class="control-label" for="municipality_id">
+                                        Municipio donde se ubican <b class="red">(*)</b>
                                     </label>
                                     {!! Form::select('municipality_id', $municipalities, ( $municipalityId > 0 ? $municipalityId : old('municipality_id')), ['placeholder' => 'Selecciona un municipio', 'class' => 'form-control input-sm municipality-select']) !!}
                                 </div>
@@ -208,10 +226,11 @@
                                         </ul>
                                     </label>
                                 @endif
-                                <label class="control-label ct-titleBox" for="address">
-                                    Más detalles de la dirección
+                                <label class="control-label" for="address">
+                                    Especifique su dirección
                                 </label>
                                 {!! Form::textarea('address', old('address'), array('placeholder' => 'Dirección de la Academia', 'class' => 'form-control input-sm')) !!}
+                                <b class="address-counter background-red white"></b> carácteres restantes.
                             </div>
                         </div>
                     </div>
@@ -269,20 +288,6 @@
                                 {!! Form::text('instagram', old('instagram'), array('placeholder' => 'URL de Instagram', 'class' => 'form-control input-sm')) !!}
                             </div>
                         </div>
-                        <div class="col-sm-6 text-center">
-                            <div class="btn-group" data-toggle="buttons" role="group">
-                                <?php
-                                    $active = '';
-                                    if ((isset($academy) AND $academy->independent) OR old('independent')):
-                                        $active = 'active';
-                                    endif
-                                ?>
-                                <label class="btn btn-sm btn-default btn-circle text-uppercase ct-u-size14 {{ $active }}">
-                                    {!! Form::checkbox('independent', null, old('director'), array('class' => 'form-control input-sm')) !!}
-                                    Independiente
-                                </label>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -297,7 +302,7 @@
                                     </ul>
                                 </label>
                             @endif
-                            <label class="control-label ct-titleBox" for="logo">
+                            <label class="control-label" for="logo">
                                 Imagen del logo de la academia (No mayor a 1mb)
                             </label>
                             {!! Form::file('logo', array('placeholder' => 'Logo de la Academia', 'class' => 'file-upload')) !!}
@@ -350,6 +355,34 @@
             alert('fileinput.js no soporta navegadores antiguos!');
         }
     }
+
+    $('[name="history"]').simplyCountable({
+        counter:            '.history-counter',
+        countType:          'characters',
+        maxCount:           1024,
+        strictMax:          true,
+        countDirection:     'down',
+        safeClass:          'safe',
+        overClass:          'over',
+        thousandSeparator:  '.',
+        onOverCount:        function(count, countable, counter){},
+        onSafeCount:        function(count, countable, counter){},
+        onMaxCount:         function(count, countable, counter){}
+    });
+
+    $('[name="address"]').simplyCountable({
+        counter:            '.address-counter',
+        countType:          'characters',
+        maxCount:           256,
+        strictMax:          true,
+        countDirection:     'down',
+        safeClass:          'safe',
+        overClass:          'over',
+        thousandSeparator:  '.',
+        onOverCount:        function(count, countable, counter){},
+        onSafeCount:        function(count, countable, counter){},
+        onMaxCount:         function(count, countable, counter){}
+    });
 
     jQuery(document).ready(function() {
         handleBootstrapFileInput();

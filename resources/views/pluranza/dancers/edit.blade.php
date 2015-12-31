@@ -54,6 +54,20 @@
         }
     }
 
+    $('[name="biography"]').simplyCountable({
+        counter:            '.biography-counter',
+        countType:          'characters',
+        maxCount:           1024,
+        strictMax:          true,
+        countDirection:     'down',
+        safeClass:          'safe',
+        overClass:          'over',
+        thousandSeparator:  '.',
+        onOverCount:        function(count, countable, counter){},
+        onSafeCount:        function(count, countable, counter){},
+        onMaxCount:         function(count, countable, counter){}
+    });
+
     jQuery(document).ready(function() {
         handleBootstrapFileInput();
     });

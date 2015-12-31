@@ -1,6 +1,8 @@
 @include('public.layout.includes._js')
 <!-- Jquery Cascading Dropdown -->
 {!! Html::script('/assets/plugins/cascadingdropdown/jquery.cascadingdropdown.js') !!}
+<!-- jQuery Simply Countable plugin -->
+{!! Html::script('/assets/js/jquery.simplyCountable.js') !!}
 <!-- BOOTSTRAP FILEUPLOAD -->
 {!! HTML::script('/assets/plugins/fileinput/fileinput.min.js') !!}
 {!! HTML::script('/assets/plugins/fileinput/fileinput_locale_es.js') !!}

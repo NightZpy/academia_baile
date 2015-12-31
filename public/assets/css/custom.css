@@ -2,6 +2,23 @@
 	background-color: red;
 }
 
+.red {
+	color: red;
+}
+
+.white {
+	color: white;
+}
+
+.background-red {
+	background-color: red;
+}
+
+.background-white {
+	background-color: white;
+}
+
+
 .background-error-color {
 	background-color: lightgoldenrodyellow;
 }
