@@ -96,7 +96,7 @@
                                 <label class="control-label ct-titleBox" for="logo">
                                     Fecha de fundación (Si es independiente: desde que baila)
                                 </label>
-                                {!! Form::date('foundation', ( $foundation > 0 ? $foundation : old('foundation')), array('placeholder' => 'Fecha de fundaci&#243;n', 'class' => 'form-control input-sm')) !!}
+                                {!! Form::date('foundation', ( $foundation > 0 ? $foundation : old('foundation')), array('placeholder' => 'Fecha de fundaciión', 'class' => 'form-control input-sm')) !!}
                             </div>
                         </div>
                     </div>
