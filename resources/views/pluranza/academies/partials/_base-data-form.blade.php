@@ -29,6 +29,9 @@
     <div class="form-group">
         {!! Form::password('password_confirmation', ['placeholder' => 'Confirmar contraseña', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
     </div>
+    <div class="form-group">
+        {!! app('captcha')->display(); !!}
+    </div>
 
         <button type="submit" class="btn btn-xs btn-primary btn-block text-uppercase ct-u-size14">Registrar</button>
         {{--<div class="help-block ct-u-size12 ct-u-colorLighterGray ct-u-paddingTop20">

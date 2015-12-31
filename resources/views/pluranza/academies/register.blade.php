@@ -125,7 +125,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-offset-3 col-md-6">
                             <div class="form-group {{ ($errors->has('g-recaptcha-response') ? 'has-error' : '') }}">
                                 @if ($errors->has('g-recaptcha-response'))
                                     <label class="control-label" for="g-recaptcha-response">
