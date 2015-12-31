@@ -135,7 +135,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-offset-4 col-md-4">
-                            {!! Form::submit('Enviar Información', [ 'class' => 'btn btn-xs btn-primary btn-block text-uppercase ct-u-size14']) !!}
+                            <button type="submit" class="btn btn-xs btn-primary btn-block text-uppercase">Enviar enlace de recuperación</button>
                         </div>
                     </div>
                     {!! Form::close() !!}
