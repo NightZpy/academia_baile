@@ -1,7 +1,7 @@
 <div class="form">
     <div class="text-right ct-u-colorLighterGray ct-u-size20 ct-u-paddingBottom5">
         {{--<span class="ct-u-colorLighterGrey ct-u-cursorPointer" data-toggle="modal" data-target="#myModal">Ingresar</span>--}}
-        <a class="btn btn-xs btn-gray ct-u-colorLighterGrey ct-u-cursorPointer" href="{{ route('users.login') }}">Ingresar</a>
+        <a class="ct-js-btnScroll btn btn-xs btn-gray ct-u-colorLighterGrey ct-u-cursorPointer" href="{{ route('users.login') }}">Ingresar</a>
     </div>
     <div class="text-left">
         <h3 class="ct-u-marginBoth0 ct-u-paddingTop5 ct-u-marginTopMinus10 ct-u-size24 ct-fw-400">REGÍSTRATE EN <i>PLURANZA 2016</i></h3>

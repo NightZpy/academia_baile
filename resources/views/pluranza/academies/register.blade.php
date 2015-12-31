@@ -22,7 +22,7 @@
                     </div>
                     @include('partials._errors-min')
                     <div class="row">
-                        <div class="col-md-offset-4 col-md-4">
+                        <div class="col-md-offset-1 col-md-5">
                             <div class="form-group {{ ($errors->has('name') ? 'has-error background-error-color' : '') }}">
                                 @if ($errors->has('name'))
                                     <label class="control-label" for="name">
@@ -35,6 +35,21 @@
                                 @endif
                                     <label for="name">Nombre de la Academia <b class="red">(*)</b></label>
                                 {!! Form::text('name', old('name'), array('placeholder' => 'Nombre de la Academia', 'class' => 'form-control input-sm')) !!}
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group {{ ($errors->has('phone') ? 'has-error background-error-color' : '') }}">
+                                @if ($errors->has('phone'))
+                                    <label class="control-label" for="phone">
+                                        <ul>
+                                            @foreach($errors->get('phone') as $error)
+                                                <li>{!! $error !!}</li>
+                                            @endforeach
+                                        </ul>
+                                    </label>
+                                @endif
+                                <label for="phone">Teléfono <b class="red">(*)</b></label>
+                                {!! Form::text('phone', old('phone'), array('placeholder' => 'Tel&eacute;fono de la Academia', 'class' => 'form-control input-sm')) !!}
                             </div>
                         </div>
                     </div>
@@ -67,23 +82,6 @@
                                 @endif
                                     <label for="name">Confirmar email <b class="red">(*)</b></label>
                                     {!! Form::text('email_confirmation', old('email_confirmation'), array('placeholder' => 'Confirmar email', 'class' => 'form-control input-sm')) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-offset-1 col-md-5">
-                            <div class="form-group {{ ($errors->has('phone') ? 'has-error background-error-color' : '') }}">
-                                @if ($errors->has('phone'))
-                                    <label class="control-label" for="phone">
-                                        <ul>
-                                            @foreach($errors->get('phone') as $error)
-                                                <li>{!! $error !!}</li>
-                                            @endforeach
-                                        </ul>
-                                    </label>
-                                @endif
-                                    <label for="phone">Teléfono <b class="red">(*)</b></label>
-                                {!! Form::text('phone', old('phone'), array('placeholder' => 'Tel&eacute;fono de la Academia', 'class' => 'form-control input-sm')) !!}
                             </div>
                         </div>
                     </div>

@@ -61,8 +61,8 @@
                     </div>
                     <div class="modal-footer">
                         <div class="help-block ct-u-size20 ct-u-colorLighterGray">
-                            <a class="text-left" href="{{ route('users.password.reset') }}" class="ct-js-btnScroll">&iexcl;Recuperar contrase&ntilde;a!</a>
-                            <a class="text-right" href="{{ route('pluranza.academies.new') }}" class="ct-js-btnScroll">¡Registrarse!</a>
+                            <a class="text-left ct-js-btnScroll" href="{{ route('users.password.reset') }}">¡Recuperar contraseña!</a>
+                            <a class="text-right ct-js-btnScroll" href="{{ route('pluranza.academies.new') }}">¡Registrarse!</a>
                         </div>
                     </div>
                 </div>
