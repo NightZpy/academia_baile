@@ -17,8 +17,9 @@
                         var estateId = $('.estate-select').val();
                         $.getJSON('/municipios/por-estado/' + estateId, request, function(data) {
                             var selectOnlyOption = data.length <= 1;
-                            alert(data.length);
+
                             response($.map(data, function(item, index) {
+                                alert(data.length);
                                 return {
                                     label: item,
                                     value: index
