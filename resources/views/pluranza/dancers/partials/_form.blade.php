@@ -1,10 +1,11 @@
 <div class="row">
-    <h5 class="text-center ct-titleBox">Obligatorio (*)</h5>
+    <h5 class="text-center ct-titleBox">Obligatorio <b class="red">(*)</b></h5>
 </div>
+@include('partials._errors-min')
 {!! Form::hidden('academy_id', $academy->id) !!}
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('name') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('name') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('name'))
                 <label class="control-label" for="name">
                     <ul>
@@ -15,7 +16,7 @@
                 </label>
             @endif
             <label class="control-label" for="song">
-                Nombre (*)
+                Nombre <b class="red">(*)</b>
             </label>
             {!! Form::text('name', old('name'), array('placeholder' => 'Nombre', 'class' => 'form-control input-sm')) !!}
         </div>
@@ -23,7 +24,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('last_name') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('last_name') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('last_name'))
                 <label class="control-label" for="last_name">
                     <ul>
@@ -34,7 +35,7 @@
                 </label>
             @endif
             <label class="control-label" for="song">
-                Apellido (*)
+                Apellido <b class="red">(*)</b>
             </label>
             {!! Form::text('last_name', old('last_name'), array('placeholder' => 'Apellido', 'class' => 'form-control input-sm')) !!}
         </div>
@@ -42,7 +43,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('ci') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('ci') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('ci'))
                 <label class="control-label" for="ci">
                     <ul>
@@ -53,7 +54,7 @@
                 </label>
             @endif
             <label class="control-label" for="song">
-                Cédula (*)
+                Cédula <b class="red">(*)</b>
             </label>
             {!! Form::text('ci', old('ci'), array('placeholder' => 'Cédula', 'class' => 'form-control input-sm')) !!}
         </div>
@@ -62,7 +63,7 @@
 <div class="row">
     <div class="col-sm-offset-4 col-sm-5">
         <label class="control-label" for="song">
-            Género (*)
+            Género <b class="red">(*)</b>
         </label>
         <?php
             $femaleActive = $maleActive = '';
@@ -86,7 +87,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('email') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('email') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('email'))
                 <label class="control-label" for="email">
                     <ul>
@@ -105,7 +106,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('phone') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('phone') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('phone'))
                 <label class="control-label" for="phone">
                     <ul>
@@ -124,7 +125,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('birth_date') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('birth_date') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('birth_date'))
                 <label class="control-label" for="birth_date">
                     <ul>
@@ -135,7 +136,7 @@
                 </label>
             @endif
             <label class="control-label" for="song">
-                Fecha de nacimiento (*)
+                Fecha de nacimiento <b class="red">(*)</b>
             </label>
             {!! Form::date('birth_date', old('birth_date'), array('placeholder' => 'Fecha de fundaci&#243;n', 'class' => 'form-control input-sm')) !!}
         </div>
@@ -143,7 +144,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('facebook') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('facebook') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('facebook'))
                 <label class="control-label" for="facebook">
                     <ul>
@@ -162,7 +163,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('twitter') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('twitter') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('twitter'))
                 <label class="control-label" for="twitter">
                     <ul>
@@ -181,7 +182,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('instagram') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('instagram') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('instagram'))
                 <label class="control-label" for="instagram">
                     <ul>
@@ -216,7 +217,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('biography') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('biography') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('biography'))
                 <label class="control-label" for="biography">
                     <ul>
@@ -238,7 +239,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-3 col-sm-6">
-        <div class="form-group {{ ($errors->has('photo') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('photo') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('photo'))
                 <label class="control-label" for="photo">
                     <ul>

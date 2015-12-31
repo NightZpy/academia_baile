@@ -1,9 +1,10 @@
 <div class="row">
-    <h5 class="text-center ct-titleBox">Obligatorio (*)</h5>
+    <h5 class="text-center ct-titleBox">Obligatorio <b class="red">(*)</b></h5>
 </div>
+@include('partials._errors-min')
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('amount') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('amount') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('amount'))
                 <label class="control-label" for="amount">
                     <ul>
@@ -13,7 +14,7 @@
                     </ul>
                 </label>
             @endif
-            <label for="voucher">Monto del pago (Sólo numeros enteros, sin puntos ni comas)(*)</label>
+            <label for="voucher">Monto del pago (Sólo numeros enteros, sin puntos ni comas)<b class="red">(*)</b></label>
             <div class="input-group">
                 <span class="input-group-addon">Bs.</span>
                 {!! Form::text('amount', (isset($amount) ? $amount : old('amount')), array('placeholder' => 'Monto', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
@@ -24,7 +25,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('reference_code') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('reference_code') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('reference_code'))
                 <label class="control-label" for="reference_code">
                     <ul>
@@ -34,14 +35,14 @@
                     </ul>
                 </label>
             @endif
-                <label for="voucher">Código o número de referencia de la operación (*)</label>
+                <label for="voucher">Código o número de referencia de la operación <b class="red">(*)</b></label>
             {!! Form::text('reference_code', (isset($reference_code) ? $reference_code : old('reference_code')), array('placeholder' => 'Código de referencia', 'class' => 'form-control input-sm')) !!}
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('pay_date') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('pay_date') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('pay_date'))
                 <label class="control-label" for="pay_date">
                     <ul>
@@ -51,14 +52,14 @@
                     </ul>
                 </label>
             @endif
-                <label for="voucher">Fecha de la operación (*)</label>
+                <label for="voucher">Fecha de la operación <b class="red">(*)</b></label>
             {!! Form::date('pay_date', (isset($pay_date) ? $pay_date : old('pay_date')), array('placeholder' => 'Fecha', 'class' => 'form-control input-sm')) !!}
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('competitor_id') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('competitor_id') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('competitor_id'))
                 <label class="control-label" for="competitor_id">
                     <ul>
@@ -75,7 +76,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-3 col-sm-6">
-        <div class="form-group {{ ($errors->has('voucher') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('voucher') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('voucher'))
                 <label class="control-label" for="voucher">
                     <ul>

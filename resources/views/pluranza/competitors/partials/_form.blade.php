@@ -1,6 +1,7 @@
 <div class="row">
-    <h5 class="text-center ct-titleBox">Obligatorio (*)</h5>
+    <h5 class="text-center ct-titleBox">Obligatorio <b class="red">(*)</b></h5>
 </div>
+@include('partials._errors-min')
 {!! Form::hidden('academy_id', $academy->id) !!}
 @if (isset($competitionType))
     {!! Form::hidden('competition_type_id',  $competitionType->id) !!}
@@ -9,7 +10,7 @@
 @endif
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('name') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('name') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('name'))
                 <label class="control-label" for="name">
                     <ul>
@@ -20,7 +21,7 @@
                 </label>
             @endif
             <label class="control-label" for="song">
-                Nombre con el que se identificarán (*)
+                Nombre con el que se identificarán <b class="red">(*)</b>
             </label>
             {!! Form::text('name', (isset($name) ? $name : old('name')), array('placeholder' => 'Nombre', 'class' => 'form-control input-sm')) !!}
         </div>
@@ -28,7 +29,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('category_id') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('category_id') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('category_id'))
                 <label class="control-label" for="category_id">
                     <ul>
@@ -39,7 +40,7 @@
                 </label>
             @endif
             <label class="control-label" for="song">
-                Género de baile (*)
+                Género de baile <b class="red">(*)</b>
             </label>
             {!! Form::select('category_id', (isset($categories) ? $categories : array()), ( isset($competitor) AND $competitor->category->id > 0 ? $competitor->category->id : old('category_id')), ['placeholder' => 'Selecciona un género', 'class' => 'form-control input-sm category-select']) !!}
         </div>
@@ -47,7 +48,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('level_id') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('level_id') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('level_id'))
                 <label class="control-label" for="level_id">
                     <ul>
@@ -58,7 +59,7 @@
                 </label>
             @endif
             <label class="control-label" for="song">
-                Nivel de competición (*)
+                Nivel de competición <b class="red">(*)</b>
             </label>
             {!! Form::select('level_id', (isset($levels) ? $levels : array()), ( isset($competitor) AND $competitor->level->id > 0 ? $competitor->level->id : old('level_id')), ['placeholder' => 'Selecciona un nivel', 'class' => 'form-control input-sm level-select']) !!}
         </div>
@@ -67,7 +68,7 @@
 <div class="row">
     @if ( (isset($competitor) AND strtolower($competitor->competitionType->name) == 'pareja') OR (isset($competitionType) AND $competitionType->name == 'pareja'))
         <div class="col-sm-offset-4 col-sm-4">
-            <div class="form-group {{ ($errors->has('dancer_id[female]') ? 'has-error' : '') }}">
+            <div class="form-group {{ ($errors->has('dancer_id[female]') ? 'has-error background-error-color' : '') }}">
                 @if ($errors->has('dancer_id'))
                     <label class="control-label" for="dancer_id['female']">
                         <ul>
@@ -78,7 +79,7 @@
                     </label>
                 @endif
                 <label class="control-label" for="song">
-                    Bailarina (*)
+                    Bailarina <b class="red">(*)</b>
                 </label>
                 {!! Form::select('dancer_id[female]', (isset($dancers['female']) ? $dancers['female'] : array()), ( isset($competitor) AND $competitor->dancers()->female()->count() > 0 ? $competitor->dancers()->female()->pluck('id') : old('dancer_id[female]')), ['placeholder' => 'Selecciona bailarina', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
             </div>
@@ -86,7 +87,7 @@
     </div>
     <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('dancer_id[masculine]') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('dancer_id[masculine]') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('dancer_id'))
                 <label class="control-label" for="dancer_id['masculine']">
                     <ul>
@@ -97,14 +98,14 @@
                 </label>
             @endif
             <label class="control-label" for="song">
-                Bailarín (*)
+                Bailarín <b class="red">(*)</b>
             </label>
             {!! Form::select('dancer_id[masculine]', (isset($dancers['masculine']) ? $dancers['masculine'] : array()), ( isset($competitor) AND $competitor->dancers()->masculine()->count() > 0 ? $competitor->dancers()->masculine()->pluck('id') : old('dancer_id[masculine]')), ['placeholder' => 'Selecciona bailarín', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
         </div>
     </div>
     @else
         <div class="col-sm-offset-4 col-sm-4">
-            <div class="form-group {{ ($errors->has('dancer_id') ? 'has-error' : '') }}">
+            <div class="form-group {{ ($errors->has('dancer_id') ? 'has-error background-error-color' : '') }}">
                 @if ($errors->has('dancer_id'))
                     <label class="control-label" for="dancer_id">
                         <ul>
@@ -116,12 +117,12 @@
                 @endif
                 @if ((isset($competitor) AND strtolower($competitor->competitionType->name) == 'solista') OR  (isset($competitionType) AND strtolower($competitionType->name) == 'solista'))
                     <label class="control-label" for="song">
-                        Bailarín o Bailarina (*)
+                        Bailarín o Bailarina <b class="red">(*)</b>
                     </label>
                     {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
                 @else
                     <label class="control-label" for="song">
-                        Bailarines (*)
+                        Bailarines <b class="red">(*)</b>
                     </label>
                     {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['multiple' => 'multiple', 'placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
                 @endif
@@ -131,7 +132,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-3 col-sm-6">
-        <div class="form-group {{ ($errors->has('song_name') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('song_name') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('song_name'))
                 <label class="control-label" for="song_name">
                     <ul>
@@ -150,7 +151,7 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-3 col-sm-6">
-        <div class="form-group {{ ($errors->has('song') ? 'has-error' : '') }}">
+        <div class="form-group {{ ($errors->has('song') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('song'))
                 <label class="control-label" for="song">
                     <ul>
