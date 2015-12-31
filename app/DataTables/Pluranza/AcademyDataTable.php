@@ -22,7 +22,7 @@ class AcademyDataTable extends BaseDataTable
 		$actionRoutes = [
 			'show'      => 'pluranza.academies.show',
 		];
-		$actions = ['show'];
+		$actions = [];//['show'];
 
 		if (Entrust::hasRole('admin')) {
 			$actionRoutes['edit']       = 'pluranza.academies.edit';
@@ -40,7 +40,7 @@ class AcademyDataTable extends BaseDataTable
 
 		$this->collection->addColumn('Logo', function($model)
 		{
-			return '<img src="' . $model->logo->url('thumb') . '" alt="' . $model->name . '">';
+			return '<a target="_blank" href="' . $model->logo->url() . '"><img src="' . $model->logo->url('thumb') . '" alt="' . $model->name . '"></a>';
 		});
 
 		$this->collection->addColumn('Nombre', function($model)
@@ -60,7 +60,7 @@ class AcademyDataTable extends BaseDataTable
 
 		$this->collection->addColumn('Facebook', function($model)
 		{
-			return ($model->facebook ? '<a href="' . $model->facebook . '">Ir</a>' : 'Sin asignar');
+			return ($model->facebook ? '<a target="_blank" href="' . $model->facebook . '">Ver</a>' : 'Sin asignar');
 		});
 
 		$this->collection->addColumn('Estado', function($model)

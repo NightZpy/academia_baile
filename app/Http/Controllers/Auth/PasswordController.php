@@ -64,7 +64,7 @@ class PasswordController extends Controller
         $this->validate($request, [
             'token' => 'required',
             'email' => 'required|email',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|confirmed|min:6|alpha_num',
         ]);
 
         $credentials = $request->only(

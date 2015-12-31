@@ -6,7 +6,11 @@
             <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 ct-titleBox">
                     <h4 class="text-center text-uppercase ct-u-paddingTop30">
-                        Bailarines @if(isset($academy)) de <i> {{ $academy->name }}</i> @endif
+                        Bailarines @if(isset($academy))
+                                        @route('pluranza.dancers.by-academy')
+                                            de <i> {{ $academy->name }}</i> @endif
+                                        @endroute
+                                    @endif
                     </h4>
                 </div>
             </div>

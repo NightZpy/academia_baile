@@ -2,7 +2,6 @@
 <div id="join-us" class="ct-u-owlWrapper">
     <div class="ct-shadowBox-repositioned">
         @if(!Auth::check())
-            <script>alert('algo')</script>
             <div class="ct-shadowBox ct-backgroundContent" data-type="color" data-bg-color="rgba(255, 255, 255, .4)" data-snap-ignore="true">
                 @include('pluranza.academies.partials._base-data-form')
             </div>

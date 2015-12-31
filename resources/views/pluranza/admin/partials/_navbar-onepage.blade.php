@@ -15,6 +15,15 @@
                         <li class="onepage"><a href="{{ route('pluranza.home') }}" class="ct-js-btnScroll">Inicio</a></li>
                         @role('admin')
                             <li class="dropdown" role="presentation">
+                                <a href="#" class="dropdown-toggle">Mi academia<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li class="onepage"><a href="{{ route('pluranza.academies.edit', $academy->id) }}" class="ct-js-btnScroll">Editar</a></li>
+                                    <li class="onepage"><a href="{{ route('pluranza.dancers.by-academy', $academy->id) }}" class="ct-js-btnScroll">Bailarines</a></li>
+                                    <li class="onepage"><a href="{{ route('pluranza.competitors.by-academy', $academy->id) }}" class="ct-js-btnScroll">Competidores</a></li>
+                                    <li class="onepage"><a href="{{ route('pluranza.payments.by-academy', $academy->id) }}" class="ct-js-btnScroll">Pagos</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown" role="presentation">
                                 <a href="#" class="dropdown-toggle">Academias<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li class="onepage"><a href="{{ route('pluranza.academies.home') }}" class="ct-js-btnScroll">Todas</a></li>
