@@ -3,14 +3,14 @@
 @section('content')
     <section class="ct-u-paddingBottom10 ct-backgroundContent" data-type="color" data-bg-color="#ffffff">
         <div class="container">
-            <div class="row ct-u-paddingTop100">
+            <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 ct-titleBox">
                     <h4 class="text-center text-uppercase ct-u-paddingTop30">
                         Actualizar costo por inscripción
                     </h4>
                 </div>
             </div>
-            <div class="row ct-u-paddingTop25">
+            <div class="row ct-u-paddingTop10">
                 <div class="col-md-offset-2 col-md-8">
                     {!! Form::model($competitionCategory, array(
                                         'url' => route('pluranza.competition-categories.update', $competitionCategory->id),

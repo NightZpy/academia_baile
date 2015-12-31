@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class UpdateLevelFormRequest extends Request
+class UpdateCategoryFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.

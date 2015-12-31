@@ -27,7 +27,13 @@
                     </ul>
                 </label>
             @endif
-            {!! Form::select('category_id', $categories, ( isset($competitionCategory) AND  $competitionCategory->category_id > 0 ? $competitionCategory->category_id : old('category_id')), ['placeholder' => 'Selecciona un género', 'class' => 'form-control input-sm']) !!}
+            <?php
+                $categoryId = null;
+                if (isset($competitionCategory) AND  $competitionCategory->category_id > 0 ):
+                    $categoryId = $competitionCategory->category_id;
+                endif;
+            ?>
+            {!! Form::select('category_id', $categories, $categoryId, ['placeholder' => 'Selecciona un género', 'class' => 'form-control input-sm']) !!}
         </div>
     </div>
     <div class="col-sm-offset-4 col-sm-4">
@@ -41,7 +47,13 @@
                     </ul>
                 </label>
             @endif
-            {!! Form::select('level_id', $levels, ( isset($competitionCategory) AND  $competitionCategory->level_id > 0 ? $competitionCategory->level_id : old('level_id')), ['placeholder' => 'Selecciona un nivel', 'class' => 'form-control input-sm']) !!}
+            <?php
+                $levelId = null;
+                if (isset($competitionCategory) AND  $competitionCategory->level_id > 0 ):
+                            $levelId = $competitionCategory->level_id;
+                endif;
+            ?>
+            {!! Form::select('level_id', $levels, $levelId, ['placeholder' => 'Selecciona un nivel', 'class' => 'form-control input-sm']) !!}
         </div>
     </div>
     <div class="col-sm-offset-4 col-sm-4">

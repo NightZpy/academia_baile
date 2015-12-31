@@ -101,6 +101,7 @@ class CompetitionCategoryController extends Controller
         $categories = $this->categoryRepository->getAllForSelect();
         $levels = $this->levelRepository->getAllForSelect();
         $competitionTypes = $this->competitionTypeRepository->getAllForSelect();
+        \Debugbar::info([$competitionCategory->toArray(), $categories, $levels, $competitionTypes]);
         return view('pluranza.competition-categories.edit')->with(compact('competitionCategory', 'categories', 'levels', 'competitionTypes'));
     }
 
