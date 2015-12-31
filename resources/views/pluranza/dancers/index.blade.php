@@ -8,7 +8,7 @@
                     <h4 class="text-center text-uppercase ct-u-paddingTop30">
                         Bailarines @if(isset($academy))
                                         @route('pluranza.dancers.by-academy')
-                                            de <i> {{ $academy->name }}</i> @endif
+                                            de <i> {{ $academy->name }}</i>
                                         @endroute
                                     @endif
                     </h4>
