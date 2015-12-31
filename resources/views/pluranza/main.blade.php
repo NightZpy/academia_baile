@@ -4,21 +4,30 @@
       xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Página web administrativa del Festival Pluranza 2016">
-    <link rel="image_src" href="{{ asset('/assets/images/logo-pluranza.png') }}" / >
     <meta name="author" content="Presentatenlaweb">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="/favicon-pluranza.png">
     <link rel="apple-touch-icon" href="/favicon-pluranza.png">
-    <title>Pluranza 2016 @yield('title', '')</title>
-    <!-- FACEBOOK TAGS -->
-    <meta property="og:title" content="Pluranza 2016 @yield('title', '')" />
+    @if(isset($configuration))
+        <title>{{ $configuration->title }}</title>
+        <meta name="description" content="{{ $configuration->description }}">
+        <!-- FACEBOOK TAGS -->
+        <meta property="og:title" content="{{ $configuration->title }}" />
+        <meta property="og:description" content="{{ $configuration->description }}" />
+        <meta property="og:site_name" content="{{ $configuration->long_title }}" />
+    @else
+        <title>{{ $configuration->title }}</title>
+        <meta name="description" content="Página web administrativa del Festival Pluranza 2016">
+        <!-- FACEBOOK TAGS -->
+        <meta property="og:title" content="PLURANZA 2016" />
+        <meta property="og:description" content=Página web administrativa del Festival Pluranza 2016 />
+        <meta property="og:site_name" content="PLURANZA 2016: Festival Internacional de Ritmos Latinos" />
+    @endif
     <meta property="og:type" content="website" />
     <meta property="og:image" content="{{ asset('/assets/images/content/slider/alcompas.png') }}" />
     <meta property="og:image" content="{{ asset('/assets/images/content/slider/pluranza-main.jpg') }}" />
     <meta property="og:url" content="http://alcompas.com.ve/pluranza" />
-    <meta property="og:site_name" content="Pluranza 2016: Festival Internacional de Ritmos Latinos" />
 
     @include('pluranza.admin.partials._css')
     <style>
