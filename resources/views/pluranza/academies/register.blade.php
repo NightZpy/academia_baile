@@ -65,7 +65,7 @@
                                         </ul>
                                     </label>
                                 @endif
-                                    <label for="name">Nombre de la Academia <b class="red">(*)</b></label>
+                                    <label for="name">Email de la Academia <b class="red">(*)</b></label>
                                 {!! Form::text('email', old('email'), array('placeholder' => 'Email de la Academia', 'class' => 'form-control input-sm')) !!}
                             </div>
                         </div>
