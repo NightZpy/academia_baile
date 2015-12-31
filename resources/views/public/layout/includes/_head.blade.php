@@ -7,7 +7,7 @@
 <link rel="shortcut icon" href="/favicon-alcompas.png">
 <link rel="apple-touch-icon" href="/favicon-alcompas.png">
 <!-- FACEBOOK TAGS -->
-<meta property="fb:profile_id" content="100010636996373" />
+<meta property="fb:profile_id" content="100006770895642" />
 <meta property="og:title" content="Al Compás - Academia de Baile" />
 <meta property="og:description" content="Página web de Al Compás Academia de Baile" />
 <meta property="og:site_name" content="Al Compás" />
