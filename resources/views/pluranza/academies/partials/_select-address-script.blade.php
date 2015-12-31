@@ -17,12 +17,11 @@
                         var estateId = $('.estate-select').val();
                         $.getJSON('/municipios/por-estado/' + estateId, request, function(data) {
                             var selectOnlyOption = data.length <= 1;
-
                             response($.map(data, function(item, index) {
-                                alert(data.length);
                                 return {
                                     label: item,
-                                    value: index
+                                    value: index,
+                                    selected: selectOnlyOption // Select if only option
                                 };
                             }));
                         });
@@ -34,11 +33,6 @@
                 {
                     selector: '.parish-select',
                     requires: ['.municipality-select'],
-                    @route('pluranza.academies.edit')
-                        @if (isset($municipalities) AND  $academy->parish_id > 0 )
-                            selected: {{ $academy->parish_id }},
-                        @endif
-                    @endroute
                     source: function (request, response) {
                         var municipalityId = $('.municipality-select').val();
                         $.getJSON('/parroquias/por-municipio/' + municipalityId, request, function (data) {
@@ -46,6 +40,11 @@
                                 return {
                                     label: item,
                                     value: index,
+                                    @route('pluranza.academies.edit')
+                                        @if (isset($municipalities) AND  $academy->parish_id > 0 )
+                                        selected: {{ $academy->parish_id }}
+                                    @endif
+                                    @endroute
                                 };
                             }));
                         });
