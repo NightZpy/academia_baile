@@ -125,6 +125,22 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group {{ ($errors->has('g-recaptcha-response') ? 'has-error' : '') }}">
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <label class="control-label" for="g-recaptcha-response">
+                                        <ul>
+                                            @foreach($errors->get('g-recaptcha-response') as $error)
+                                                <li>{!! $error !!}</li>
+                                            @endforeach
+                                        </ul>
+                                    </label>
+                                @endif
+                                {!! app('captcha')->display(); !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-offset-8 col-md-3">
                             {!! Form::submit('Enviar Informaci&#243;n', [ 'class' => 'btn btn-xs btn-primary btn-block text-uppercase ct-u-size14']) !!}
                         </div>

@@ -156,6 +156,7 @@ return [
         Felixkiss\UniqueWithValidator\UniqueWithValidatorServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        //Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
     ],
 
     /*
