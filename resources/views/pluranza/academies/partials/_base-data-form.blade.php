@@ -4,9 +4,8 @@
         <a class="btn btn-xs btn-gray ct-u-colorLighterGrey ct-u-cursorPointer" href="{{ route('users.login') }}">Ingresar</a>
     </div>
     <div class="text-left">
-        <h3 class="ct-u-marginBoth0 ct-u-paddingTop5 ct-u-marginTopMinus10 ct-u-size24 ct-fw-400">Registrate en PLURANZA 2016</h3>
+        <h3 class="ct-u-marginBoth0 ct-u-paddingTop5 ct-u-marginTopMinus10 ct-u-size24 ct-fw-400">REGÍSTRATE EN <i>PLURANZA 2016</i></h3>
     </div>
-    @include('partials._flash')
     @include('partials._errors')
     {!! Form::open(array('url' => route('pluranza.academies.store'), 'method' => 'post', 'class' => 'ct-u-paddingTop25 ct-u-form-control--Default ct-loginForm', 'accept-charset' => 'UTF-8')) !!}
         <div class="form-group">

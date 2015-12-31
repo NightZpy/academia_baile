@@ -39,7 +39,7 @@
                                 <label class="control-label ct-titleBox" for="logo">
                                     Nombre de la academia (Si es independiente, coloque su nombre)(*)
                                 </label>
-                                {!! Form::text('name', old('name'), array('placeholder' => 'Nombre de la Academia', 'class' => 'form-control input-sm', 'disabled' => 'disabled')) !!}
+                                {!! Form::text('name', old('name'), array('placeholder' => 'Nombre de la Academia', 'class' => 'form-control input-sm')) !!}
                             </div>
                         </div>
                     </div>
