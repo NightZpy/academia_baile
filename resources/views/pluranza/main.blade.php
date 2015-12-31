@@ -14,7 +14,7 @@
     <title>Pluranza 2016 @yield('title', '')</title>
     <!-- FACEBOOK TAGS -->
     <meta property="og:title" content="Pluranza 2016 @yield('title', '')" />
-    <meta property="og:type" content="Página web administrativa del Festival Pluranza 2016" />
+    <meta property="og:type" content="website" />
     <meta property="og:image" content="{{ asset('/assets/images/content/slider/pluranza-main.jpg') }}" />
     <meta property="og:image" content="{{ asset('/assets/images/content/slider/alcompas.png') }}" />
     <meta property="og:url" content="http://alcompas.com.ve/pluranza" />
