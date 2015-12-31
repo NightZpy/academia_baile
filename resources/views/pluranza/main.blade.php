@@ -27,6 +27,8 @@
     @endif
     <meta property="og:type" content="website" />
     <meta property="og:image" content="{{ asset('/assets/images/content/slider/alcompas.png') }}" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="840" />
     <meta property="og:image" content="{{ asset('/assets/images/content/slider/pluranza-main.jpg') }}" />
     <meta property="og:url" content="http://alcompas.com.ve/pluranza" />
 
