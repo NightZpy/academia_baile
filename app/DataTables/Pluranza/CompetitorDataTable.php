@@ -38,7 +38,7 @@ class CompetitorDataTable extends BaseDataTable
 		$this->defaultConfig();
 		$this->setRoute('pluranza.competitors.api.list');
 		$actionRoutes = ['show' => 'pluranza.competitors.show'];
-		$actions = ['show'];
+		$actions = [];//['show'];
 
 		if (Entrust::hasRole(['admin', 'director'])) {
 			if (Entrust::hasRole('admin') ||

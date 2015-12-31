@@ -53,7 +53,7 @@
                                 <p>
                                     <strong>Baila en: </strong> {{ $dancer->academy->name }}.
                                 </p>
-                                @if($dancer->biography  )
+                                @if($dancer->biography)
                                     <p class="text-justify-xs">
                                         <strong>Acerca:</strong> {{ $dancer->biography }}.
                                     </p>

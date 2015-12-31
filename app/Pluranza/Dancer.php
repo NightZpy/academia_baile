@@ -15,7 +15,7 @@ class Dancer extends Model implements StaplerableInterface
 	protected $fillable = ['name', 'last_name', 'ci', 'gender', 'birth_date', 'email',
 						   'phone', 'photo', 'facebook', 'twitter', 'instagram',
 		                   'director', 'biography', 'academy_id'];
-	protected $nullable = ['email', 'phone', 'facebook', 'twitter', 'instagram', 'academy_id'];
+	protected $nullable = ['email', 'phone', 'facebook', 'twitter', 'instagram', 'academy_id', 'biography'];
 
 	public function __construct(array $attributes = array()) {
 		$this->hasAttachedFile('photo', [
