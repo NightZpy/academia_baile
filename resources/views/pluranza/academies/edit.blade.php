@@ -175,7 +175,7 @@
                                     </label>
                                         <?php
                                             if (isset($municipalities) AND  $academy->municipality_id > 0 ):
-                                                $municipalityId = $competitionCategory->municipality_id;
+                                                $municipalityId = $academy->municipality_id;
                                             else:
                                                 $municipalityId = old('category_id');
                                             endif;
