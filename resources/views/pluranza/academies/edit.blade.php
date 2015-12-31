@@ -192,7 +192,7 @@
                                     <label class="control-label" for="logo">
                                         Parroquia donde se ubican (Sino la consigue, puede dejar en blanco)
                                     </label>
-                                    {!! Form::select('parish_id', $parishes, ( $parishId > 0 ? $parishId : old('parish_id')), ['placeholder' => 'Selecciona una parroquia', 'class' => 'form-control input-sm parish-select']) !!}
+                                    {!! Form::select('parish_id', $parishes, null, ['placeholder' => 'Selecciona una parroquia', 'class' => 'form-control input-sm parish-select']) !!}
                                 </div>
                             </div>
                             <div class="col-sm-6">

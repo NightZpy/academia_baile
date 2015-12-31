@@ -31,6 +31,8 @@
                 $categoryId = null;
                 if (isset($competitionCategory) AND  $competitionCategory->category_id > 0 ):
                     $categoryId = $competitionCategory->category_id;
+                else:
+                    $categoryId = old('category_id');
                 endif;
             ?>
             {!! Form::select('category_id', $categories, $categoryId, ['placeholder' => 'Selecciona un género', 'class' => 'form-control input-sm']) !!}
@@ -50,7 +52,9 @@
             <?php
                 $levelId = null;
                 if (isset($competitionCategory) AND  $competitionCategory->level_id > 0 ):
-                            $levelId = $competitionCategory->level_id;
+                    $levelId = $competitionCategory->level_id;
+                else:
+                    $levelId = old('level_id');
                 endif;
             ?>
             {!! Form::select('level_id', $levels, $levelId, ['placeholder' => 'Selecciona un nivel', 'class' => 'form-control input-sm']) !!}
