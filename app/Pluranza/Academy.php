@@ -141,4 +141,8 @@ class Academy extends Model implements StaplerableInterface
 				!empty($this->phone) && !empty($this->estate_id)  && !empty($this->municipality_id));
 	}
 
+	public function getFirstDirectorAttribute() {
+		return $this->dancers()->where('director', '=', 1)->orderBy('created_at', 'desc')->first();
+	}
+
 }
