@@ -5,7 +5,9 @@
 <!--[if IE 9 ]>
 <html class="no-js ie9" lang="es"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html class="no-js" lang="es"> <!--<![endif]-->
+<html class="no-js" lang="es"
+	  xmlns:og="http://ogp.me/ns#"
+	  xmlns:fb="http://www.facebook.com/2008/fbml"><!--<![endif]-->
 <head lang="es">
 	@include('public.layout.includes._head')
 </head>
