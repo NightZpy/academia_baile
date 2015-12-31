@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="/favicon-pluranza.png">
     <link rel="apple-touch-icon" href="/favicon-pluranza.png">
+    <meta property="og:admins" content="100010636996373" />
     @if(isset($configuration))
         <title>{{ $configuration->title }}</title>
         <meta name="description" content="{{ $configuration->description }}">
