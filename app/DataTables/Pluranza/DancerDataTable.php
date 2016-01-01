@@ -30,7 +30,9 @@ class DancerDataTable extends BaseDataTable
 		if (Entrust::hasRole(['admin', 'director'])) {
 			if (Entrust::hasRole('admin') ||
 				request()->route()->getName() == 'pluranza.dancers.by-academy' ||
-				request()->route()->getName() == 'pluranza.dancers.api.by-academy') {
+				request()->route()->getName() == 'pluranza.dancers.api.by-academy' ||
+				Auth::user()->ownerOfAcademy(request()->get('id')))
+			{
 				$actions = array_merge($actions, ['edit', 'delete']);
 				$actionRoutes['edit'] = 'pluranza.dancers.edit';
 				$actionRoutes['delete'] = 'pluranza.dancers.delete';

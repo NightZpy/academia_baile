@@ -11,7 +11,7 @@
                 </label>
             @endif
             <label class="control-label" for="title">
-                Titulo (Máximo 64 carácteres)*
+                Titulo (Máximo 64 caracteres)*
             </label>
             {!! Form::text('title', old('title'), array('placeholder' => 'Título corto', 'class' => 'form-control input-sm')) !!}
         </div>
@@ -30,7 +30,7 @@
                 </label>
             @endif
             <label class="control-label" for="long_title">
-                Titulo Largo (Máximo 128 carácteres)*
+                Titulo Largo (Máximo 128 caracteres)*
             </label>
             {!! Form::text('long_title', old('long_title'), array('placeholder' => 'Título largo', 'class' => 'form-control input-sm')) !!}
         </div>
@@ -68,7 +68,7 @@
                 </label>
             @endif
             <label class="control-label" for="slogan">
-                Eslogan (Máximo 128 carácteres)*
+                Eslogan (Máximo 128 caracteres)*
             </label>
             {!! Form::text('slogan', old('slogan'), array('placeholder' => 'Eslogan', 'class' => 'form-control input-sm')) !!}
         </div>
@@ -87,7 +87,7 @@
                 </label>
             @endif
             <label class="control-label" for="description">
-                Descripción (Máximo 512 carácteres)(*)
+                Descripción (Máximo 512 caracteres)(*)
             </label>
             {!! Form::textarea('description', old('description'), array('placeholder' => 'Descripción', 'class' => 'form-control input-sm')) !!}
         </div>

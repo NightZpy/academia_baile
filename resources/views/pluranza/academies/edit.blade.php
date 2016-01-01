@@ -130,10 +130,10 @@
                                     </label>
                                 @endif
                                 <label class="control-label" for="logo">
-                                    Describe la travesía de tu academia en menos de <b class="background-red white" id="counter"></b> carácteres.
+                                    Describe la travesía de tu academia en menos de <b class="background-red white" id="counter"></b> caracteres.
                                 </label>
                                 {!! Form::textarea('history', old('history'), array('placeholder' => 'Breve historia de la academia', 'class' => 'form-control input-sm')) !!}
-                                <b class="history-counter background-red white"></b> carácteres restantes.
+                                <b class="history-counter background-red white"></b> caracteres restantes.
                             </div>
                         </div>
                     </div>
@@ -230,7 +230,7 @@
                                     Especifique su dirección
                                 </label>
                                 {!! Form::textarea('address', old('address'), array('placeholder' => 'Dirección de la Academia', 'class' => 'form-control input-sm')) !!}
-                                <b class="address-counter background-red white"></b> carácteres restantes.
+                                <b class="address-counter background-red white"></b> caracteres restantes.
                             </div>
                         </div>
                     </div>

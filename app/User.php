@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Pluranza\Academy;
+use App\Pluranza\Competitor;
+use App\Pluranza\Dancer;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -82,5 +85,30 @@ class User extends Model implements AuthenticatableContract,
     public function academy()
     {
         return $this->hasOne('App\Pluranza\Academy');
+    }
+
+    public function dancers()
+    {
+        return $this->hasManyThrough(Dancer::class, Academy::class);
+    }
+
+    public function competitors()
+    {
+        return $this->hasManyThrough(Competitor::class, Academy::class);
+    }
+
+    /*
+     * ------------------- helpers -----------------------
+     */
+    public function ownerOfAcademy($id) {
+        return $this->academy->id == $id;
+    }
+
+    public function ownerOfDancer($id) {
+        return $this->dancers->whereId($id)->count();
+    }
+
+    public function ownerOfCompetitor($id) {
+        return $this->competitors->whereId($id)->count();
     }
 }
