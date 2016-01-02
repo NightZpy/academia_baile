@@ -82,6 +82,7 @@ class AuthController extends Controller
 
         $credentials = $this->getCredentials($request);
 
+        // Login was correct
         if (Auth::attempt($credentials, $request->has('remember'))) {
             flash('¡Bienvenido a PLURANZA!');
             return $this->handleUserWasAuthenticated($request, $throttles);
