@@ -40,6 +40,7 @@
                         </div>
                     </div>
                 </div>
+                <br>
                 <div class="col-sm-offset-1 col-sm-5">
                     <div class="row">
                         <div class="col-sm-offset-2 col-sm-8">
@@ -54,7 +55,7 @@
                                     </label>
                                 @endif
                                 <label class="control-label" for="logo">
-                                    Nombre de la academia (Si es independiente, coloque su nombre)<b class="red">(*)</b>
+                                    Nombre de la Academia o Bailarín Independiente <b class="red">(*)</b>
                                 </label>
                                 {!! Form::text('name', old('name'), array('placeholder' => 'Nombre de la Academia', 'class' => 'form-control input-sm', 'required' => 'required')) !!}
                             </div>
@@ -72,8 +73,8 @@
                                         </ul>
                                     </label>
                                 @endif
-                                <label class="control-label" for="logo">
-                                    Correo electrónico (Obligatorio para contacto)<b class="red">(*)</b>
+                                <label class="control-label" for="logo">v
+                                    Correo electrónico <b class="red">(*)</b>
                                 </label>
                                 {!! Form::text('email', old('email'), array('placeholder' => 'Email de la Academia', 'class' => 'form-control input-sm', 'disabled' => 'disabled', 'required' => 'required')) !!}
                             </div>
@@ -92,7 +93,7 @@
                                     </label>
                                 @endif
                                 <label class="control-label" for="logo">
-                                    Teléfono (Obligatorio para contacto)<b class="red">(*)</b>
+                                    Teléfono <b class="red">(*)</b>
                                 </label>
                                 {!! Form::text('phone', old('phone'), array('placeholder' => 'Teléfono de la Academia', 'class' => 'form-control input-sm')) !!}
                             </div>
@@ -111,7 +112,7 @@
                                     </label>
                                 @endif
                                 <label class="control-label" for="logo">
-                                    Fecha de fundación (Si es independiente: desde que baila)
+                                    Fecha de fundación (academia) o en que inció a bailar (independiente)
                                 </label>
                                 {!! Form::date('foundation', ( $foundation > 0 ? $foundation : old('foundation')), array('placeholder' => 'Fecha de fundaciión', 'class' => 'form-control input-sm')) !!}
                             </div>
@@ -129,8 +130,8 @@
                                         </ul>
                                     </label>
                                 @endif
-                                <label class="control-label" for="logo">
-                                    Describe la travesía de tu academia en menos de <b class="background-red white" id="counter"></b> caracteres.
+                                <label class="control-label" for="history">
+                                    Escribe una breve reseña (academia o bailarín independiente).
                                 </label>
                                 {!! Form::textarea('history', old('history'), array('placeholder' => 'Breve historia de la academia', 'class' => 'form-control input-sm')) !!}
                                 <b class="history-counter background-red white"></b> caracteres restantes.
@@ -171,7 +172,7 @@
                                         </label>
                                     @endif
                                     <label class="control-label" for="municipality_id">
-                                        Municipio donde se ubican <b class="red">(*)</b>
+                                        Municipio <b class="red">(*)</b>
                                     </label>
                                     {!! Form::select('municipality_id', $municipalities, ( $municipalityId > 0 ? $municipalityId : old('municipality_id')), ['placeholder' => 'Selecciona un municipio', 'class' => 'form-control input-sm municipality-select']) !!}
                                 </div>
@@ -190,7 +191,7 @@
                                         </label>
                                     @endif
                                     <label class="control-label" for="logo">
-                                        Parroquia donde se ubican (Sino la consigue, puede dejar en blanco)
+                                        Parroquia
                                     </label>
                                     {!! Form::select('parish_id', $parishes, null, ['placeholder' => 'Selecciona una parroquia', 'class' => 'form-control input-sm parish-select']) !!}
                                 </div>
@@ -207,7 +208,7 @@
                                         </label>
                                     @endif
                                     <label class="control-label" for="logo">
-                                        Ciudad donde se ubican (Sino la consigue, puede dejar en blanco)
+                                        Ciudad
                                     </label>
                                     {!! Form::select('city_id', $cities, ( $cityId > 0 ? $cityId : old('city_id')), ['placeholder' => 'Selecciona una ciudad', 'class' => 'form-control input-sm city-select']) !!}
                                 </div>
@@ -303,7 +304,7 @@
                                 </label>
                             @endif
                             <label class="control-label" for="logo">
-                                Imagen del logo de la academia (No mayor a 1mb)
+                                Logotipo de la academia <b class="red">(No mayor a 1mb)</b>
                             </label>
                             {!! Form::file('logo', array('placeholder' => 'Logo de la Academia', 'class' => 'file-upload')) !!}
                         </div>

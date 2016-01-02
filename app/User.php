@@ -1,6 +1,4 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 use App\Pluranza\Academy;
 use App\Pluranza\Competitor;
@@ -111,7 +109,7 @@ class User extends Model implements AuthenticatableContract,
     }
 
     public function ownerOfDancer($id) {
-        return $this->dancers()->whre('dancers.id', '=', $id)->count();
+        return $this->dancers()->where('dancers.id', '=', $id)->count();
     }
 
     public function ownerOfCompetitor($id) {
