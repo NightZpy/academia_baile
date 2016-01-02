@@ -111,7 +111,7 @@ class User extends Model implements AuthenticatableContract,
     }
 
     public function ownerOfDancer($id) {
-        return $this->dancers()->where('dancers.id', '=', $id)->count();
+        return $this->dancers()->whre('dancers.id', '=', $id)->count();
     }
 
     public function ownerOfCompetitor($id) {
