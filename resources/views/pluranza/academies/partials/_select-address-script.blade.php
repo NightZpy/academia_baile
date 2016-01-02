@@ -35,7 +35,7 @@
                     requires: ['.municipality-select'],
                     @route('pluranza.academies.edit')
                             @if (isset($parishes) AND  $academy->parish_id > 0 )
-                    selected: {{ $academy->parish_id }}
+                    selected: {{ $academy->parish_id }},
                             @endif
                             @endroute
                     source: function (request, response) {
