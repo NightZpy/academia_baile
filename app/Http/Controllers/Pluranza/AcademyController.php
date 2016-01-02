@@ -60,7 +60,7 @@ class AcademyController extends Controller
         if(User::count() == 1) $user->attachRole(Role::whereName('admin')->first());
         if(User::count() > 1) $user->attachRole(Role::whereName('director')->first());
         $mailer->sendEmailConfirmationTo($user, 'pluranza.emails.confirm');
-        flash()->success('Datos guardados exitosamente, debe activar la cuenta, un correo llegará a su buzón en unos minutos.');
+        flash()->success('Datos guardados exitosamente, debe activar la cuenta, un correo de activación ha sido enviado.');
         return redirect()->route('users.login');
     }
 
