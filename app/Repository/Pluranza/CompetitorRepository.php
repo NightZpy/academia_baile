@@ -105,5 +105,15 @@ class CompetitorRepository extends BaseRepository {
 		$available = $maxCompetitors - $this->count();
 		return ($available > 0 ? $available : 0);
 	}
+
+	public function exceededQuotas() {
+		$maxCompetitors = Configuration::first()->max_competitors;
+		$available = $maxCompetitors - $this->count();
+		return ($available < 0 ? $available * -1 : 0);
+	}
+
+	public function countUsedQuotas() {
+
+	}
 }
 

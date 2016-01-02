@@ -49,11 +49,13 @@ class PagesController extends Controller
 	    $acceptPayments = $this->paymentRepository->countAccept();
 	    $credit = $this->paymentRepository->creditBs();
 	    $availableCompetitionQuotas = $this->competitorRepository->availableCompetitionQuotas();
+	    $exceededQuotas = $this->competitorRepository->exceededQuotas();
+	    $competitionCategoriesCount = $this->competitorRepository->countUsedQuotas();
 
         if (Auth::user()) {
             $academy = Academy::find(Auth::user()->academy->id);
         }
-        return view ('pluranza.pages.index')->with(compact('academy', 'countAcademies', 'totalDancers', 'totalCompetitors', 'totalPayments', 'availableCompetitionQuotas', 'acceptPayments', 'credit'));
+        return view ('pluranza.pages.index')->with(compact('academy', 'countAcademies', 'totalDancers', 'totalCompetitors', 'totalPayments', 'availableCompetitionQuotas', 'exceededQuotas', 'acceptPayments', 'credit'));
     }
 
     /**
