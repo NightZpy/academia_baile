@@ -105,18 +105,18 @@ class User extends Model implements AuthenticatableContract,
      * ------------------- helpers -----------------------
      */
     public function ownerOfAcademy($id) {
-        return $this->academy->id == $id;
+        return $this->academy && $this->academy->id == $id;
     }
 
     public function ownerOfDancer($id) {
-        return $this->dancers()->where('dancers.id', '=', $id)->count();
+        return $this->dancers && $this->dancers()->where('dancers.id', '=', $id)->count();
     }
 
     public function ownerOfCompetitor($id) {
-        return $this->competitors()->where('competitors.id', '=', $id)->count();
+        return $this->competitors && $this->competitors()->where('competitors.id', '=', $id)->count();
     }
 
     public function ownerOfPayment($id) {
-        return $this->payments()->where('payments.id', '=', $id)->count();
+        return $this->payments && $this->payments()->where('payments.id', '=', $id)->count();
     }
 }

@@ -25,7 +25,7 @@ class OwnPayment
      */
     public function handle($request, Closure $next)
     {
-        if (!\Auth::user()->ownerOfPayment($request->id))
+        if (\Auth::check() && !\Auth::user()->ownerOfPayment($request->id))
             abort(404);
         return $next($request);
     }

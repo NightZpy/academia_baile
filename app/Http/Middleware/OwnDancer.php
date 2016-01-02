@@ -25,7 +25,7 @@ class OwnDancer
      */
     public function handle($request, Closure $next)
     {
-        if (!\Auth::user()->ownerOfDancer($request->id))
+        if (\Auth::check() && !\Auth::user()->ownerOfDancer($request->id))
             abort(404);
         return $next($request);
     }

@@ -25,7 +25,7 @@ class OwnCompetitor
      */
     public function handle($request, Closure $next)
     {
-        if (!\Auth::user()->ownerOfCompetitor($request->id))
+        if (\Auth::check() && !\Auth::user()->ownerOfCompetitor($request->id))
             abort(404);
         return $next($request);
     }
