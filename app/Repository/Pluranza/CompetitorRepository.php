@@ -2,12 +2,12 @@
 namespace App\Repository\Pluranza;
 
 use App\DataTables\Pluranza\AcademyDataTable;
-use App\Pluranza\CompetitionCategory;
 use App\Pluranza\CompetitionType;
 use App\Pluranza\Competitor;
 use App\DataTables\Pluranza\CompetitorDataTable;
 use App\Repository\BaseRepository;
-use Psy\Exception\ErrorException;
+use Auth;
+use Entrust;
 
 class CompetitorRepository extends BaseRepository {
 
@@ -71,6 +71,10 @@ class CompetitorRepository extends BaseRepository {
 
 	public function getByAcademyDataTable($id)
 	{
+		if (Entrust::hasRole(['director']) && !Auth::user()->ownerOfAcademy($id)) {
+			$actions = ['show'];
+			$this->dataTable->setDefaultActions($actions);
+		}
 		$competitors = $this->getByACademy($id);
 		$this->dataTable->setDatatableCollection($competitors);
 		return $this->dataTable->getDefaultTable($competitors);

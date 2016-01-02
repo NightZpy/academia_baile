@@ -34,5 +34,9 @@ class Kernel extends HttpKernel
         'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
         'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
         'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
+        'ownAcademy' => \App\Http\Middleware\OwnAcademy::class,
+        'ownDancer' => \App\Http\Middleware\OwnDancer::class,
+        'ownCompetitor' => \App\Http\Middleware\OwnCompetitor::class,
+        'ownPayment' => \App\Http\Middleware\OwnPayment::class,
     ];
 }

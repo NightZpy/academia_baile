@@ -39,6 +39,14 @@ class BaseDataTable {
 		return count($this->columns);
 	}
 
+	/**
+	 * @return array
+	 */
+	public function getActionColums()
+	{
+		return $this->actionColums;
+	}
+
 	public function setRoute($route)
 	{
 		$this->route = $route;

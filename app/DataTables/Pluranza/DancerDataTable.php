@@ -2,6 +2,7 @@
 namespace App\DataTables\Pluranza;
 use App\DataTables\BaseDataTable;
 use Entrust;
+use Auth;
 
 class DancerDataTable extends BaseDataTable
 {
@@ -15,9 +16,6 @@ class DancerDataTable extends BaseDataTable
 		];
 
 		if (!Entrust::hasRole('director'))
-			$this->columns = ['Academia'];
-
-		if (!Entrust::hasRole('director'))
 			$this->columns = array_merge(['Academia'], $columns);
 		else
 			$this->columns = $columns;
@@ -29,9 +27,8 @@ class DancerDataTable extends BaseDataTable
 
 		if (Entrust::hasRole(['admin', 'director'])) {
 			if (Entrust::hasRole('admin') ||
-				request()->route()->getName() == 'pluranza.dancers.by-academy' ||
-				request()->route()->getName() == 'pluranza.dancers.api.by-academy' ||
-				Auth::user()->ownerOfAcademy(request()->get('id')))
+				(request()->route()->getName() == 'pluranza.dancers.by-academy' ||
+				request()->route()->getName() == 'pluranza.dancers.api.by-academy'))
 			{
 				$actions = array_merge($actions, ['edit', 'delete']);
 				$actionRoutes['edit'] = 'pluranza.dancers.edit';

@@ -56,7 +56,7 @@ class Handler extends ExceptionHandler
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    protected function convertExceptionToResponse(Exception $e)
+   /* protected function convertExceptionToResponse(Exception $e)
     {
         $debug = env('APP_DEBUG', false);
 
@@ -65,5 +65,5 @@ class Handler extends ExceptionHandler
         }
 
         return response()->view('errors.default', ['exception' => $e], 500);
-    }
+    }*/
 }
