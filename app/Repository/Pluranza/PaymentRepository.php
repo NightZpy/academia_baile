@@ -43,5 +43,17 @@ class PaymentRepository extends BaseRepository {
 		$this->dataTable->setDatatableCollection($payments);
 		return $this->dataTable->getDefaultTable($payments);
 	}
+
+	public function countAccept() {
+		return $this->model->whereStatus('accept')->count();
+	}
+
+	public function credit() {
+		return $this->model->sum('amount');
+	}
+
+	public function creditBs() {
+		return number_format($this->credit(), '2', ',', '.') . ' Bs';
+	}
 }
 

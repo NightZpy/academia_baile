@@ -4,6 +4,7 @@ namespace App\Repository\Pluranza;
 use App\DataTables\Pluranza\AcademyDataTable;
 use App\Pluranza\CompetitionType;
 use App\Pluranza\Competitor;
+use App\Configuration;
 use App\DataTables\Pluranza\CompetitorDataTable;
 use App\Repository\BaseRepository;
 use Auth;
@@ -97,6 +98,12 @@ class CompetitorRepository extends BaseRepository {
 			$name = $name = $competitionType->name . ' ' . ($quantity + 1);
 		}
 		return ucfirst($name);
+	}
+
+	public function availableCompetitionQuotas() {
+		$maxCompetitors = Configuration::first()->max_competitors;
+		$available = $maxCompetitors - $this->count();
+		return ($available > 0 ? $available : 0);
 	}
 }
 

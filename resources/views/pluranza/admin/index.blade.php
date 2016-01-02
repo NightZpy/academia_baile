@@ -14,7 +14,7 @@
                         <i class="fa fa-graduation-cap fa-2x"></i>
                     </div>
                     <div class="ct-counter-content">
-                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="5634" data-ct-speed="50">5 634</span>
+                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="{{ $countAcademies }}" data-ct-speed="50">{{ $countAcademies }}</span>
                         <p class="ct-counter-description text-capitalize">
                             Academias
                         </p>
@@ -28,7 +28,7 @@
                         <i class="fa fa-female fa-2x"></i>
                     </div>
                     <div class="ct-counter-content">
-                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="5634" data-ct-speed="50">5 634</span>
+                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="{{ $totalDancers }}" data-ct-speed="50">{{ $totalDancers }}</span>
                         <p class="ct-counter-description text-capitalize">
                             Bailarines
                         </p>
@@ -41,7 +41,7 @@
                         <i class="fa fa-users fa-2x"></i>
                     </div>
                     <div class="ct-counter-content">
-                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="5634" data-ct-speed="50">5 634</span>
+                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="{{ $totalCompetitors }}" data-ct-speed="50">{{ $totalCompetitors }}</span>
                         <p class="ct-counter-description text-capitalize">
                             Competidores
                         </p>
@@ -54,7 +54,7 @@
                         <i class="fa fa-users fa-2x"></i>
                     </div>
                     <div class="ct-counter-content">
-                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="5634" data-ct-speed="50">5 634</span>
+                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="{{ $availableCompetitionQuotas }}" data-ct-speed="50">{{ $availableCompetitionQuotas }}</span>
                         <p class="ct-counter-description text-capitalize">
                             Cupos disponibles
                         </p>
@@ -108,7 +108,7 @@
                         <i class="fa fa-users fa-2x"></i>
                     </div>
                     <div class="ct-counter-content">
-                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="5634" data-ct-speed="50">5 634</span>
+                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="{{ $totalPayments }}" data-ct-speed="50">{{ $totalPayments }}</span>
                         <p class="ct-counter-description text-capitalize">
                             Pagos realizados
                         </p>
@@ -121,7 +121,7 @@
                         <i class="fa fa-users fa-2x"></i>
                     </div>
                     <div class="ct-counter-content">
-                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="5634" data-ct-speed="50">5 634</span>
+                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="{{ $acceptPayments }}" data-ct-speed="50">{{ $acceptPayments }}</span>
                         <p class="ct-counter-description text-capitalize">
                             Pagos Verificados
                         </p>
@@ -134,7 +134,7 @@
                         <i class="fa fa-users fa-2x"></i>
                     </div>
                     <div class="ct-counter-content">
-                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="5634" data-ct-speed="50">5 634</span>
+                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="{{ $credit }}" data-ct-speed="50">{{ $credit }}</span>
                         <p class="ct-counter-description text-capitalize">
                             Total ingreso
                         </p>

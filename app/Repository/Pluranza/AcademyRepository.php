@@ -21,5 +21,12 @@ class AcademyRepository extends BaseRepository {
 	{
 		return $this->dataTable->getDefaultTable($this->getAll());
 	}
+
+	public function countVerified() {
+		return $this->model->join('users', function($join) {
+			$join->on('academies.user_id', '=', 'users.id')
+				 ->where('users.verified', '=', 1);
+		})->count();
+	}
 }
 

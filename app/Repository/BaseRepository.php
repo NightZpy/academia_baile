@@ -53,6 +53,11 @@ class BaseRepository {
 		return $this->model->findOrFail($id);
 	}
 
+	public function count()
+	{
+		return $this->model->count();
+	}
+
 	public function update($data = array()){}
 	public function deleteImageDirectory($id){}
 }
