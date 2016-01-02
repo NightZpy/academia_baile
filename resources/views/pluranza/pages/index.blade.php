@@ -1,14 +1,18 @@
 @extends('pluranza.main')
 
 @section('content')
-    {{-- Into to public index content --}}
-    @include('pluranza.pages.partials._public')
-    @role('admin')
 
-    @endrole
-
-    @role('director')
-
+    @if (!Auth::check())
+        {{-- Into to public index content --}}
+        @include('pluranza.pages.partials._public')
     @else
-    @endrole
+        @role('admin')
+            @include('pluranza.admin.index')
+        @endrole
+
+        @role('director')
+            {{-- Into to public index content --}}
+            @include('pluranza.pages.partials._public')
+        @endrole
+    @endif
 @stop
