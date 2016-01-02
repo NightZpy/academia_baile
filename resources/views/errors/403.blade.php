@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h5 class="ct-titleBox text-uppercase ct-u-paddingTop40">
-                        Error 404: Página no encontrada
+                        Error 403: Acceso denegado.
                     </h5>
                 </div>
             </div>

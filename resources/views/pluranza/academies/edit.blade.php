@@ -73,7 +73,7 @@
                                         </ul>
                                     </label>
                                 @endif
-                                <label class="control-label" for="logo">v
+                                <label class="control-label" for="logo">
                                     Correo electrónico <b class="red">(*)</b>
                                 </label>
                                 {!! Form::text('email', old('email'), array('placeholder' => 'Email de la Academia', 'class' => 'form-control input-sm', 'disabled' => 'disabled', 'required' => 'required')) !!}
