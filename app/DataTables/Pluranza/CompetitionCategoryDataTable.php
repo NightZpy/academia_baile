@@ -16,7 +16,7 @@ class CompetitionCategoryDataTable extends BaseDataTable
 		$this->defaultConfig();
 		$this->setRoute('pluranza.competition-categories.api.list');
 		$this->setOrderColumn(0);
-		$this->setOrderType('asc');
+		$this->setOrderType('desc');
 		$actionRoutes = [
 			'show'      => 'pluranza.competition-categories.show',
 			'edit'      => 'pluranza.competition-categories.edit',
