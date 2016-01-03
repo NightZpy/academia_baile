@@ -23,6 +23,7 @@ class RegisterAcademyRequest extends Request
      */
     public function rules()
     {
+        //'regex:/(.*)g\.go\.edu$/i'
         return [
             'name' => 'required|max:64|unique:academies',
             'email' => 'required|email|max:128|confirmed|unique:academies',

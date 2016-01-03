@@ -12,7 +12,7 @@
             </div>
 
             <div class="row ct-u-paddingTop25">
-                {!! Form::model($academy,
+                {!! Form::model($academY,
                     [
                         'route' => ['pluranza.academies.update', $academy->id],
                         'method' => 'PATCH',
