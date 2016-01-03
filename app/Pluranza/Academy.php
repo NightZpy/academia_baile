@@ -146,7 +146,7 @@ class Academy extends Model implements StaplerableInterface
 	}
 
 	public function getAvailableCouplesAttribute() {
-		return count($this->dancers()->groupBy('gender')->get()->toArray());
+		return count($this->dancers()->groupBy('gender')->get()->toArray()) > 1;
 	}
 
 }

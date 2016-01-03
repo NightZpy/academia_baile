@@ -51,11 +51,12 @@ class CompetitorController extends Controller
     {
         $academy = $this->academyRepository->get($id);
         $competitionTypes = $this->competitionCategoryRepository->getCompetitionTypes();
+        \Debugbar::info(['Pareja?' => $academy->availableCouples]);
         if(!$academy->availableCouples) {
+            \Debugbar::info(['Pareja?' => $academy->availableCouples]);
             $key = $competitionTypes->search(function($competitionType, $key){
                 return strtolower($competitionType->name) == 'pareja';
             });
-            //\Debugbar::
             unset($competitionTypes[$key]);
         }
 
