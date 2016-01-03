@@ -105,5 +105,22 @@ class CompetitionCategoryRepository extends BaseRepository {
 	{
 		return $this->getCompetitionTypeByLevel($id)->lists('name', 'id');
 	}
+
+	public function allOrderBy($by = ['competition_type', 'category', 'level'], $type = 'asc') {
+		$model = $this->model;
+		if (in_array('competition_type', $by)) {
+			$model = $model->join('competition_types', 'competition_categories.' . 'competition_type_id', '=', 'competition_types.id');
+			$model = $model->orderBy('competition_types.name', $type);
+		}
+		if (in_array('category', $by)) {
+			$model = $model->join('categories', 'competition_categories.' . 'category_id', '=', 'categories.id');
+			$model = $model->orderBy('categories.name', $type);
+		}
+		if (in_array('level', $by)) {
+			$model = $model->join('levels', 'competition_categories.' . 'level_id', '=', 'levels.id');
+			$model = $model->orderBy('levels.name', $type);
+		}
+		return $model->get();
+	}
 }
 

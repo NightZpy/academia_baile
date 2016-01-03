@@ -80,6 +80,7 @@ class CompetitorController extends Controller
                 //->select('dancers.id AS id', DB::raw('CONCAT(dancers.name, " ", dancers.last_name) AS full_name'))
                 ->lists('name', 'id');
             $dancers = ['masculine' => $masculineDancers, 'female' => $femaleDancers];
+            \Debugbar::info($dancers);
         } else {
             $dancers = $academy->dancers->lists('fullName', 'id');
         }

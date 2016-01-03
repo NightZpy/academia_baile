@@ -51,6 +51,7 @@ class PagesController extends Controller
 	    $availableCompetitionQuotas = $this->competitorRepository->availableCompetitionQuotas();
 	    $exceededQuotas = $this->competitorRepository->exceededQuotas();
 	    $competitionCategoriesCount = $this->competitorRepository->countUsedQuotas();
+	    \Debugbar::info($competitionCategoriesCount);
 
         if (Auth::user()) {
             $academy = Academy::find(Auth::user()->academy->id);

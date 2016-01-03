@@ -113,7 +113,19 @@ class CompetitorRepository extends BaseRepository {
 	}
 
 	public function countUsedQuotas() {
-
+		$count = array();
+		$competitionCategories = $this->competitionCategoryRepository->allOrderBy();
+		\Debugbar::info($competitionCategories->toArray());
+		foreach ($competitionCategories as $competitionCategory) {
+			$gender = $competitionCategory->category->name;
+			$category = $competitionCategory->competitionType->name;
+			$level = $competitionCategory->level->name;
+			// cuenta siempre uno porque siempre carga el mismo category y las claves se cargan a pesar de no tener competidores, por ser la misma
+			$total = $this->model->whereCompetitionCategoryId($competitionCategory->id)->count();
+			\Debugbar::info([$category, $gender, $level, 'count' => $total]);
+			$count[$category][$gender][$level] = $total;
+		}
+		return $count;
 	}
 }
 
