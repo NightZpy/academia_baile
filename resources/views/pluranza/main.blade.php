@@ -58,6 +58,7 @@
 {{-- <body class="cssAnimate ct-headroom--scrollUpMenu  salsa"> --}}
 {{--<body class="cssAnimate ct-headroom--fixedMenu onepager salsa">--}}
 <body class="cssAnimate ct-headroom--fixedMenu ct-navbar--top salsa">
+    @include('partials._analytics')
     @include('public.layout.includes._loader')
     @if(Auth::user() AND Auth::user()->academy)
         @include('pluranza.admin.partials._menu-movil')

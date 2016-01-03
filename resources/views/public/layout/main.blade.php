@@ -13,6 +13,7 @@
 </head>
 {{-- <body class="cssAnimate ct-headroom--scrollUpMenu  salsa"> --}}
 <body class="cssAnimate ct-headroom--fixedMenu onepager salsa">
+	@include('partials._analytics')
 	@include('public.layout.includes._loader')
 	@include('public.layout.includes._menu-movil')
  	<div id="ct-js-wrapper" class="ct-pageWrapper">
