@@ -28,7 +28,7 @@ class VerifyCsrfToken extends BaseVerifier
         \Debugbar::info($request);
         \Debugbar::info($request->file('song'));
         \Debugbar::info($request->hasFile('song'));
-        \Debugbar::info(['Request is: ' => $request->is('pluranza/competidores'))]);
+        \Debugbar::info(['Request is: ' => $request->is('pluranza/competidores')]);
         \Debugbar::info($this->except);
         if ($this->isReading($request) || $this->tokensMatch($request)) {
             \Debugbar::info($request->file('song'));
