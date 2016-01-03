@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3a10cbb82149c1de0395addf2f59f2d8",
+    "hash": "5249b86c10c3e96ba1196b1fd81ab299",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -516,6 +516,47 @@
                 "laravel"
             ],
             "time": "2015-11-25 02:41:52"
+        },
+        {
+            "name": "genealabs/laravel-caffeine",
+            "version": "0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GeneaLabs/laravel-caffeine.git",
+                "reference": "7d891aa735adc44c4daaf27ed419c13e7f82ab5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GeneaLabs/laravel-caffeine/zipball/7d891aa735adc44c4daaf27ed419c13e7f82ab5a",
+                "reference": "7d891aa735adc44c4daaf27ed419c13e7f82ab5a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/routing": "^5.1",
+                "illuminate/support": "~5.1",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GeneaLabs\\LaravelCaffeine\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike Bronner",
+                    "email": "hello@genealabs.com"
+                }
+            ],
+            "description": "Keeping Your Laravel Forms Awake",
+            "time": "2015-12-23 19:08:08"
         },
         {
             "name": "iatstuti/laravel-nullable-fields",

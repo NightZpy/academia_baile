@@ -16,7 +16,8 @@
         "zizaco/entrust": "dev-master",
         "barryvdh/laravel-debugbar": "^2.1",
         "iatstuti/laravel-nullable-fields": "~0.1",
-        "anhskohbo/no-captcha": "2.*"
+        "anhskohbo/no-captcha": "2.*",
+        "genealabs/laravel-caffeine": "~0.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
