@@ -24,10 +24,11 @@ class RegisterCompetitorFormRequest extends Request
      */
     public function rules()
     {
+        \Debugbar::info(['Request' => $this->request->all()]);
         $rules = [
             'academy_id' => 'required|integer|exists:academies,id|unique_with:competitors,name,competition_category_id',
             'name' => 'required|max:128',
-            'song' => 'max:20480|mimes:mpga,mp2,mp2a,mp3,m2a,m3a',
+            'song' => 'max:22528|mimes:mpga,mp2,mp2a,mp3,m2a,m3a',
             'song_name' => 'max:128|min:5',
             'competition_type_id' => 'required|integer|exists:competition_types,id',
             'category_id' => 'required|integer|exists:categories,id',

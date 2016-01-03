@@ -24,7 +24,7 @@ class VerifyCsrfToken extends BaseVerifier
      */
     public function handle($request, Closure $next)
     {
-        array_push($this->except, parse_url(route('pluranza.competitors.store'))['path']);
+        array_push($this->except, route('pluranza.competitors.store', [], false));
         \Debugbar::info($request);
         \Debugbar::info($request->file('song'));
         \Debugbar::info($request->hasFile('song'));
