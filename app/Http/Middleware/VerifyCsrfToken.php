@@ -25,7 +25,9 @@ class VerifyCsrfToken extends BaseVerifier
      */
     public function handle($request, Closure $next)
     {
-        if ($this->isReading($request) || $this->tokensMatch($request)) {
+        \Debugbar::info($request);
+        if (($this->isReading($request) || $this->tokensMatch($request)) || $request->hasFile('song')) {
+            \Debugbar::info($request->file('song'));
             return $this->addCookieToResponse($request, $next($request));
         }
         flash()->error('Tu sessión para el formulario ha expirado, intentalo de nuevo.');
