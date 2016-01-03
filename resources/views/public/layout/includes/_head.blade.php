@@ -12,10 +12,10 @@
 <meta property="og:description" content="Página web de Al Compás Academia de Baile" />
 <meta property="og:site_name" content="Al Compás" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="{{ asset('/assets/images/content/slider/alcompas.png') }}" />
 <meta property="og:image" content="{{ asset('/assets/images/content/slider/pluranza-facebook.jpg') }}" />
+<meta property="og:image" content="{{ asset('/assets/images/content/slider/alcompas.png') }}" />
 <meta property="og:image:width" content="1920" />
-<meta property="og:image:height" content="600" />
+<meta property="og:image:height" content="844" />
 <meta property="og:url" content="http://alcompas.com.ve" />
 
 @include('public.layout.includes._css')
