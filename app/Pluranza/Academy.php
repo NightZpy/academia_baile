@@ -145,8 +145,8 @@ class Academy extends Model implements StaplerableInterface
 		return $this->dancers()->where('director', '=', 1)->orderBy('created_at', 'desc')->first();
 	}
 
-	public function availableCouples() {
-		return count($this->dancers->groupBy('gender')->toArray());
+	public function getAvailableCouplesAttribute() {
+		return count($this->dancers()->groupBy('gender')->get()->toArray());
 	}
 
 }

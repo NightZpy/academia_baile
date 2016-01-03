@@ -55,6 +55,7 @@ class CompetitorController extends Controller
             $key = $competitionTypes->search(function($competitionType, $key){
                 return strtolower($competitionType->name) == 'pareja';
             });
+            //\Debugbar::
             unset($competitionTypes[$key]);
         }
 
