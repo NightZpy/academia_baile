@@ -19,7 +19,7 @@ class AcademyRepository extends BaseRepository {
 
 	public function getAllDataTable()
 	{
-		return $this->dataTable->getDefaultTable($this->getAll());
+		return $this->dataTable->getDefaultTable($this->model->orderBy('created_at', 'DESC')->get());
 	}
 
 	public function countVerified() {

@@ -7,6 +7,7 @@ class AcademyDataTable extends BaseDataTable
 {
 	function __construct() {
 		$this->columns = [
+			'Agregada',
 			'Logo',
 			'Nombre',
 			'Fundación',
@@ -17,8 +18,9 @@ class AcademyDataTable extends BaseDataTable
 		];
 		$this->defaultConfig();
 		$this->setRoute('pluranza.academies.api.list');
-		$this->setOrderColumn(5);
+		$this->setOrderColumn(0);
 		$this->setOrderType('desc');
+		$this->setHideColumns([0]);
 		$actionRoutes = [
 			'show'      => 'pluranza.academies.show',
 		];
@@ -37,6 +39,11 @@ class AcademyDataTable extends BaseDataTable
 	{
 		$this->collection->searchColumns('Nombre', 'Fundación', 'Director', 'Facebook', 'Estado');
 		$this->collection->orderColumns('Nombre', 'Fundación', 'Director', 'Facebook', 'Estado');
+
+		$this->collection->addColumn('Agregada', function($model)
+		{
+			return $model->created_at->format('d-m-Y H:m:s');
+		});
 
 		$this->collection->addColumn('Logo', function($model)
 		{

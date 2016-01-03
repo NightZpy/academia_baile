@@ -13,6 +13,7 @@ class BaseDataTable {
 	protected $dataTable;
 	protected $orderColumn;
 	protected $orderType;
+	protected $hideColumns;
 
 	/**
 	 * BaseDataTable constructor.
@@ -30,7 +31,7 @@ class BaseDataTable {
 					'url' => '/assets/plugins/datatables/lang/Spanish.json'
 				)
 			));
-		$this->orderColumn = 1;
+		//$this->orderColumn = 1;
 		$this->orderType = 'asc';
 	}
 
@@ -60,6 +61,10 @@ class BaseDataTable {
 	public function setDefaultActions($actions = array('all'))
 	{
 		$this->actionColums = $actions;
+	}
+
+	public function setHideColumns($hideColumns) {
+		$this->hideColumns = $hideColumns;
 	}
 
 	/*
@@ -109,7 +114,10 @@ class BaseDataTable {
 			$route = $this->route;
 
 		$this->dataTable->addColumn($this->columns);
-		$this->dataTable->setOptions('order', [[$this->orderColumn , $this->orderType]]);
+		if ($this->orderColumn >= 0)
+			$this->dataTable->setOptions('order', [[$this->orderColumn , $this->orderType]]);
+		if ($this->hideColumns)
+			$this->dataTable->setOptions('columnDefs', [['targets' => $this->hideColumns, 'visible' => false]]);
 		//$this->dataTable->setCustomValues('table-id', 'datatable-' . $tableId);
 		if($tableId != 'datatable')
 			$this->dataTable->setId('datatable-' . $tableId);
