@@ -25,7 +25,7 @@ class OwnDancer
      */
     public function handle($request, Closure $next)
     {
-        if (\Auth::check() && !\Auth::user()->ownerOfDancer($request->id) || !\Entrust::role('admin'))
+        if (!\Auth::check() || (!\Auth::user()->ownerOfDancer($request->id)) && !\Entrust::hasRole('admin'))
             abort(404);
         return $next($request);
     }

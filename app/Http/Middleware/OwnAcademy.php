@@ -25,7 +25,8 @@ class OwnAcademy
      */
     public function handle($request, Closure $next)
     {
-        if (!\Auth::user()->ownerOfAcademy($request->id) || !\Entrust::role('admin'))
+        \Debugbar::info(['Rol' => !\Entrust::hasRole('admin')]);
+        if (!\Auth::check() || (!\Auth::user()->ownerOfAcademy($request->id)) && !\Entrust::hasRole('admin'))
             abort(404);
         return $next($request);
     }
