@@ -29,7 +29,7 @@ class VerifyCsrfToken extends BaseVerifier
         \Debugbar::info($request->file('song'));
         \Debugbar::info($request->hasFile('song'));
         \Debugbar::info(['Request is: ' => $request->is($this->except[0])]);
-        if ($this->isReading($request) || $this->shouldPassThrough($request) || $this->tokensMatch($request)) {
+        if ($this->shouldPassThrough($request) || $this->isReading($request) || $this->tokensMatch($request)) {
             \Debugbar::info($request->file('song'));
             return $this->addCookieToResponse($request, $next($request));
         }
@@ -47,10 +47,10 @@ class VerifyCsrfToken extends BaseVerifier
             }
 
             if ($request->is($except)) {
-                \Debugbar::info(['except' => $except,'Is: ' => $request->is($$except)]);
+                \Debugbar::info(['except' => $except,'Is: ' => $request->is($except)]);
                 return true;
             }
-            \Debugbar::info(['no-except' => $except,'Is: ' => $request->is($$except)]);
+            \Debugbar::info(['no-except' => $except,'Is: ' => $request->is($except)]);
         }
 
         return false;
