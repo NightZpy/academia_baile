@@ -13,6 +13,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
+        'pluranza/competidores'
     ];
 
     /**
@@ -24,11 +25,10 @@ class VerifyCsrfToken extends BaseVerifier
      */
     public function handle($request, Closure $next)
     {
-        array_push($this->except, route('pluranza.competitors.store'));
         \Debugbar::info($request);
         \Debugbar::info($request->file('song'));
         \Debugbar::info($request->hasFile('song'));
-        \Debugbar::info(['Request is: ' => $request->is(route('pluranza.competitors.store'))]);
+        \Debugbar::info(['Request is: ' => $request->is('pluranza/competidores'))]);
         \Debugbar::info($this->except);
         if ($this->isReading($request) || $this->tokensMatch($request)) {
             \Debugbar::info($request->file('song'));
