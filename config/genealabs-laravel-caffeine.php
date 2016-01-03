@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'dripIntervalInMilliSeconds' => 3000000,
+    'dripIntervalInMilliSeconds' => 180000,
 ];
