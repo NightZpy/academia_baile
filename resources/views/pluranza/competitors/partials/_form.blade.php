@@ -164,7 +164,7 @@
                 </label>
             @endif
             <label class="control-label" for="song">
-                Canción (Archivo .mp3)
+                Canción <b class="red">(Archivo .mp3; tamaño máximo 20mb)</b>
             </label>
             {!! Form::file('song', array('placeholder' => 'Canción', 'class' => 'file-upload')) !!}
         </div>

@@ -157,8 +157,6 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
-        GeneaLabs\LaravelCaffeine\LaravelCaffeineServiceProvider::class,
-
     ],
 
     /*
