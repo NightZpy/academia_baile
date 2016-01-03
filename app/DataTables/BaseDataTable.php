@@ -31,7 +31,7 @@ class BaseDataTable {
 					'url' => '/assets/plugins/datatables/lang/Spanish.json'
 				)
 			));
-		//$this->orderColumn = 1;
+		$this->orderColumn = 1;
 		$this->orderType = 'asc';
 	}
 
