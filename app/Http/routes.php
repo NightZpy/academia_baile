@@ -16,7 +16,7 @@
 */
 
 Route::get('/test', function() {
-	return bcrypt('123456');
+	return route('pluranza.academies.resend-confirm');
 });
 
 
@@ -149,6 +149,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
 		*/
 		Route::group(['prefix' => 'academias'], function () {
 			Route::delete('{id}', ['as' => 'pluranza.academies.delete', 'uses' => 'Academy@destroy']);
+			Route::get('/resent-confirm', ['as' => 'pluranza.academies.resend-confirm', 'uses' => 'AcademyController@resendToNoVerifiedAccounts']);
 		});
 		/*
 		* ---------- Comptition Types ----------
@@ -199,7 +200,6 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 	* ---------- Academies ----------
 	*/
 	Route::group(['prefix' => 'academias'], function () {
-
 		Route::get('/', ['as' => 'pluranza.academies.home', 'uses' => 'AcademyController@index']);
 		Route::get('nuevo', ['as' => 'pluranza.academies.new', 'uses' => 'AcademyController@create']);
 		Route::post('/', ['as' => 'pluranza.academies.store', 'uses' => 'AcademyController@store']);
