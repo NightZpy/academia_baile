@@ -60,7 +60,6 @@ class AcademyController extends Controller
         $academyInput['user_id'] = $user->id;
         $academy = $this->repository->create($academyInput);
         \Debugbar::info(['Academy' => $academy]);
-        $academy->user()->save($user);
         if(User::count() == 1) $user->attachRole(Role::whereName('admin')->first());
         if(User::count() > 1) $user->attachRole(Role::whereName('director')->first());
         $mailer->sendEmailConfirmationTo($user, 'pluranza.emails.confirm');
