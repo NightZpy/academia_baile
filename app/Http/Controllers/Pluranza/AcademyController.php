@@ -159,6 +159,12 @@ class AcademyController extends Controller
         return redirect()->back();
     }
 
+    public function confirm($id) {
+        $this->repository->confirm($id);
+        flash('Cuenta de ' . $this->repository->get($id)->name . ', ha sido verificada.');
+        return redirect()->back();
+    }
+
     /*
 	 * ---------------------- APIs ---------------------
     */

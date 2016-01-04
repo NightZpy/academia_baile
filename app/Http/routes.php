@@ -150,6 +150,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
 		Route::group(['prefix' => 'academias'], function () {
 			Route::delete('{id}', ['as' => 'pluranza.academies.delete', 'uses' => 'Academy@destroy']);
 			Route::get('/resent-confirm', ['as' => 'pluranza.academies.resend-confirm', 'uses' => 'AcademyController@resendToNoVerifiedAccounts']);
+			Route::get('/verificar/{id}', ['as' => 'pluranza.academies.confirm', 'uses' => 'AcademyController@confirm']);
 		});
 		/*
 		* ---------- Comptition Types ----------

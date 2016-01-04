@@ -36,5 +36,9 @@ class AcademyRepository extends BaseRepository {
 		return $academy->delete() && $user->delete();
 
 	}
+
+	public function confirm($id) {
+		$this->get($id)->user->confirmEmail();
+	}
 }
 
