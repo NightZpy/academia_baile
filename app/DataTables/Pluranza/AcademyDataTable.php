@@ -16,9 +16,9 @@ class AcademyDataTable extends BaseDataTable
 			'Estado'			
 		];
 
-		if (Auth::check())
+		if (\Auth::check())
 			array_push($this->columns, 'Acciones');
-		
+
 		$this->defaultConfig();
 		$this->setRoute('pluranza.academies.api.list');
 		$this->setOrderColumn(0);
