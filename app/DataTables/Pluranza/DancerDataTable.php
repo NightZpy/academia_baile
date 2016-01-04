@@ -11,7 +11,7 @@ class DancerDataTable extends BaseDataTable
 			'Foto',
 			'Nombre',
 			'Edad',
-			'Email',
+			//'Email',
 			'Acciones'
 		];
 
@@ -41,7 +41,7 @@ class DancerDataTable extends BaseDataTable
 
 	public function setBodyTableSettings()
 	{
-		$columns = ['Nombre', 'Edad', 'Email'];
+		$columns = ['Nombre', 'Edad'/*, 'Email'*/];
 		if (!Entrust::hasRole('director'))
 			$columns = array_merge(['Academia'], $columns);
 
@@ -70,10 +70,10 @@ class DancerDataTable extends BaseDataTable
 			return $model->age;
 		});
 
-		$this->collection->addColumn('Email', function($model)
+		/*$this->collection->addColumn('Email', function($model)
 		{
 			return $model->email;
-		});
+		});*/
 	}
 
 	public function getByAcademyTable($params = [])
