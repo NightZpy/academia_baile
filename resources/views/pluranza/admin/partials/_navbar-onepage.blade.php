@@ -116,13 +116,12 @@
                                         Reglas de competencia                            
                                     </a>
                                 </li>
-                                @endif
+                            @endif
                                 <li class="onepage">
                                     <a target="_blank" href="{{ route('pluranza.bank-account') }}" class="ct-js-btnScroll">
                                         Cuenta bancaria
                                     </a>
                                 </li>
-                            @endif
                         @endrole
 
                         @role('dancer')
