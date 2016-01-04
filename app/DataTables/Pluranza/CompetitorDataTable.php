@@ -95,8 +95,7 @@ class CompetitorDataTable extends BaseDataTable
 			return '<a target="_blank" href="' . $model->song->url() . '">' . $model->song_name . '</a>';
 		});
 
-
-		if (Entrust::hasRole('director') && request()->route()->getName() == 'pluranza.competitors.api.by-academy') {
+		if ((Entrust::hasRole('director') || Entrust::hasRole('admin')) && request()->route()->getName() == 'pluranza.competitors.api.by-academy') {
 			$this->collection->addColumn('Precio', function ($model) {
 				return $model->competitionCategory->priceBs;
 			});
