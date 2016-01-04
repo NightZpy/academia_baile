@@ -55,8 +55,10 @@ class AcademyController extends Controller
     public function store(RegisterAcademyRequest $request, AppMailer $mailer)
     {
         $user = User::create($request->all());
-        $aP = Academy::create($request->all());
-        $user->academy()->save($aP);
+        \Debugbar::info(['User' => $user]);
+        $academy = $this->repository->create($request->all());
+        \Debugbar::info(['Academy' => $academy]);
+        $academy->user()->save($user);
         if(User::count() == 1) $user->attachRole(Role::whereName('admin')->first());
         if(User::count() > 1) $user->attachRole(Role::whereName('director')->first());
         $mailer->sendEmailConfirmationTo($user, 'pluranza.emails.confirm');
