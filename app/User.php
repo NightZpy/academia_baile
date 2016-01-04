@@ -64,7 +64,7 @@ class User extends Model implements AuthenticatableContract,
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);
-    }
+    }    
 
     /**
      * Confirm the user.
@@ -76,6 +76,10 @@ class User extends Model implements AuthenticatableContract,
         $this->verified = true;
         $this->token = null;
         $this->save();
+    }
+
+    public function getIsConfirmAttribute() {
+        return $this->verified;
     }
 
     /*

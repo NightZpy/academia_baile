@@ -116,7 +116,7 @@ class AcademyDataTable extends BaseDataTable
 					$this->addActionColumn($deleteForm);
 				}
 
-				if (in_array('confirm', $actions))
+				if (in_array('confirm', $actions) && !$model->user->isConfirm ) 
 					$this->addActionColumn("<a  class='confirm btn btn-xs btn-darkGray btn-circle' href='" . route($routes['confirm'], $model->id) . "' id='confirm_".$model->id."'><i class='fa fa-pencil'></i> Confirmar</a>");
 			}
 			$this->addActionColumn('</div>');
