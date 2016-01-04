@@ -1,4 +1,4 @@
-<section id="social-networks" class="ct-u-paddingBoth30">
+<section id="social-networks" class="ct-u-paddingBoth5">
     <div class="ct-socialBar text-center">
         <h4 class="ct-socialTitle"><i class="fa fa-share-alt"></i> Conectate con nosotros</h4>
         <hr class="divider">
