@@ -37,6 +37,7 @@ class RegisterCompetitorFormRequest extends Request
         ];
 
         if ( strtolower(CompetitionType::findOrFail($this->request->get('competition_type_id'))->name) == 'pareja' ) {
+            $a=0;
             $rules['dancer_id.female']       = 'required|integer|exists:dancers,id';
             $rules['dancer_id.masculine']    = 'required|integer|exists:dancers,id';
         } else {
