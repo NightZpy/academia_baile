@@ -30,7 +30,7 @@ class CompetitorDataTable extends BaseDataTable
 				request()->route()->getName() == 'pluranza.competitors.api.by-academy')
 			) {
 			$array = array_slice($this->columns, 0, count($this->columns) - 1, true);
-			array_push($array, 'Precio');
+			array_push($array, 'Costo');
 			array_push($array, 'Acciones');
 			$this->columns = $array;
 		}
@@ -96,7 +96,7 @@ class CompetitorDataTable extends BaseDataTable
 		});
 
 		if ((Entrust::hasRole('director') || Entrust::hasRole('admin')) && request()->route()->getName() == 'pluranza.competitors.api.by-academy') {
-			$this->collection->addColumn('Precio', function ($model) {
+			$this->collection->addColumn('Costo', function ($model) {
 				return $model->competitionCategory->priceBs;
 			});
 		}
