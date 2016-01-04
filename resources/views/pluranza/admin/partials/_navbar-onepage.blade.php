@@ -91,16 +91,15 @@
                         @if(Auth::check())
                             <li class="dropdown" role="presentation">
                                 <a href="#" class="dropdown-toggle">
+                                    <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
                                     Importante
                                     <b class="caret">
-                                        <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
                                     </b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     @if(isset($configuration))
                                         <li class="onepage">
                                             <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
-                                                <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
                                                 Reglas de competencia                            
                                             </a>
                                         </li>
@@ -108,7 +107,6 @@
                                     <li class="onepage">
                                         <a target="_blank" href="{{ route('pluranza.bank-account') }}" class="ct-js-btnScroll">
                                             Cuenta bancaria
-                                            <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
                                         </a>
                                     </li>
                                     {{--<li class="dropdown" role="presentation">
