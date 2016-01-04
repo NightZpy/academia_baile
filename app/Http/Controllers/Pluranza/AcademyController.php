@@ -132,17 +132,23 @@ class AcademyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, UpdateAcademyRequest $request)
+    public function update($id, UpdateAcademyRequest $request, AppMailer $mailer)
     {
         $academy = Academy::findOrFail($id);
+        $oldEmail = $Academy->email;        
         $updateAt = $academy->updated_at;
         $academy->fill($request->all())->save();
+        if ($academy->email != $oldEmail) {            
+            $mailer->sendEmailConfirmationTo($academy->user, 'pluranza.emails.confirm');
+        } else {
         if ($updateAt != $academy->updated_at)
             flash()->success('Sus datos han sido actualizados correctamente.');
         else
             flash()->success('Sus datos no pudieron ser actualizados.');
 
         return redirect()->back()->with(compact('academy'));
+
+        }
     }
 
     /**

@@ -54,6 +54,18 @@ class User extends Model implements AuthenticatableContract,
         static::creating(function ($user) {
             $user->token = str_random(30);
         });
+
+        static::updating(function($user)
+        {
+            $original = $user->getOriginal();
+            if ($user->email != $original['email']) {
+                $user->token = str_random(30);
+                $user->save();
+                $academy = $user->academy;
+                $academy->email = $user->email;
+                $academy->save();
+            }
+        });
     } 
     
     /**
