@@ -24,7 +24,7 @@ class CompetitorDataTable extends BaseDataTable
 		else
 			$this->columns = $columns;
 
-		if (Entrust::hasRole('director') &&
+		if ((Entrust::hasRole('director') || Entrust::hasRole('admin')) &&
 			(
 				request()->route()->getName() == 'pluranza.competitors.by-academy' ||
 				request()->route()->getName() == 'pluranza.competitors.api.by-academy')
