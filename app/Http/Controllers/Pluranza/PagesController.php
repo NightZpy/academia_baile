@@ -124,4 +124,8 @@ class PagesController extends Controller
     {
         //
     }
+
+    public function bankAccount() {
+        return view('pluranza.admin.bank-account');
+    }
 }

@@ -89,20 +89,34 @@
                         @endrole
 
                         @if(Auth::check())
-                            @if(isset($configuration))
-                                <li class="onepage">
-                                    <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
-                                        Reglas de competencia
+                            <li class="dropdown" role="presentation">
+                                <a href="#" class="dropdown-toggle">
+                                    Importante
+                                    <b class="caret">
                                         <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
-                                    </a>
-                                </li>
-                            @endif
-                            {{--<li class="dropdown" role="presentation">
-                                <a href="#" class="dropdown-toggle">Perfil<b class="caret"></b></a>
+                                    </b>
+                                </a>
                                 <ul class="dropdown-menu">
-                                    <li class="onepage"><a href="{{ route('categories.home') }}" class="ct-js-btnScroll">Géneros</a></li>
-                                </ul>
-                            </li>--}}
+                                    @if(isset($configuration))
+                                        <li class="onepage">
+                                            <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
+                                                <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
+                                                Reglas de competencia                            
+                                            </a>
+                                        </li>
+                                    @endif
+                                    <li class="onepage">
+                                        <a target="_blank" href="{{ route('pluranza.bank-account') }}" class="ct-js-btnScroll">
+                                            Cuenta bancaria
+                                            <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
+                                        </a>
+                                    </li>
+                                    {{--<li class="dropdown" role="presentation">
+                                        <a href="#" class="dropdown-toggle">Perfil<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li class="onepage"><a href="{{ route('categories.home') }}" class="ct-js-btnScroll">Géneros</a></li>
+                                        </ul>
+                                    </li>--}}
                         @endif
                         {{--<li class="onepage"><a href="#" class="ct-js-btnScroll">Resultados</a></li>--}}
                     </ul>

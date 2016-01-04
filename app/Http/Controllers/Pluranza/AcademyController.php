@@ -63,7 +63,7 @@ class AcademyController extends Controller
         if(User::count() == 1) $user->attachRole(Role::whereName('admin')->first());
         if(User::count() > 1) $user->attachRole(Role::whereName('director')->first());
         $mailer->sendEmailConfirmationTo($user, 'pluranza.emails.confirm');
-        flash()->success('Datos guardados exitosamente, debe activar la cuenta, revise su cuenta de correo. Tenga en cuenta que las cuentas Outlook o hotamail pueden enviar a Spam/Correo no deseado nuestro correo.');
+        flash()->success('Datos guardados exitosamente, debe activar la cuenta, revise su cuenta de correo. Tenga en cuenta que las cuentas Outlook o hotmail pueden enviar a Spam/Correo no deseado nuestro correo.');
         return redirect()->route('users.login');
     }
 

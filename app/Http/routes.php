@@ -196,6 +196,12 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		'uses' => 'PagesController@index'
 	]);
 
+	Route::get('/cuenta-bancaria', [
+		'middleware' => ['role:admin|director'],
+		'as' => 'pluranza.bank-account',
+		'uses' => 'PagesController@bankAccount'
+	]);
+
 	/*
 	* ---------- Academies ----------
 	*/
