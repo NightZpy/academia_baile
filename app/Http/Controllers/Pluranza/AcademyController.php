@@ -58,7 +58,7 @@ class AcademyController extends Controller
         \Debugbar::info(['User' => $user]);
         $academyInput = $request->all();
         $academyInput['user_id'] = $user->id;
-        $academy = $this->repository->create($request->all());
+        $academy = $this->repository->create($academyInput);
         \Debugbar::info(['Academy' => $academy]);
         $academy->user()->save($user);
         if(User::count() == 1) $user->attachRole(Role::whereName('admin')->first());
