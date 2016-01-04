@@ -31,7 +31,7 @@ class AcademyRepository extends BaseRepository {
 
 	public function delete($id)
 	{
-		$academy = $this->get();
+		$academy = $this->get($id);
 		$user = $academy->user();
 		return $academy->delete() && $user->delete();
 
