@@ -46,10 +46,10 @@
                             </li>
                             <li class="dropdown" role="presentation">
                                 <a href="#" class="dropdown-toggle">
-                                    Configuración<b class="caret">
                                     @if(!isset($configuration))
                                             <span class="badge background-color-red"><i class="fa fa-exclamation-triangle"></i></span>
                                     @endif
+                                    Configuración<b class="caret">
                                     </b>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -74,10 +74,10 @@
                         @role('director')
                             <li class="onepage">
                                 <a href="{{ route('pluranza.academies.edit', $academy->id) }}" class="ct-js-btnScroll">
-                                    Editar
                                     @if(!$academy->isDataComplete)
                                         <span class="badge background-color-red"><i class="fa fa-exclamation-triangle"></i></span>
                                     @endif
+                                    Editar
                                 </a>
                             </li>
                             <li class="onepage"><a href="{{ route('pluranza.dancers.by-academy', $academy->id) }}" class="ct-js-btnScroll">Miembros</a></li>
