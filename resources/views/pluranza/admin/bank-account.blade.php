@@ -1,7 +1,7 @@
 @extends('pluranza.main')
 
 @section('content')
-<section class="ct-u-paddingTop20 ct-u-paddingBottom100">
+<section class="ct-u-paddingTop20 ct-u-paddingBottom10">
     <div class="container">
         <div class="row ct-u-paddingBottom40">
             <div class="col-md-12">
