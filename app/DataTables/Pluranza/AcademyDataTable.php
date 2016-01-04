@@ -13,9 +13,12 @@ class AcademyDataTable extends BaseDataTable
 			'Fundación',
 			'Director',
 			'Facebook',
-			'Estado',
-			'Acciones'
+			'Estado'			
 		];
+
+		if (Auth::check())
+			array_push($this->columns, 'Acciones');
+		
 		$this->defaultConfig();
 		$this->setRoute('pluranza.academies.api.list');
 		$this->setOrderColumn(0);
