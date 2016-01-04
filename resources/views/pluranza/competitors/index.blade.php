@@ -22,7 +22,7 @@
             @endrole
             @include('pluranza.competitors.partials._add-competitor-header')
             <div class="row ct-u-paddingTop5">
-                <div class="col-md-offset-2 col-md-8">
+                <div class="col-md-offset-1 col-md-10">
                     @include('partials._table')
                 </div>
             </div>
