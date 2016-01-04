@@ -20,7 +20,7 @@ class Academy extends Model implements StaplerableInterface
 	protected $table = 'academies';
     protected $fillable = ['name', 'address', 'history', 'foundation', 'logo',
 	                       'email', 'phone', 'facebook', 'twitter', 'instagram','independent',
-	                        'estate_id', 'municipality_id', 'parish_id', 'city_id'];
+	                        'estate_id', 'municipality_id', 'parish_id', 'city_id', 'user_id'];
 	protected $nullable = ['address', 'history', 'foundation',
 							'facebook', 'twitter', 'instagram',
 							'independent', 'estate_id', 'municipality_id'];
