@@ -28,5 +28,13 @@ class AcademyRepository extends BaseRepository {
 				 ->where('users.verified', '=', 1);
 		})->count();
 	}
+
+	public function delete($id)
+	{
+		$academy = $this->get();
+		$user = $academy->user();
+		return $academy->delete() && $user->delete();
+
+	}
 }
 

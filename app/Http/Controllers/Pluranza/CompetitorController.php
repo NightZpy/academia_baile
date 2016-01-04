@@ -142,7 +142,7 @@ class CompetitorController extends Controller
         $academy = $competitor->academy;
         $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitor->competitionType->id);
         $levels = $this->competitionCategoryRepository->getLevelByCategoryAndCompetitionTypeForSelect($competitor->category->id, $competitor->competitionType->id);
-
+        $competitionType = $competitor->competitionType;
         if (strtolower($competitor->competitionType->name) == 'pareja') {
             $masculineDancers = $academy->dancers()->masculine()->lists('name', 'id');
             $femaleDancers = $academy->dancers()
@@ -154,7 +154,7 @@ class CompetitorController extends Controller
             $dancers = $academy->dancers->lists('fullName', 'id');
         }
 
-        return view('pluranza.competitors.edit')->with(compact('competitor', 'academy', 'levels', 'categories', 'dancers'));
+        return view('pluranza.competitors.edit')->with(compact('competitor', 'academy', 'levels', 'categories', 'dancers', 'competitionType'));
     }
 
     /**

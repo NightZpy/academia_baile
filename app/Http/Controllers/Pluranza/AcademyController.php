@@ -15,14 +15,14 @@ use App\Mailers\AppMailer;
 
 class AcademyController extends Controller
 {
-    protected $academyRepository;
+    protected $repository;
 
     /**
      * AcademyController constructor.
-     * @param $academyRepository
+     * @param $repository
      */
-    public function __construct(AcademyRepository $academyRepository) {
-        $this->academyRepository = $academyRepository;
+    public function __construct(AcademyRepository $repository) {
+        $this->repository = $repository;
     }
 
     /**
@@ -32,7 +32,7 @@ class AcademyController extends Controller
      */
     public function index()
     {
-        $table = $this->academyRepository->dataTable->getAllTable();
+        $table = $this->repository->dataTable->getAllTable();
         return view('pluranza.academies.index')->with(compact('table'));
     }
 
@@ -150,7 +150,10 @@ class AcademyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $academy = $this->repository->get($id);
+        flash()->success('Academia ' . $academy->name . ' eliminada correctamente.');
+        $this->repository->delete($id);
+        return redirect()->back();
     }
 
     /*
@@ -159,6 +162,6 @@ class AcademyController extends Controller
     public function apiList()
     {
         if(request()->ajax())
-            return $this->academyRepository->getAllDataTable();
+            return $this->repository->getAllDataTable();
     }
 }

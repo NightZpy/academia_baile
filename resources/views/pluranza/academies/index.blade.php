@@ -10,11 +10,6 @@
                     </h4>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-offset-3 col-md-6">
-                    @include('partials._flash')
-                </div>
-            </div>
             @role('admin')
                 <div class="row ct-u-paddingTop25">
                     <div class="col-md-10">
