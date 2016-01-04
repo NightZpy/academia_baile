@@ -24,7 +24,6 @@ class RegisterCompetitorFormRequest extends Request
      */
     public function rules()
     {
-        Config::set('debug', true);
         \Debugbar::info(['Request' => $this->request->all()]);
         $rules = [
             'academy_id' => 'required|integer|exists:academies,id|unique_with:competitors,name,competition_category_id',
