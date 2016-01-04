@@ -75,6 +75,7 @@
         @include('partials._configuration-incomplete')
         @include('partials._flash')
         @yield('content')
+        @include('public.layout.sections.social-networks')
         @include('public.layout.includes._footer')
     </div>
     @include('pluranza.admin.partials._js')
