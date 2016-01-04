@@ -3,9 +3,9 @@
 @section('content')
 <section class="ct-u-paddingTop20 ct-u-paddingBottom10">
     <div class="container">
-        <div class="row ct-u-paddingBottom40">
+        <div class="row">
             <div class="col-md-12">
-                <div class="ct-u-sectionHeader text-center ct-u-paddingBottom20">
+                <div class="ct-u-sectionHeader text-center ct-u-paddingBottom5">
                     <h2 class="ct-sectionTitle">{{ $configuration->title }} <br>
                         <span class="ct-fw-300">
                             {{ $configuration->long_title }}
