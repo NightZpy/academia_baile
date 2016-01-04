@@ -32,10 +32,12 @@ class Competitor extends Model implements StaplerableInterface
 		// Now, before the record is saved, set the filename attribute on the model:
 		static::saving(function($model)
 		{
-			$pathInfo = pathinfo($model->song->originalFileName());
-			//$newFilename = Str::slug($pathInfo['filename']) . '.' . $pathInfo['extension'];
-			$newFilename = str_slug($model->academy->name . '-' . $model->name) . '.' . $pathInfo['extension'];
-			$model->song->instanceWrite('file_name', $newFilename);
+			if ($model->song) {
+				$pathInfo = pathinfo($model->song->originalFileName());
+				//$newFilename = Str::slug($pathInfo['filename']) . '.' . $pathInfo['extension'];
+				$newFilename = str_slug($model->academy->name . '-' . $model->name) . '.' . $pathInfo['extension'];
+				$model->song->instanceWrite('file_name', $newFilename);
+			}
 		});
 	}
 
