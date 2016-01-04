@@ -117,4 +117,19 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+        /**
+     * Get the login credentials and requirements.
+     *
+     * @param  Request $request
+     * @return array
+     */
+    protected function getCredentials(Request $request)
+    {
+        return [
+            'email'    => $request->input('email'),
+            'password' => $request->input('password'),
+            'verified' => true
+        ];
+    }
 }
