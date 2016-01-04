@@ -56,6 +56,8 @@ class AcademyController extends Controller
     {
         $user = User::create($request->all());
         \Debugbar::info(['User' => $user]);
+        $academyInput = $request->all();
+        $academyInput['user_id'] = $user->id;
         $academy = $this->repository->create($request->all());
         \Debugbar::info(['Academy' => $academy]);
         $academy->user()->save($user);
