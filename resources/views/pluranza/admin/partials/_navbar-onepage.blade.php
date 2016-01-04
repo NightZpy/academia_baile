@@ -77,7 +77,7 @@
                                     </b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    @if(iseet($configuration) && !empty($configuration->rules_file_name))
+                                    @if(isset($configuration) && !empty($configuration->rules_file_name))
                                         <li class="onepage">
                                             <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
                                                 Reglas de competencia                            
