@@ -10,9 +10,12 @@ class CompetitionCategoryDataTable extends BaseDataTable
 			'Categoría',
 			'Nivel',
 			'Género',
-			'Precio',
-			'Acciones'
+			'Precio',			
 		];
+
+		if (\Entrust::hasRole('admin'))
+			array_push($this->columns, 'Acciones');
+
 		$this->defaultConfig();
 		$this->setRoute('pluranza.competition-categories.api.list');
 		$this->setOrderColumn(0);
@@ -21,7 +24,11 @@ class CompetitionCategoryDataTable extends BaseDataTable
 			'show'      => 'pluranza.competition-categories.show',
 			'edit'      => 'pluranza.competition-categories.edit',
 			'delete'    => 'pluranza.competition-categories.delete'
-		];
+		];		
+
+		if (!\Entrust::hasRole('admin'))
+			$this->setDefaultActions([]);
+		
 		$this->setDefaultActionRoutes($actionRoutes);
 	}
 

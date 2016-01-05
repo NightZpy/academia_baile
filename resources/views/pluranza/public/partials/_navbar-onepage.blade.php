@@ -19,6 +19,13 @@
                         {{--<li class="onepage"><a href="#" class="white-nav-bar-text ct-js-btnScroll">Exhibiciones</a></li>--}}
                         {{--<li class="onepage"><a href="#" class="white-nav-bar-text ct-js-btnScroll">Sede</a></li>--}}
                         {{--<li class="onepage"><a href="#" class="white-nav-bar-text ct-js-btnScroll">Hoteles</a></li>--}}
+                        @if(!Auth::check() AND isset($configuration) AND !empty($configuration->rules_file_name))
+                            <li class="onepage">
+                                <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
+                                    Reglas de competencia                            
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                     <div class="clearfix"></div>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pluranza;
 use App\Pluranza\Academy;
 use App\Repository\Pluranza\AcademyRepository;
 use App\Repository\Pluranza\CompetitorRepository;
+use App\Repository\Pluranza\CompetitionCategoryRepository;
 use App\Repository\Pluranza\DancerRepository;
 use App\Repository\Pluranza\PaymentRepository;
 use Illuminate\Http\Request;
@@ -19,6 +20,7 @@ class PagesController extends Controller
 	protected $dancerRepository;
 	protected $competitorRepository;
 	protected $paymentRepository;
+    protected $competitionCategoryRepository;
 
 	/**
 	 * PagesController constructor.
@@ -27,11 +29,13 @@ class PagesController extends Controller
 	public function __construct(AcademyRepository $academyRepository,
 	                            DancerRepository $dancerRepository,
 	                            CompetitorRepository $competitorRepository,
-	                            PaymentRepository $paymentRepository) {
+	                            PaymentRepository $paymentRepository,
+                                CompetitionCategoryRepository $competitionCategoryRepository) {
 		$this->academyRepository = $academyRepository;
 		$this->dancerRepository = $dancerRepository;
 		$this->competitorRepository = $competitorRepository;
 		$this->paymentRepository = $paymentRepository;
+        $this->competitionCategoryRepository = $competitionCategoryRepository;
 	}
 
 
@@ -125,7 +129,9 @@ class PagesController extends Controller
         //
     }
 
-    public function bankAccount() {
-        return view('pluranza.admin.bank-account');
+    public function bankAccount() {        
+        $table = $this->competitionCategoryRepository->dataTable->getAllTable();
+        return view('pluranza.admin.bank-account', compact('table'));
     }
+
 }

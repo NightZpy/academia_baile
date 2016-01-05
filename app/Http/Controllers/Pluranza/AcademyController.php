@@ -140,15 +140,14 @@ class AcademyController extends Controller
         $academy->fill($request->all())->save();
         if ($academy->email != $oldEmail) {            
             $mailer->sendEmailConfirmationTo($academy->user, 'pluranza.emails.confirm');
+            flash()->success('Su email ha sido cambiado, por favor, verifique en la bandeja de entrada de su correo y active su email para poder ingresar la próxima vez.');
         } else {
         if ($updateAt != $academy->updated_at)
             flash()->success('Sus datos han sido actualizados correctamente.');
         else
-            flash()->success('Sus datos no pudieron ser actualizados.');
-
-        return redirect()->back()->with(compact('academy'));
-
+            flash()->success('Sus datos no pudieron ser actualizados.');        
         }
+        return redirect()->back()->with(compact('academy'));
     }
 
     /**

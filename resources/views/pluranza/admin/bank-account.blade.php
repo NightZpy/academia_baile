@@ -29,8 +29,20 @@
                                 <li><strong>Correo:</strong> <i>lahoritac@gmail.com</i></li>
                             </ul>
                         </span> 
-                    </h3>                   
+                    </h3>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ct-u-sectionHeader text-center ct-u-paddingBottom5">
+                    <h3 class="ct-sectionTitle">Costos de inscripción</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row ct-u-paddingTop5">
+            <div class="col-md-offset-2 col-md-8">
+                @include('partials._table')
             </div>
         </div>
     </div>

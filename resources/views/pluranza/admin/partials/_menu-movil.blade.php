@@ -37,37 +37,46 @@
         </li>
         @endrole
         @role('director')
-        @if(!$academy->isDataComplete)
-            <li class="background-color-red">
-        @else
-            <li>
-        @endif
-            <a href="{{ route('pluranza.academies.edit', $academy->id) }}" class="ct-js-btnScroll--mobile">
-                Editar
-            </a>
-        </li>
-        <li><a href="{{ route('pluranza.dancers.by-academy', $academy->id) }}" class="ct-js-btnScroll--mobile">Miembros</a></li>
-        <li><a href="{{ route('pluranza.competitors.by-academy', $academy->id) }}" class="ct-js-btnScroll--mobile">Competidores</a></li>
+            @if(!$academy->isDataComplete)
+                <li class="background-color-red">
+            @else
+                <li>
+            @endif
+                <a href="{{ route('pluranza.academies.edit', $academy->id) }}" class="ct-js-btnScroll--mobile">
+                    Editar
+                </a>
+            </li>
+            <li><a href="{{ route('pluranza.dancers.by-academy', $academy->id) }}" class="ct-js-btnScroll--mobile">Miembros</a></li>
+            <li><a href="{{ route('pluranza.competitors.by-academy', $academy->id) }}" class="ct-js-btnScroll--mobile">Competidores</a></li>
         @endrole
 
         @role('dancer')
 
         @endrole
 
-        @if(Auth::check())
-            @if(isset($configuration))
-                <li class="background-color-red">
-                    <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll--mobile">
-                        Reglas de competencia
-                    </a>
-                </li>
-            @endif
-            {{--<li class="dropdown" role="presentation">
-                <a href="#" class="dropdown-toggle">Perfil<b class="caret"></b></a>
+        @if (Auth::check()) 
+            <li class="dropdown" role="presentation">
+                <a href="#" class="dropdown-toggle">
+                    <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
+                    Importante
+                    <b class="caret">
+                    </b>
+                </a>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ route('categories.home') }}" class="ct-js-btnScroll--mobile">Géneros</a></li>
+                    @if(isset($configuration) AND !empty($configuration->rules_file_name))
+                        <li class="onepage">
+                            <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
+                                Reglas de competencia                            
+                            </a>
+                        </li>
+                    @endif
+                    <li class="onepage">
+                        <a target="_blank" href="{{ route('pluranza.bank-account') }}" class="ct-js-btnScroll">
+                           Costos
+                        </a>
+                    </li>
                 </ul>
-            </li>--}}
+            </li>
         @endif
         {{--<li><a href="#" class="ct-js-btnScroll--mobile">Resultados</a></li>--}}
         @include('pluranza.public.partials._sign-movil-area')

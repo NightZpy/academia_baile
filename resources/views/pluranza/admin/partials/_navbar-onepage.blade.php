@@ -69,34 +69,6 @@
                                     @endif
                                 </ul>                                
                             </li>
-                            <li class="dropdown" role="presentation">
-                                <a href="#" class="dropdown-toggle">
-                                    <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
-                                    Importante
-                                    <b class="caret">
-                                    </b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    @if(isset($configuration) && !empty($configuration->rules_file_name))
-                                        <li class="onepage">
-                                            <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
-                                                Reglas de competencia                            
-                                            </a>
-                                        </li>
-                                    @endif
-                                    <li class="onepage">
-                                        <a target="_blank" href="{{ route('pluranza.bank-account') }}" class="ct-js-btnScroll">
-                                            Cuenta bancaria
-                                        </a>
-                                    </li>
-                                    {{--<li class="dropdown" role="presentation">
-                                        <a href="#" class="dropdown-toggle">Perfil<b class="caret"></b></a>
-                                        <ul class="dropdown-menu">
-                                            <li class="onepage"><a href="{{ route('categories.home') }}" class="ct-js-btnScroll">Géneros</a></li>
-                                        </ul>
-                                    </li>--}}
-                                </ul>
-                            </li>
                         @endrole
 
                         @role('director')
@@ -110,23 +82,42 @@
                             </li>
                             <li class="onepage"><a href="{{ route('pluranza.dancers.by-academy', $academy->id) }}" class="ct-js-btnScroll">Bailarines</a></li>
                             <li class="onepage"><a href="{{ route('pluranza.competitors.by-academy', $academy->id) }}" class="ct-js-btnScroll">Competidores</a></li>
-                            @if(iseet($configuration) && !empty($configuration->rules_file_name))
-                                <li class="onepage">
-                                    <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
-                                        Reglas de competencia                            
-                                    </a>
-                                </li>
-                            @endif
-                                <li class="onepage">
-                                    <a target="_blank" href="{{ route('pluranza.bank-account') }}" class="ct-js-btnScroll">
-                                        Cuenta bancaria
-                                    </a>
-                                </li>
                         @endrole
 
                         @role('dancer')
 
                         @endrole
+
+                        @if (Auth::check()) 
+                            <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle">
+                                        <span class="badge background-color-red"><i class="fa fa-bell"></i></span>
+                                        Importante
+                                        <b class="caret">
+                                        </b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        @if(isset($configuration) AND !empty($configuration->rules_file_name))
+                                            <li class="onepage">
+                                                <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
+                                                    Reglas de competencia                            
+                                                </a>
+                                            </li>
+                                        @endif
+                                        <li class="onepage">
+                                            <a target="_blank" href="{{ route('pluranza.bank-account') }}" class="ct-js-btnScroll">
+                                               Costos
+                                            </a>
+                                        </li>
+                                        {{--<li class="dropdown" role="presentation">
+                                            <a href="#" class="dropdown-toggle">Perfil<b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <li class="onepage"><a href="{{ route('categories.home') }}" class="ct-js-btnScroll">Géneros</a></li>
+                                            </ul>
+                                        </li>--}}
+                                    </ul>
+                                </li>
+                        @endif
 
                         {{--<li class="onepage"><a href="#" class="ct-js-btnScroll">Resultados</a></li>--}}
                     </ul>
