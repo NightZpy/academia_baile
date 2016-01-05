@@ -69,9 +69,21 @@ class AcademyController extends Controller
 
     public function resendToNoVerifiedAccounts(AppMailer $mailer) {
         $users = User::whereVerified(0)->get();
-        foreach($users as $user)
-            $mailer->sendEmailConfirmationTo($user, 'pluranza.emails.confirm');
-        dd($users->toArray());
+        if ($users->count()) {
+            foreach($users as $user)
+                $mailer->sendEmailConfirmationTo($user, 'pluranza.emails.confirm');
+            flash()->success('Se ha enviado el correo de verificación a todas las cuentas sin verificar.');
+        } else {
+            flash()->success('No hay cuentas por verificar.');
+        }
+        return redirect()->back();
+    }
+
+    public function resendToNoVerifiedAccount(AppMailer $mailer, $id) {
+        $user = User::findOrFail($id);
+        $mailer->sendEmailConfirmationTo($user, 'pluranza.emails.confirm');
+        flash()->success('Se ha enviado el correo de verificación a la academia: ' . $user->academy->name);
+        return redirect()->back();
     }
 
     /**
