@@ -118,11 +118,16 @@ class AcademyDataTable extends BaseDataTable
 					$this->addActionColumn($deleteForm);
 				}
 
+				if(isset($model->user))
+					\Debugbar::info(['user' => $model->user->id, 'verified' => $model->user->isConfirm]);
+				else
+					\Debugbar::info($model);
+				
 				if (in_array('confirm', $actions) && isset($model->user) && !$model->user->isConfirm ) 
 					$this->addActionColumn("<a  class='confirm btn btn-xs btn-darkGray btn-circle' href='" . route($routes['confirm'], $model->id) . "' id='confirm_".$model->id."'><i class='fa fa-pencil'></i> Confirmar</a>");
 
 				if (in_array('send-confirm', $actions) && isset($model->user) && !$model->user->isConfirm ) 
-					$this->addActionColumn("<a  class='edit btn btn-xs btn-darkGray btn-circle' href='" . route($routes['send-confirm'], $model->id) . "' id='send-confirm_" . $model->id . "'><i class='fa fa-pencil'></i> Enviar confirmación</a>");
+					$this->addActionColumn("<a  class='send-confirm btn btn-xs btn-darkGray btn-circle' href='" . route($routes['send-confirm'], $model->id) . "' id='send-confirm_" . $model->id . "'><i class='fa fa-pencil'></i> Enviar confirmación</a>");
 			}
 			$this->addActionColumn('</div>');
 			return implode(" ", $this->getActionColumn());
