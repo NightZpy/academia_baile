@@ -57,6 +57,7 @@ class User extends Model implements AuthenticatableContract,
 
         static::updating(function($user)
         {
+            // o en lugar de usar getOriginal puedo probar con isDirty('email')
             $original = $user->getOriginal();
             if ($user->email != $original['email']) {
                 $user->token = str_random(30);

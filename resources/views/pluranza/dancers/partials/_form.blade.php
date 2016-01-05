@@ -4,6 +4,22 @@
 @include('partials._errors-min')
 {!! Form::hidden('academy_id', $academy->id) !!}
 <div class="row">
+    <div class="col-sm-offset-4 col-sm-4  text-center">
+        <div class="btn-group" data-toggle="buttons" role="group">
+            <?php
+                $active = '';
+                if ((isset($dancer) AND $dancer->director) OR old('director')):
+                    $active = 'active';
+                endif
+            ?>
+            <label class="btn btn-sm btn-default btn-circle text-uppercase ct-u-size14 {{ $active }}">
+                {!! Form::checkbox('director', null, old('director'), array('class' => 'form-control input-sm')) !!}
+                Director
+            </label>
+        </div>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-offset-4 col-sm-4">
         <div class="form-group {{ ($errors->has('name') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('name'))
@@ -196,22 +212,6 @@
                 Dirección URL de Instagram
             </label>
             {!! Form::text('instagram', old('instagram'), array('placeholder' => 'URL de Instagram', 'class' => 'form-control input-sm')) !!}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-offset-4 col-sm-4  text-center">
-        <div class="btn-group" data-toggle="buttons" role="group">
-            <?php
-                $active = '';
-                if ((isset($dancer) AND $dancer->director) OR old('director')):
-                    $active = 'active';
-                endif
-            ?>
-            <label class="btn btn-sm btn-default btn-circle text-uppercase ct-u-size14 {{ $active }}">
-                {!! Form::checkbox('director', null, old('director'), array('class' => 'form-control input-sm')) !!}
-                Director
-            </label>
         </div>
     </div>
 </div>
