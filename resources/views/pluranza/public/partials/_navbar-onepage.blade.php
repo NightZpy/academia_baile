@@ -14,8 +14,8 @@
                     <ul class="nav navbar-nav navbar-right ct-navbar--fadeIn">
                         <li class="onepage"><a href="{{ route('pluranza.home') }}" class="ct-js-btnScroll">Inicio</a></li>
                         <li class="onepage"><a href="{{ route('pluranza.academies.home') }}" class="white-nav-bar-text ct-js-btnScroll">Academias</a></li>
-                        <li class="onepage"><a href="{{ route('pluranza.dancers.home') }}" class="white-nav-bar-text ct-js-btnScroll">Bailarines</a></li>
-                        <li class="onepage"><a href="{{ route('pluranza.competitors.home') }}" class="white-nav-bar-text ct-js-btnScroll">Competidores</a></li>
+                        {{-- <li class="onepage"><a href="{{ route('pluranza.dancers.home') }}" class="white-nav-bar-text ct-js-btnScroll">Bailarines</a></li> --}}
+                        {{-- <li class="onepage"><a href="{{ route('pluranza.competitors.home') }}" class="white-nav-bar-text ct-js-btnScroll">Competidores</a></li> --}}
                         {{--<li class="onepage"><a href="#" class="white-nav-bar-text ct-js-btnScroll">Exhibiciones</a></li>--}}
                         {{--<li class="onepage"><a href="#" class="white-nav-bar-text ct-js-btnScroll">Sede</a></li>--}}
                         {{--<li class="onepage"><a href="#" class="white-nav-bar-text ct-js-btnScroll">Hoteles</a></li>--}}
