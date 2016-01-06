@@ -30,7 +30,7 @@
                 </div>
                 <div class="btn-group text-center ct-u-paddingTop15">
                     <a href="{{ route('pluranza.payments.new', $academY->id) }}" class="ct-js-btnScroll btn btn-xs btn-danger btn-circle text-uppercase ct-u-size14 pull-left"><i class="fa fa-money fa-2x"></i> Pagar</a>
-                    <a href="{{ route('pluranza.payments.by-academY', $academY->id) }}" class="ct-js-btnScroll btn btn-xs btn-danger btn-circle text-uppercase ct-u-size14 pull-left"><i class="fa fa-money fa-2x"></i> Pagos</a>
+                    <a href="{{ route('pluranza.payments.by-academy', $academY->id) }}" class="ct-js-btnScroll btn btn-xs btn-danger btn-circle text-uppercase ct-u-size14 pull-left"><i class="fa fa-money fa-2x"></i> Pagos</a>
                 </div>
             </div>
         </div>
