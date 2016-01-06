@@ -147,7 +147,7 @@ class AcademyController extends Controller
     public function update($id, UpdateAcademyRequest $request, AppMailer $mailer)
     {
         $academy = Academy::findOrFail($id);
-        $oldEmail = $Academy->email;        
+        $oldEmail = $academy->email;        
         $updateAt = $academy->updated_at;
         $academy->fill($request->all())->save();
         if ($academy->email != $oldEmail) {            
