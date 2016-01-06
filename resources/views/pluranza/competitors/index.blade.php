@@ -16,7 +16,7 @@
                 </div>
             </div>
             @role(['admin', 'director'])
-            @route('pluranza.competitors.by-academY')
+            @route('pluranza.competitors.by-academy')
                 @include('pluranza.payments.partials._header')
             @endroute
             @endrole
