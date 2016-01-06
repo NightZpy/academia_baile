@@ -6,7 +6,7 @@
             <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 ct-titleBox">
                     <h4 class="text-center text-uppercase ct-u-paddingTop30">
-                        Competidores @if(isset($academy)) de <i> {{ $academy->name }}</i> @endif
+                        Competidores @if(isset($academY)) de <i> {{ $academY->name }}</i> @endif
                     </h4>
                 </div>
             </div>
@@ -16,7 +16,7 @@
                 </div>
             </div>
             @role(['admin', 'director'])
-            @route('pluranza.competitors.by-academy')
+            @route('pluranza.competitors.by-academY')
                 @include('pluranza.payments.partials._header')
             @endroute
             @endrole
