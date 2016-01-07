@@ -55,20 +55,12 @@ class Dancer extends Model implements StaplerableInterface
 		//return Carbon::createFromDate($fecha[0], $fecha[1], $fecha[2])->age;
 	}
 
+	public function getGenderFormatedAttribute() {
+		return ($this->gender == 'f' ? 'Femenino' : 'Masculino');
+	}
 	/*
 	 * ------------------------ Mutators ------------------------
 	 */
-	public function setFacebookAttribute($value) {
-		$this->facebook = (empty($value) ? NULL : $value );
-	}
-
-	public function setTwitterAttribute($value) {
-		$this->twitter = (empty($value) ? NULL : $value );
-	}
-
-	public function setInstagramAttribute($value) {
-		$this->instagram = (empty($value) ? NULL : $value );
-	}
 
 	/*
 	 * ------------ Scopes ------------------

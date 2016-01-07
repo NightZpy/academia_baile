@@ -60,7 +60,12 @@ class Jury extends Model implements StaplerableInterface
 
 	public function getCategoriesListAttribute()
 	{
-		return join(', ', $this->categories->lists('name'));
+		\Debugbar::info(['Categories' => $this->categories->lists('name')->toArray()]);
+		return join(', ', $this->categories->lists('name')->toArray());
+	}
+
+	public function getGenderFormatedAttribute() {
+		return ($this->gender == 'f' ? 'Femenino' : 'Masculino');
 	}
 
 	/*
@@ -71,5 +76,14 @@ class Jury extends Model implements StaplerableInterface
 	/*
 	 * ------------ Scopes ------------------
 	 */
+	public function scopeFemale($query)
+	{
+		return $query->whereGender('f');
+	}
+
+	public function scopeMasculine($query)
+	{
+		return $query->whereGender('m');
+	}
 
 }

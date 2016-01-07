@@ -56,7 +56,7 @@ class JuryDataTable extends BaseDataTable
 
 		$this->collection->addColumn('Género', function($model)
 		{
-			return $model->gender;
+			return $model->genderFormated;
 		});
 
 		$this->collection->addColumn('Géneros de baile', function($model)

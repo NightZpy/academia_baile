@@ -36,8 +36,7 @@ class RegisterJuryFormRequest extends Request
             'twitter' => 'url|max:128|unique:jurors',
             'instagram' => 'url|max:128|unique:jurors',
             'biography' => 'required|max:1024|min:64',
-            'user_id' => 'required|exists:users,id',
-            'category_id[]' => 'required|array'
+            'category_id[]' => 'array|min:1'
         ];
     }
 }

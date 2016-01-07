@@ -223,11 +223,11 @@
 </div>
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
-        <div class="form-group {{ ($errors->has('category_id') ? 'has-error background-error-color' : '') }}">
-            @if ($errors->has('dancer_id'))
-                <label class="control-label" for="dancer_id">
+        <div class="form-group {{ ($errors->has('category_id[]') ? 'has-error background-error-color' : '') }}">
+            @if ($errors->has('category_id[]'))
+                <label class="control-label" for="category_id[]">
                     <ul>
-                        @foreach($errors->get('category_id') as $error)
+                        @foreach($errors->get('category_id[]') as $error)
                             <li>{!! $error !!}</li>
                         @endforeach
                     </ul>
@@ -236,7 +236,7 @@
             <label class="control-label" for="song">
                 Géneros en los que participará <class class="red">(*)</class>
             </label>
-            {!! Form::select('category_id[]', (isset($categories) ? $categories : array()), ( isset($jury) AND $jury->categories->count() ? $jury->categories : old('dancer_id')), ['multiple' => 'multiple', 'placeholder' => 'Selecciona los géneros', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+            {!! Form::select('category_id[]', (isset($categories) ? $categories : array()), ( isset($jury) AND $jury->categories->count() ? $jury->categories : old('category_id[]')), ['multiple' => 'multiple', 'placeholder' => 'Selecciona los géneros', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
         </div>
     </div>
 </div>
