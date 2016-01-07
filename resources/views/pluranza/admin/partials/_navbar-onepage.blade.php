@@ -110,6 +110,13 @@
                                                Costos
                                             </a>
                                         </li>
+                                        @role('admin')
+                                            <li class="onepage"><a href="{{ route('pluranza.jurors.public') }}" class="ct-js-btnScroll">Jurados (Public)</a></li>
+                                            <li class="onepage"><a href="{{ route('pluranza.jurors.home') }}" class="ct-js-btnScroll">Jurados (Admin)</a></li>
+                                        @endrole
+                                        @role('director')
+                                            <li class="onepage"><a href="{{ route('pluranza.jurors.public') }}" class="ct-js-btnScroll">Jurados</a></li>
+                                        @endrole
                                         {{--<li class="dropdown" role="presentation">
                                             <a href="#" class="dropdown-toggle">Perfil<b class="caret"></b></a>
                                             <ul class="dropdown-menu">

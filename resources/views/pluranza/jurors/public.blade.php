@@ -13,7 +13,7 @@
             <div class="row ct-u-paddingTop25">
                 <div class="col-md-10">
                     @role(['admin'])
-                        <a href="{{ route('pluranza.jurors.new') }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
+                        <a href="{{ route('pluranza.jurors.home') }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
                     @endroute
                 </div>
             </div>

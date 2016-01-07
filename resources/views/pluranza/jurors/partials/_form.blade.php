@@ -67,9 +67,9 @@
         </label>
         <?php
             $femaleActive = $maleActive = '';
-            if ((isset($dancer) AND $dancer->gender == 'f') OR old('gender') == 'f'):
+            if ((isset($jury) AND $jury->gender == 'f') OR old('gender') == 'f'):
                 $femaleActive = 'active';
-            elseif ((isset($dancer) AND $dancer->gender == 'm') OR old('gender') == 'm'):
+            elseif ((isset($jury) AND $jury->gender == 'm') OR old('gender') == 'm'):
                 $maleActive = 'active';
             endif
         ?>
@@ -98,7 +98,7 @@
                 </label>
             @endif
             <label class="control-label" for="song">
-                Email (Si deseas que llegue un correo de invitación al bailarín)
+                Email (Si deseas que llegue un correo de invitación al jurado)
             </label>
             {!! Form::text('email', old('email'), array('placeholder' => 'Email', 'class' => 'form-control input-sm')) !!}
         </div>
@@ -200,22 +200,6 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-offset-4 col-sm-4  text-center">
-        <div class="btn-group" data-toggle="buttons" role="group">
-            <?php
-                $active = '';
-                if ((isset($dancer) AND $dancer->director) OR old('director')):
-                    $active = 'active';
-                endif
-            ?>
-            <label class="btn btn-sm btn-default btn-circle text-uppercase ct-u-size14 {{ $active }}">
-                {!! Form::checkbox('director', null, old('director'), array('class' => 'form-control input-sm')) !!}
-                Director
-            </label>
-        </div>
-    </div>
-</div>
-<div class="row">
     <div class="col-sm-offset-4 col-sm-4">
         <div class="form-group {{ ($errors->has('biography') ? 'has-error background-error-color' : '') }}">
             @if ($errors->has('biography'))
@@ -228,12 +212,31 @@
                 </label>
             @endif
             <label class="control-label" for="song">
-                ¡Queremos saber quien baila, cuentanos sobre él!
+                ¡Cuéntanos sobre tí! <class class="red">(*)</class>
             </label>
             {!! Form::textarea('biography', old('biography'), array('placeholder' => '¿Quién es?', 'class' => 'form-control input-sm')) !!}
             @route('pluranza.jurors.edit')
                 <b class="biography-counter background-red white"></b> caracteres restantes.
             @endroute
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-offset-4 col-sm-4">
+        <div class="form-group {{ ($errors->has('category_id') ? 'has-error background-error-color' : '') }}">
+            @if ($errors->has('dancer_id'))
+                <label class="control-label" for="dancer_id">
+                    <ul>
+                        @foreach($errors->get('category_id') as $error)
+                            <li>{!! $error !!}</li>
+                        @endforeach
+                    </ul>
+                </label>
+            @endif
+            <label class="control-label" for="song">
+                Géneros en los que participará <class class="red">(*)</class>
+            </label>
+            {!! Form::select('category_id[]', (isset($categories) ? $categories : array()), ( isset($jury) AND $jury->categories->count() ? $jury->categories : old('dancer_id')), ['multiple' => 'multiple', 'placeholder' => 'Selecciona los géneros', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
         </div>
     </div>
 </div>

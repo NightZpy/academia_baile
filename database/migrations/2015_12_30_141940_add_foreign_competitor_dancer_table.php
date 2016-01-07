@@ -12,7 +12,7 @@ class AddSongFieldsToCompetitorsTable extends Migration {
      */
     public function up()
     {
-        Schema::table('competitors', function(Blueprint $table) {
+        Schema::table(function(Blueprint $table) {
 
             $table->string('song_file_name')->nullable();
             $table->integer('song_file_size')->nullable()->after('song_file_name');

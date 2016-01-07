@@ -68,7 +68,6 @@
 <div class="row">
     @if ( (isset($competitor) AND strtolower($competitor->competitionType->name) == 'pareja') OR
           (isset($competitionType) AND strtolower($competitionType->name) == 'pareja'))
-        {{ \Debugbar::info($competitionType) }}
         <div class="col-sm-offset-4 col-sm-4">
             <div class="form-group {{ ($errors->has('dancer_id[female]') ? 'has-error background-error-color' : '') }}">
                 @if ($errors->has('dancer_id'))

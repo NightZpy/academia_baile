@@ -2,17 +2,17 @@
 namespace App\Repository\Pluranza;
 
 use App\DataTables\Pluranza\AcademyDataTable;
-use App\DataTables\Pluranza\DancerDataTable;
-use App\Pluranza\Dancer;
+use App\DataTables\Pluranza\JuryDataTable;
+use App\Pluranza\Jury;
 use App\Repository\BaseRepository;
 
-class DancerRepository extends BaseRepository {
+class JuryRepository extends BaseRepository {
 
 	/**
-	 * DancerRepository constructor.
+	 * JuryRepository constructor.
 	 */
-	public function __construct(DancerDataTable $dataTable) {
-		$this->setModel(new Dancer);
+	public function __construct(JuryDataTable $dataTable) {
+		$this->setModel(new Jury);
 		$this->dataTable = $dataTable;
 	}
 

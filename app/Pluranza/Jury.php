@@ -2,25 +2,29 @@
 
 namespace App\Pluranza;
 
+use App\User;
+use App\Category;
 use Carbon\Carbon;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Illuminate\Database\Eloquent\Model;
 use Iatstuti\Database\Support\NullableFields;
 
-class Dancer extends Model implements StaplerableInterface
+class Jury extends Model implements StaplerableInterface
 {
 	use EloquentTrait, NullableFields;
 
+	protected $table = "jurors";
+
 	protected $fillable = ['name', 'last_name', 'ci', 'gender', 'birth_date', 'email',
-						   'phone', 'photo', 'facebook', 'twitter', 'instagram',
-		                   'director', 'biography', 'academy_id'];
-	protected $nullable = ['email', 'phone', 'facebook', 'twitter', 'instagram', 'academy_id', 'biography'];
+						   'phone', 'photo', 'facebook', 'twitter', 'instagram', 'biography', 'user_id'];
+	protected $nullable = ['email', 'phone', 'facebook', 'twitter', 'instagram', 'user_id', 'biography'];
 
 	public function __construct(array $attributes = array()) {
 		$this->hasAttachedFile('photo', [
 			'styles' => [
 				'medium' => '300x300',
+				'public' => '206x264',
 				'thumb' => '100x100'
 			]
 		]);
@@ -31,6 +35,15 @@ class Dancer extends Model implements StaplerableInterface
 	/*
 	* -------------------------- Relations ------------------------
 	*/
+	public function user()
+	{
+		return $this->belongsTo(User::class);
+	}
+
+	public function categories()
+	{
+		return $this->belongsToMany(Category::class);
+	}
 
 	/*
 	 * ------------------------- Accessors ---------------------------
@@ -43,7 +56,11 @@ class Dancer extends Model implements StaplerableInterface
 	public function getAgeAttribute()
 	{
 		return Carbon::createFromFormat('Y-m-d', $this->birth_date)->age;
-		//return Carbon::createFromDate($fecha[0], $fecha[1], $fecha[2])->age;
+	}
+
+	public function getCategoriesListAttribute()
+	{
+		return join(', ', $this->categories->lists('name'));
 	}
 
 	/*
