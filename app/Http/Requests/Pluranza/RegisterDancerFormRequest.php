@@ -30,7 +30,7 @@ class RegisterDancerFormRequest extends Request
             'gender' => 'in:m,f',
             'birth_date' => 'required',
             'email' => 'required|email|max:128|unique:dancers',
-            'phone' => 'numeric',
+            'phone' => 'digits:11',
             'photo' => 'image|max:1024',
             'facebook' => 'url|max:128|unique:dancers',
             'twitter' => 'url|max:128|unique:dancers',

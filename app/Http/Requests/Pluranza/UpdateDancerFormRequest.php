@@ -30,7 +30,7 @@ class UpdateDancerFormRequest extends Request
             'gender' => 'in:m,f',
             'birth_date' => 'required',
             'email' => 'required|email|max:128|unique:dancers,email,'.$this->id,
-            'phone' => 'numeric',
+            'phone' => 'digits:11',
             'photo' => 'image|max:1024',
             'facebook' => 'url|max:128|unique:dancers,facebook,'.$this->id,
             'twitter' => 'url|max:128|unique:dancers,twitter,'.$this->id,
