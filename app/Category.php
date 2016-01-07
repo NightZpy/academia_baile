@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Pluranza\Jury;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Illuminate\Database\Eloquent\Model;
@@ -21,6 +22,14 @@ class Category extends Model implements StaplerableInterface
 		]);
 
 		parent::__construct($attributes);
+	}
+
+	/*
+	 * -------------------------------- Relations --------------------------------
+	 */
+	public function jurors()
+	{
+		return $this->belongsToMany(Jury::class);
 	}
 
 	/*
