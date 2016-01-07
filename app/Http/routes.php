@@ -149,8 +149,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
 		Route::group(['prefix' => 'jurados'], function () {
 			Route::get('/', ['as' => 'pluranza.jurors.home', 'uses' => 'JuryController@index']);
 			Route::get('nueva', ['as' => 'pluranza.jurors.new', 'uses' => 'JuryController@create']);
-			Route::post('/', ['as' => 'pluranza.jurors.store', 'uses' => 'JuryController@store']);
-			Route::get('ver/{id}', ['as' => 'pluranza.jurors.show', 'uses' => 'JuryController@show']);
+			Route::post('/', ['as' => 'pluranza.jurors.store', 'uses' => 'JuryController@store']);			
 			Route::get('editar/{id}', ['as' => 'pluranza.jurors.edit', 'uses' => 'JuryController@edit']);
 			Route::patch('actualizar/{id}', ['as' => 'pluranza.jurors.update', 'uses' => 'JuryController@update']);
 			Route::delete('{id}', ['as' => 'pluranza.jurors.delete', 'uses' => 'JuryController@destroy']);
@@ -219,7 +218,10 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		'uses' => 'PagesController@bankAccount'
 	]);
 
-	Route::get('jurados/public', ['as' => 'pluranza.jurors.public', 'uses' => 'JuryController@public']);
+	Route::group(['prefix' => 'jurados'], function () {
+		Route::get('ver/{id}', ['as' => 'pluranza.jurors.show', 'uses' => 'JuryController@show']);
+		Route::get('public', ['as' => 'pluranza.jurors.public', 'uses' => 'JuryController@publicIndex']);
+	});
 
 	/*
 	* ---------- Academies ----------

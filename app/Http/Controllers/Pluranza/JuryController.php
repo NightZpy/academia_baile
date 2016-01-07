@@ -39,7 +39,7 @@ class JuryController extends Controller
 
     public function publicIndex()
     {
-        $jurors = $this->repository->all();
+        $jurors = $this->repository->getAll();
         return view('pluranza.jurors.public')->with(compact('jurors'));
     }
 

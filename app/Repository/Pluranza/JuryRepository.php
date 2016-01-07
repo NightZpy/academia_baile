@@ -29,5 +29,14 @@ class JuryRepository extends BaseRepository {
 		$this->dataTable->setDatatableCollection($dancers);
 		return $this->dataTable->getDefaultTable($dancers);
 	}
+
+	public function create($data = array())
+	{
+		$jury = parent::create($data);
+		/*if ($jury) {
+			Role::whereName('admin')->first()
+		}*/
+		return $jury;
+	}
 }
 

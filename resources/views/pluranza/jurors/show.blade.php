@@ -5,7 +5,7 @@
         <div class="row ct-u-paddingTop10">
             <div class="col-md-12 ct-titleBox">
                 <h4 class="text-center text-uppercase ct-u-paddingTop30">
-                    Perfil de <i>{{ $dancer->fullName }}</i>
+                    Perfil de <i>{{ $jury->fullName }}</i>
                 </h4>
             </div>
         </div>
@@ -13,15 +13,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h5 class="ct-titleBox text-uppercase ct-u-paddingTop40">
-                        @if($dancer->competitors)
-                            Bailarín
-                        @endif
-                        @if($dancer->director)
-                             Director
-                        @endif
-                        @if($dancer->academy->independent)
-                             Independiente
-                        @endif
+                        Jurado
                     </h5>
                 </div>
             </div>
@@ -31,31 +23,19 @@
                 <div class="col-md-12">
                     <div class="ct-personBox ct-personBox-single ct-personBox--leftSide">
                         <div class="ct-personBox-image">
-                            <img src="{{ $dancer->photo->url('medium') }}" alt="{{ $dancer->fullName }}">
+                            <img src="{{ $jury->photo->url('medium') }}" alt="{{ $jury->fullName }}">
                         </div>
-                        <article class="ct-personBox-content">
-                            {{--<h5 class="ct-personBox-name ct-u-colorMotive ct-u-size24">
-                                {{ $dancer->fullName }}
-                            </h5>--}}
-                            {{--<div class="ct-personBox-place ct-u-colorLightGrey">
-                                <p>La Habana, Cuba</p>
-                            </div>--}}
+                        <article class="ct-personBox-content">                            
                             <div class="ct-personBox-description">
                                 <p class="ct-u-paddingTop20">
-                                    <strong>Tiene:</strong> {{ $dancer->age }} años.
+                                    <strong>Tiene:</strong> {{ $jury->age }} años.
                                 </p>
-                                {{--<p>
-                                    <strong>Géneros:</strong> Cuban National Ballet School, National School of Arts – Vincentia de la Torre
-                                </p>--}}
-                                {{--<p>
-                                    <strong>Otras academías:</strong> Ballet de Camagüey, National Ballet of Cuba
-                                </p>--}}
                                 <p>
-                                    <strong>Baila en: </strong> {{ $dancer->academy->name }}.
+                                    <strong>Evaluará en: </strong> {{ $jury->categoriesList }}.
                                 </p>
-                                @if($dancer->biography)
+                                @if($jury->biography)
                                     <p class="text-justify-xs">
-                                        <strong>Acerca:</strong> {{ $dancer->biography }}.
+                                        <strong>Acerca:</strong> {{ $jury->biography }}.
                                     </p>
                                  @endif
                             </div>
