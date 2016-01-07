@@ -27,7 +27,7 @@ class UpdateAcademyRequest extends Request
         return [
             'name' => 'required|max:64|unique:academies,name,'.$this->id,
             'email' => 'max:128|unique:academies,email,,'.$this->id,
-            'phone' => 'required|numeric|digits_between:5,24',
+            'phone' => 'required|digits:11',
             'address' => 'min:5|max:256',
             'description' => 'min:20|max:1024',
             //'foundation' => 'date_format:d/m/Y',s
