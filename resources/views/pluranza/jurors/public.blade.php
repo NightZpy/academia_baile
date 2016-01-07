@@ -19,12 +19,20 @@
             </div>            
         </div>
         <div class="container">
+            @foreach ($categories as $category)
+            <div class="row ct-u-paddingTop5">
+                <div class="col-md-12">
+                    <h4 class="text-center text-uppercase ct-u-paddingTop30">
+                        {{ $category->name }}
+                    </h4>
+                </div>
+            </div>
             <div class="row ct-u-paddingTop30">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="ct-artisticBox">
-                                <div class="ct-artisticBox-content">
+                                {{-- <div class="ct-artisticBox-content">
                                     <div class="ct-backgroundContent" data-bg-color="#f7f7f7" data-type="color">
                                         <div class="ct-artisticBox-description">
                                             <h3 class="ct-artisticBox-date">2014 - 2015</h3>
@@ -37,9 +45,9 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="ct-artisticBox-left ct-artisticBox-personImage">
-                                    @foreach ($jurors as $jury)
+                                    @foreach ($category->jurors as $jury)
                                     <a href="{{ route ('pluranza.jurors.show', $jury->id) }}" class="ct-personBox ct-personBox--primary ct-js-btnScroll">
                                         <figure class="ct-personBox-image">
                                             <img src="{{ $jury->photo->url('public') }}" alt="{{ $jury->fullName }}">
@@ -57,6 +65,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </section>
 @stop

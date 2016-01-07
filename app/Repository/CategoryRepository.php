@@ -20,5 +20,12 @@ class CategoryRepository extends BaseRepository {
 	{
 		return $this->dataTable->getDefaultTable($this->getAll());
 	}
+
+	public function getAll($by = null, $type = null)
+	{
+		if ($by)
+			return $this->model->orderBy($by, $type)->get();
+		return parent::getAll();
+	}
 }
 
