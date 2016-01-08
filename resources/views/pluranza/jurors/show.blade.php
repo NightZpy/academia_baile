@@ -7,7 +7,7 @@
     <meta property="og:title" content="PLURANZA 2016 - JURADO: {{ $jury->fullName }}" />
     <meta property="og:description" content="{{ $jury->biography }}" />
     <meta property="og:site_name" content="Evaluará en: {{ $jury->categoriesList }}." />
-    <meta property="og:image" content="{{ $jury->photo->url() }}">
+    <meta property="og:image" content="{{ asset($jury->photo->url()) }}">
 @stop
 
 @section('content')
