@@ -28,7 +28,7 @@ class RegisterJuryFormRequest extends Request
             'last_name' => 'required|max:128',
             'ci' => 'required|numeric|digits_between:4,10',
             'gender' => 'in:m,f',
-            'birth_date' => 'required',
+            //'birth_date' => 'required',
             'email' => 'required|email|max:128|unique:jurors',
             'phone' => 'required|digits:11',
             'photo' => 'image|max:1024',
