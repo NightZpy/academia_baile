@@ -92,7 +92,7 @@ class JuryController extends Controller
     {
         $jury = $this->repository->get($id);
         $categories = $this->categoryRepository->getAllForSelect();
-        $selectedCategories = $jury->categories->lists('name', 'id')->toArray();
+        $selectedCategories = $jury->categories->lists('id')->toArray();
         \Debugbar::info(['Selected categories' => $selectedCategories]);
         return view('pluranza.jurors.edit')->with(compact('jury', 'categories', 'selectedCategories'));
     }

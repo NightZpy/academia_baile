@@ -235,10 +235,21 @@
             <label class="control-label" for="song">
                 Géneros en los que participará <class class="red">(*)</class>
             </label>
+            <?php 
+                if (isset($categories)):
+                    if(!isset($selectedCategories)):
+                        if (old('category_id[]')):
+                            $selectedCategories = old('category_id[]');
+                        else:
+                            $selectedCategories = null;                    
+                        endif;                        
+                    endif;
+                endif;
+            ?>
             {!! Form::select(
                     'category_id[]', 
                     (isset($categories) ? $categories : array()), 
-                    ( isset($jury) AND $jury->categories->count() > 0 ? $selectedCategories : old('category_id[]')), 
+                    ( $selectedCategories ), 
                     [
                         'multiple' => 'multiple', 
                         'placeholder' => 'Selecciona los géneros', 
