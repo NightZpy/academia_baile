@@ -257,11 +257,11 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 	Route::group(['prefix' => 'bailarines'], function () {
 
 		Route::get('ver/{id}', ['as' => 'pluranza.dancers.show', 'uses' => 'DancerController@show']);
-		Route::get('/', ['middleware' => ['role:admin'], 'as' => 'pluranza.dancers.home', 'uses' => 'DancerController@index']);
+		Route::get('/', ['as' => 'pluranza.dancers.home', 'uses' => 'DancerController@index']);
 		Route::get('por-academia/{id}', ['as' => 'pluranza.dancers.by-academy', 'uses' => 'DancerController@byAcademy']);
 
 		// -------------- API's --------------------
-		Route::get('api/lista', ['middleware' => ['role:admin'], 'as' => 'pluranza.dancers.api.list', 'uses' => 'DancerController@apiList']);
+		Route::get('api/lista', ['as' => 'pluranza.dancers.api.list', 'uses' => 'DancerController@apiList']);
 		Route::get('api/lista/por-academia/{id}', ['as' => 'pluranza.dancers.api.by-academy', 'uses' => 'DancerController@apiByAcademyList']);
 
 		Route::group(['middleware' => ['role:admin|director']], function () {
