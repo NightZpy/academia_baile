@@ -37,9 +37,11 @@
                         </div>
                         <article class="ct-personBox-content">                            
                             <div class="ct-personBox-description">
-                                <p class="ct-u-paddingTop20">
-                                    <strong>Tiene:</strong> {{ $jury->age }} años.
-                                </p>
+                                @if ($jury->age > 0)
+                                    <p class="ct-u-paddingTop20">
+                                        <strong>Tiene:</strong> {{ $jury->age }} años.
+                                    </p>
+                                @endif
                                 <p>
                                     <strong>Evaluará en: </strong> {{ $jury->categoriesList }}.
                                 </p>

@@ -20,6 +20,7 @@
         </div>
         <div class="container">
             @foreach ($categories as $category)
+            @if ($category->jurors->count())
             <div class="row ct-u-paddingTop5">
                 <div class="col-md-12">
                     <h4 class="text-center text-uppercase ct-u-paddingTop10">
@@ -51,6 +52,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             @endforeach
         </div>
     </section>
