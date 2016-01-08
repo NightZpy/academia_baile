@@ -1,5 +1,15 @@
 @extends('pluranza.main')
 
+@section('pluranza-fb-scrapping')
+    <title>PLURANZA 2016 - JURADO: {{ $jury->fullName }}</title>
+    <meta name="description" content="{{ $jury->biography }}">
+    <!-- FACEBOOK TAGS -->
+    <meta property="og:title" content="PLURANZA 2016 - JURADO: {{ $jury->fullName }}" />
+    <meta property="og:description" content="{{ $jury->biography }}" />
+    <meta property="og:site_name" content="Evaluará en: {{ $jury->categoriesList }}." />
+    <meta property="og:image" content="{{ $jury->photo->url() }}"
+@stop
+
 @section('content')
     <section class="ct-u-paddingBottom60 ct-backgroundContent" data-type="color" data-bg-color="#ffffff">
         <div class="row ct-u-paddingTop10">

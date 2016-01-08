@@ -1,5 +1,15 @@
 @extends('pluranza.main')
 
+@section('pluranza-fb-scrapping')
+    <title>{{ $configuration->title }}</title>
+    <meta name="description" content="{{ $configuration->description }}">
+    <!-- FACEBOOK TAGS -->
+    <meta property="og:title" content="{{ $configuration->title }}" />
+    <meta property="og:description" content="{{ $configuration->description }}" />
+    <meta property="og:site_name" content="{{ $configuration->long_title }}" />
+    <meta property="og:image" content="{{ asset('/assets/images/content/slider/pluranza-facebook.jpg') }}"
+@stop
+
 @section('content')
 
     @if (!Auth::check())

@@ -11,12 +11,7 @@
     <link rel="apple-touch-icon" href="/favicon-pluranza.png">
     <meta property="fb:profile_id" content="100010636996373" />
     @if(isset($configuration))
-        <title>{{ $configuration->title }}</title>
-        <meta name="description" content="{{ $configuration->description }}">
-        <!-- FACEBOOK TAGS -->
-        <meta property="og:title" content="{{ $configuration->title }}" />
-        <meta property="og:description" content="{{ $configuration->description }}" />
-        <meta property="og:site_name" content="{{ $configuration->long_title }}" />
+        @yield('pluranza-fb-scrapping')
     @else
         <title>{{ $configuration->title }}</title>
         <meta name="description" content="Página web administrativa del Festival Pluranza 2016">
@@ -24,9 +19,9 @@
         <meta property="og:title" content="PLURANZA 2016" />
         <meta property="og:description" content=Página web administrativa del Festival Pluranza 2016 />
         <meta property="og:site_name" content="PLURANZA 2016: Festival Internacional de Ritmos Latinos" />
+        <meta property="og:image" content="{{ asset('/assets/images/content/slider/pluranza-facebook.jpg') }}" />
     @endif
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="{{ asset('/assets/images/content/slider/pluranza-facebook.jpg') }}" />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="840" />
     <meta property="og:url" content="http://alcompas.com.ve/pluranza" />
