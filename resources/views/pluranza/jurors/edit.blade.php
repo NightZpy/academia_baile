@@ -6,15 +6,15 @@
             <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 ct-titleBox">
                     <h4 class="text-center text-uppercase ct-u-paddingTop30">
-                        Actualizar a: <i>{{ $dancer->fullName }}</i>
+                        Actualizar a: <i>{{ $jury->fullName }}</i>
                     </h4>
                 </div>
             </div>
             <div class="row ct-u-paddingTop25">
                 <div class="col-md-offset-2 col-md-8">
-                    {!! Form::model($dancer,
+                    {!! Form::model($jury,
                                     array(
-                                        'url' => route('pluranza.jurors.update', $dancer->id),
+                                        'url' => route('pluranza.jurors.update', $jury->id),
                                         'method' => 'PATCH',
                                         'accept-charset' => 'UTF-8',
                                         'role' => 'form',
@@ -40,8 +40,8 @@
             $(".file-upload").fileinput({
                 'showUpload': false,
                 'showRemove': false,
-                @if ($dancer->photo->url())
-                initialPreview: "<img src='{{ $dancer->photo->url() }}' class='file-preview-image' alt='{{ $dancer->photo->originalFileName() }}' title='{{ $dancer->photo->originalFileName() }}'>",
+                @if ($jury->photo->url())
+                initialPreview: "<img src='{{ $jury->photo->url() }}' class='file-preview-image' alt='{{ $jury->photo->originalFileName() }}' title='{{ $jury->photo->originalFileName() }}'>",
                 @endif
                 previewFileType: "image",
                 removeClass: "btn btn-xs btn-danger text-uppercase ct-u-size14",

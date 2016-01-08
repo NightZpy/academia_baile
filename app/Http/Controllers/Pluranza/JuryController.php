@@ -91,7 +91,10 @@ class JuryController extends Controller
     public function edit($id)
     {
         $jury = $this->repository->get($id);
-        return view('pluranza.jurors.edit')->with(compact('jury'));
+        $categories = $this->categoryRepository->getAllForSelect();
+        $selectedCategories = $jury->categories->lists('name', 'id')->toArray();
+        \Debugbar::info(['Selected categories' => $selectedCategories]);
+        return view('pluranza.jurors.edit')->with(compact('jury', 'categories', 'selectedCategories'));
     }
 
     /**
@@ -103,9 +106,11 @@ class JuryController extends Controller
      */
     public function update(UpdateJuryFormRequest $request, $id)
     {
-        $dancer = $this->repository->get($id);
-        $dancer->update($request->all());
-        flash()->success('Datos actualizados exitosamente!');
+        $jury = $this->repository->get($id);
+        $jury->update($request->all());
+        $categories = $request->get('category_id');
+        $jury->categories()->sync($categories);
+        flash()->success('¡Datos actualizados exitosamente!');
         return redirect()->route('pluranza.jurors.home');
     }
 

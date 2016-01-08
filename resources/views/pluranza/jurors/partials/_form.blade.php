@@ -2,7 +2,6 @@
     <h5 class="text-center ct-titleBox">Obligatorio <b class="red">(*)</b></h5>
 </div>
 @include('partials._errors-min')
-{!! Form::hidden('academy_id', $academy->id) !!}
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
         <div class="form-group {{ ($errors->has('name') ? 'has-error background-error-color' : '') }}">
@@ -236,7 +235,18 @@
             <label class="control-label" for="song">
                 Géneros en los que participará <class class="red">(*)</class>
             </label>
-            {!! Form::select('category_id[]', (isset($categories) ? $categories : array()), ( isset($jury) AND $jury->categories->count() ? $jury->categories : old('category_id[]')), ['multiple' => 'multiple', 'placeholder' => 'Selecciona los géneros', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+            {!! Form::select(
+                    'category_id[]', 
+                    (isset($categories) ? $categories : array()), 
+                    ( isset($jury) AND $jury->categories->count() > 0 ? $selectedCategories : old('category_id[]')), 
+                    [
+                        'multiple' => 'multiple', 
+                        'placeholder' => 'Selecciona los géneros', 
+                        'class' => 'form-control input-sm', 
+                        /*'required' => 'required'*/
+                    ]
+                ) 
+            !!}
         </div>
     </div>
 </div>

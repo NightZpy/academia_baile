@@ -29,7 +29,7 @@ class UpdateJuryFormRequest extends Request
             'ci' => 'required|numeric|digits_between:4,10',
             'gender' => 'in:m,f',
             //'birth_date' => 'required',
-            'email' => 'required|email|max:128|unique:jurors,email'.$this->id,
+            'email' => 'required|email|max:128|unique:jurors,email,'.$this->id,
             'phone' => 'required|digits:11',
             'photo' => 'image|max:1024',
             'facebook' => 'url|max:128|unique:jurors,facebook,'.$this->id,
