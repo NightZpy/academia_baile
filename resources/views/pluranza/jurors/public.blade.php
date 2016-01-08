@@ -35,7 +35,7 @@
                             <div class="owl-item personBox-a-margin-side">
                             <div class="item"><!-- Item 1A, Item 1B -->
                             <div class="ct-owlCarousel-twoLinesWrapper">
-                                <a href="{{ route ('pluranza.jurors.show', $jury->id) }}" class="ct-personBox ct-personBox--primary ct-js-btnScroll">
+                                <a href="{{ route ('pluranza.jurors.show', $jury->id) }}" class="ct-personBox ct-personBox--primary personBox-a-margin-side ct-js-btnScroll">
                                     <figure class="ct-personBox-image">
                                         <img src="{{ $jury->photo->url('public') }}" alt="{{ $jury->fullName }}">
                                         <figcaption>
