@@ -13,7 +13,7 @@
     @if(isset($configuration))
         @yield('pluranza-fb-scrapping')
     @else
-        <title>{{ $configuration->title }}</title>
+        <title>PLURANZA 2016</title>
         <meta name="description" content="Página web administrativa del Festival Pluranza 2016">
         <!-- FACEBOOK TAGS -->
         <meta property="og:title" content="PLURANZA 2016" />

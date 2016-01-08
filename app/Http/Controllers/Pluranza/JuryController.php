@@ -109,7 +109,8 @@ class JuryController extends Controller
         $jury = $this->repository->get($id);
         $jury->update($request->all());
         $categories = $request->get('category_id');
-        $jury->categories()->sync($categories);
+        if (count($categories))
+            $jury->categories()->sync($categories);
         flash()->success('¡Datos actualizados exitosamente!');
         return redirect()->route('pluranza.jurors.home');
     }
