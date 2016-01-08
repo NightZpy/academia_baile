@@ -25,7 +25,7 @@
         <meta property="og:url" content="http://alcompas.com.ve/pluranza" />
     @endif
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ request()->path() }}" />
+    <meta property="og:url" content="{{ request()->url() }}" />
 
     @include('pluranza.admin.partials._css')
     <style>
