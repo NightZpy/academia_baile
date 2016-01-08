@@ -20,11 +20,12 @@
         <meta property="og:description" content=Página web administrativa del Festival Pluranza 2016 />
         <meta property="og:site_name" content="PLURANZA 2016: Festival Internacional de Ritmos Latinos" />
         <meta property="og:image" content="{{ asset('/assets/images/content/slider/pluranza-facebook.jpg') }}" />
+        <meta property="og:image:width" content="1920" />
+        <meta property="og:image:height" content="840" />
+        <meta property="og:url" content="http://alcompas.com.ve/pluranza" />
     @endif
     <meta property="og:type" content="website" />
-    <meta property="og:image:width" content="1920" />
-    <meta property="og:image:height" content="840" />
-    <meta property="og:url" content="http://alcompas.com.ve/pluranza" />
+    <meta property="og:url" content="{{ request()->path() }}" />
 
     @include('pluranza.admin.partials._css')
     <style>
