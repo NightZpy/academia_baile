@@ -136,7 +136,7 @@
                 </label>
             @endif
             <label class="control-label" for="song">
-                Fecha de nacimiento <b class="red">(*)</b>
+                Fecha de nacimiento {{-- <b class="red">(*)</b> --}}
             </label>
             {!! Form::date('birth_date', old('birth_date'), array('placeholder' => 'Fecha de fundaci&#243;n', 'class' => 'form-control input-sm')) !!}
         </div>
