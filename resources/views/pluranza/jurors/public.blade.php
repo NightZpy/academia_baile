@@ -32,10 +32,10 @@
                     <div class="row ct-u-paddingTop10 ct-u-paddingBottom15">
                         <div class="ct-js-owl ct-u-owl ct-twoLinesCarousel ct-carouselNavigation--arrowsTopRight owl-carousel owl-theme" data-single="false" data-navigation="true" data-pagination="false" data-items="3" data-autoplay="false" data-snap-ignore="true">
                             @foreach ($category->jurors as $jury)
-                            <div class="owl-item">
+                            <div class="owl-item personBox-a-margin-side">
                             <div class="item"><!-- Item 1A, Item 1B -->
                             <div class="ct-owlCarousel-twoLinesWrapper">
-                                <a href="{{ route ('pluranza.jurors.show', $jury->id) }}" class="ct-personBox ct-personBox--primary ct-js-btnScroll personBox-a-margin-side">
+                                <a href="{{ route ('pluranza.jurors.show', $jury->id) }}" class="ct-personBox ct-personBox--primary ct-js-btnScroll">
                                     <figure class="ct-personBox-image">
                                         <img src="{{ $jury->photo->url('public') }}" alt="{{ $jury->fullName }}">
                                         <figcaption>
