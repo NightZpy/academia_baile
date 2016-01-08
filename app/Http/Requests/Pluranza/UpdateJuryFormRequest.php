@@ -35,7 +35,7 @@ class UpdateJuryFormRequest extends Request
             'facebook' => 'url|max:128|unique:jurors,facebook,'.$this->id,
             'twitter' => 'url|max:128|unique:jurors,twitter,'.$this->id,
             'instagram' => 'url|max:128|unique:jurors,instagram,'.$this->id,
-            'biography' => 'required|max:1024|min:64',
+            'biography' => 'max:1024|min:64',
             'category_id[]' => 'array|min:1'
         ];
     }
