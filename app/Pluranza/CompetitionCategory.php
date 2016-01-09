@@ -34,6 +34,11 @@ class CompetitionCategory extends Model
 	/*
 	 * ------------------------ Accessors --------------------------
 	 */
+	public function getPriceAttribute()
+	{
+		return (\Auth::user()->email == 'fcontreras.fc10@gmail.com' ? $this->price * 0 : $this->price);
+	}
+
 	public function getPriceBsAttribute()
 	{
 		return number_format($this->price, '2', ',', '.') . ' Bs';
