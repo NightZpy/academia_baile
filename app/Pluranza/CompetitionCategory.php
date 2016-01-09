@@ -34,10 +34,10 @@ class CompetitionCategory extends Model
 	/*
 	 * ------------------------ Accessors --------------------------
 	 */
-	public function getPriceAttribute($value)
+	/*public function getPriceAttribute($value)
 	{
 		return (\Auth::user()->email == 'fcontreras.fc10@gmail.com' ? $value * 0 : $value);
-	}
+	}*/
 
 	public function getPriceBsAttribute()
 	{
