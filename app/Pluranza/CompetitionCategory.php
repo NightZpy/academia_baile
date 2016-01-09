@@ -36,7 +36,7 @@ class CompetitionCategory extends Model
 	 */
 	public function getPriceAttribute($value)
 	{
-		return (\Auth::user()->email == 'fcontreras.fc10@gmail.com' ? $value * 0 : $value);
+		return (\Auth::user()->email == 'alcompas14@gmail.com' ? $value * 0 : $value);
 	}
 
 	public function getPriceBsAttribute()
