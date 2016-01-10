@@ -121,7 +121,7 @@ class AcademyDataTable extends BaseDataTable
 				if (in_array('confirm', $actions) && !$model->user->isConfirm ) 
 					$this->addActionColumn("<a  class='confirm btn btn-xs btn-darkGray btn-circle' href='" . route($routes['confirm'], $model->id) . "' id='confirm_".$model->id."'><i class='fa fa-pencil'></i> Confirmar</a>");
 
-				if (in_array('confirm', $actions) && !$model->user->isConfirm ) 
+				if (in_array('send-confirm', $actions) && !$model->user->isConfirm ) 
 					$this->addActionColumn("<a  class='send-confirm btn btn-xs btn-darkGray btn-circle' href='" . route($routes['send-confirm'], $model->id) . "' id='send-confirm_" . $model->id . "'><i class='fa fa-pencil'></i> Enviar confirmación</a>");
 			}
 			$this->addActionColumn('</div>');
