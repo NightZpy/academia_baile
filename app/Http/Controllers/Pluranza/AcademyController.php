@@ -80,9 +80,9 @@ class AcademyController extends Controller
     }
 
     public function resendToNoVerifiedAccount(AppMailer $mailer, $id) {
-        $user = User::findOrFail($id);
-        $mailer->sendEmailConfirmationTo($user, 'pluranza.emails.confirm');
-        flash()->success('Se ha enviado el correo de verificación a la academia: ' . $user->academy->name);
+    	$academy = $this->repository->get($id);
+        $mailer->sendEmailConfirmationTo($academy->user, 'pluranza.emails.confirm');
+        flash()->success('Se ha enviado el correo de verificación a la academia: ' . $academy->name);
         return redirect()->back();
     }
 
