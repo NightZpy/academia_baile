@@ -68,6 +68,7 @@
                                         </li>
                                     @endif
                                     <li class="onepage"><a href="{{ route('pluranza.academies.resend-confirm') }}" class="ct-js-btnScroll">Enviar confirmación a todas las academias</a></li>
+                                    <li class="onepage"><a href="{{ route('pluranza.academies.sms') }}" class="ct-js-btnScroll">Enviar SMS</a></li>
                                 </ul>                                
                             </li>
                         @endrole

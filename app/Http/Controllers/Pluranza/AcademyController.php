@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Http\Requests\Pluranza\UpdateAcademyRequest;
 use App\Http\Requests\Pluranza\RegisterAcademyRequest;
+use App\Http\Requests\Pluranza\SendSMSFormRequest;
 use App\Pluranza\Academy;
 use App\Mailers\AppMailer;
 
@@ -180,6 +181,22 @@ class AcademyController extends Controller
         $this->repository->confirm($id);
         flash('Cuenta de ' . $this->repository->get($id)->name . ', ha sido verificada.');
         return redirect()->back();
+    }
+
+    public function sms()
+    {
+    	$academies = $this->repository->getAllForSelect();
+    	return view('pluranza.sms.index')->with(compact('academies'));
+    }
+
+    public function smsProccess(SendSMSFormRequest $request)
+    {
+    	if ($request->has('categories'))
+    		$this->repository->sendSMS($request->get('message'), $request->get('type'), $categories);
+    	else
+			$this->repository->sendSMS($request->get('message'), $request->get('type'));
+    	flash()->success('¡Mensajes enviados exitosamente!');
+    	return redirect()->back();
     }
 
     /*

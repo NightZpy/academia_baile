@@ -157,6 +157,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Ixudra\Curl\CurlServiceProvider::class,
     ],
 
     /*
@@ -210,7 +211,8 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Datatable' => 'Chumper\Datatable\Facades\DatatableFacade',
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
-        'Debugbar'  => Barryvdh\Debugbar\Facade::class
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
+        'Curl'          => Ixudra\Curl\Facades\Curl::class,
     ],
 
 ];

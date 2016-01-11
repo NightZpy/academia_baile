@@ -166,6 +166,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
 			Route::get('/resent-confirm', ['as' => 'pluranza.academies.resend-confirm', 'uses' => 'AcademyController@resendToNoVerifiedAccounts']);
 			Route::get('/resent-confirm-academy/{id}', ['as' => 'pluranza.academies.resend-confirm-academy', 'uses' => 'AcademyController@resendToNoVerifiedAccount']);
 			Route::get('/verificar/{id}', ['as' => 'pluranza.academies.confirm', 'uses' => 'AcademyController@confirm']);
+			Route::get('/sms', ['as' => 'pluranza.academies.sms', 'uses' => 'AcademyController@sms']);
+			Route::post('/sms', ['as' => 'pluranza.academies.smsProccess', 'uses' => 'AcademyController@smsProccess']);
+
 		});
 		/*
 		* ---------- Comptition Types ----------
