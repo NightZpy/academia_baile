@@ -44,11 +44,13 @@ class AcademyRepository extends BaseRepository {
 
 	public function sendSMS($message, $type = 'all', $academies = null)
 	{
+		\Debugbar::info(['type' => $type, 'message' => $message, 'academies' => $academies]);
 		if ($type == 'custom' && count($academies) > 0) {
 			\Debugbar::info(['Enviando custom a: ' => $academies]);
 			foreach ($academies as $id) {
 				$academy = $this->get($id);
-				if (count($academy->phone) == 11) {
+				if (strlen($academy->phone) == 11) {
+					\Debugbar::info(['Phone: ' => $academy->phone]);
 					$this->sms($message, $academy->phone);
 				}				
 			}
@@ -58,7 +60,7 @@ class AcademyRepository extends BaseRepository {
 			\Debugbar::info(['Enviando a: ' => 'todos']);
 			$academies = $this->getAll();
 			foreach ($academies as $academy) {
-				if (count($academy->phone) == 11) {
+				if (strlen($academy->phone) == 11) {
 					$this->sms($message, $academy->phone);
 				}				
 			}
@@ -69,7 +71,8 @@ class AcademyRepository extends BaseRepository {
 			\Debugbar::info(['Enviando sin verificar a: ' => $users->lists('name')]);
         	if ($users->count()) {
         		foreach ($users as $user) {
-					$this->sms($message, $user->academy->phone);
+        			if (strlen($user->academy->phone) == 11) 
+						$this->sms($message, $user->academy->phone);
         		}
         	}
 		}
@@ -77,16 +80,26 @@ class AcademyRepository extends BaseRepository {
 
 	public function sms($message, $number)
 	{
-		$data = array(
-		 	'cuenta_token' => '1324b879d43aff522b0aeddf803bbcba',
-			'subcuenta_token' => 'cb275c7f96beb572e4787a7424405b60',
-			'telefono' => $number,
-			'mensaje' => $message
-		);
-		$result = \Curl::to('http://www.foo.com/bar')
-        ->withData($data)
-        ->post();
-		\Debugbar::info(['Result SMS: ' => $result]);
+		$step = 145;
+		if(strlen($message) > 145)
+			$step = 139;
+
+		$messages = str_split($message, $step);
+		$smsNum = 1;
+		foreach ($messages as $sms) {			
+			$sms = '(' . $smsNum . '/' . count($messages) . ')' . $sms;
+			$data = array(
+			 	'cuenta_token' => '1324b879d43aff522b0aeddf803bbcba',
+				'subcuenta_token' => 'cb275c7f96beb572e4787a7424405b60',
+				'telefono' => $number,
+				'mensaje' => $sms
+			);
+			$result = \Curl::to('http://api.textveloper.com/enviar/')
+	        ->withData($data)
+	        ->post();
+			\Debugbar::info(['Result SMS: ' . '(' . $smsNum . '/' . count($messages) . ')' => $result]);			
+			$smsNum ++;
+		}		
 
         /*if(data.transaccion == 'exitosa'){
 

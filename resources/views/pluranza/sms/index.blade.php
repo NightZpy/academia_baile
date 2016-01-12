@@ -20,7 +20,18 @@
                     )) !!}
                         <div class="row">
                             <div class="col-sm-offset-3 col-sm-6">
-                                <div class="btn-group" data-toggle="buttons" role="group">
+                                <div class="btn-group {{ ($errors->has('type') ? 'has-error background-error-color' : '') }}" data-toggle="buttons" role="group">
+                                    @if ($errors->has('type'))
+                                        <div class="row">
+                                            <label class="control-label" for="type">
+                                                <ul>
+                                                    @foreach($errors->get('type') as $error)
+                                                        <li>{!! $error !!}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </label>
+                                        </div>                                        
+                                    @endif
                                     <label class="btn btn-sm btn-default btn-circle text-uppercase ct-u-size14">
                                         {!! Form::radio('type', 'all', null, ['id' => 'all']) !!}
                                         A todos

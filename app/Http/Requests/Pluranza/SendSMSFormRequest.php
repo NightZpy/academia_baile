@@ -24,7 +24,7 @@ class SendSMSFormRequest extends Request
     public function rules()
     {
         return [
-            'custom' => 'require|in:all,custom,unverified',
+            'type' => 'required|in:all,custom,unverified',
             'academies' => 'required_if:type,custom',
             'message' => 'required|min:5|max:417'
         ];

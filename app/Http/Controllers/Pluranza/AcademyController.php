@@ -191,8 +191,8 @@ class AcademyController extends Controller
 
     public function smsProccess(SendSMSFormRequest $request)
     {
-    	if ($request->has('categories'))
-    		$this->repository->sendSMS($request->get('message'), $request->get('type'), $categories);
+    	if ($request->has('academies'))
+    		$this->repository->sendSMS($request->get('message'), $request->get('type'), $request->get('academies'));
     	else
 			$this->repository->sendSMS($request->get('message'), $request->get('type'));
     	flash()->success('¡Mensajes enviados exitosamente!');
