@@ -81,24 +81,37 @@ class AcademyRepository extends BaseRepository {
 	public function sms($message, $number)
 	{
 		$step = 145;
-		if(strlen($message) > 145)
-			$step = 139;
+		if(strlen($message) > 145) {
+			$step = 139;		
 
-		$messages = str_split($message, $step);
-		$smsNum = 1;
-		foreach ($messages as $sms) {			
-			$sms = '(' . $smsNum . '/' . count($messages) . ')' . $sms;
+			$messages = str_split($message, $step);
+			$smsNum = 1;
+
+			foreach ($messages as $sms) {			
+				$sms = '(' . $smsNum . '/' . count($messages) . ')' . $sms;
+				$data = array(
+				 	'cuenta_token' => '1324b879d43aff522b0aeddf803bbcba',
+					'subcuenta_token' => 'cb275c7f96beb572e4787a7424405b60',
+					'telefono' => $number,
+					'mensaje' => $sms
+				);
+				$result = \Curl::to('http://api.textveloper.com/enviar/')
+		        ->withData($data)
+		        ->post();
+				\Debugbar::info(['Result SMS: ' . '(' . $smsNum . '/' . count($messages) . ')' => $result]);			
+				$smsNum ++;
+			}
+		} else {
 			$data = array(
-			 	'cuenta_token' => '1324b879d43aff522b0aeddf803bbcba',
-				'subcuenta_token' => 'cb275c7f96beb572e4787a7424405b60',
-				'telefono' => $number,
-				'mensaje' => $sms
-			);
-			$result = \Curl::to('http://api.textveloper.com/enviar/')
-	        ->withData($data)
-	        ->post();
-			\Debugbar::info(['Result SMS: ' . '(' . $smsNum . '/' . count($messages) . ')' => $result]);			
-			$smsNum ++;
+				 	'cuenta_token' => '1324b879d43aff522b0aeddf803bbcba',
+					'subcuenta_token' => 'cb275c7f96beb572e4787a7424405b60',
+					'telefono' => $number,
+					'mensaje' => $message
+				);
+				$result = \Curl::to('http://api.textveloper.com/enviar/')
+		        ->withData($data)
+		        ->post();
+				\Debugbar::info(['Result SMS: ' => $result]);			
 		}		
 
         /*if(data.transaccion == 'exitosa'){
