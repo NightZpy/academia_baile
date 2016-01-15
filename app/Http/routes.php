@@ -304,6 +304,30 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 	});
 
 	/*
+	* ---------- Exhibitions ----------
+	*/
+	Route::group(['prefix' => 'exhibiciones'], function () {
+		Route::get('ver/{id}', ['as' => 'pluranza.exhibitions.show', 'uses' => 'ExhibitionController@show']);
+		Route::get('/', ['as' => 'pluranza.exhibitions.home', 'uses' => 'ExhibitionController@index']);
+		Route::get('por-academia/{id}', ['as' => 'pluranza.exhibitions.by-academy', 'uses' => 'ExhibitionController@byAcademy']);
+
+		// -------------- API's --------------------
+		Route::get('api/lista', ['as' => 'pluranza.exhibitions.api.list', 'uses' => 'ExhibitionController@apiList']);
+		Route::get('api/lista/por-academia/{id}', ['as' => 'pluranza.exhibitions.api.by-academy', 'uses' => 'ExhibitionController@apiByAcademyList']);
+
+		Route::group(['middleware' => ['role:admin|director']], function () {
+			Route::get('nueva/', ['middleware' => ['role:admin'], 'as' => 'pluranza.exhibitions.new', 'uses' => 'ExhibitionController@create']);
+			Route::get('por-academia/nueva/{id}', ['as' => 'pluranza.exhibitions.new.by-academy', 'uses' => 'ExhibitionController@createByAcademy']);
+			Route::post('/', ['as' => 'pluranza.exhibitions.store', 'uses' => 'ExhibitionController@store']);
+			Route::group(['middleware' => ['ownExhibition']], function () {
+				Route::get('editar/{id}', ['as' => 'pluranza.exhibitions.edit', 'uses' => 'ExhibitionController@edit']);
+				Route::patch('actualizar/{id}', ['as' => 'pluranza.exhibitions.update', 'uses' => 'ExhibitionController@update']);
+				Route::delete('{id}', ['as' => 'pluranza.exhibitions.delete', 'uses' => 'ExhibitionController@destroy']);
+			});
+		});
+	});
+
+	/*
 	* ---------- Pagos ----------
     */
 	Route::group(['prefix' => 'pagos'], function () {

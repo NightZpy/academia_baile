@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExhibitionGenrePivotTable extends Migration
+class CreateExhibitionGenderPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateExhibitionGenrePivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('exhibition_genre', function (Blueprint $table) {
+        Schema::create('exhibition_gender', function (Blueprint $table) {
             $table->integer('exhibition_id')->unsigned()->index();
             $table->foreign('exhibition_id')->references('id')->on('exhibitions')->onDelete('cascade');
-            $table->integer('genre_id')->unsigned()->index();
-            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
-            $table->primary(['exhibition_id', 'genre_id']);
+            $table->integer('gender_id')->unsigned()->index();
+            $table->foreign('gender_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->primary(['exhibition_id', 'gender_id']);
         });
     }
 
@@ -28,6 +28,6 @@ class CreateExhibitionGenrePivotTable extends Migration
      */
     public function down()
     {
-        Schema::drop('exhibition_genre');
+        Schema::drop('exhibition_gender');
     }
 }
