@@ -43,7 +43,7 @@ class ExhibitionController extends Controller
     public function index()
     {
         $table = $this->repository->dataTable->getAllTable();
-        return  view('pluranza.competitors.index')->with(compact('table'));
+        return  view('pluranza.exhibitions.index')->with(compact('table'));
     }
 
     public function byAcademy($id)

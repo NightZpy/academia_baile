@@ -10,8 +10,7 @@ class ExhibitionDataTable extends BaseDataTable
 		$columns = [
 			'Nombre',
 			'Generos',
-			'Canción',
-			'Acciones'
+			'Canción'
 		];
 
 		if (!Entrust::hasRole('director'))
@@ -21,17 +20,6 @@ class ExhibitionDataTable extends BaseDataTable
 			$this->columns = array_merge(['Academia'], $columns);
 		else
 			$this->columns = $columns;
-
-		if ((Entrust::hasRole('director') || Entrust::hasRole('admin')) &&
-			(
-				request()->route()->getName() == 'pluranza.exhibitions.by-academy' ||
-				request()->route()->getName() == 'pluranza.exhibitions.api.by-academy')
-			) {
-			$array = array_slice($this->columns, 0, count($this->columns) - 1, true);
-			array_push($array, 'Costo');
-			array_push($array, 'Acciones');
-			$this->columns = $array;
-		}
 
 		$this->defaultConfig();
 		$this->setRoute('pluranza.exhibitions.api.list');
@@ -46,6 +34,12 @@ class ExhibitionDataTable extends BaseDataTable
 				$actionRoutes['edit'] = 'pluranza.exhibitions.edit';
 				$actionRoutes['delete'] = 'pluranza.exhibitions.delete';
 			}
+		}
+
+		if (count($actions) > 0)
+		{
+			array_push($columns, 'Acciones');
+			$this->columns = $columns;
 		}
 		$this->setDefaultActions($actions);
 		$this->setDefaultActionRoutes($actionRoutes);
