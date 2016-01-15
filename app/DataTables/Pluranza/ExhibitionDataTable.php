@@ -8,7 +8,6 @@ class ExhibitionDataTable extends BaseDataTable
 {
 	function __construct() {
 		$columns = [
-			'Academia',
 			'Nombre',
 			'Generos',
 			'Canción',
