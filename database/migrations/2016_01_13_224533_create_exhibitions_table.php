@@ -21,6 +21,7 @@ class CreateExhibitionsTable extends Migration
             $table->foreign('evend_edition_id')->references('id')->on('evend_editions');
             $table->integer('academy_id');
             $table->foreign('academy_id')->references('id')->on('academies');
+            $table->unique(['academy_id', 'event_edition_id', 'name'], 'exhibitions_unique_key');
             $table->timestamps();
         });
     }

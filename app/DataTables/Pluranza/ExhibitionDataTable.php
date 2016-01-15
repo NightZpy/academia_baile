@@ -8,10 +8,9 @@ class ExhibitionDataTable extends BaseDataTable
 {
 	function __construct() {
 		$columns = [
+			'Academia',
 			'Nombre',
-			'Género',
-			'Nivel',
-			'Categoría',
+			'Generos',
 			'Canción',
 			'Acciones'
 		];
@@ -75,31 +74,15 @@ class ExhibitionDataTable extends BaseDataTable
 			return $model->name;
 		});
 
-		$this->collection->addColumn('Género', function($model)
+		$this->collection->addColumn('Generos', function($model)
 		{
-			return $model->category->name;
-		});
-
-		$this->collection->addColumn('Nivel', function($model)
-		{
-			return ucfirst($model->level->name);
-		});
-
-		$this->collection->addColumn('Categoría', function($model)
-		{
-			return $model->competitionType->name;
+			return join(', ', $model->genres->lists('name')->toArray());
 		});
 
 		$this->collection->addColumn('Canción', function($model)
 		{
 			return '<a target="_blank" href="' . $model->song->url() . '">' . $model->song_name . '</a>';
 		});
-
-		if ((Entrust::hasRole('director') || Entrust::hasRole('admin')) && request()->route()->getName() == 'pluranza.exhibitions.api.by-academy') {
-			$this->collection->addColumn('Costo', function ($model) {
-				return $model->competitionCategory->priceBs;
-			});
-		}
 	}
 
 	public function getByAcademyTable($params = [])
