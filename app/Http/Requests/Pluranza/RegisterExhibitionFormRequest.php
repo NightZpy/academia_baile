@@ -25,7 +25,7 @@ class RegisterExhibitionFormRequest extends Request
     {
         $rules = [
             'academy_id' => 'required|integer|exists:academies,id|unique_with:exhibitions,name',
-            'name' => 'required|max:128|unique:exhitions,name',
+            'name' => 'required|max:128|unique:exhibitions,name',
             'song' => 'max:22528|mimes:mpga,mp2,mp2a,mp3,m2a,m3a',
             'song_name' => 'max:128|min:5',
             'dancer_id' => 'required|array|min:1',
