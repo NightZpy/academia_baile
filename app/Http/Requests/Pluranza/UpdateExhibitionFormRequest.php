@@ -4,7 +4,7 @@ namespace App\Http\Requests\Pluranza;
 
 use App\Http\Requests\Request;
 
-class RegisterExhibitionFormRequest extends Request
+class UpdateExhibitionFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class RegisterExhibitionFormRequest extends Request
     public function rules()
     {
         $rules = [
-            'academy_id' => 'required|integer|exists:academies,id|unique_with:exhibitions,name',
-            'name' => 'required|max:128|unique:exhitions,name',
+            'academy_id' => 'required|integer|exists:academies,id|unique_with:exhibitions,name,' . $this->id,
+            'name' => 'required|max:128|unique:exhibitions,name,' . $this->id,
             'song' => 'max:22528|mimes:mpga,mp2,mp2a,mp3,m2a,m3a',
             'song_name' => 'max:128|min:5',
             'dancer_id' => 'required|array|min:1',

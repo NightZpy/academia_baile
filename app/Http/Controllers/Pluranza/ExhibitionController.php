@@ -167,13 +167,22 @@ class ExhibitionController extends Controller
      */
 	public function update($id, UpdateExhibitionFormRequest $request)
 	{
-        $input = $request->all();;
+        $input = $request->all();
+        if (empty($input['dancer_id'][0])) {
+            flash()->error('Debe seleccionar al menos un bailarín.');
+            return redirect()->back()->withInput($input);
+        }
+        if (empty($input['gender_id'][0])) {
+            flash()->error('Debe seleccionar al menos un género.');
+            return redirect()->back()->withInput($input);
+        }
+
         $academy = $this->academyRepository->get($request->get('academy_id'));
         if ($request->has('song'))
             $this->repository->get($id)->song->destroy();
-        $competitor = $this->repository->updateCustom($input, $id);
+        $exhibition = $this->repository->updateCustom($input, $id);
         flash()->success('Datos actualizados exitosamente!');
-        return redirect()->route('pluranza.competitors.by-academy', $academy->id);
+        return redirect()->route('pluranza.exhibitions.by-academy', $academy->id);
 	}
 
     /**
@@ -184,10 +193,10 @@ class ExhibitionController extends Controller
      */
     public function destroy($id)
     {
-        $competitor = $this->repository->get($id);
-        $competitorName = $competitor->name;
-	    flash()->success($competitorName . ', ha sido eliminado correctamente!');
-	    $competitor->delete();
+        $exhibition = $this->repository->get($id);
+        $exhibitionName = $exhibition->name;
+	    flash()->success($exhibitionName . ', ha sido eliminado correctamente!');
+	    $exhibition->delete();
 	    return redirect()->back();
     }
     

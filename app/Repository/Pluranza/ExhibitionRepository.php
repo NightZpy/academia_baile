@@ -33,13 +33,11 @@ class ExhibitionRepository extends BaseRepository {
 
 	public function updateCustom($data = array(), $id)
 	{
-		$competitionCategory = $this->competitionCategoryRepository->getByAll($data['category_id'], $data['level_id'], $data['competition_type_id']);
-		$competitor = $this->get($id);
-		$competitor->update($data);
-		$competitor->competition_category_id = $competitionCategory->id;
-		$competitor->save();
-		$competitor->dancers()->sync($data['dancer_id']);
-		return $competitor;
+		$exhibition = $this->get($id);
+		$exhibition->update($data);
+		$exhibition->dancers()->sync($data['dancer_id']);
+		$exhibition->genres()->sync($data['gender_id']);
+		return $exhibition;
 	}
 
 	public function getByAcademy($id)
