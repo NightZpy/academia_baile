@@ -6,7 +6,7 @@
             <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 ct-titleBox">
                     <h5 class="text-center ct-u-paddingTop30">
-                        Actualizar: <strong>({{ $competitor->name }})</strong>, de <i>{{ $academy->name }}</i>
+                        Editar @if(isset($exhibition)) <i> {{ $exhibition->name }}</i> @endif
                     </h5>
                 </div>
             </div>
@@ -16,18 +16,18 @@
                 </div>
             </div>
             <div class="row ct-u-paddingTop25">
-                <div class="col-md-offset-2 col-md-8 competitor-select">
-                    {!! Form::model($competitor, array(
-                                        'url' => route('pluranza.competitors.update', $competitor->id),
+                <div class="col-md-offset-2 col-md-8 exhibition-select">
+                    {!! Form::model($exhibition, array(
+                                        'url' => route('pluranza.exhibitions.update', $exhibition->id),
                                         'method' => 'PATCH',
                                         'accept-charset' => 'UTF-8',
                                         'role' => 'form',
                                         'files' => true
                                     )) !!}
-                        @include('pluranza.competitors.partials._form')
+                        @include('pluranza.exhibitions.partials._form')
                     <div class="row">
                         <div class="col-sm-offset-9 col-sm-3">
-                            {!! Form::submit('Guardar', [ 'class' => 'btn btn-xs btn-primary btn-block text-uppercase ct-u-size14']) !!}
+                            {!! Form::submit('Actualizar', [ 'class' => 'btn btn-xs btn-primary btn-block text-uppercase ct-u-size14']) !!}
                         </div>
                     </div>
                     {!! Form::close() !!}
@@ -37,7 +37,7 @@
     </section>
 @stop
 
-@include('pluranza.competitors.partials._select-competition-category-script-new')
+@include('pluranza.exhibitions.partials._select-competition-category-script-new')
 
 @push('scripts')
 <script>
@@ -46,8 +46,8 @@
             $(".file-upload").fileinput({
                 'showUpload': false,
                 'showRemove': false,
-                @if ($competitor->song->url())
-                initialPreview: "<audio controls><source src='{{ $competitor->song->url() }}' type='audio/mp3' class='file-preview-other' title='{{ $competitor->song_name }}'></audio>",
+                @if ($exhibition->song->url())
+                initialPreview: "<audio controls><source src='{{ $exhibition->song->url() }}' type='audio/mp3' class='file-preview-other' title='{{ $exhibition->song_name }}'></audio>",
                 @endif
                 previewFileType: "image",
                 removeClass: "btn btn-xs btn-danger text-uppercase ct-u-size14",

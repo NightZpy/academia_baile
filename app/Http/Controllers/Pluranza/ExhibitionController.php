@@ -131,23 +131,31 @@ class ExhibitionController extends Controller
      */
     public function edit($id)
     {
-        $competitor = $this->repository->get($id);
-        $academy = $competitor->academy;
-        $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitor->competitionType->id);
-        $levels = $this->competitionCategoryRepository->getLevelByCategoryAndCompetitionTypeForSelect($competitor->category->id, $competitor->competitionType->id);
-        $competitionType = $competitor->competitionType;
-        if (strtolower($competitor->competitionType->name) == 'pareja') {
-            $masculineDancers = $academy->dancers()->masculine()->lists('name', 'id');
-            $femaleDancers = $academy->dancers()
-                ->female()
-                //->select('dancers.id AS id', DB::raw('CONCAT(dancers.name, " ", dancers.last_name) AS full_name'))
-                ->lists('name', 'id');
-            $dancers = ['masculine' => $masculineDancers, 'female' => $femaleDancers];
-        } else {
-            $dancers = $academy->dancers->lists('fullName', 'id');
-        }
+        $exhibition = $this->repository->get($id);
+        $academY = $exhibition->academy;
+        
+        $genres = array();
+        if ($this->categoryRepository->count())
+            $genres = $this->categoryRepository->getAllForSelect();
 
-        return view('pluranza.competitors.edit')->with(compact('competitor', 'academy', 'levels', 'categories', 'dancers', 'competitionType'));
+        if ($exhibition->genres->count())
+            $selectedGenres = $this->repository->getSelectedGenres($id);
+        elseif (old('gender_id[]'))
+            $selectedGenres = old('gender_id[]');
+        else
+            $selectedGenres = null;
+        
+        $dancers = array();
+        if ($this->academyRepository->count())
+            $dancers = $this->academyRepository->getDancersForSelect($id);     
+
+        if ($exhibition->dancers->count())
+           $selectedDancers = $this->repository->getSelectedDancers($id); 
+        elseif (old('dancer_id[]'))   
+            $selectedDancers = old('dancer_id[]');
+        else
+            $selectedDancers = null;
+        return view('pluranza.exhibitions.edit')->with(compact('dancers', 'selectedDancers', 'genres', 'selectedGenres', 'academY'));
     }
 
     /**
