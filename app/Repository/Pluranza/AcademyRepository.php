@@ -127,5 +127,15 @@ class AcademyRepository extends BaseRepository {
            
         }*/
 	}
+
+	public function getDancers($id)
+	{
+		return $this->get($id)->dancers;
+	}
+
+	public function getDancersForSelect($id)
+	{
+		return $this->getDancers($id)->lists('fullName', 'id'); 
+	}
 }
 

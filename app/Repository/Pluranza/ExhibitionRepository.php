@@ -23,33 +23,11 @@ class ExhibitionRepository extends BaseRepository {
 		$this->competitionCategoryRepository = $competitionCategoryRepository;
 	}
 
-	public function exists($data = array(), $dancers = array())
-	{
-		// Check if selected categories already in the database, i.e., check if the same competitor was create before
-		$competitionCategory = $this->competitionCategoryRepository->getByAll($data['category_id'], $data['level_id'], $data['competition_type_id']);
-		$exists = $this->model->where('competition_category_id', '=', $competitionCategory->id)
-			                  ->where('academy_id', '=', $data['academy_id'])
-			                  ->where('name', '=', $data['name'])
-							  ->count();
-
-		// Check if selected dancers are in another academy competition for same event
-		$dancerExists = $this->model->join('competitor_dancer', 'competitors.id', '=', 'competitor_dancer.competitor_id')
-									->join('dancers', function($join) use ($dancers) {
-										$join->on('competitor_dancer.dancer_id', '=', 'dancers.id')
-											 ->whereIn('dancers.id', $dancers);
-									})
-									->where('competitors.competition_category_id', '=', $competitionCategory->id)
-									->orWhere('competitors.academy_id', '<>', $data['academy_id'])
-									->count();
-		return $exists || $dancerExists;
-	}
-
 	public function create($data = array())
 	{
-		$competitionCategory = $this->competitionCategoryRepository->getByAll($data['category_id'], $data['level_id'], $data['competition_type_id']);
-		$exhibition = parent::create($data);
-		$competitionCategory->competitors()->save($exhibition);
+		$exhibition = parent::create($data);		
 		$exhibition->dancers()->attach($data['dancer_id']);
+		$exhibition->genres()->attach($data['gender_id']);
 		return $exhibition;
 	}
 
@@ -81,51 +59,26 @@ class ExhibitionRepository extends BaseRepository {
 		return $this->dataTable->getDefaultTable($exhibitions);
 	}
 
-	public function getAutomaticName(CompetitionType $competitionType)
+	public function getAutomaticName($academyId = null)
 	{
-		$quantity = $this->model
-			 ->join('competition_categories', 'competitors.competition_category_id', '=', 'competition_categories.id')
-			 ->where('competition_categories.competition_type_id', '=', $competitionType->id)
-			 ->count();
-		if ($quantity > 0) {
-			$lastName = $this->model
-				->join('competition_categories', 'competitors.competition_category_id', '=', 'competition_categories.id')
-				->where('competition_categories.competition_type_id', '=', $competitionType->id)
-				->orderBy('competitors.created_at', 'desc')
-				->first()->name;
-			$name = $competitionType->name . ' ' . (filter_var($lastName, FILTER_SANITIZE_NUMBER_INT) + 1);
-		} else {
-			$name = $name = $competitionType->name . ' ' . ($quantity + 1);
+		if ($academyId > 0) {
+			\Debugbar::info('AcademyId > 0');
+			$academyRepository = new AcademyRepository( new AcademyDataTable);
+			$academy = $academyRepository->get($academyId);
+			$quantity = $academy->exhibitions->count();			
+			if ( $quantity ) {
+				$lastName = $academy->exhibitions
+									->orderBy('exhibitions.created_at', 'desc')
+								    ->first()
+								    ->name;
+				$name = 'Exhibición - ' . $academy->name . ' - ' . (filter_var($lastName, FILTER_SANITIZE_NUMBER_INT) + 1);		
+			} else {
+				$name = 'Exhibición - ' . $academy->name . ' - 1';
+			}
+			return $name;			
 		}
-		return ucfirst($name);
+		return 'Exhibición';
 	}
 
-	public function availableCompetitionQuotas() {
-		$maxExhibitions = Configuration::first()->max_competitors;
-		$available = $maxExhibitions - $this->count();
-		return ($available > 0 ? $available : 0);
-	}
-
-	public function exceededQuotas() {
-		$maxExhibitions = Configuration::first()->max_competitors;
-		$available = $maxExhibitions - $this->count();
-		return ($available < 0 ? $available * -1 : 0);
-	}
-
-	public function countUsedQuotas() {
-		$count = array();
-		$competitionCategories = $this->competitionCategoryRepository->allOrderBy();
-		\Debugbar::info($competitionCategories->toArray());
-		foreach ($competitionCategories as $competitionCategory) {
-			$gender = $competitionCategory->category->name;
-			$category = $competitionCategory->competitionType->name;
-			$level = $competitionCategory->level->name;
-			// cuenta siempre uno porque siempre carga el mismo category y las claves se cargan a pesar de no tener competidores, por ser la misma
-			$total = $this->model->whereCompetitionCategoryId($competitionCategory->id)->count();
-			\Debugbar::info([$category, $gender, $level, 'count' => $total]);
-			$count[$category][$gender][$level] = $total;
-		}
-		return $count;
-	}
 }
 

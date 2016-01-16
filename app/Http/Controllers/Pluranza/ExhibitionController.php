@@ -10,6 +10,7 @@ use App\Repository\Pluranza\AcademyRepository;
 use App\Repository\Pluranza\CompetitionCategoryRepository;
 use App\Repository\Pluranza\CompetitionTypeRepository;
 use App\Repository\Pluranza\ExhibitionRepository;
+use App\Repository\CategoryRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
@@ -27,12 +28,11 @@ class ExhibitionController extends Controller
     public function __construct(
                                 ExhibitionRepository $repository,
                                 AcademyRepository $academyRepository,
-                                CompetitionCategoryRepository $competitionCategoryRepository,
-                                CompetitionTypeRepository $competitionTypeRepository) {
+                                CategoryRepository $categoryRepository) 
+    {
         $this->repository = $repository;
         $this->academyRepository = $academyRepository;
-        $this->competitionCategoryRepository = $competitionCategoryRepository;
-        $this->competitionTypeRepository = $competitionTypeRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -63,16 +63,26 @@ class ExhibitionController extends Controller
         $competitionType = $this->competitionTypeRepository->get($request->get('competition_type_id'));
         $name = $this->repository->getAutomaticName($competitionType);
         $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitionType->id);
-        return view('pluranza.competitors.new')->with(compact('categories', 'competitionType', 'name'));
+        return view('pluranza.competitors.new')->with(compact('categories', 'name'));
     }
 
     public function createByAcademy($id)
     {
         $academY = $this->academyRepository->get($id);
-        $name = $this->repository->getAutomaticName();
-        $genres = $this->categoryRepository->getAllForSelect();
-        $dancers = $academyY->dancers->lists('fullName', 'id');
-        return view('pluranza.competitors.new')->with(compact('dancers', 'genres', 'academY', 'name'));
+        $name = $this->repository->getAutomaticName($id);
+        $genres = array();
+        if ($this->categoryRepository->count())
+            $genres = $this->categoryRepository->getAllForSelect();
+        $selectedGenres = null;
+        if (old('gender_id[]'))
+            $selectedGenres = old('gender_id[]');
+        $dancers = array();
+        if ($this->academyRepository->count())
+            $dancers = $this->academyRepository->getDancersForSelect($id);       
+        $selectedDancers = null;     
+        if (old('dancer_id[]'))   
+            $selectedDancers = old('dancer_id[]');
+        return view('pluranza.exhibitions.new')->with(compact('dancers', 'selectedDancers', 'genres', 'selectedGenres', 'academY', 'name'));
     }
 
     /**
@@ -84,16 +94,19 @@ class ExhibitionController extends Controller
     public function store(RegisterExhibitionFormRequest $request, AppMailer $mailer)
     {
         $input = $request->all();
-        $academy = $this->academyRepository->get($request->get('academy_id'));
-
-        if ($this->repository->exists($input, $input['dancer_id'])) {
-            flash()->error('¡No puedes registrar un nuevo competidor con un nombre de otro, el mismo tipo de cempetidor o los bailarines ya estan siendo ocupados!');
+        if (empty($input['dancer_id'][0])) {
+            flash()->error('Debe seleccionar al menos un bailarín.');
             return redirect()->back()->withInput($input);
         }
-        $competitor = $this->repository->create($input);
-        $mailer->sendEmailToExhibition($competitor, 'pluranza.emails.dancer-invitation');
-        flash()->success('Datos guardados exitosamente, correo de invitación enviado a los competidores.');
-        return redirect()->route('pluranza.competitors.by-academy', $academy->id);
+        if (empty($input['gender_id'][0])) {
+            flash()->error('Debe seleccionar al menos un género.');
+            return redirect()->back()->withInput($input);
+        }
+        $academy = $this->academyRepository->get($request->get('academy_id'));
+        $exhibition = $this->repository->create($input);
+        //$mailer->sendEmailToExhibition($competitor, 'pluranza.emails.dancer-invitation');
+        flash()->success('Exhibición guardada exitosamente.');
+        return redirect()->route('pluranza.exhibitions.by-academy', $academy->id);
     }
 
     /**

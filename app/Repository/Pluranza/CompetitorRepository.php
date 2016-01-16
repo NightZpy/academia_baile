@@ -95,7 +95,7 @@ class CompetitorRepository extends BaseRepository {
 				->first()->name;
 			$name = $competitionType->name . ' ' . (filter_var($lastName, FILTER_SANITIZE_NUMBER_INT) + 1);
 		} else {
-			$name = $name = $competitionType->name . ' ' . ($quantity + 1);
+			$name = $competitionType->name . ' ' . ($quantity + 1);
 		}
 		return ucfirst($name);
 	}
