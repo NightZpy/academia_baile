@@ -13,10 +13,7 @@ class ExhibitionDataTable extends BaseDataTable
 			'Canción'
 		];
 
-		if (!Entrust::hasRole('director'))
-			$this->columns = ['Academia'];
-
-		if (!Entrust::hasRole('director'))
+		if (request()->route()->getName() == 'pluranza.exhibitions.home')
 			$this->columns = array_merge(['Academia'], $columns);
 		else
 			$this->columns = $columns;
