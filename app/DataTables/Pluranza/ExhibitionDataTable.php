@@ -13,10 +13,8 @@ class ExhibitionDataTable extends BaseDataTable
 			'Canción'
 		];
 
-		\Debugbar::info('Route Name: ' . request()->route()->getName());
 		if (request()->route()->getName() == 'pluranza.exhibitions.home' || 
 			request()->route()->getName() == 'pluranza.exhibitions.api.list') {
-			\Debugbar::info('2.-Route Name: ' . request()->route()->getName());
 			$columns = array_merge(['Academia'], $columns);
 		}
 		\Debugbar::info($this->columns);
@@ -55,7 +53,8 @@ class ExhibitionDataTable extends BaseDataTable
 		$this->collection->searchColumns($filters);
 		$this->collection->orderColumns($filters);
 
-		if (!Entrust::hasRole('director')) {
+		if (request()->route()->getName() == 'pluranza.exhibitions.home' || 
+			request()->route()->getName() == 'pluranza.exhibitions.api.list') {
 			$this->collection->addColumn('Academia', function($model)
 			{
 				return $model->academy->name;
