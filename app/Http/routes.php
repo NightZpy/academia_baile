@@ -308,8 +308,8 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 	*/
 	Route::group(['prefix' => 'exhibiciones'], function () {
 		Route::get('ver/{id}', ['as' => 'pluranza.exhibitions.show', 'uses' => 'ExhibitionController@show']);
-		Route::get('/', ['as' => 'pluranza.exhibitions.home', 'uses' => 'ExhibitionController@index']);
-		Route::get('por-academia/{id}', ['as' => 'pluranza.exhibitions.by-academy', 'uses' => 'ExhibitionController@byAcademy']);
+		Route::get('/', ['middleware' => ['role:admin'], 'as' => 'pluranza.exhibitions.home', 'uses' => 'ExhibitionController@index']);
+		Route::get('por-academia/{id}', ['middleware' => ['role:admin|director'], 'as' => 'pluranza.exhibitions.by-academy', 'uses' => 'ExhibitionController@byAcademy']);
 
 		// -------------- API's --------------------
 		Route::get('api/lista', ['as' => 'pluranza.exhibitions.api.list', 'uses' => 'ExhibitionController@apiList']);
