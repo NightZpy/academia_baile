@@ -6,7 +6,7 @@
             <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 ct-titleBox">
                     <h5 class="text-center ct-u-paddingTop30">
-                        Registrar competidores para la competencia <strong>({{ $competitionType->name }})</strong>, para <i>{{ $academy->name }}</i>
+                        Registrar exhibición @if(isset($academY)) de <i> {{ $academY->name }}</i> @endif
                     </h5>
                 </div>
             </div>
@@ -18,7 +18,7 @@
             <div class="row ct-u-paddingTop25">
                 <div class="col-md-offset-2 col-md-8 competitor-select">
                     {!! Form::open(array(
-                                        'url' => route('pluranza.competitors.store'),
+                                        'url' => route('pluranza.exhibition.store'),
                                         'method' => 'POST',
                                         'accept-charset' => 'UTF-8',
                                         'role' => 'form',

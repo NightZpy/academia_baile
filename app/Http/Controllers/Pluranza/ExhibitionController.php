@@ -77,22 +77,11 @@ class ExhibitionController extends Controller
 
     public function createByAcademy(CreateExhibitionFormRequest $request, $id)
     {
-        $academy = $this->academyRepository->get($id);
-        $competitionType = $this->competitionTypeRepository->get($request->get('competition_type_id'));
+        $academY = $this->academyRepository->get($id);
         $name = $this->repository->getAutomaticName($competitionType);
-        if (strtolower($competitionType->name) == 'pareja') {
-            $masculineDancers = $academy->dancers()->masculine()->lists('name', 'id');
-            $femaleDancers = $academy->dancers()
-                ->female()
-                //->select('dancers.id AS id', DB::raw('CONCAT(dancers.name, " ", dancers.last_name) AS full_name'))
-                ->lists('name', 'id');
-            $dancers = ['masculine' => $masculineDancers, 'female' => $femaleDancers];
-            \Debugbar::info($dancers);
-        } else {
-            $dancers = $academy->dancers->lists('fullName', 'id');
-        }
-        $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitionType->id);
-        return view('pluranza.competitors.new')->with(compact('dancers', 'categories', 'academy', 'competitionType', 'name'));
+        $genres = $this->categoryRepository->getAllForSelect();
+        $dancers = $academyY>dancers->lists('fullName', 'id');
+        return view('pluranza.competitors.new')->with(compact('dancers', 'genres', 'academY', 'name'));
     }
 
     /**

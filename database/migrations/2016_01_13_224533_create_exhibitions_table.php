@@ -17,7 +17,7 @@ class CreateExhibitionsTable extends Migration
             $table->string('name', 128);
             $table->string('song_name', 128)->nullable();
             $table->string('song', 128)->nullable();
-            $table->integer('event_edition_id')->unsigned();
+            $table->integer('event_edition_id')->unsigned()->nullable();
             $table->foreign('event_edition_id')->references('id')->on('event_editions');
             $table->integer('academy_id')->unsigned();
             $table->foreign('academy_id')->references('id')->on('academies');
