@@ -48,6 +48,11 @@ class Academy extends Model implements StaplerableInterface
 		return $this->hasMany(Competitor::class);
 	}
 
+	public function exhibitions()
+	{
+		return $this->hasMany(Exhibition::class);
+	}
+
 	public function eventEditions()
 	{
 		return $this->belongsToMany('App\EventEdition', 'event_participants', 'academy_id', 'event_edition_id')

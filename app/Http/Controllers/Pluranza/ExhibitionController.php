@@ -47,19 +47,10 @@ class ExhibitionController extends Controller
     }
 
     public function byAcademy($id)
-    {
-        $competitionTypes = $this->competitionCategoryRepository->getCompetitionTypes();
+    {        
         $academY = $this->academyRepository->get($id);
-        $competitionTypes = $this->competitionCategoryRepository->getCompetitionTypes();
-        if(!$academY->availableCouples) {
-            $key = $competitionTypes->search(function($competitionType, $key){
-                return strtolower($competitionType->name) == 'pareja';
-            });
-            unset($competitionTypes[$key]);
-        }
-
         $table = $this->repository->dataTable->getByAcademyTable([$id]);
-        return  view('pluranza.competitors.index')->with(compact('table', 'academY', 'competitionTypes'));
+        return  view('pluranza.exhibitions.index')->with(compact('table', 'academY'));
     }
 
     /**
@@ -75,12 +66,12 @@ class ExhibitionController extends Controller
         return view('pluranza.competitors.new')->with(compact('categories', 'competitionType', 'name'));
     }
 
-    public function createByAcademy(CreateExhibitionFormRequest $request, $id)
+    public function createByAcademy($id)
     {
         $academY = $this->academyRepository->get($id);
-        $name = $this->repository->getAutomaticName($competitionType);
+        $name = $this->repository->getAutomaticName();
         $genres = $this->categoryRepository->getAllForSelect();
-        $dancers = $academyY>dancers->lists('fullName', 'id');
+        $dancers = $academyY->dancers->lists('fullName', 'id');
         return view('pluranza.competitors.new')->with(compact('dancers', 'genres', 'academY', 'name'));
     }
 

@@ -67,18 +67,18 @@ class ExhibitionRepository extends BaseRepository {
 	public function getByAcademy($id)
 	{
 		$academy = new AcademyRepository(new AcademyDataTable);
-		return $academy->get($id)->competitors;
+		return $academy->get($id)->exhibitions;
 	}
 
 	public function getByAcademyDataTable($id)
 	{
 		if (Entrust::hasRole(['director']) && !Auth::user()->ownerOfAcademy($id)) {
-			$actions = ['show'];
+			$actions = []; //['show'];
 			$this->dataTable->setDefaultActions($actions);
 		}
-		$competitors = $this->getByACademy($id);
-		$this->dataTable->setDatatableCollection($competitors);
-		return $this->dataTable->getDefaultTable($competitors);
+		$exhibitions = $this->getByACademy($id);
+		$this->dataTable->setDatatableCollection($exhibitions);
+		return $this->dataTable->getDefaultTable($exhibitions);
 	}
 
 	public function getAutomaticName(CompetitionType $competitionType)
