@@ -33,6 +33,7 @@
                                     <li class="onepage"><a href="{{ route('pluranza.dancers.by-academy', $academy->id) }}" class="ct-js-btnScroll">Bailarines</a></li>
                                     <li class="onepage"><a href="{{ route('pluranza.competitors.by-academy', $academy->id) }}" class="ct-js-btnScroll">Competidores</a></li>
                                     <li class="onepage"><a href="{{ route('pluranza.payments.by-academy', $academy->id) }}" class="ct-js-btnScroll">Pagos</a></li>
+                                    <li class="onepage"><a href="{{ route('pluranza.exhibitions.by-academy', $academy->id) }}" class="white-nav-bar-text ct-js-btnScroll">Exhibiciones</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown" role="presentation">
