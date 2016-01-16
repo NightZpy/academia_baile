@@ -80,5 +80,25 @@ class ExhibitionRepository extends BaseRepository {
 		return 'Exhibición';
 	}
 
+	public function getGenres($id)
+	{
+		return $this->get($id)->genres;
+	}
+
+	public function getSelectedGenres($id)
+	{
+		return $this->getGenres($id)->lists('id')->toArray();
+	}
+
+	public function getDancers($id)
+	{
+		return $this->get($id)->dancers;
+	}
+
+	public function getSelectedDancers($id)
+	{
+		return $this->getDancers($id)->lists('id')->toArray();
+	}
+
 }
 

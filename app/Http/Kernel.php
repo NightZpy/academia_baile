@@ -38,5 +38,6 @@ class Kernel extends HttpKernel
         'ownDancer' => \App\Http\Middleware\OwnDancer::class,
         'ownCompetitor' => \App\Http\Middleware\OwnCompetitor::class,
         'ownPayment' => \App\Http\Middleware\OwnPayment::class,
+        'ownExhibition' => \App\Http\Middleware\OwnExhibition::class,
     ];
 }

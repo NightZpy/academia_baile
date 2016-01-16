@@ -147,7 +147,7 @@ class ExhibitionController extends Controller
         
         $dancers = array();
         if ($this->academyRepository->count())
-            $dancers = $this->academyRepository->getDancersForSelect($id);     
+            $dancers = $this->academyRepository->getDancersForSelect($academY->id);     
 
         if ($exhibition->dancers->count())
            $selectedDancers = $this->repository->getSelectedDancers($id); 
@@ -155,7 +155,7 @@ class ExhibitionController extends Controller
             $selectedDancers = old('dancer_id[]');
         else
             $selectedDancers = null;
-        return view('pluranza.exhibitions.edit')->with(compact('dancers', 'selectedDancers', 'genres', 'selectedGenres', 'academY'));
+        return view('pluranza.exhibitions.edit')->with(compact('exhibition', 'dancers', 'selectedDancers', 'genres', 'selectedGenres', 'academY'));
     }
 
     /**

@@ -37,8 +37,6 @@
     </section>
 @stop
 
-@include('pluranza.exhibitions.partials._select-competition-category-script-new')
-
 @push('scripts')
 <script>
     var handleBootstrapFileInput = function() {

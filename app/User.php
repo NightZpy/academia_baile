@@ -3,6 +3,7 @@
 use App\Pluranza\Academy;
 use App\Pluranza\Competitor;
 use App\Pluranza\Dancer;
+use App\Pluranza\Exhibition;
 use Faker\Provider\at_AT\Payment;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -118,6 +119,11 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasManyThrough(Payment::class, Academy::class);
     }
 
+    public function exhibitions()
+    {
+        return $this->hasManyThrough(Exhibition::class, Academy::class);
+    }
+
     /*
      * ------------------- helpers -----------------------
      */
@@ -135,5 +141,10 @@ class User extends Model implements AuthenticatableContract,
 
     public function ownerOfPayment($id) {
         return $this->payments && $this->payments()->where('payments.id', '=', $id)->count();
+    }
+
+    public function ownerOfExhibition($id)
+    {
+        return $this->exhibitions && $this->exhibitions()->where('exhibitions.id', '=', $id)->count();
     }
 }
