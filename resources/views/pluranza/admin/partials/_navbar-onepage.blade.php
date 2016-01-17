@@ -116,10 +116,13 @@
                                         </li>
                                         @role('admin')
                                             <li class="onepage"><a href="{{ route('pluranza.jurors.public') }}" class="ct-js-btnScroll">Jurados (Public)</a></li>
-                                            <li class="onepage"><a href="{{ route('pluranza.jurors.home') }}" class="ct-js-btnScroll">Jurados (Admin)</a></li>
+                                            <li class="onepage"><a href="{{ route('pluranza.jurors.home') }}" class="ct-js-btnScroll">Jurados (Admin)</a></li>                                            
+                                            <li class="onepage"><a href="{{ route('pluranza.lodgings.home') }}" class="ct-js-btnScroll">Hospedaje (Admin)</a></li>                                            
+                                            <li class="onepage"><a href="{{ route('pluranza.lodgings.public') }}" class="ct-js-btnScroll">Hospedaje (Public)</a></li>                                            
                                         @endrole
                                         @role('director')
                                             <li class="onepage"><a href="{{ route('pluranza.jurors.public') }}" class="ct-js-btnScroll">Jurados</a></li>
+                                            <li class="onepage"><a href="{{ route('pluranza.lodgings.public') }}" class="ct-js-btnScroll">Hospedaje</a></li>
                                         @endrole
                                         {{--<li class="dropdown" role="presentation">
                                             <a href="#" class="dropdown-toggle">Perfil<b class="caret"></b></a>

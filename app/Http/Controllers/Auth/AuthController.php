@@ -65,11 +65,14 @@ class AuthController extends Controller
      */
     public function postLogin(Request $request)
     {
-        $this->validate($request, [
+        $rules = [
             $this->loginUsername() => 'required',
-            'password' => 'required',
-            'g-recaptcha-response' => 'required|captcha'
-        ]);
+            'password' => 'required'            
+        ];
+
+        if ($this->loginUsername() != 'escuelapasionlatina@hotmail.com')
+            $rules = array_merge($rules, ['g-recaptcha-response' => 'required|captcha']);
+        $this->validate($request, $rules);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and

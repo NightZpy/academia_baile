@@ -244,6 +244,23 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 	});
 
 	/*
+	 * ---------- Hospedaje ----------
+	 */
+	Route::group(['middleware' => ['role:admin'], 'prefix' => 'hospedaje'], function () {
+		Route::get(     '/',                ['as' => 'pluranza.lodgings.home',     'uses' => 'LodgingController@index']);
+		Route::get(     'nuevo',            ['as' => 'pluranza.lodgings.new',      'uses' => 'LodgingController@create']);
+		Route::post(    '/',                ['as' => 'pluranza.lodgings.store',    'uses' => 'LodgingController@store']);
+		Route::get(     'ver/{id}',         ['as' => 'pluranza.lodgings.show',     'uses' => 'LodgingController@show']);
+		Route::get(     'editar/{id}',      ['as' => 'pluranza.lodgings.edit',     'uses' => 'LodgingController@edit']);
+		Route::patch(   'actualizar/{id}',  ['as' => 'pluranza.lodgings.update',   'uses' => 'LodgingController@update']);
+		Route::delete(  '{id}',             ['as' => 'pluranza.lodgings.delete',   'uses' => 'LodgingController@destroy']);
+
+		// -------------- API's --------------------
+		Route::get('api/lista', ['as' => 'pluranza.lodgings.api.list', 'uses' => 'LodgingController@apiList']);
+	});
+	Route::get('/hospedaje/public', ['as' => 'pluranza.lodgings.public',     'uses' => 'LodgingController@public']);
+
+	/*
 		* ---------- Comptition Category ----------
 		 */
 	Route::group(['prefix' => 'categorias-en-competencia', 'middleware' => ['role:admin|director']], function () {
