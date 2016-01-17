@@ -122,7 +122,7 @@
                                         @endrole
                                         @role('director')
                                             <li class="onepage"><a href="{{ route('pluranza.jurors.public') }}" class="ct-js-btnScroll">Jurados</a></li>
-                                            <li class="onepage"><a href="{{ route('pluranza.lodgings.public') }}" class="ct-js-btnScroll">Hospedaje</a></li>
+                                            {{-- <li class="onepage"><a href="{{ route('pluranza.lodgings.public') }}" class="ct-js-btnScroll">Hospedaje</a></li> --}}
                                         @endrole
                                         {{--<li class="dropdown" role="presentation">
                                             <a href="#" class="dropdown-toggle">Perfil<b class="caret"></b></a>
