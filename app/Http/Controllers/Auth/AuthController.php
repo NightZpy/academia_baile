@@ -70,7 +70,7 @@ class AuthController extends Controller
             'password' => 'required'            
         ];
 
-        if ($this->loginUsername() != 'escuelapasionlatina@hotmail.com')
+        if ($request->get('email') != 'escuelapasionlatina@hotmail.com')
             $rules = array_merge($rules, ['g-recaptcha-response' => 'required|captcha']);
         $this->validate($request, $rules);
 
