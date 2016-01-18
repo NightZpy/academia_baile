@@ -9,7 +9,7 @@ class LodgingDataTable extends BaseDataTable
 		$this->columns = [
 			'Nombre',
 			'Teléfonos',
-			'Dirección',
+			//'Dirección',
 			'Acciones'
 		];
 		$this->defaultConfig();
@@ -32,10 +32,10 @@ class LodgingDataTable extends BaseDataTable
 			return $model->name;
 		});
 
-		$this->collection->addColumn('Teléfonos', function($model)
+		/*$this->collection->addColumn('Teléfonos', function($model)
 		{
 			return $model->address;
-		});
+		});*/
 
 		$this->collection->addColumn('Dirección', function($model)
 		{
