@@ -6,15 +6,15 @@
             <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 text-center ct-titleBox">
                     <h4 class="text-uppercase ct-u-paddingTop30">
-                        Academia <i>{!! $academY->name !!}</i>
+                        Academia <i>{!! $academy->name !!}</i>
                     </h4>
                 </div>
             </div>
 
             <div class="row ct-u-paddingTop25">
-                {!! Form::model($academY,
+                {!! Form::model($academy,
                     [
-                        'route' => ['pluranza.academies.update', $academY->id],
+                        'route' => ['pluranza.academies.update', $academy->id],
                         'method' => 'PATCH',
                         'role' => 'form',
                         'files' => true
@@ -29,7 +29,7 @@
                         <div class="btn-group" data-toggle="buttons" role="group">
                             <?php
                             $active = '';
-                            if ((isset($academY) AND $academY->independent) OR old('independent')):
+                            if ((isset($academy) AND $academy->independent) OR old('independent')):
                                 $active = 'active';
                             endif
                             ?>
@@ -343,8 +343,8 @@
             $(".file-upload").fileinput({
                 'showUpload': false,
                 'showRemove': false,
-                @if ($academY->logo->url())
-                    initialPreview: "<img src='{{ $academY->logo->url() }}' class='file-preview-image' alt='{{ $academY->name }}' title='{{ $academY->name }}'>",
+                @if ($academy->logo->url())
+                    initialPreview: "<img src='{{ $academy->logo->url() }}' class='file-preview-image' alt='{{ $academy->name }}' title='{{ $academy->name }}'>",
                 @endif
                 previewFileType: "image",
                 removeClass: "btn btn-xs btn-danger text-uppercase ct-u-size14",
