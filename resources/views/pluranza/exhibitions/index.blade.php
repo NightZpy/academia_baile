@@ -6,7 +6,7 @@
             <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 ct-titleBox">
                     <h4 class="text-center text-uppercase ct-u-paddingTop30">
-                        Exhibiciones @if(isset($academY)) de <i> {{ $academY->name }}</i> @endif
+                        Exhibiciones @if(isset($academy)) de <i> {{ $academy->name }}</i> @endif
                     </h4>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                 <div class="row ct-u-paddingTop25">
                     <div class="col-md-10">
                         @route('pluranza.exhibitions.by-academy')
-                            <a href="{{ route('pluranza.exhibitions.new.by-academy', $academY->id) }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
+                            <a href="{{ route('pluranza.exhibitions.new.by-academy', $academy->id) }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>
                         @else
                             @role(['admin'])
                                 <a href="{{ route('pluranza.exhibitions.home') }}" class="ct-js-btnScroll btn btn-sm btn-danger btn-circle pull-right">Agregar</a>

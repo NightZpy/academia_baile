@@ -6,7 +6,7 @@
             <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 ct-titleBox">
                     <h5 class="text-center ct-u-paddingTop30">
-                        Registrar exhibición @if(isset($academY)) de <i> {{ $academY->name }}</i> @endif
+                        Registrar exhibición @if(isset($academy)) de <i> {{ $academy->name }}</i> @endif
                     </h5>
                 </div>
             </div>

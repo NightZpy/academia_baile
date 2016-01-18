@@ -48,9 +48,9 @@ class ExhibitionController extends Controller
 
     public function byAcademy($id)
     {        
-        $academY = $this->academyRepository->get($id);
+        $academy = $this->academyRepository->get($id);
         $table = $this->repository->dataTable->getByAcademyTable([$id]);
-        return  view('pluranza.exhibitions.index')->with(compact('table', 'academY'));
+        return  view('pluranza.exhibitions.index')->with(compact('table', 'academy'));
     }
 
     /**

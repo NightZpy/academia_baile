@@ -2,7 +2,7 @@
     <h5 class="text-center ct-titleBox">Obligatorio <b class="red">(*)</b></h5>
 </div>
 @include('partials._errors-min')
-{!! Form::hidden('academy_id', $academY->id) !!}
+{!! Form::hidden('academy_id', $academy->id) !!}
 <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
         <div class="form-group {{ ($errors->has('name') ? 'has-error background-error-color' : '') }}">

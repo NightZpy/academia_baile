@@ -169,3 +169,7 @@
         </div>
     </div
 </div>
+
+@push('scripts')
+{!! HTML::script('/assets/plugins/ct-select2/select2.js') !!}
+@endpush
