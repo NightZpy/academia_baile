@@ -134,8 +134,7 @@ class AcademyController extends Controller
                 }
             }
         }
-        $academY = $academy;
-        return view('pluranza.academies.edit')->with(compact('academY', 'estates', 'estateId', 'municipalities', 'municipalityId', 'parishes', 'parishId', 'cities', 'cityId', 'foundation'));
+        return view('pluranza.academies.edit')->with(compact('academy', 'estates', 'estateId', 'municipalities', 'municipalityId', 'parishes', 'parishId', 'cities', 'cityId', 'foundation'));
     }
 
     /**
