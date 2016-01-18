@@ -4,14 +4,14 @@
             @route('pluranza.competitors.by-academy')
                 {!! Form::open(
                     [
-                        'route' =>  ['pluranza.competitors.new.by-academy', $academy->id],
+                        'route' =>  ['pluranza.competitors.new.by-academy', $currentAcademy->id],
                         'method' => 'GET',
                         'role' => 'form',
                         'files' => true
                     ])
                 !!}
-                @if($academy)
-                    {!! Form::hidden('academy_id', $academy->id) !!}
+                @if($currentAcademy)
+                    {!! Form::hidden('academy_id', $currentAcademy->id) !!}
                 @endif
                 <div class="col-md-offset-2 col-md-6">
                     <div class="btn-group pull-right {{ ($errors->has('competition_type_id') ? 'has-error' : '') }}" data-toggle="buttons" role="group">
@@ -37,8 +37,8 @@
                             'files' => true
                         ])
                     !!}
-                    @if($academy)
-                        {!! Form::hidden('academy_id', $academy->id) !!}
+                    @if($currentAcademy)
+                        {!! Form::hidden('academy_id', $currentAcademy->id) !!}
                     @endif
                     <div class="col-md-offset-2 col-md-6">
                         <div class="btn-group pull-right {{ ($errors->has('competition_type_id') ? 'has-error' : '') }}" data-toggle="buttons" role="group">
