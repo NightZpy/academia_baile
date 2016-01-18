@@ -258,7 +258,7 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		// -------------- API's --------------------
 		Route::get('api/lista', ['as' => 'pluranza.lodgings.api.list', 'uses' => 'LodgingController@apiList']);
 	});
-	Route::get('/hospedaje/public', ['as' => 'pluranza.lodgings.public',     'uses' => 'LodgingController@public']);
+	Route::get('/hospedaje/public', ['as' => 'pluranza.lodgings.public',     'uses' => 'LodgingController@publicIndex']);
 
 	/*
 		* ---------- Comptition Category ----------

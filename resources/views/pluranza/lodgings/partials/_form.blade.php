@@ -26,7 +26,23 @@
                     </ul>
                 </label>
             @endif
-            {!! Form::text('phones', old('phones'), array('placeholder' => 'Nombre', 'class' => 'form-control input-sm')) !!}
+            {!! Form::text('phones', old('phones'), array('placeholder' => 'Teléfonos', 'class' => 'form-control input-sm')) !!}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group {{ ($errors->has('web') ? 'has-error' : '') }}">
+            @if ($errors->has('web'))
+                <label class="control-label" for="web">
+                    <ul>
+                        @foreach($errors->get('web') as $error)
+                            <li>{!! $error !!}</li>
+                        @endforeach
+                    </ul>
+                </label>
+            @endif
+            {!! Form::text('web', old('web'), array('placeholder' => 'Sitio Web', 'class' => 'form-control input-sm')) !!}
         </div>
     </div>
 </div>

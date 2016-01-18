@@ -12,8 +12,8 @@
             </div>
             <div class="row ct-u-paddingTop10">
                 <div class="col-md-offset-2 col-md-8">
-                    {!! Form::model($category, array(
-                                        'url' => route('pluranza.lodgings.update', $category->id),
+                    {!! Form::model($lodging, array(
+                                        'url' => route('pluranza.lodgings.update', $lodging->id),
                                         'method' => 'PATCH',
                                         'accept-charset' => 'UTF-8',
                                         'role' => 'form',

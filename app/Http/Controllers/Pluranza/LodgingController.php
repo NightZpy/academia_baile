@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pluranza;
 use App\Http\Requests\Pluranza\RegisterLodgingFormRequest;
 use App\Http\Requests\Pluranza\UpdateLodgingFormRequest;
 use App\Repository\Pluranza\LodgingRepository;
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests;
 
@@ -32,10 +33,10 @@ class LodgingController extends Controller
         return view('pluranza.lodgings.index')->with(compact('table'));
     }
 
-    public function public()
+    public function publicIndex()
     {
         $lodgings = $this->repository->getAll();
-        return view('pluranza.lodgings.index')->with(compact('lodgings'));
+        return view('pluranza.lodgings.public')->with(compact('lodgings'));
     }
 
     /**

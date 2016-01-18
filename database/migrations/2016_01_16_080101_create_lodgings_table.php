@@ -16,7 +16,7 @@ class CreateLodgingsTable extends Migration
             $table->increments('id');
             $table->string('name', 128)->unique();
             $table->string('phones', 128)->unique();
-            $table->text('description')->nullable();
+            $table->text('address')->nullable();
             $table->timestamps();
         });
     }

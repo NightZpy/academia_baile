@@ -1,7 +1,8 @@
 <?php
 namespace App\Repository\Pluranza;
 
-use App\Lodging;
+use App\Repository\BaseRepository;
+use App\Pluranza\Lodging;
 use App\DataTables\Pluranza\LodgingDataTable;
 
 class LodgingRepository extends BaseRepository {

@@ -1,6 +1,8 @@
 <?php
 namespace App\DataTables\Pluranza;
 
+use App\DataTables\BaseDataTable;
+
 class LodgingDataTable extends BaseDataTable
 {
 	function __construct() {

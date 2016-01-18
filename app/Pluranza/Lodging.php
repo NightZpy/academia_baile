@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Lodging extends Model
 {
 
-	protected $fillable = ['name', 'phones', 'address'];
+	protected $fillable = ['name', 'phones', 'web', 'address'];
 
 
 	/*
