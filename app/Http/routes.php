@@ -93,6 +93,8 @@ Route::get('/pluranza/usuarios/confirmar/{token}', [
  * ---------- Admin ----------
  */
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () {
+	Route::get('logs', ['as' => 'admin.logs', 'uses' =>  '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index']);
+
 	/*
 	 * ---------- Categorias ----------
 	 */
