@@ -6,7 +6,7 @@
             <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 ct-titleBox">
                     <h5 class="text-center ct-u-paddingTop30">
-                        Registrar competidores para la competencia <strong>({{ $competitionType->name }})</strong>, para <i>{{ $academY->name }}</i>
+                        Registrar competidores para la competencia <strong>({{ $competitionType->name }})</strong>, para <i>{{ $academy->name }}</i>
                     </h5>
                 </div>
             </div>

@@ -2,7 +2,7 @@
     <h5 class="text-center ct-titleBox">Obligatorio <b class="red">(*)</b></h5>
 </div>
 @include('partials._errors-min')
-{!! Form::hidden('academy_id', $academY->id) !!}
+{!! Form::hidden('academy_id', $academy->id) !!}
 @if (isset($competitionType))
     {!! Form::hidden('competition_type_id',  $competitionType->id) !!}
 @elseif (isset($competitor))
@@ -42,7 +42,7 @@
             <label class="control-label" for="song">
                 Género de baile <b class="red">(*)</b>
             </label>
-            {!! Form::select('category_id', (isset($categories) ? $categories : array()), ( isset($competitor) AND $competitor->category->id > 0 ? $competitor->category->id : old('category_id')), ['placeholder' => 'Selecciona un género', 'class' => 'form-control input-sm category-select']) !!}
+            {!! Form::select('category_id', (isset($categories) ? $categories : array()), ( isset($competitor) AND $competitor->category->id > 0 ? $competitor->category->id : old('category_id')), ['class' => 'form-control input-sm category-select select2', 'style' => 'display: none']) !!}
         </div>
     </div>
 </div>
@@ -61,7 +61,7 @@
             <label class="control-label" for="song">
                 Nivel de competición <b class="red">(*)</b>
             </label>
-            {!! Form::select('level_id', (isset($levels) ? $levels : array()), ( isset($competitor) AND $competitor->level->id > 0 ? $competitor->level->id : old('level_id')), ['placeholder' => 'Selecciona un nivel', 'class' => 'form-control input-sm level-select']) !!}
+            {!! Form::select('level_id', (isset($levels) ? $levels : array()), ( isset($competitor) AND $competitor->level->id > 0 ? $competitor->level->id : old('level_id')), ['class' => 'form-control input-sm level-select select2', 'style' => 'display: none']) !!}
         </div>
     </div>
 </div>
@@ -82,7 +82,7 @@
                 <label class="control-label" for="song">
                     Bailarina <b class="red">(*)</b>
                 </label>
-                {!! Form::select('dancer_id[female]', (isset($dancers['female']) ? $dancers['female'] : array()), ( isset($competitor) AND $competitor->dancers()->female()->count() > 0 ? $competitor->dancers()->female()->pluck('id') : old('dancer_id[female]')), ['placeholder' => 'Selecciona bailarina', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+                {!! Form::select('dancer_id[female]', (isset($dancers['female']) ? $dancers['female'] : array()), ( isset($competitor) AND $competitor->dancers()->female()->count() > 0 ? $competitor->dancers()->female()->pluck('id') : old('dancer_id[female]')), ['class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
             </div>
         </div>
     </div>
@@ -101,7 +101,7 @@
             <label class="control-label" for="song">
                 Bailarín <b class="red">(*)</b>
             </label>
-            {!! Form::select('dancer_id[masculine]', (isset($dancers['masculine']) ? $dancers['masculine'] : array()), ( isset($competitor) AND $competitor->dancers()->masculine()->count() > 0 ? $competitor->dancers()->masculine()->pluck('id') : old('dancer_id[masculine]')), ['placeholder' => 'Selecciona bailarín', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+            {!! Form::select('dancer_id[masculine]', (isset($dancers['masculine']) ? $dancers['masculine'] : array()), ( isset($competitor) AND $competitor->dancers()->masculine()->count() > 0 ? $competitor->dancers()->masculine()->pluck('id') : old('dancer_id[masculine]')), ['class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
         </div>
     </div>
     @else
@@ -120,12 +120,12 @@
                     <label class="control-label" for="song">
                         Bailarín o Bailarina <b class="red">(*)</b>
                     </label>
-                    {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+                    {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
                 @else
                     <label class="control-label" for="song">
                         Bailarines <b class="red">(*)</b>
                     </label>
-                    {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['multiple' => 'multiple', 'placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+                    {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['multiple' => 'multiple', 'class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
                 @endif
             </div>
         </div>
@@ -171,5 +171,10 @@
 </div>
 
 @push('scripts')
-{!! HTML::script('/assets/plugins/ct-select2/select2.js') !!}
+{!! Html::script('/assets/plugins/ct-select2/js/select2.min.js') !!}
+
+<script>
+    $(".select2").select2();
+</script>
+
 @endpush
