@@ -15,7 +15,8 @@ class CreateLodgingsTable extends Migration
         Schema::create('lodgings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 128)->unique();
-            $table->string('phones', 128)->unique();
+            $table->string('phones', 128);
+            $table->string('web', 128)->nullable();
             $table->text('address')->nullable();
             $table->timestamps();
         });
