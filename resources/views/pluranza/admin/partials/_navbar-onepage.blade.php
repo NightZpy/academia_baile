@@ -17,23 +17,23 @@
                             <li class="dropdown" role="presentation">
                                 <a href="#" class="dropdown-toggle">
                                     Mi academia<b class="caret"></b>
-                                    @if(!$academy->isDataComplete)
+                                    @if(!$currentAcademy->isDataComplete)
                                         <span class="badge background-color-red"><i class="fa fa-exclamation-triangle"></i></span>
                                     @endif
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="onepage">
-                                        <a href="{{ route('pluranza.academies.edit', $academy->id) }}" class="ct-js-btnScroll">
+                                        <a href="{{ route('pluranza.academies.edit', $currentAcademy->id) }}" class="ct-js-btnScroll">
                                             Editar
-                                            @if(!$academy->isDataComplete)
+                                            @if(!$currentAcademy->isDataComplete)
                                                 <span class="badge background-color-red"><i class="fa fa-exclamation-triangle"></i></span>
                                             @endif
                                         </a>
                                     </li>
-                                    <li class="onepage"><a href="{{ route('pluranza.dancers.by-academy', $academy->id) }}" class="ct-js-btnScroll">Bailarines</a></li>
-                                    <li class="onepage"><a href="{{ route('pluranza.competitors.by-academy', $academy->id) }}" class="ct-js-btnScroll">Competidores</a></li>
-                                    <li class="onepage"><a href="{{ route('pluranza.payments.by-academy', $academy->id) }}" class="ct-js-btnScroll">Pagos</a></li>
-                                    <li class="onepage"><a href="{{ route('pluranza.exhibitions.by-academy', $academy->id) }}" class="white-nav-bar-text ct-js-btnScroll">Exhibiciones</a></li>
+                                    <li class="onepage"><a href="{{ route('pluranza.dancers.by-academy', $currentAcademy->id) }}" class="ct-js-btnScroll">Bailarines</a></li>
+                                    <li class="onepage"><a href="{{ route('pluranza.competitors.by-academy', $currentAcademy->id) }}" class="ct-js-btnScroll">Competidores</a></li>
+                                    <li class="onepage"><a href="{{ route('pluranza.payments.by-academy', $currentAcademy->id) }}" class="ct-js-btnScroll">Pagos</a></li>
+                                    <li class="onepage"><a href="{{ route('pluranza.exhibitions.by-academy', $currentAcademy->id) }}" class="white-nav-bar-text ct-js-btnScroll">Exhibiciones</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown" role="presentation">
@@ -77,16 +77,16 @@
 
                         @role('director')
                             <li class="onepage">
-                                <a href="{{ route('pluranza.academies.edit', $academy->id) }}" class="ct-js-btnScroll">
-                                    @if(!$academy->isDataComplete)
+                                <a href="{{ route('pluranza.academies.edit', $currentAcademy->id) }}" class="ct-js-btnScroll">
+                                    @if(!$currentAcademy->isDataComplete)
                                         <span class="badge background-color-red"><i class="fa fa-exclamation-triangle"></i></span>
                                     @endif
                                     Editar
                                 </a>
                             </li>
-                            <li class="onepage"><a href="{{ route('pluranza.dancers.by-academy', $academy->id) }}" class="ct-js-btnScroll">Bailarines</a></li>
-                            <li class="onepage"><a href="{{ route('pluranza.competitors.by-academy', $academy->id) }}" class="ct-js-btnScroll">Competidores</a></li>
-                            <li class="onepage"><a href="{{ route('pluranza.exhibitions.by-academy', $academy->id) }}" class="white-nav-bar-text ct-js-btnScroll">Exhibiciones</a></li>
+                            <li class="onepage"><a href="{{ route('pluranza.dancers.by-academy', $currentAcademy->id) }}" class="ct-js-btnScroll">Bailarines</a></li>
+                            <li class="onepage"><a href="{{ route('pluranza.competitors.by-academy', $currentAcademy->id) }}" class="ct-js-btnScroll">Competidores</a></li>
+                            <li class="onepage"><a href="{{ route('pluranza.exhibitions.by-academy', $currentAcademy->id) }}" class="white-nav-bar-text ct-js-btnScroll">Exhibiciones</a></li>
                         @endrole
 
                         @role('dancer')

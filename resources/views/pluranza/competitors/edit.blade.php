@@ -6,7 +6,7 @@
             <div class="row ct-u-paddingTop10">
                 <div class="col-md-12 ct-titleBox">
                     <h5 class="text-center ct-u-paddingTop30">
-                        Actualizar: <strong>({{ $competitor->name }})</strong>, de <i>{{ $academy->name }}</i>
+                        Actualizar: <strong>({{ $competitor->name }})</strong>, de <i>{{ $academY->name }}</i>
                     </h5>
                 </div>
             </div>

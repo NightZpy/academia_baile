@@ -4,7 +4,7 @@
             @route('pluranza.competitors.by-academy')
                 {!! Form::open(
                     [
-                        'route' =>  ['pluranza.competitors.new.by-academy', $academY->id],
+                        'route' =>  ['pluranza.competitors.new.by-academy', $academy->id],
                         'method' => 'GET',
                         'role' => 'form',
                         'files' => true

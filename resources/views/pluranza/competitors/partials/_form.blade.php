@@ -2,7 +2,7 @@
     <h5 class="text-center ct-titleBox">Obligatorio <b class="red">(*)</b></h5>
 </div>
 @include('partials._errors-min')
-{!! Form::hidden('academy_id', $academy->id) !!}
+{!! Form::hidden('academy_id', $academY->id) !!}
 @if (isset($competitionType))
     {!! Form::hidden('competition_type_id',  $competitionType->id) !!}
 @elseif (isset($competitor))

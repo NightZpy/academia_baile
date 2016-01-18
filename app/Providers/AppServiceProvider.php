@@ -22,8 +22,8 @@ class AppServiceProvider extends ServiceProvider
             $configuration = Configuration::first();
             if (auth()->check()) {
                 if (auth()->user()->academy) {
-                    $academy = auth()->user()->academy;
-                    $view->with(compact('academy'));
+                    $currentAcademy = auth()->user()->academy;
+                    $view->with(compact('currentAcademy'));
                     //flash()->error('¡Testing chars!');
                 }
             }

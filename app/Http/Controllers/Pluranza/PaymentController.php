@@ -15,16 +15,16 @@ use Auth;
 
 class PaymentController extends Controller
 {
-    protected $paymentRepository;
+    protected $repository;
     protected $academyRepository;
     protected $appMailer;
 
     /**
      * PaymentController constructor.
-     * @param $paymentRepository
+     * @param $repository
      */
-    public function __construct(PaymentRepository $paymentRepository, AcademyRepository $academyRepository, AppMailer $appMailer) {
-        $this->paymentRepository = $paymentRepository;
+    public function __construct(PaymentRepository $repository, AcademyRepository $academyRepository, AppMailer $appMailer) {
+        $this->repository = $repository;
         $this->academyRepository = $academyRepository;
         $this->appMailer         = $appMailer;
     }
@@ -37,13 +37,13 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        $table = $this->paymentRepository->dataTable->getAllTable();
+        $table = $this->repository->dataTable->getAllTable();
         return view('pluranza.payments.index')->with(compact('table'));
     }
 
     public function byAcademy($id)
     {
-        $table = $this->paymentRepository->dataTable->getByAcademyTable([$id]);
+        $table = $this->repository->dataTable->getByAcademyTable([$id]);
         $academy = $this->academyRepository->get($id);
         return  view('pluranza.payments.index')->with(compact('table', 'academy'));
     }
@@ -71,11 +71,11 @@ class PaymentController extends Controller
     {
         $input = $request->all();
         $input['academy_id'] = Auth::user()->academy->id;
-        $payment = $this->paymentRepository->create($input);
+        $payment = $this->repository->create($input);
         $admin = Role::whereName('admin')->first()->users->first();
         $mailer->sendEmailNewPaymentToAdmin($payment, $admin, 'pluranza.payments.emails.payment');
         flash()->success('Datos guardados exitosamente!');
-        return redirect()->route('pluranza.payments.home');
+        return redirect()->route('pluranza.payments.by-academy', $input['academy_id']);
     }
 
     /**
@@ -97,7 +97,7 @@ class PaymentController extends Controller
      */
     public function edit($id)
     {
-        $payment = $this->paymentRepository->get($id);
+        $payment = $this->repository->get($id);
         return view('pluranza.payments.edit')->with(compact('payment'));
     }
 
@@ -112,8 +112,8 @@ class PaymentController extends Controller
     {
         $input = $request->all();
         $input['academy_id'] = Auth::user()->academy->id;
-        $status = $this->paymentRepository->get($id)->status;
-        $payment = $this->paymentRepository->updateCustom($input, $id);
+        $status = $this->repository->get($id)->status;
+        $payment = $this->repository->updateCustom($input, $id);
         $admin = Role::whereName('admin')->first()->users->first();
         if($status == 'refuse')
             $mailer->sendEmailUpdatePaymentToAdmin($payment, $admin, 'pluranza.payments.emails.payment');
@@ -129,7 +129,7 @@ class PaymentController extends Controller
      */
     public function destroy($id)
     {
-        $payment = $this->paymentRepository->get($id);
+        $payment = $this->repository->get($id);
         $paymentName = $payment->name;
         $payment->delete();
         flash()->success( $paymentName . ', ha sido eliminada correctamente!');
@@ -138,7 +138,7 @@ class PaymentController extends Controller
 
     public function confirm($id)
     {
-        $payment = $this->paymentRepository->get($id);
+        $payment = $this->repository->get($id);
         $payment->status = 'accept';
         $payment->save();
         $this->appMailer->sendPaymentUpdateStatus($payment, 'pluranza.payments.emails.confirm-payment', 'Pluranza 2016: Pago confirmado!');
@@ -148,7 +148,7 @@ class PaymentController extends Controller
 
     public function refuse($id)
     {
-        $payment = $this->paymentRepository->get($id);
+        $payment = $this->repository->get($id);
         $payment->status = 'refuse';
         $payment->save();
         $this->appMailer->sendPaymentUpdateStatus($payment, 'pluranza.payments.emails.refuse-payment', 'Pluranza 2016: Pago rechazado!');
@@ -162,13 +162,13 @@ class PaymentController extends Controller
 	public function apiList()
 	{
 		if(request()->ajax())
-			return $this->paymentRepository->getAllDataTable();
+			return $this->repository->getAllDataTable();
 	}
 
     public function apiByAcademyList($id)
     {
         if(request()->ajax())
-            return $this->paymentRepository->getByAcademyDataTable($id);
+            return $this->repository->getByAcademyDataTable($id);
     }
 
 }

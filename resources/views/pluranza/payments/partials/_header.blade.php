@@ -6,7 +6,7 @@
                     <h5 class="text-uppercase">Debe</h5>
                 </div>
                 <div class="ct-pricingBox-pricing">
-                    <span class="ct-pricingBox-price">{{ $academY->debtBs }}</span>
+                    <span class="ct-pricingBox-price">{{ $academy->debtBs }}</span>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
                     <h5 class="text-uppercase">Cancelado</h5>
                 </div>
                 <div class="ct-pricingBox-pricing">
-                    <span class="ct-pricingBox-price">{{ $academY->paidBs }}</span>
+                    <span class="ct-pricingBox-price">{{ $academy->paidBs }}</span>
                 </div>
             </div>
         </div>
@@ -26,11 +26,11 @@
                     <h5 class="text-uppercase">Total</h5>
                 </div>
                 <div class="ct-pricingBox-pricing">
-                    <span class="ct-pricingBox-price">{{ $academY->totalBs }}</span>
+                    <span class="ct-pricingBox-price">{{ $academy->totalBs }}</span>
                 </div>
                 <div class="btn-group text-center ct-u-paddingTop15">
-                    <a href="{{ route('pluranza.payments.new', $academY->id) }}" class="ct-js-btnScroll btn btn-xs btn-danger btn-circle text-uppercase ct-u-size14 pull-left"><i class="fa fa-money fa-2x"></i> Pagar</a>
-                    <a href="{{ route('pluranza.payments.by-academy', $academY->id) }}" class="ct-js-btnScroll btn btn-xs btn-danger btn-circle text-uppercase ct-u-size14 pull-left"><i class="fa fa-money fa-2x"></i> Pagos</a>
+                    <a href="{{ route('pluranza.payments.new', $academy->id) }}" class="ct-js-btnScroll btn btn-xs btn-danger btn-circle text-uppercase ct-u-size14 pull-left"><i class="fa fa-money fa-2x"></i> Pagar</a>
+                    <a href="{{ route('pluranza.payments.by-academy', $academy->id) }}" class="ct-js-btnScroll btn btn-xs btn-danger btn-circle text-uppercase ct-u-size14 pull-left"><i class="fa fa-money fa-2x"></i> Pagos</a>
                 </div>
             </div>
         </div>

@@ -49,9 +49,9 @@ class CompetitorController extends Controller
 
     public function byAcademy($id)
     {
-        $academY = $this->academyRepository->get($id);
+        $academy = $this->academyRepository->get($id);
         $competitionTypes = $this->competitionCategoryRepository->getCompetitionTypes();
-        if(!$academY->availableCouples) {
+        if(!$academy->availableCouples) {
             $key = $competitionTypes->search(function($competitionType, $key){
                 return strtolower($competitionType->name) == 'pareja';
             });
@@ -59,7 +59,7 @@ class CompetitorController extends Controller
         }
 
         $table = $this->repository->dataTable->getByAcademyTable([$id]);
-        return  view('pluranza.competitors.index')->with(compact('table', 'academY', 'competitionTypes'));
+        return  view('pluranza.competitors.index')->with(compact('table', 'academy', 'competitionTypes'));
     }
 
     /**

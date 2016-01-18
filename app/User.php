@@ -4,7 +4,7 @@ use App\Pluranza\Academy;
 use App\Pluranza\Competitor;
 use App\Pluranza\Dancer;
 use App\Pluranza\Exhibition;
-use Faker\Provider\at_AT\Payment;
+use App\Pluranza\Payment;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
