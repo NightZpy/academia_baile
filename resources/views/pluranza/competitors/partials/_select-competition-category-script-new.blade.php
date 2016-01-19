@@ -8,7 +8,10 @@
                     onChange: function(event, value, requiredValues){
                         //cleanElement('.municipality-select');
                         //cleanElement('.city-select');
-                        $('.level-select').empty();
+                        $('.level-select')
+                            .find('option')
+                            .remove()
+                            .end();
                         console.log($('.level-select option').size());
                     }
                 },

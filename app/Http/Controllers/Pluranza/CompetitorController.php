@@ -189,8 +189,8 @@ class CompetitorController extends Controller
             $selectedCategory = 0;
 
         $levels = array();
-        if ($this->competitionCategoryRepository->getLevelByCategoryAndCompetitionTypeCount($competitor->category->id, $competitor->competitionType->id))
-            $levels = $this->competitionCategoryRepository->getLevelByCategoryAndCompetitionTypeForSelect($competitor->category->id, $competitor->competitionType->id);
+        //if ($this->competitionCategoryRepository->getLevelByCategoryAndCompetitionTypeCount($competitor->category->id, $competitor->competitionType->id))
+        //    $levels = $this->competitionCategoryRepository->getLevelByCategoryAndCompetitionTypeForSelect($competitor->category->id, $competitor->competitionType->id);
         
         if ($this->repository->getLevelCount($competitor->id))
             $selectedLevel = $this->repository->getLevelForSelected($competitor->id); 
