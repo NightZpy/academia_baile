@@ -70,7 +70,6 @@ class PaymentController extends Controller
     public function store(RegisterPaymentFormRequest $request, AppMailer $mailer)
     {
         $input = $request->all();
-        $input['academy_id'] = Auth::user()->academy->id;
         $payment = $this->repository->create($input);
         $admin = Role::whereName('admin')->first()->users->first();
         $mailer->sendEmailNewPaymentToAdmin($payment, $admin, 'pluranza.payments.emails.payment');
