@@ -68,7 +68,7 @@ class ExhibitionController extends Controller
 
     public function createByAcademy($id)
     {
-        $academY = $this->academyRepository->get($id);
+        $academy = $this->academyRepository->get($id);
         $name = $this->repository->getAutomaticName($id);
         $genres = array();
         if ($this->categoryRepository->count())
@@ -82,7 +82,7 @@ class ExhibitionController extends Controller
         $selectedDancers = null;     
         if (old('dancer_id[]'))   
             $selectedDancers = old('dancer_id[]');
-        return view('pluranza.exhibitions.new')->with(compact('dancers', 'selectedDancers', 'genres', 'selectedGenres', 'academY', 'name'));
+        return view('pluranza.exhibitions.new')->with(compact('dancers', 'selectedDancers', 'genres', 'selectedGenres', 'academy', 'name'));
     }
 
     /**
@@ -132,7 +132,7 @@ class ExhibitionController extends Controller
     public function edit($id)
     {
         $exhibition = $this->repository->get($id);
-        $academY = $exhibition->academy;
+        $academy = $exhibition->academy;
         
         $genres = array();
         if ($this->categoryRepository->count())
@@ -147,7 +147,7 @@ class ExhibitionController extends Controller
         
         $dancers = array();
         if ($this->academyRepository->count())
-            $dancers = $this->academyRepository->getDancersForSelect($academY->id);     
+            $dancers = $this->academyRepository->getDancersForSelect($academy->id);     
 
         if ($exhibition->dancers->count())
            $selectedDancers = $this->repository->getSelectedDancers($id); 
@@ -155,7 +155,7 @@ class ExhibitionController extends Controller
             $selectedDancers = old('dancer_id[]');
         else
             $selectedDancers = null;
-        return view('pluranza.exhibitions.edit')->with(compact('exhibition', 'dancers', 'selectedDancers', 'genres', 'selectedGenres', 'academY'));
+        return view('pluranza.exhibitions.edit')->with(compact('exhibition', 'dancers', 'selectedDancers', 'genres', 'selectedGenres', 'academy'));
     }
 
     /**

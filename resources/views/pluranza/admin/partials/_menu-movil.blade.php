@@ -37,17 +37,17 @@
         </li>
         @endrole
         @role('director')
-            @if(!$academy->isDataComplete)
+            @if(!$currentAcademy->isDataComplete)
                 <li class="background-color-red">
             @else
                 <li>
             @endif
-                <a href="{{ route('pluranza.academies.edit', $academy->id) }}" class="ct-js-btnScroll--mobile">
+                <a href="{{ route('pluranza.academies.edit', $currentAcademy->id) }}" class="ct-js-btnScroll--mobile">
                     Editar
                 </a>
             </li>
-            <li><a href="{{ route('pluranza.dancers.by-academy', $academy->id) }}" class="ct-js-btnScroll--mobile">Miembros</a></li>
-            <li><a href="{{ route('pluranza.competitors.by-academy', $academy->id) }}" class="ct-js-btnScroll--mobile">Competidores</a></li>
+            <li><a href="{{ route('pluranza.dancers.by-academy', $currentAcademy->id) }}" class="ct-js-btnScroll--mobile">Miembros</a></li>
+            <li><a href="{{ route('pluranza.competitors.by-academy', $currentAcademy->id) }}" class="ct-js-btnScroll--mobile">Competidores</a></li>
         @endrole
 
         @role('dancer')
