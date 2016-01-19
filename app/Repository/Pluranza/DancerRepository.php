@@ -36,7 +36,7 @@ class DancerRepository extends BaseRepository {
 	public function getByAcademy($id)
 	{
 		$academyRepository = new AcademyRepository(new AcademyDataTable);
-		return $academy->get($id)->dancers;
+		return $academyRepository->get($id)->dancers;
 	}
 
 	public function getByAcademyForSelect($id)
