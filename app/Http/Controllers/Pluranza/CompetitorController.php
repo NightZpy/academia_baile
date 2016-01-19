@@ -85,14 +85,50 @@ class CompetitorController extends Controller
         $competitionType = $this->competitionTypeRepository->get($request->get('competition_type_id'));
         $name = $this->repository->getAutomaticName($competitionType);        
 
+        $categories = array();
+        if ($this->competitionCategoryRepository->getCategoriesByCompetitionTypeCount($competitionType->id))
+            $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitionType->id);
+        
+        $selectedCategory = 0;
+        if (old('category_id'))
+            $selectedCategory = old('category_id');
+        
+        $levels = array();
+        $selectedLevel = 0;
+        if (old('level_id'))
+            $selectedLevel = old('level_id');
+
         if (strtolower($competitionType->name) == 'pareja') {
- 
+            $masculineDancers = array();
+            if ($this->dancerRepository->getMasculineByAcademyCount($academy->id))
+                $masculineDancers =  $this->dancerRepository->getMasculineByAcademyForSelect($academy->id);                          
+
+            $selectedMasculineDancers = 0;
+            if (old('dancer_id["masculine"]'))
+                $selectedMasculineDancers = old('dancer_id["masculine"]');
+
+            $femaleDancers = array();
+            if ($this->dancerRepository->getFemaleByAcademyCount($academy->id))
+                $femaleDancers =  $this->dancerRepository->getFemaleByAcademyForSelect($academy->id);
+
+            $selectedFemaleDancers = 0;
+            if (old('dancer_id["female"]'))
+                $selectedFemaleDancers = old('dancer_id["female"]');
+
+            $dancers = ['masculine' => $masculineDancers, 'female' => $femaleDancers];
+            $selectedDancers = ['masculine' => $selectedMasculineDancers, 'female' => $selectedFemaleDancers];
 
         } else {
+            $dancers = array();
+            if ($this->dancerRepository->getByAcademyCount($academy->id))
+                $dancers = $this->dancerRepository->getByAcademyForSelect($academy->id);
 
-        }
-        $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitionType->id);
-        return view('pluranza.competitors.new')->with(compact('dancers', 'categories', 'academy', 'competitionType', 'name'));
+            $selectedDancers = 0;
+            if (old('dancer_id[]'))
+                $selectedDancers = old('dancer_id[]');            
+
+        }        
+        return view('pluranza.competitors.new')->with(compact('dancers', 'selectedDancers', 'categories', 'selectedCategory', 'levels', 'selectedLevel', 'academy', 'competitionType', 'name'));
     }
 
     /**
@@ -150,7 +186,7 @@ class CompetitorController extends Controller
         elseif (old('category_id'))   
             $selectedCategory = old('category_id');
         else
-            $selectedCategory = null;
+            $selectedCategory = 0;
 
         $levels = array();
         if ($this->competitionCategoryRepository->getLevelByCategoryAndCompetitionTypeCount($competitor->category->id, $competitor->competitionType->id))
@@ -161,7 +197,7 @@ class CompetitorController extends Controller
         elseif (old('level_id'))   
             $selectedLevel = old('level_id');
         else
-            $selectedLevel = null;        
+            $selectedLevel = 0;        
         
 
         $competitionType = $competitor->competitionType;
@@ -175,7 +211,7 @@ class CompetitorController extends Controller
             elseif (old('dancer_id["masculine"]'))   
                 $selectedMasculineDancers = old('dancer_id["masculine"]');
             else
-                $selectedMasculineDancers = null;
+                $selectedMasculineDancers = 0;
             
 
             $femaleDancers = array();
@@ -187,7 +223,7 @@ class CompetitorController extends Controller
             elseif (old('dancer_id["female"]'))   
                 $selectedFemaleDancers = old('dancer_id["female"]');
             else
-                $selectedFemaleDancers = null;
+                $selectedFemaleDancers = 0;
 
             $dancers = ['masculine' => $masculineDancers, 'female' => $femaleDancers];
             $selectedDancers = ['masculine' => $selectedMasculineDancers, 'female' => $selectedFemaleDancers];
@@ -201,7 +237,7 @@ class CompetitorController extends Controller
             elseif (old('dancer_id[]'))   
                 $selectedDancers = old('dancer_id[]');
             else
-                $selectedDancers = null;
+                $selectedDancers = 0;
         }
         \Debugbar::info($dancers);
         \Debugbar::info($selectedDancers);
