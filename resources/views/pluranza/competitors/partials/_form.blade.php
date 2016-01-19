@@ -42,7 +42,7 @@
             <label class="control-label" for="song">
                 Género de baile <b class="red">(*)</b>
             </label>
-            {!! Form::select('category_id', (isset($categories) ? $categories : array()), ( isset($competitor) AND $competitor->category->id > 0 ? $competitor->category->id : old('category_id')), ['class' => 'form-control input-sm category-select select2', 'style' => 'display: none']) !!}
+            {!! Form::select('category_id', (isset($categories) ? $categories : array()), ( isset($competitor) AND $competitor->category->id > 0 ? $competitor->category->id : old('category_id')), ['class' => 'form-control input-sm category-select']) !!}
         </div>
     </div>
 </div>
@@ -61,7 +61,7 @@
             <label class="control-label" for="song">
                 Nivel de competición <b class="red">(*)</b>
             </label>
-            {!! Form::select('level_id', (isset($levels) ? $levels : array()), ( isset($competitor) AND $competitor->level->id > 0 ? $competitor->level->id : old('level_id')), ['class' => 'form-control input-sm level-select select2', 'style' => 'display: none']) !!}
+            {!! Form::select('level_id', (isset($levels) ? $levels : array()), ( isset($competitor) AND $competitor->level->id > 0 ? $competitor->level->id : old('level_id')), ['class' => 'form-control input-sm level-select']) !!}
         </div>
     </div>
 </div>
@@ -82,7 +82,7 @@
                 <label class="control-label" for="song">
                     Bailarina <b class="red">(*)</b>
                 </label>
-                {!! Form::select('dancer_id[female]', (isset($dancers['female']) ? $dancers['female'] : array()), ( isset($competitor) AND $competitor->dancers()->female()->count() > 0 ? $competitor->dancers()->female()->pluck('id') : old('dancer_id[female]')), ['class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
+                {!! Form::select('dancer_id[female]', (isset($dancers['female']) ? $dancers['female'] : array()), ( isset($competitor) AND $competitor->dancers()->female()->count() > 0 ? $competitor->dancers()->female()->pluck('id') : old('dancer_id[female]')), ['class' => 'form-control input-sm', 'required' => 'required']) !!}
             </div>
         </div>
     </div>
@@ -101,7 +101,7 @@
             <label class="control-label" for="song">
                 Bailarín <b class="red">(*)</b>
             </label>
-            {!! Form::select('dancer_id[masculine]', (isset($dancers['masculine']) ? $dancers['masculine'] : array()), ( isset($competitor) AND $competitor->dancers()->masculine()->count() > 0 ? $competitor->dancers()->masculine()->pluck('id') : old('dancer_id[masculine]')), ['class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
+            {!! Form::select('dancer_id[masculine]', (isset($dancers['masculine']) ? $dancers['masculine'] : array()), ( isset($competitor) AND $competitor->dancers()->masculine()->count() > 0 ? $competitor->dancers()->masculine()->pluck('id') : old('dancer_id[masculine]')), ['class' => 'form-control input-sm', 'required' => 'required']) !!}
         </div>
     </div>
     @else
@@ -120,7 +120,7 @@
                     <label class="control-label" for="song">
                         Bailarín o Bailarina <b class="red">(*)</b>
                     </label>
-                    {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
+                    {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['class' => 'form-control input-sm', 'required' => 'required']) !!}
                 @else
                     <label class="control-label" for="song">
                         Bailarines <b class="red">(*)</b>
@@ -174,7 +174,9 @@
 {!! Html::script('/assets/plugins/ct-select2/js/select2.min.js') !!}
 
 <script>
-    $(".select2").select2();
+    $(".select2").select2({
+        placeholder: "Selecciona",
+    });
 </script>
 
 @endpush

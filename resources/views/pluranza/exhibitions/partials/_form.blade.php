@@ -41,7 +41,7 @@
                 'dancer_id[]', 
                 $dancers, 
                 $selectedDancers, 
-                ['multiple' => 'multiple', 'placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+                ['multiple' => 'multiple', 'placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
         </div>
     </div>
 </div>
@@ -64,7 +64,7 @@
                 'gender_id[]', 
                 $genres, 
                 $selectedGenres, 
-                ['multiple' => 'multiple', 'placeholder' => 'Selecciona los géneros', 'class' => 'form-control input-sm', 'required' => 'required']) !!}
+                ['multiple' => 'multiple', 'placeholder' => 'Selecciona los géneros', 'class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
         </div>
     </div>
 </div>
@@ -104,5 +104,16 @@
             </label>
             {!! Form::file('song', array('placeholder' => 'Canción', 'class' => 'file-upload')) !!}
         </div>
-    </div
+    </div>
 </div>
+
+@push('scripts')
+{!! Html::script('/assets/plugins/ct-select2/js/select2.min.js') !!}
+
+<script>
+    $(".select2").select2({
+        placeholder: "Selecciona"
+    });
+</script>
+
+@endpush
