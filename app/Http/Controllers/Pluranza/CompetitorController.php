@@ -140,8 +140,30 @@ class CompetitorController extends Controller
     {
         $competitor = $this->repository->get($id);
         $academy = $competitor->academy;
-        $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitor->competitionType->id);
-        $levels = $this->competitionCategoryRepository->getLevelByCategoryAndCompetitionTypeForSelect($competitor->category->id, $competitor->competitionType->id);
+
+        $categories = array();
+        if ($this->competitionCategoryRepository->getCategoriesByCompetitionTypeCount($competitor->competitionType->id))
+            $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitor->competitionType->id);
+        
+        if ($this->repository->getCategoryCount($competitor->id))
+            $selectedCategory = $this->repository->getCategoryForSelected($competitor->id); 
+        elseif (old('category_id'))   
+            $selectedCategory = old('category_id');
+        else
+            $selectedCategory = null;
+
+        $levels = array();
+        if ($this->competitionCategoryRepository->getLevelByCategoryAndCompetitionTypeCount($competitor->category->id, $competitor->competitionType->id))
+            $levels = $this->competitionCategoryRepository->getLevelByCategoryAndCompetitionTypeForSelect($competitor->category->id, $competitor->competitionType->id);
+        
+        if ($this->repository->getLevelCount($competitor->id))
+            $selectedLevel = $this->repository->getLevelForSelected($competitor->id); 
+        elseif (old('level_id'))   
+            $selectedLevel = old('level_id');
+        else
+            $selectedLevel = null;        
+        
+
         $competitionType = $competitor->competitionType;
         if (strtolower($competitor->competitionType->name) == 'pareja') {
             $masculineDancers = array();
@@ -183,7 +205,7 @@ class CompetitorController extends Controller
         }
         \Debugbar::info($dancers);
         \Debugbar::info($selectedDancers);
-        return view('pluranza.competitors.edit')->with(compact('competitor', 'academy', 'levels', 'categories', 'dancers', 'selectedDancers', 'competitionType'));
+        return view('pluranza.competitors.edit')->with(compact('competitor', 'academy', 'levels', 'selectedLevel', 'categories', 'selectedCategory', 'dancers', 'selectedDancers', 'competitionType'));
     }
 
     /**

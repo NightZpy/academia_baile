@@ -199,5 +199,44 @@ class CompetitorRepository extends BaseRepository {
 	{
 		return $this->getDancersFemale($id)->count();
 	}
+
+	/*
+	* -------------------- Get Category -------------------
+	*/
+	public function getCategory($id)
+	{
+		$competitor = $this->get($id);
+		return $competitor->category;
+	}
+
+
+	public function getCategoryCount($id)
+	{
+		return null !== $this->getCategory($id);
+	}
+
+	public function getCategoryForSelected($id)
+	{
+		return $this->getCategory($id)->id;
+	}
+
+	/*
+	* -------------------- Get Category -------------------
+	*/
+	public function getLevel($id)
+	{
+		$competitor = $this->get($id);
+		return $competitor->level;
+	}
+
+	public function getLevelCount($id)
+	{
+		return null !== $this->getLevel($id);
+	}
+
+	public function getLevelForSelected($id)
+	{
+		return $this->getLevel($id)->id;
+	}	
 }
 

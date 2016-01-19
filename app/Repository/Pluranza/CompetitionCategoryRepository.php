@@ -43,7 +43,7 @@ class CompetitionCategoryRepository extends BaseRepository {
 
 	public function getCategoriesForSelect()
 	{
-		return $this->getCategories()->lists('name', 'id');
+		return $this->getCategories()->pluck('name', 'id');
 	}
 
 	public function getCategoriesByCompetitionType($id)
@@ -57,7 +57,12 @@ class CompetitionCategoryRepository extends BaseRepository {
 
 	public function getCategoriesByCompetitionTypeForSelect($id)
 	{
-		return $this->getCategoriesByCompetitionType($id)->lists('name', 'id');
+		return $this->getCategoriesByCompetitionType($id)->pluck('name', 'id')->toArray();
+	}
+
+	public function getCategoriesByCompetitionTypeCount($id)
+	{
+		return $this->getCategoriesByCompetitionType($id)->count();
 	}
 
 	public function getLevelByCategoryAndCompetitionTypeForSelect($categoryId, $competitionCategoryId)
@@ -68,12 +73,23 @@ class CompetitionCategoryRepository extends BaseRepository {
 		$levels = new Collection();
 		foreach ($competitionCategories as $competitionCategory)
 			$levels->add($competitionCategory->level);
-		return $levels->lists('name', 'id');
+		return $levels->pluck('name', 'id')->toArray();
+	}
+
+	public function getLevelByCategoryAndCompetitionTypeCount($categoryId, $competitionCategoryId)
+	{
+		$competitionCategories =  $this->model->whereCategoryId($categoryId)
+											  ->whereCompetitionTypeId($competitionCategoryId)
+											  ->groupBy('level_id')->get();
+		$levels = new Collection();
+		foreach ($competitionCategories as $competitionCategory)
+			$levels->add($competitionCategory->level);
+		return $levels->count();
 	}
 
 	public function getLevelByCategoryForSelect($id)
 	{
-		return $this->getLevelByCategory($id)->lists('name', 'id');
+		return $this->getLevelByCategory($id)->pluck('name', 'id');
 	}
 
 	public function getCompetitionTypes()
@@ -88,7 +104,7 @@ class CompetitionCategoryRepository extends BaseRepository {
 
 	public function getCompetitionTypesForSelect()
 	{
-		return $this->getCompetitionTypes()->lists('name', 'id');
+		return $this->getCompetitionTypes()->pluck('name', 'id');
 	}
 
 
@@ -103,7 +119,7 @@ class CompetitionCategoryRepository extends BaseRepository {
 
 	public function getCompetitionTypeByLevelForSelect($id)
 	{
-		return $this->getCompetitionTypeByLevel($id)->lists('name', 'id');
+		return $this->getCompetitionTypeByLevel($id)->pluck('name', 'id');
 	}
 
 	public function allOrderBy($by = ['competition_type', 'category', 'level'], $type = 'asc') {

@@ -42,7 +42,7 @@
             <label class="control-label" for="song">
                 Género de baile <b class="red">(*)</b>
             </label>
-            {!! Form::select('category_id', (isset($categories) ? $categories : array()), ( isset($competitor) AND $competitor->category->id > 0 ? $competitor->category->id : old('category_id')), ['class' => 'form-control input-sm category-select']) !!}
+            {!! Form::select('category_id', $categories, $selectedCategory, ['class' => 'form-control input-sm category-select']) !!}
         </div>
     </div>
 </div>
@@ -61,7 +61,7 @@
             <label class="control-label" for="song">
                 Nivel de competición <b class="red">(*)</b>
             </label>
-            {!! Form::select('level_id', (isset($levels) ? $levels : array()), ( isset($competitor) AND $competitor->level->id > 0 ? $competitor->level->id : old('level_id')), ['class' => 'form-control input-sm level-select']) !!}
+            {!! Form::select('level_id', $levels, $selectedLevel, ['class' => 'form-control input-sm level-select']) !!}
         </div>
     </div>
 </div>
