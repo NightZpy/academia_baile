@@ -134,7 +134,7 @@ class CompetitorRepository extends BaseRepository {
 	public function getDancers($id)
 	{
 		$competitor = $this->get($id);
-		return $competitor->dancers->get();
+		return $competitor->dancers;
 	}
 
 	public function getDancersForSelect($id)
