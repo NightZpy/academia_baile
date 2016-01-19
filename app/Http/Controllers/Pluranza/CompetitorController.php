@@ -241,6 +241,7 @@ class CompetitorController extends Controller
         }
         \Debugbar::info($dancers);
         \Debugbar::info($selectedDancers);
+        \Debugbar::info(['Selected Category' => $selectedCategory, 'Selected Level' => $selectedLevel]);
         return view('pluranza.competitors.edit')->with(compact('competitor', 'academy', 'levels', 'selectedLevel', 'categories', 'selectedCategory', 'dancers', 'selectedDancers', 'competitionType'));
     }
 
