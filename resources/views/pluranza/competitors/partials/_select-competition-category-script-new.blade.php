@@ -9,6 +9,7 @@
                         //cleanElement('.municipality-select');
                         //cleanElement('.city-select');
                         $('.level-select').empty();
+                        console.log($('.level-select').html());
                     }
                 },
                 {
