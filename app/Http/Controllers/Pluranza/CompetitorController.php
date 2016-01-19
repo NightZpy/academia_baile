@@ -10,6 +10,7 @@ use App\Repository\Pluranza\AcademyRepository;
 use App\Repository\Pluranza\CompetitionCategoryRepository;
 use App\Repository\Pluranza\CompetitionTypeRepository;
 use App\Repository\Pluranza\CompetitorRepository;
+use App\Repository\Pluranza\DancerRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
@@ -20,6 +21,7 @@ class CompetitorController extends Controller
     protected $academyRepository;
     protected $competitionCategoryRepository;
     protected $competitionTypeRepository;
+    protected $dancerRepository;
 
     /**
      * CompetitorController constructor.
@@ -28,11 +30,13 @@ class CompetitorController extends Controller
                                 CompetitorRepository $repository,
                                 AcademyRepository $academyRepository,
                                 CompetitionCategoryRepository $competitionCategoryRepository,
-                                CompetitionTypeRepository $competitionTypeRepository) {
+                                CompetitionTypeRepository $competitionTypeRepository,
+                                DancerRepository $dancerRepository) {
         $this->repository = $repository;
         $this->academyRepository = $academyRepository;
         $this->competitionCategoryRepository = $competitionCategoryRepository;
         $this->competitionTypeRepository = $competitionTypeRepository;
+        $this->dancerRepository = $dancerRepository;
     }
 
     /**
@@ -79,17 +83,13 @@ class CompetitorController extends Controller
     {
         $academy = $this->academyRepository->get($id);
         $competitionType = $this->competitionTypeRepository->get($request->get('competition_type_id'));
-        $name = $this->repository->getAutomaticName($competitionType);
+        $name = $this->repository->getAutomaticName($competitionType);        
+
         if (strtolower($competitionType->name) == 'pareja') {
-            $masculineDancers = $academy->dancers()->masculine()->lists('name', 'id');
-            $femaleDancers = $academy->dancers()
-                ->female()
-                //->select('dancers.id AS id', DB::raw('CONCAT(dancers.name, " ", dancers.last_name) AS full_name'))
-                ->lists('name', 'id');
-            $dancers = ['masculine' => $masculineDancers, 'female' => $femaleDancers];
-            \Debugbar::info($dancers);
+ 
+
         } else {
-            $dancers = $academy->dancers->lists('fullName', 'id');
+
         }
         $categories = $this->competitionCategoryRepository->getCategoriesByCompetitionTypeForSelect($competitionType->id);
         return view('pluranza.competitors.new')->with(compact('dancers', 'categories', 'academy', 'competitionType', 'name'));
@@ -144,17 +144,46 @@ class CompetitorController extends Controller
         $levels = $this->competitionCategoryRepository->getLevelByCategoryAndCompetitionTypeForSelect($competitor->category->id, $competitor->competitionType->id);
         $competitionType = $competitor->competitionType;
         if (strtolower($competitor->competitionType->name) == 'pareja') {
-            $masculineDancers = $academy->dancers()->masculine()->lists('name', 'id');
-            $femaleDancers = $academy->dancers()
-                ->female()
-                //->select('dancers.id AS id', DB::raw('CONCAT(dancers.name, " ", dancers.last_name) AS full_name'))
-                ->lists('name', 'id');
-            $dancers = ['masculine' => $masculineDancers, 'female' => $femaleDancers];
-        } else {
-            $dancers = $academy->dancers->lists('fullName', 'id');
-        }
+            $masculineDancers = array();
+            if ($this->dancerRepository->getMasculineByAcademyCount($academy->id))
+                $masculineDancers =  $this->dancerRepository->getMasculineByAcademyForSelect($academy->id);                          
 
-        return view('pluranza.competitors.edit')->with(compact('competitor', 'academy', 'levels', 'categories', 'dancers', 'competitionType'));
+            if ($this->repository->getDancersMasculineCount($competitor->id))
+                $selectedMasculineDancers = $this->repository->getDancersMasculineForSelected($competitor->id); 
+            elseif (old('dancer_id["masculine"]'))   
+                $selectedMasculineDancers = old('dancer_id["masculine"]');
+            else
+                $selectedMasculineDancers = null;
+            
+
+            $femaleDancers = array();
+            if ($this->dancerRepository->getFemaleByAcademyCount($academy->id))
+                $femaleDancers =  $this->dancerRepository->getFemaleByAcademyForSelect($academy->id);                        
+
+            if ($this->repository->getDancersFemaleCount($competitor->id))
+                $selectedFemaleDancers = $this->repository->getDancersFemaleForSelected($competitor->id); 
+            elseif (old('dancer_id["female"]'))   
+                $selectedFemaleDancers = old('dancer_id["female"]');
+            else
+                $selectedFemaleDancers = null;
+
+            $dancers = ['masculine' => $masculineDancers, 'female' => $femaleDancers];
+            $selectedDancers = ['masculine' => $selectedMasculineDancers, 'female' => $selectedFemaleDancers];
+        } else {
+            $dancers = array();
+            if ($this->dancerRepository->getByAcademyCount($academy->id))
+                $dancers = $this->dancerRepository->getByAcademyForSelect($academy->id);
+
+            if ($this->repository->getDancersCount($competitor->id))
+                $selectedDancers = $this->repository->getDancersForSelected($competitor->id); 
+            elseif (old('dancer_id[]'))   
+                $selectedDancers = old('dancer_id[]');
+            else
+                $selectedDancers = null;
+        }
+        \Debugbar::info($dancers);
+        \Debugbar::info($selectedDancers);
+        return view('pluranza.competitors.edit')->with(compact('competitor', 'academy', 'levels', 'categories', 'dancers', 'selectedDancers', 'competitionType'));
     }
 
     /**

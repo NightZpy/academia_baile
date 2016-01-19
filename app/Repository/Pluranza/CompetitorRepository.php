@@ -127,5 +127,77 @@ class CompetitorRepository extends BaseRepository {
 		}
 		return $count;
 	}
+
+	/*
+	* -------------------- Get General Dancers -------------------
+	*/
+	public function getDancers($id)
+	{
+		$competitor = $this->get($id);
+		return $competitor->dancers->get();
+	}
+
+	public function getDancersForSelect($id)
+	{
+		return $this->getDancers($id)->pluck('name', 'id')->toArray();
+	}
+
+	public function getDancersForSelected($id)
+	{
+		return $this->getDancers($id)->pluck('id')->toArray();
+	}
+
+	public function getDancersCount($id)
+	{
+		return $this->getDancers($id)->count();
+	}
+
+	/*
+	* -------------------- Get Masculine -------------------
+	*/
+	public function getDancersMasculine($id)
+	{
+		$competitor = $this->get($id);
+		return $competitor->dancers()->masculine()->get();
+	}
+
+	public function getDancersMasculineForSelect($id)
+	{
+		return $this->getDancersMasculine($id)->pluck('name', 'id')->toArray();
+	}
+
+	public function getDancersMasculineForSelected($id)
+	{
+		return $this->getDancersMasculine($id)->pluck('id')->toArray();
+	}
+
+	public function getDancersMasculineCount($id)
+	{
+		return $this->getDancersMasculine($id)->count();
+	}
+
+	/*
+	* -------------------- Get Female -------------------
+	*/
+	public function getDancersFemale($id)
+	{
+		$competitor = $this->get($id);
+		return $competitor->dancers()->female()->get();
+	}
+
+	public function getDancersFemaleForSelect($id)
+	{
+		return $this->getDancersFemale($id)->pluck('name', 'id');
+	}
+
+	public function getDancersFemaleForSelected($id)
+	{
+		return $this->getDancersFemale($id)->pluck('id')->toArray();
+	}
+
+	public function getDancersFemaleCount($id)
+	{
+		return $this->getDancersFemale($id)->count();
+	}
 }
 

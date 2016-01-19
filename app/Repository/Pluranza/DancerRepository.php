@@ -18,12 +18,6 @@ class DancerRepository extends BaseRepository {
 		$this->dataTable = $dataTable;
 	}
 
-	public function getByAcademy($id)
-	{
-		$academy = new AcademyRepository(new AcademyDataTable);
-		return $academy->get($id)->dancers;
-	}
-
 	public function getByAcademyDataTable($id)
 	{
 		$academy = new AcademyRepository(new AcademyDataTable);
@@ -34,6 +28,63 @@ class DancerRepository extends BaseRepository {
 		$dancers = $academy->get($id)->dancers;
 		$this->dataTable->setDatatableCollection($dancers);
 		return $this->dataTable->getDefaultTable($dancers);
+	}
+
+	/*
+	* -------------------- Get General Dancers -------------------
+	*/
+	public function getByAcademy($id)
+	{
+		$academyRepository = new AcademyRepository(new AcademyDataTable);
+		return $academy->get($id)->dancers;
+	}
+
+	public function getByAcademyForSelect($id)
+	{
+		return $this->getByAcademy($id)->pluck('name', 'id');
+	}
+
+	public function getByAcademyCount($id)
+	{
+		return $this->getByAcademy($id)->count();
+	}
+
+	/*
+	* -------------------- Get Masculine -------------------
+	*/
+	public function getMasculineByAcademy($id)
+	{
+		$academyRepository = new AcademyRepository(new AcademyDataTable);
+		return $academyRepository->get($id)->dancers()->masculine()->get();
+	}
+
+	public function getMasculineByAcademyForSelect($id)
+	{
+		return $this->getMasculineByAcademy($id)->pluck('name', 'id');
+	}
+
+	public function getMasculineByAcademyCount($id)
+	{
+		return $this->getMasculineByAcademy($id)->count();
+	}
+
+	/*
+	* -------------------- Get Female -------------------
+	*/
+	public function getFemaleByAcademy($id)
+	{
+		$academyRepository = new AcademyRepository(new AcademyDataTable);
+		return $academyRepository->get($id)->dancers()->female()->get();
+	}
+
+	public function getFemaleByAcademyForSelect($id)
+	{
+		return $this->getFemaleByAcademy($id)->pluck('name', 'id');
+	}
+
+	public function getFemaleByAcademyCount($id)
+	{
+		return $this->getFemaleByAcademy($id)->count();
 	}
 }
 

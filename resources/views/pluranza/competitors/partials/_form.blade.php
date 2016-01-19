@@ -82,7 +82,7 @@
                 <label class="control-label" for="song">
                     Bailarina <b class="red">(*)</b>
                 </label>
-                {!! Form::select('dancer_id[female]', (isset($dancers['female']) ? $dancers['female'] : array()), ( isset($competitor) AND $competitor->dancers()->female()->count() > 0 ? $competitor->dancers()->female()->pluck('id') : old('dancer_id[female]')), ['class' => 'form-control input-sm', 'required' => 'required']) !!}
+                {!! Form::select('dancer_id[female]', $dancers['female'], $selectedDancers['female'], ['class' => 'form-control input-sm', 'required' => 'required']) !!}
             </div>
         </div>
     </div>
@@ -101,7 +101,7 @@
             <label class="control-label" for="song">
                 Bailarín <b class="red">(*)</b>
             </label>
-            {!! Form::select('dancer_id[masculine]', (isset($dancers['masculine']) ? $dancers['masculine'] : array()), ( isset($competitor) AND $competitor->dancers()->masculine()->count() > 0 ? $competitor->dancers()->masculine()->pluck('id') : old('dancer_id[masculine]')), ['class' => 'form-control input-sm', 'required' => 'required']) !!}
+            {!! Form::select('dancer_id[masculine]', $dancers['masculine'], $selectedDancers['masculine'], ['class' => 'form-control input-sm', 'required' => 'required']) !!}
         </div>
     </div>
     @else
@@ -120,12 +120,12 @@
                     <label class="control-label" for="song">
                         Bailarín o Bailarina <b class="red">(*)</b>
                     </label>
-                    {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['class' => 'form-control input-sm', 'required' => 'required']) !!}
+                    {!! Form::select('dancer_id[]', $dancers, $selectedDancers, ['class' => 'form-control input-sm', 'required' => 'required']) !!}
                 @else
                     <label class="control-label" for="song">
                         Bailarines <b class="red">(*)</b>
                     </label>
-                    {!! Form::select('dancer_id[]', (isset($dancers) ? $dancers : array()), ( isset($dancerId) AND $dancerId > 0 ? $dancerId : old('dancer_id')), ['multiple' => 'multiple', 'class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
+                    {!! Form::select('dancer_id[]', $dancers, $selectedDancers, ['multiple' => 'multiple', 'class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
                 @endif
             </div>
         </div>
