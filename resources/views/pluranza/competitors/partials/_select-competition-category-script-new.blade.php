@@ -24,7 +24,7 @@
                                 return {
                                     label: item,
                                     value: index,
-                                    selected: selectOnlyOption // Select if only option
+                                    selected: {{ $selectedLevel }} // Select if only option
                                 };
                             }));
                         });
