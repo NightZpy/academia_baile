@@ -6,11 +6,14 @@ use Carbon\Carbon;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Illuminate\Database\Eloquent\Model;
+use Iatstuti\Database\Support\NullableFields;
 
 class Payment extends Model implements StaplerableInterface {
-	use EloquentTrait;
+	use EloquentTrait, NullableFields;
 
 	protected $fillable = ['amount', 'reference_code', 'pay_date', 'voucher', 'academy_id', 'competitor_id'];
+
+	protected $nullable = ['reference_code', 'pay_date', 'competitor_id'];
 
 	public function __construct(array $attributes = array())
 	{
