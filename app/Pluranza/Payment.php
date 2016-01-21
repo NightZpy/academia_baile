@@ -66,6 +66,11 @@ class Payment extends Model implements StaplerableInterface {
 		return Carbon::parse($value)->format('Y-m-d');
 	}
 
+	public function getPayDateEsAttribute($value)
+	{
+		return Carbon::parse($value)->format('d-m-Y');
+	}
+
 	/*
 	 * ------------------------- mutators -------------------------
 	 */
