@@ -55,10 +55,7 @@ class PaymentController extends Controller
      */
     public function create($id)
     {
-        if (\Entrust::hasRole('admin'))
-            $academy = $this->academyRepository->get($id);
-        else
-            $academy = $this->academyRepository->get(auth()->user()->academy->id);  
+        $academy = $this->academyRepository->get($id);
         $competitors = $academy->competitors->pluck('name', 'id');
         // $status = ['accept' => 'Aceptado', 'refuse' => 'Rechazado', 'pending' => 'Pendiente'];
         return view('pluranza.payments.new')->with(compact('academy', 'competitors'));
@@ -73,9 +70,6 @@ class PaymentController extends Controller
     public function store(RegisterPaymentFormRequest $request, AppMailer $mailer)
     {
         $input = $request->all();
-        if (\Entrust::hasRole('admin'))
-            $input['academy_id'] = auth()->user()->academy->id;
-
         $payment = $this->repository->create($input);
         $admin = Role::whereName('admin')->first()->users->first();
         $mailer->sendEmailNewPaymentToAdmin($payment, $admin, 'pluranza.payments.emails.payment');
