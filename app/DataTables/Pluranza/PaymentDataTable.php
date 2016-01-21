@@ -54,7 +54,7 @@ class PaymentDataTable extends BaseDataTable
 
 		$this->collection->addColumn('Fecha', function($model)
 		{
-			return $model->date;
+			return $model->pay_date;
 		});
 
 		$this->collection->addColumn('Código de referencia', function($model)
