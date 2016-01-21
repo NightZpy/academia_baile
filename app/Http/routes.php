@@ -359,16 +359,18 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 			Route::get('api/lista', ['as' => 'pluranza.payments.api.list', 'uses' => 'PaymentController@apiList']);
 		});
 
-		Route::group(['middleware' => ['role:admin|director', 'ownPayment']], function () {
-			Route::get('por-academia/{id}', ['as' => 'pluranza.payments.by-academy', 'uses' => 'PaymentController@byAcademy']);
+		Route::group(['middleware' => ['role:admin|director']], function () {
 			Route::get('pagar/{id}', ['as' => 'pluranza.payments.new', 'uses' => 'PaymentController@create']);
 			Route::post('/', ['as' => 'pluranza.payments.store', 'uses' => 'PaymentController@store']);
-			Route::get('ver/{id}', ['as' => 'pluranza.payments.show', 'uses' => 'PaymentController@show']);
-			Route::get('editar/{id}', ['as' => 'pluranza.payments.edit', 'uses' => 'PaymentController@edit']);
-			Route::patch('actualizar/{id}', ['as' => 'pluranza.payments.update', 'uses' => 'PaymentController@update']);
-			Route::delete('{id}', ['as' => 'pluranza.payments.delete', 'uses' => 'PaymentController@destroy']);
-			// -------------- API's --------------------
-			Route::get('api/lista/por-academia/{id}', ['as' => 'pluranza.payments.api.by-academy', 'uses' => 'PaymentController@apiByAcademyList']);
+			Route::group(['middleware' => ['ownPayment']], function () {
+				Route::get('por-academia/{id}', ['as' => 'pluranza.payments.by-academy', 'uses' => 'PaymentController@byAcademy']);
+				Route::get('ver/{id}', ['as' => 'pluranza.payments.show', 'uses' => 'PaymentController@show']);
+				Route::get('editar/{id}', ['as' => 'pluranza.payments.edit', 'uses' => 'PaymentController@edit']);
+				Route::patch('actualizar/{id}', ['as' => 'pluranza.payments.update', 'uses' => 'PaymentController@update']);
+				Route::delete('{id}', ['as' => 'pluranza.payments.delete', 'uses' => 'PaymentController@destroy']);
+				// -------------- API's --------------------
+				Route::get('api/lista/por-academia/{id}', ['as' => 'pluranza.payments.api.by-academy', 'uses' => 'PaymentController@apiByAcademyList']);
+			});
 		});
 	});
 });
