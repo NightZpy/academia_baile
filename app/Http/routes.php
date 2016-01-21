@@ -360,9 +360,9 @@ Route::group(['prefix' => 'pluranza', 'namespace' => 'Pluranza'], function () {
 		});
 
 		Route::group(['middleware' => ['role:admin|director']], function () {
-			Route::get('pagar/{id}', ['as' => 'pluranza.payments.new', 'uses' => 'PaymentController@create']);
 			Route::post('/', ['as' => 'pluranza.payments.store', 'uses' => 'PaymentController@store']);
 			Route::group(['middleware' => ['ownPayment']], function () {
+				Route::get('pagar/{id}', ['as' => 'pluranza.payments.new', 'uses' => 'PaymentController@create']);
 				Route::get('por-academia/{id}', ['as' => 'pluranza.payments.by-academy', 'uses' => 'PaymentController@byAcademy']);
 				Route::get('ver/{id}', ['as' => 'pluranza.payments.show', 'uses' => 'PaymentController@show']);
 				Route::get('editar/{id}', ['as' => 'pluranza.payments.edit', 'uses' => 'PaymentController@edit']);
