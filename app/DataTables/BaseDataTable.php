@@ -1,7 +1,7 @@
 <?php
 namespace App\DataTables;
 
-use Datatable;
+use Chumper\Datatable\Datatable;
 use Illuminate\Database\Eloquent\Collection;
 
 class BaseDataTable {
@@ -21,7 +21,7 @@ class BaseDataTable {
 	 * @param $columns
 	 */
 	public function defaultConfig() {
-		$this->dataTable = \Datatable::table()
+		$this->dataTable = Datatable::table()
 			->setOptions(array(
 				'dom' =>"T<'clear'>lfrtip",
 				'tabletools' => array(
