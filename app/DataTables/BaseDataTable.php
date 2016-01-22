@@ -1,10 +1,13 @@
 <?php
 namespace App\DataTables;
 
-use Datatable;
+use Datatable {
+        Datatable::table as cTable;
+    };
 use Illuminate\Database\Eloquent\Collection;
 
 class BaseDataTable {
+
 	protected $columns;
 	protected $actionColums = array('all');
 	protected $collection;
