@@ -96,6 +96,11 @@ class User extends Model implements AuthenticatableContract,
         return $this->verified;
     }
 
+    public function is_admin()
+    {
+        return \Entrust::hasRole('admin');
+    }
+
     /*
 	* -------------------------- Relations ------------------------
 	*/
