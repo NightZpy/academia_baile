@@ -8,7 +8,7 @@ class BaseDataTable {
 
 	use Datatable {
         Datatable::table as cTable;
-    };
+    }
 
 	protected $columns;
 	protected $actionColums = array('all');
