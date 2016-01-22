@@ -1,7 +1,5 @@
 <?php
 namespace App\DataTables;
-
-use Datatable;
 use Illuminate\Database\Eloquent\Collection;
 
 class BaseDataTable {
@@ -146,12 +144,12 @@ class BaseDataTable {
 
 	public function setCollection($collection)
 	{
-		$this->collection = Datatable::collection($collection);
+		$this->collection = \CDatatable::collection($collection);
 	}
 
 	public function setDatatableCollection(Collection $collection)
 	{
-		$this->collection = Datatable::collection($collection);
+		$this->collection = \CDatatable::collection($collection);
 	}
 
 	public function addColumnToCollection($name, $content)
