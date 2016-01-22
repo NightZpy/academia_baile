@@ -159,7 +159,7 @@ return [
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Ixudra\Curl\CurlServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
-        //'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',
+        'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',
     ],
 
     /*
@@ -215,7 +215,7 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Debugbar'  => Barryvdh\Debugbar\Facade::class,
         'Curl'          => Ixudra\Curl\Facades\Curl::class,
-        //'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade',
+        'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade',
     ],
 
 ];
