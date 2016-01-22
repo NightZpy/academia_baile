@@ -21,7 +21,7 @@ class BaseDataTable {
 	 * @param $columns
 	 */
 	public function defaultConfig() {
-		$this->dataTable = Datatable::c_table()
+		$this->dataTable = \Datatable::table()
 			->setOptions(array(
 				'dom' =>"T<'clear'>lfrtip",
 				'tabletools' => array(
