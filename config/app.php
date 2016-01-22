@@ -211,7 +211,7 @@ return [
         'Flash'     => Laracasts\Flash\Flash::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Form'      => Collective\Html\FormFacade::class,
-        'Datatable' => 'Chumper\Datatable\Facades\DatatableFacade',
+        'CDatatable' => 'Chumper\Datatable\Facades\DatatableFacade',
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Debugbar'  => Barryvdh\Debugbar\Facade::class,
         'Curl'          => Ixudra\Curl\Facades\Curl::class,
