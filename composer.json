@@ -18,7 +18,10 @@
         "iatstuti/laravel-nullable-fields": "~0.1",
         "anhskohbo/no-captcha": "2.*",
         "ixudra/curl": "6.*",
-        "rap2hpoutre/laravel-log-viewer": "^0.5.2"
+        "rap2hpoutre/laravel-log-viewer": "^0.5.2",
+        "symfony/yaml": "^2.0",
+        "pragmarx/tracker": "^2.0",
+        "geoip/geoip": "~1.14"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
