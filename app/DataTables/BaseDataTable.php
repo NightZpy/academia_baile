@@ -1,12 +1,14 @@
 <?php
 namespace App\DataTables;
 
-use Datatable {
-        Datatable::table as cTable;
-    };
+use Datatable;
 use Illuminate\Database\Eloquent\Collection;
 
 class BaseDataTable {
+
+	use Datatable {
+        Datatable::table as cTable;
+    };
 
 	protected $columns;
 	protected $actionColums = array('all');
@@ -23,7 +25,7 @@ class BaseDataTable {
 	 * @param $columns
 	 */
 	public function defaultConfig() {
-		$this->dataTable = Datatable::table()
+		$this->dataTable = Datatable::cTable()
 			->setOptions(array(
 				'dom' =>"T<'clear'>lfrtip",
 				'tabletools' => array(
