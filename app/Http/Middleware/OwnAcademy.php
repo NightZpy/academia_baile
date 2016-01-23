@@ -27,7 +27,7 @@ class OwnAcademy
     {
         \Debugbar::info(['Rol' => !\Entrust::hasRole('admin')]);
         if (!\Auth::check() || 
-            (!\Auth::user()->ownerOfAcademy($request->id) || !\Auth::user()->ownerOfAcademy($request->academy_id)) && 
+            (!\Auth::user()->ownerOfAcademy($request->id) && !\Auth::user()->ownerOfAcademy($request->academy_id)) && 
             !\Entrust::hasRole('admin'))
             abort(404);
         return $next($request);
