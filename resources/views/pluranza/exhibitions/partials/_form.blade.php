@@ -41,7 +41,7 @@
                 'dancer_id[]', 
                 $dancers, 
                 $selectedDancers, 
-                ['multiple' => 'multiple', 'placeholder' => 'Selecciona los bailarines', 'class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
+                ['multiple' => 'multiple', 'class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
         </div>
     </div>
 </div>
@@ -64,7 +64,7 @@
                 'gender_id[]', 
                 $genres, 
                 $selectedGenres, 
-                ['multiple' => 'multiple', 'placeholder' => 'Selecciona los géneros', 'class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
+                ['multiple' => 'multiple', 'class' => 'form-control input-sm select2', 'required' => 'required', 'style' => 'display: none']) !!}
         </div>
     </div>
 </div>
