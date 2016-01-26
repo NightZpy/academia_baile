@@ -36,8 +36,12 @@ class PasswordController extends Controller
 
     public function postEmail(Request $request)
     {
-        $this->validate($request, ['email' => 'required|email', 'g-recaptcha-response' => 'required|captcha']);
-
+        $this->validate($request, ['email' => 'required|email|exists:users,email', 'g-recaptcha-response' => 'required|captcha']);
+        $user = User::whereEmail($request->get('email'))->whereVerified(1)->count();
+        if (!$user) {
+            flash()->error('¡Verifica primero tu correo electrónico!');
+            return redirect()->back();
+        }
         $response = Password::sendResetLink($request->only('email'), function (Message $message) {
             $message->subject('PURANZA 2016: Recuperación de contraseña.');
         });
