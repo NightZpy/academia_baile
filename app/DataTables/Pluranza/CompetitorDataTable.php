@@ -102,7 +102,9 @@ class CompetitorDataTable extends BaseDataTable
 
 		$this->collection->addColumn('Canción', function($model)
 		{
-			return '<a target="_blank" href="' . $model->song->url() . '">' . $model->song_name . '</a>';
+			if ($model->song_file_name)
+				return '<a target="_blank" href="' . $model->song->url() . '">' . $model->song_name . '</a>';
+			return 'Sin asignar';
 		});
 
 		if ((Entrust::hasRole('director') || Entrust::hasRole('admin')) && request()->route()->getName() == 'pluranza.competitors.api.by-academy') {
