@@ -8,6 +8,7 @@ class CompetitorDataTable extends BaseDataTable
 {
 	function __construct() {
 		$columns = [
+			'Agregada',
 			'Nombre',
 			'Género',
 			'Nivel',
@@ -51,10 +52,19 @@ class CompetitorDataTable extends BaseDataTable
 		}
 		$this->setDefaultActions($actions);
 		$this->setDefaultActionRoutes($actionRoutes);
+
+		$this->setOrderColumn(0);
+		$this->setOrderType('desc');
+		$this->setHideColumns([0]);
 	}
 
 	public function setBodyTableSettings()
 	{
+		$this->collection->addColumn('Agregada', function($model)
+		{
+			return $model->created_at->format('d-m-Y H:m:s');
+		});
+		
 		$filters = $this->columns;
 		unset($filters[count($filters) - 1]);
 		if (!Entrust::hasRole('director'))
