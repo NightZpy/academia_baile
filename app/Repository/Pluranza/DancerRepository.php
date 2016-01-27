@@ -33,6 +33,11 @@ class DancerRepository extends BaseRepository {
 	/*
 	* -------------------- Get General Dancers -------------------
 	*/
+	public function getAllDataTable()
+	{
+		return $this->dataTable->getDefaultTable($this->has('academies')->get());
+	}
+
 	public function getByAcademy($id)
 	{
 		$academyRepository = new AcademyRepository(new AcademyDataTable);

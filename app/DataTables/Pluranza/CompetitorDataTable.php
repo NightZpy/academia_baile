@@ -77,6 +77,7 @@ class CompetitorDataTable extends BaseDataTable
 			$this->collection->addColumn('Academia', function($model)
 			{
 				return $model->academy->name;
+				//return '<a target="_blank" href="' . route('pluranza.academies.show', $model->academy->id) . '">' . $model->academy->name . '</a>';
 			});
 		}
 
