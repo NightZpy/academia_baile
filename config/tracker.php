@@ -5,7 +5,7 @@ return [
 	/**
 	 * Enable it?
 	 */
-	'enabled' => env('TRACKER', false),,
+	'enabled' => env('TRACKER', false),
 
 	/**
 	 * Robots should be tracked?
