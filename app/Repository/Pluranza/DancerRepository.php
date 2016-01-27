@@ -35,7 +35,7 @@ class DancerRepository extends BaseRepository {
 	*/
 	public function getAllDataTable()
 	{
-		return $this->dataTable->getDefaultTable($this->model->has('academies')->get());
+		return $this->dataTable->getDefaultTable($this->model->has('academy')->get());
 	}
 
 	public function getByAcademy($id)
