@@ -30,6 +30,7 @@
                                 } else {
                                     var selected = false;
                                 }
+                                console.log('Selected: ' + selected);
                                 return {
                                     label: item,
                                     value: index,
