@@ -25,12 +25,12 @@
                         $.getJSON(url, request, function(data) {
                             var preselect = {{ $selectedLevel }};
                             response($.map(data, function(item, index) {
+                                console.log(item.value + '=' + preselect);
                                 if(item.value == preselect) {
                                     var selected = item.label;
                                 } else {
                                     var selected = false;
                                 }
-                                console.log('Selected: ' + selected);
                                 return {
                                     label: item,
                                     value: index,
