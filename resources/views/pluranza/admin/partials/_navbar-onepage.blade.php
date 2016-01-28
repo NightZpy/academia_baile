@@ -104,7 +104,7 @@
                                     <ul class="dropdown-menu">
                                         @if(isset($configuration) AND !empty($configuration->rules_file_name))
                                             <li class="onepage">
-                                                <a target="_blank" href="https://drive.google.com/file/d/0BxViq4jyVK_XX2dpZFp4VWVrMHM/view?usp=sharing" class="ct-js-btnScroll">
+                                                <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
                                                     Reglas de competencia                            
                                                 </a>
                                             </li>

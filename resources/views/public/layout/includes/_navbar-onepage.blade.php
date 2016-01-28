@@ -15,6 +15,11 @@
                         <li class="onepage"><a href="#join-us" class="ct-js-btnScroll">Inicio</a></li>
                         {{--<li class="onepage"><a href="#join-us" class="ct-js-btnScroll">Pluranza 2016: Únete</a></li>--}}
                         <li class="onepage"><a href="{{ route('pluranza.home') }}" class="ct-js-btnScroll">Pluranza 2016</a></li>
+                        <li class="onepage">
+                            <a target="_blank" href="{{ $configuration->rules->url() }}" class="ct-js-btnScroll">
+                                Reglas de competencia                            
+                            </a>
+                        </li>>
                         {{--<li class="onepage"><a href="#videos" class="ct-js-btnScroll">Vídeos</a></li>--}}
                         {{--<li class="onepage"><a href="#academy-show" class="ct-js-btnScroll">Academias</a></li>--}}
                         {{--<li class="onepage"><a href="#blog" class="ct-js-btnScroll" >Blog</a></li>--}}
