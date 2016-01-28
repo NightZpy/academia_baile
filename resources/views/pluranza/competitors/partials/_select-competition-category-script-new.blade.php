@@ -25,7 +25,6 @@
                         $.getJSON(url, request, function(data) {
                             var preselect = {{ $selectedLevel }};
                             response($.map(data, function(item, index) {
-                                console.log(index + '=' + preselect);
                                 if(index == preselect) {
                                     var selected = index;
                                 } else {
