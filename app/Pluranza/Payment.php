@@ -56,6 +56,13 @@ class Payment extends Model implements StaplerableInterface {
 		}
 	}
 
+	public function getAmountAttribute($value)
+	{
+		if ($this->status == 'refuse')
+			return 0;
+		return $value;
+	}
+
 	public function getAmountBsAttribute()
 	{
 		return number_format($this->amount, 2, ',', '.');
@@ -69,7 +76,7 @@ class Payment extends Model implements StaplerableInterface {
 	public function getPayDateEsAttribute($value)
 	{
 		return Carbon::parse($value)->format('d-m-Y');
-	}
+	}	
 
 	/*
 	 * ------------------------- mutators -------------------------
