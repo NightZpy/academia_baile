@@ -26,8 +26,8 @@
                             var preselect = {{ $selectedLevel }};
                             response($.map(data, function(item, index) {
                                 console.log(index + '=' + preselect);
-                                if(item.value == preselect) {
-                                    var selected = item.label;
+                                if(index == preselect) {
+                                    var selected = index;
                                 } else {
                                     var selected = false;
                                 }
