@@ -23,12 +23,17 @@
                         var competitionTypeId = $('input[name="competition_type_id"]').val();
                         var url = '/pluranza/categorias-en-competencia/api/lista/por-categoria-tipo-competencia/' + categoryId + '/' + competitionTypeId;
                         $.getJSON(url, request, function(data) {
-                            var selectOnlyOption = data.length <= 1;
+                            var preselect = {{ $selectedLevel }};
                             response($.map(data, function(item, index) {
+                                if(item.value == preselect) {
+                                    var selected = item.label;
+                                } else {
+                                    var selected = false;
+                                }
                                 return {
                                     label: item,
                                     value: index,
-                                    selected: '{{ $selectedLevel }}' // Select if only option
+                                    selected: selected ? selected : data.length <= 1
                                 };
                             }));
                         });
