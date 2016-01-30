@@ -53,7 +53,7 @@ class PagesController extends Controller
 	    $acceptPayments = $this->paymentRepository->countAccept();        
 	    $credit = $this->paymentRepository->creditBs();
         $totalDebt = $this->competitorRepository->debtBs();
-        $debt = number_format($totalDebt - $credit, '2', ',', '.') . ' Bs';
+        $debt = number_format($this->competitorRepository->debt() - $this->paymentRepository->credit(), '2', ',', '.') . ' Bs';
 	    $availableCompetitionQuotas = $this->competitorRepository->availableCompetitionQuotas();
 	    $exceededQuotas = $this->competitorRepository->exceededQuotas();
 	    $competitionCategoriesCount = $this->competitorRepository->countUsedQuotas();
