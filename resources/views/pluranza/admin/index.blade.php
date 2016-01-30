@@ -121,6 +121,19 @@
                         <i class="fa fa-users fa-2x"></i>
                     </div>
                     <div class="ct-counter-content">
+                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="{{ $debt }}" data-ct-speed="50">{{ $debt }}</span>
+                        <p class="ct-counter-description text-capitalize">
+                            Deuda
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center ct-counterBox-icon"><!-- Counter '2 -->
+                    <div class="ct-counter-icon">
+                        <i class="fa fa-users fa-2x"></i>
+                    </div>
+                    <div class="ct-counter-content">
                         <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="{{ $totalPayments }}" data-ct-speed="50">{{ $totalPayments }}</span>
                         <p class="ct-counter-description text-capitalize">
                             Pagos realizados

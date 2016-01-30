@@ -4,7 +4,9 @@ namespace App\Repository\Pluranza;
 use App\DataTables\Pluranza\AcademyDataTable;
 use App\Pluranza\Payment;
 use App\DataTables\Pluranza\PaymentDataTable;
+use App\DataTables\Pluranza\CompetitorDataTable;
 use App\Repository\BaseRepository;
+use App\Repository\Pluranza\CompetitorRepository;
 
 class PaymentRepository extends BaseRepository {
 

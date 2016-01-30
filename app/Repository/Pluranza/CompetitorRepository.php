@@ -128,6 +128,20 @@ class CompetitorRepository extends BaseRepository {
 		return $count;
 	}
 
+	public function debt()
+	{
+		$total = 0;
+		$competitors = $this->getAll();
+		foreach ($competitors as $competitor) 
+			$total += $competitor->price;
+		return $total;
+	}
+
+	public function debtBs()
+	{
+		return return number_format($this->debt, '2', ',', '.') . ' Bs';
+	}
+
 	/*
 	* -------------------- Get General Dancers -------------------
 	*/
@@ -221,7 +235,7 @@ class CompetitorRepository extends BaseRepository {
 	}
 
 	/*
-	* -------------------- Get Category -------------------
+	* -------------------- Get Level -------------------
 	*/
 	public function getLevel($id)
 	{

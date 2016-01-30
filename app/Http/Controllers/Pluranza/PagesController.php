@@ -50,8 +50,9 @@ class PagesController extends Controller
 	    $totalDancers = $this->dancerRepository->count();
 	    $totalCompetitors = $this->competitorRepository->count();
 	    $totalPayments = $this->paymentRepository->count();
-	    $acceptPayments = $this->paymentRepository->countAccept();
+	    $acceptPayments = $this->paymentRepository->countAccept();        
 	    $credit = $this->paymentRepository->creditBs();
+        $debt = $this->competitorRepository->debtBs();
 	    $availableCompetitionQuotas = $this->competitorRepository->availableCompetitionQuotas();
 	    $exceededQuotas = $this->competitorRepository->exceededQuotas();
 	    $competitionCategoriesCount = $this->competitorRepository->countUsedQuotas();

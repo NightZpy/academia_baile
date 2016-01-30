@@ -89,4 +89,9 @@ class Competitor extends Model implements StaplerableInterface
 		$name = ($this->attributes['song_name'] ? $this->attributes['song_name'] : $this->song_file_name);
 		return  ucfirst(str_replace('-', ' ', $name));
 	}
+
+	public function getPriceAttribute()
+	{		
+		return $this->competitionCategory->price;
+	}
 }
