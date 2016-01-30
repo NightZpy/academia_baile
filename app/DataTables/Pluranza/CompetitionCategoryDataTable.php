@@ -36,7 +36,7 @@ class CompetitionCategoryDataTable extends BaseDataTable
 
 	public function setBodyTableSettings()
 	{
-		$competitorRepository = new CompetitorRepository(new CompetitorDatatable)
+		$competitorRepository = new CompetitorRepository(new CompetitorDatatable);
 
 		$this->collection->searchColumns('Categoría', 'Nivel', 'Género', 'Precio');
 		$this->collection->orderColumns('Categoría', 'Nivel', 'Género', 'Precio');
