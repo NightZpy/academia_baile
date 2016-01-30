@@ -129,6 +129,13 @@ class CompetitorRepository extends BaseRepository {
 		return $count;
 	}
 
+	public function countByCompetitionCategory($id)
+	{
+		return $this->model
+						  ->whereCompetitionCategoryId($id)
+						  ->count();	
+	}
+
 	public function debt()
 	{
 		$total = 0;

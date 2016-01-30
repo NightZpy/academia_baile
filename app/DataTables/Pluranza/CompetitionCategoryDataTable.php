@@ -2,6 +2,8 @@
 namespace App\DataTables\Pluranza;
 
 use App\DataTables\BaseDataTable;
+use App\Repository\Pluranza\CompetitorRepository;
+use App\DataTables\Pluranza\CompetitorDatatable;
 
 class CompetitionCategoryDataTable extends BaseDataTable
 {
@@ -13,8 +15,8 @@ class CompetitionCategoryDataTable extends BaseDataTable
 			'Precio',			
 		];
 
-		if (\Entrust::hasRole('admin'))
-			array_push($this->columns, 'Acciones');
+		if (\Entrust::hasRole('admin')) 
+			$this->columns = array_merge($this->columns, ['Inscritos', 'Acciones']);
 
 		$this->defaultConfig();
 		$this->setRoute('pluranza.competition-categories.api.list');
@@ -34,6 +36,8 @@ class CompetitionCategoryDataTable extends BaseDataTable
 
 	public function setBodyTableSettings()
 	{
+		$competitorRepository = new CompetitorRepository(new CompetitorDatatable)
+
 		$this->collection->searchColumns('Categoría', 'Nivel', 'Género', 'Precio');
 		$this->collection->orderColumns('Categoría', 'Nivel', 'Género', 'Precio');
 
@@ -56,6 +60,11 @@ class CompetitionCategoryDataTable extends BaseDataTable
 		$this->collection->addColumn('Precio', function($model)
 		{
 			return $model->priceBs;
+		});
+
+		$this->collection->addColumn('Inscritos', function($model) use ($competitorRepository)
+		{
+			return $competitorRepository->countByCompetitionCategory($model->id);
 		});
 	}
 }
