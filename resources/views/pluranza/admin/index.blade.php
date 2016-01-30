@@ -88,18 +88,11 @@
             </div>
         </div>
         @foreach ($competitionCategoriesCount as $category => $levels)
-            <div class="row ct-u-paddingTop5">
-                <div class="col-md-offset-1 col-md-2">
-                    <h5 class="text-center text-uppercase ct-u-paddingTop5">
-                        {{ $category }}
-                    </h5>
-                </div>
-            </div>
             @foreach ($levels as $level => $genres)
                 <div class="row ct-u-paddingTop5">
                     <div class="col-md-offset-1 col-md-2">
                         <h5 class="text-center text-uppercase ct-u-paddingTop5">
-                            {{ $level }}
+                            -- {{ $category }} / {{ $level }} --
                         </h5>
                     </div>
                 </div>
