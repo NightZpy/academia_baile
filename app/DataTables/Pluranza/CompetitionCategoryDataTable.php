@@ -3,7 +3,7 @@ namespace App\DataTables\Pluranza;
 
 use App\DataTables\BaseDataTable;
 use App\Repository\Pluranza\CompetitorRepository;
-use App\DataTables\Pluranza\CompetitorDatatable;
+use App\DataTables\Pluranza\CompetitorDataTable;
 
 class CompetitionCategoryDataTable extends BaseDataTable
 {
@@ -36,7 +36,7 @@ class CompetitionCategoryDataTable extends BaseDataTable
 
 	public function setBodyTableSettings()
 	{
-		$competitorRepository = new CompetitorRepository(new CompetitorDatatable);
+		$competitorRepository = new CompetitorRepository(new CompetitorDataTable);
 
 		$this->collection->searchColumns('Categoría', 'Nivel', 'Género', 'Precio');
 		$this->collection->orderColumns('Categoría', 'Nivel', 'Género', 'Precio');
