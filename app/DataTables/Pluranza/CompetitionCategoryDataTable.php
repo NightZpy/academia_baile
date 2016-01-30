@@ -39,7 +39,7 @@ class CompetitionCategoryDataTable extends BaseDataTable
 	{
 		$competitorRepository = new CompetitorRepository(
 			new CompetitorDataTable, 
-			new CompetitionCategoryRepository(new CompetitorCategoryDataTable)
+			new CompetitionCategoryRepository(new CompetitionCategoryDataTable)
 		);
 
 		$this->collection->searchColumns('Categoría', 'Nivel', 'Género', 'Precio');
