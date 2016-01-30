@@ -149,7 +149,7 @@
                         <i class="fa fa-users fa-2x"></i>
                     </div>
                     <div class="ct-counter-content">
-                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="{{ $debt }}" data-ct-speed="50">{{ $debt }}</span>
+                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="{{ $debt }}" data-ct-speed="50">{{ $totalDebt }}</span>
                         <p class="ct-counter-description text-capitalize">
                             Total
                         </p>
@@ -175,7 +175,7 @@
                         <i class="fa fa-users fa-2x"></i>
                     </div>
                     <div class="ct-counter-content">
-                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="{{ $credit }}" data-ct-speed="50">{{ $debt - $credit }}</span>
+                        <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="{{ $credit }}" data-ct-speed="50">{{ $debt }}</span>
                         <p class="ct-counter-description text-capitalize">
                             Deuda
                         </p>
