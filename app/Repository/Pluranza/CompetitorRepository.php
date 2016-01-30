@@ -115,7 +115,6 @@ class CompetitorRepository extends BaseRepository {
 	public function countUsedQuotas() {
 		$count = array();
 		$competitionCategories = $this->competitionCategoryRepository->allOrderBy();
-		\Debugbar::info($competitionCategories->toArray());
 		foreach ($competitionCategories as $competitionCategory) {
 			$category = $competitionCategory->competitionType->name;
 			$level = $competitionCategory->level->name;
@@ -124,7 +123,6 @@ class CompetitorRepository extends BaseRepository {
 			$total = $this->model
 						  ->whereCompetitionCategoryId($competitionCategory->id)
 						  ->count();
-			\Debugbar::info([$category, $level, $gender, 'count' => $total]);
 			$count[$category][$level][$gender] = $total;
 		}
 		\Debugbar::info(['Lista' => $count]);
