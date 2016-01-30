@@ -124,9 +124,10 @@ class CompetitorRepository extends BaseRepository {
 			$total = $this->model
 						  ->whereCompetitionCategoryId($competitionCategory->id)
 						  ->count();
-			\Debugbar::info([$category, $gender, $level, 'count' => $total]);
+			\Debugbar::info([$category, $level, $gender, 'count' => $total]);
 			$count[$category][$level][$gender] = $total;
 		}
+		\Debugbar::info(['Lista' => $count]);
 		return $count;
 	}
 
