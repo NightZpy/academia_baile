@@ -136,6 +136,7 @@ class CompetitionCategoryRepository extends BaseRepository {
 			$model = $model->join('levels', 'competition_categories.' . 'level_id', '=', 'levels.id');
 			$model = $model->orderBy('levels.name', $type);
 		}
+		$model = $model->select('competition_categories.*');
 		return $model->get();
 	}
 }
