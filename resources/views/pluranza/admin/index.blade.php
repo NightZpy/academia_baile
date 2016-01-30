@@ -90,11 +90,52 @@
         @foreach ($competitionCategoriesCount as $category => $levels)
             @foreach ($levels as $level => $genres)
                 <div class="row ct-u-paddingTop5">
-                    <div class="col-md-offset-1 col-md-2">
+                    <div class="col-md-offset-4 col-md-4">
                         <h5 class="text-center text-uppercase ct-u-paddingTop5">
                             -- {{ $category }} / {{ $level }} --
                         </h5>
                     </div>
+                </div>
+                <div class="row ct-u-paddingTop15">
+                    <?php
+                        switch (count($genres)) {
+                             case 1:
+                                 $offset = "col-md-offset-4";
+                                 $column = "col-md-4";
+                             break;
+                             case 2:
+                                 $offset = "col-md-offset-2";
+                                 $column = "col-md-4";
+                             break;
+                             case 3:
+                                 $offset = "";
+                                 $column = "col-md-4";
+                             break;
+                             case 4:
+                                 $offset = "";
+                                 $column = "col-md-3";
+                             break;
+                             case 5:
+                                 $offset = "col-md-offset-1";
+                                 $column = "col-md-2";
+                             break;                             
+                         } 
+                    ?>
+                    @foreach ($genres as $gender => $count)
+                        <div class="{{ $offset }} {{ $column }}">
+                            <div class="text-center ct-counterBox-icon"><!-- Counter '2 -->
+                                <div class="ct-counter-icon">
+                                    <i class="fa fa-users fa-2x"></i>
+                                </div>
+                                <div class="ct-counter-content">
+                                    <span class="ct-counter-base ct-fw-300 ct-js-counter" data-ct-to="{{ $count }}" data-ct-speed="50">{{ $count }}</span>
+                                    <p class="ct-counter-description text-capitalize">
+                                        {{ $gender }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             @endforeach
         @endforeach
