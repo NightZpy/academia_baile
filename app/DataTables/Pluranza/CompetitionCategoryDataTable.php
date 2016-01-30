@@ -42,8 +42,8 @@ class CompetitionCategoryDataTable extends BaseDataTable
 			new CompetitionCategoryRepository(new CompetitionCategoryDataTable)
 		);
 
-		$this->collection->searchColumns('Categoría', 'Nivel', 'Género', 'Precio');
-		$this->collection->orderColumns('Categoría', 'Nivel', 'Género', 'Precio');
+		$this->collection->searchColumns('Categoría', 'Nivel', 'Género', 'Precio', 'Inscritos');
+		$this->collection->orderColumns('Categoría', 'Nivel', 'Género', 'Precio', 'Inscritos');
 
 		$this->collection->addColumn('Categoría', function($model)
 		{
