@@ -96,6 +96,7 @@
                         </h5>
                     </div>
                 </div>
+                <hr>
                 <div class="row ct-u-paddingTop15">
                     <?php
                         switch (count($genres)) {
