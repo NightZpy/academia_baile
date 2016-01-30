@@ -139,7 +139,7 @@ class CompetitorRepository extends BaseRepository {
 
 	public function debtBs()
 	{
-		return return number_format($this->debt, '2', ',', '.') . ' Bs';
+		return number_format($this->debt, '2', ',', '.') . ' Bs';
 	}
 
 	/*
