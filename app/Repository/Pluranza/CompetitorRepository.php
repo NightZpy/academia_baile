@@ -115,7 +115,7 @@ class CompetitorRepository extends BaseRepository {
 	public function countUsedQuotas() {
 		$count = array();
 		$competitionCategories = $this->competitionCategoryRepository->allOrderBy();
-		\Debugbar::info($competitionCategories->toArray());
+		\Debugbar::info($competitionCategories->pluck('categories.name', 'levels.name', 'competiiton_types.name')->toArray());
 		foreach ($competitionCategories as $competitionCategory) {
 			$category = $competitionCategory->competitionType->name;
 			$level = $competitionCategory->level->name;
