@@ -98,6 +98,13 @@ class Academy extends Model implements StaplerableInterface
 	/*
 	 * -------------------------------- Accessors --------------------------------
 	 */
+	public function getAgeAttribute()
+	{
+		if ($this->foundation && Carbon::createFromFormat('Y-m-d', $this->foundation) !== false)
+			return Carbon::createFromFormat('Y-m-d', $this->foundation)->age;
+		return 0;
+	}
+
 	public function getTotalAttribute()
 	{
 		$total = 0;

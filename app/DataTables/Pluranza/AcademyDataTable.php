@@ -27,7 +27,7 @@ class AcademyDataTable extends BaseDataTable
 		$actionRoutes = [
 			'show'      => 'pluranza.academies.show',
 		];
-		$actions = [];//['show'];
+		$actions = ['show'];
 
 		if (Entrust::hasRole('admin')) {
 			$actionRoutes['edit']       = 'pluranza.academies.edit';

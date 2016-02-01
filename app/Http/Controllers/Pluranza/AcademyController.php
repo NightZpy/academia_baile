@@ -95,7 +95,8 @@ class AcademyController extends Controller
      */
     public function show($id)
     {
-        //
+        $academy = $this->repository->get($id);
+        return view('pluranza.academies.show')->with(compact('academy'));
     }
 
     /**

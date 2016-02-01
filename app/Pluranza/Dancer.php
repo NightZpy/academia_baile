@@ -51,8 +51,9 @@ class Dancer extends Model implements StaplerableInterface
 
 	public function getAgeAttribute()
 	{
-		return Carbon::createFromFormat('Y-m-d', $this->birth_date)->age;
-		//return Carbon::createFromDate($fecha[0], $fecha[1], $fecha[2])->age;
+		if ($this->birth_date && Carbon::createFromFormat('Y-m-d', $this->birth_date) !== false)
+			return Carbon::createFromFormat('Y-m-d', $this->birth_date)->age;
+		return 0;
 	}
 
 	public function getGenderFormatedAttribute() {
