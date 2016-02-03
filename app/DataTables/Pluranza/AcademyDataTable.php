@@ -103,7 +103,7 @@ class AcademyDataTable extends BaseDataTable
 				$deleteForm = '<form method="POST" action="' . route($routes['delete'], $model->id) . '" accept-charset="UTF-8" style="display: inline;">';
 				$deleteForm .= '<input name="_method" type="hidden" value="DELETE">';
 				$deleteForm .= '<input name="_token" type="hidden" value="' . csrf_token() . '">';
-				$deleteForm .= '<button type="submit" class="delete btn btn-xs btn-primary btn-circle"><i class="fa fa-trash"></i> Eliminar</button>';
+				$deleteForm .= '<a type="submit" class="delete btn btn-xs btn-primary btn-circle"><i class="fa fa-trash"></i> Eliminar</a>';
 				$deleteForm .= '</form>';
 				$this->addActionColumn($deleteForm);
 			} else {
@@ -117,7 +117,7 @@ class AcademyDataTable extends BaseDataTable
 					$deleteForm = '<form method="POST" action="' . route($routes['delete'], $model->id) . '" accept-charset="UTF-8"  style="display: inline;">';
 					$deleteForm .= '<input name="_method" type="hidden" value="DELETE">';
 					$deleteForm .= '<input name="_token" type="hidden" value="' . csrf_token() . '">';
-					$deleteForm .= '<button type="submit" class="delete btn btn-xs btn-primary btn-circle"><i class="fa fa-trash"></i> Eliminar</button>';
+					$deleteForm .= '<a type="submit" class="delete btn btn-xs btn-primary btn-circle"><i class="fa fa-trash"></i> Eliminar</a>';
 					$deleteForm .= '</form>';
 					$this->addActionColumn($deleteForm);
 				}
