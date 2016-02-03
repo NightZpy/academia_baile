@@ -108,10 +108,10 @@ class AcademyDataTable extends BaseDataTable
 				$this->addActionColumn($deleteForm);
 			} else {
 				if (in_array('show', $actions))
-					$this->addActionColumn("<li><a class='show btn btn-xs btn-warning btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-user'></i> Ver</a></li>");
+					$this->addActionColumn("<li><a class='show btn btn-xs btn-default btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-user'></i> Ver</a></li>");
 
 				if (in_array('edit', $actions))
-					$this->addActionColumn("<li><a class='edit btn btn-xs btn-darkGray btn-circle' href='" . route($routes['edit'], $model->id) . "' id='edit_".$model->id."'><i class='fa fa-pencil'></i> Editar</a></li>");
+					$this->addActionColumn("<li><a class='edit btn btn-xs btn-default btn-circle' href='" . route($routes['edit'], $model->id) . "' id='edit_".$model->id."'><i class='fa fa-pencil'></i> Editar</a></li>");
 
 				if (in_array('delete', $actions)) {
 					$deleteForm = '<form method="POST" action="' . route($routes['delete'], $model->id) . '" accept-charset="UTF-8"  style="display: inline;">';
