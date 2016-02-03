@@ -91,7 +91,7 @@ class AcademyDataTable extends BaseDataTable
 		{
 			$this->cleanActionColumn();
 			$this->addActionColumn("<div class='btn-group btn-group-sm' role='group'>");
-			$actionBtn = '<button type="button" class="btn btn-primary btn-circle dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>';
+			$actionBtn = '<button type="button" class="btn btn-primary btn-circle dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Acciones <span class="caret"></span></button>';
 			$this->addActionColumn($actionBtn);
 			$dropdown = '<ul class="dropdown-menu">';
 			$this->addActionColumn($dropdown);
