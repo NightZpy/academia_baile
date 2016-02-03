@@ -16,7 +16,7 @@ class CompetitorDataTable extends BaseDataTable
 		];
 
 		if (\Auth::check())
-			array_push($this->columns, 'Acciones');
+			array_push($columns, 'Acciones');
 
 		$this->defaultConfig();
 		$this->setRoute('pluranza.competitors.api.list');
