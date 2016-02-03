@@ -13,9 +13,17 @@ class CompetitorDataTable extends BaseDataTable
 			'Género',
 			'Nivel',
 			'Categoría',
-			'Canción',
-			'Acciones'
+			'Canción'
 		];
+
+		if (\Auth::check())
+			array_push($this->columns, 'Acciones');
+
+		$this->defaultConfig();
+		$this->setRoute('pluranza.competitors.api.list');
+		$this->setOrderColumn(0);
+		$this->setOrderType('desc');
+		$this->setHideColumns([0]);
 
 		if (!Entrust::hasRole('director'))
 			$this->columns = ['Academia'];
@@ -35,9 +43,7 @@ class CompetitorDataTable extends BaseDataTable
 			array_push($array, 'Acciones');
 			$this->columns = $array;
 		}
-
-		$this->defaultConfig();
-		$this->setRoute('pluranza.competitors.api.list');
+		
 		$actionRoutes = ['show' => 'pluranza.competitors.show'];
 		$actions = [];//['show'];
 
@@ -51,11 +57,7 @@ class CompetitorDataTable extends BaseDataTable
 			}
 		}
 		$this->setDefaultActions($actions);
-		$this->setDefaultActionRoutes($actionRoutes);
-
-		$this->setOrderColumn(0);
-		$this->setOrderType('desc');
-		$this->setHideColumns([0]);
+		$this->setDefaultActionRoutes($actionRoutes);		
 	}
 
 	public function setBodyTableSettings()
