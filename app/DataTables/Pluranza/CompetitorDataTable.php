@@ -8,7 +8,6 @@ class CompetitorDataTable extends BaseDataTable
 {
 	function __construct() {
 		$columns = [
-			'Agregada',
 			'Nombre',
 			'Género',
 			'Nivel',
@@ -32,6 +31,8 @@ class CompetitorDataTable extends BaseDataTable
 			$this->columns = array_merge(['Academia'], $columns);
 		else
 			$this->columns = $columns;
+
+		$this->columns = array_merge(['Agregada'], $this->columns);
 
 		if ((Entrust::hasRole('director') || Entrust::hasRole('admin')) &&
 			(
