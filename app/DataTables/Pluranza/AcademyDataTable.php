@@ -91,10 +91,14 @@ class AcademyDataTable extends BaseDataTable
 		{
 			$this->cleanActionColumn();
 			$this->addActionColumn("<div class='btn-group btn-group-sm' role='group'>");
+			$actionBtn = '<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>';
+			$this->addActionColumn($actionBtn);
+			$dropdown = '<ul class="dropdown-menu">';
+			$this->addActionColumn($dropdown);
 			if (in_array('all', $actions)) {
-				$this->addActionColumn("<a class='show btn btn-xs btn-warning btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-user'></i> Ver</a>");
-				$this->addActionColumn("<a  class='edit btn btn-xs btn-darkGray btn-circle' href='" . route($routes['edit'], $model->id) . "' id='edit_" . $model->id . "'><i class='fa fa-pencil'></i> Editar</a>");
-				$this->addActionColumn("<a  class='edit btn btn-xs btn-darkGray btn-circle' href='" . route($routes['send-confirm'], $model->id) . "' id='send-confirm_" . $model->id . "'><i class='fa fa-pencil'></i> Enviar confirmación</a>");
+				$this->addActionColumn("<li><a class='show btn btn-xs btn-warning btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-user'></i> Ver</a></li>");
+				$this->addActionColumn("<li><a class='edit btn btn-xs btn-darkGray btn-circle' href='" . route($routes['edit'], $model->id) . "' id='edit_" . $model->id . "'><i class='fa fa-pencil'></i> Editar</a></li>");
+				$this->addActionColumn("<li><a class='edit btn btn-xs btn-darkGray btn-circle' href='" . route($routes['send-confirm'], $model->id) . "' id='send-confirm_" . $model->id . "'><i class='fa fa-pencil'></i> Enviar confirmación</a></li>");
 
 				$deleteForm = '<form method="POST" action="' . route($routes['delete'], $model->id) . '" accept-charset="UTF-8" style="display: inline;">';
 				$deleteForm .= '<input name="_method" type="hidden" value="DELETE">';
@@ -104,10 +108,10 @@ class AcademyDataTable extends BaseDataTable
 				$this->addActionColumn($deleteForm);
 			} else {
 				if (in_array('show', $actions))
-					$this->addActionColumn("<a class='show btn btn-xs btn-warning btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-user'></i> Ver</a>");
+					$this->addActionColumn("<li><a class='show btn btn-xs btn-warning btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-user'></i> Ver</a></li>");
 
 				if (in_array('edit', $actions))
-					$this->addActionColumn("<a  class='edit btn btn-xs btn-darkGray btn-circle' href='" . route($routes['edit'], $model->id) . "' id='edit_".$model->id."'><i class='fa fa-pencil'></i> Editar</a>");
+					$this->addActionColumn("<li><a class='edit btn btn-xs btn-darkGray btn-circle' href='" . route($routes['edit'], $model->id) . "' id='edit_".$model->id."'><i class='fa fa-pencil'></i> Editar</a></li>");
 
 				if (in_array('delete', $actions)) {
 					$deleteForm = '<form method="POST" action="' . route($routes['delete'], $model->id) . '" accept-charset="UTF-8"  style="display: inline;">';
@@ -119,11 +123,12 @@ class AcademyDataTable extends BaseDataTable
 				}
 				
 				if (in_array('confirm', $actions) && !$model->user->isConfirm ) 
-					$this->addActionColumn("<a  class='confirm btn btn-xs btn-darkGray btn-circle' href='" . route($routes['confirm'], $model->id) . "' id='confirm_".$model->id."'><i class='fa fa-pencil'></i> Confirmar</a>");
+					$this->addActionColumn("<li><a class='confirm btn btn-xs btn-darkGray btn-circle' href='" . route($routes['confirm'], $model->id) . "' id='confirm_".$model->id."'><i class='fa fa-pencil'></i> Confirmar</a></li>");
 
 				if (in_array('send-confirm', $actions) && !$model->user->isConfirm ) 
-					$this->addActionColumn("<a  class='send-confirm btn btn-xs btn-darkGray btn-circle' href='" . route($routes['send-confirm'], $model->id) . "' id='send-confirm_" . $model->id . "'><i class='fa fa-pencil'></i> Enviar confirmación</a>");
+					$this->addActionColumn("<li><a class='send-confirm btn btn-xs btn-darkGray btn-circle' href='" . route($routes['send-confirm'], $model->id) . "' id='send-confirm_" . $model->id . "'><i class='fa fa-pencil'></i> Enviar confirmación</a></li>");
 			}
+			$this->addActionColumn('</ul>');
 			$this->addActionColumn('</div>');
 			return implode(" ", $this->getActionColumn());
 		});
