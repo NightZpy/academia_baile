@@ -13,7 +13,8 @@ class AcademyDataTable extends BaseDataTable
 			'Fundación',
 			'Director',
 			'Facebook',
-			'Estado'			
+			'Estado',
+			'Acciones'			
 		];
 
 		// if (\Auth::check())
