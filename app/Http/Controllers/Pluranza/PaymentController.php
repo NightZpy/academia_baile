@@ -97,7 +97,8 @@ class PaymentController extends Controller
     public function edit($id)
     {
         $payment = $this->repository->get($id);
-        return view('pluranza.payments.edit')->with(compact('payment'));
+        $academy = $payment->academy;
+        return view('pluranza.payments.edit')->with(compact('payment', 'academy'));
     }
 
     /**
