@@ -97,11 +97,10 @@ class AcademyDataTable extends BaseDataTable
 			$dropdown = '<ul class="dropdown-menu">';
 			$this->addActionColumn($dropdown);
 			if (in_array('all', $actions)) {
-				$this->addActionColumn("<li><a class='show btn btn-xs btn-default btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-user'></i> Ver</a></li>");
-				$this->addActionColumn("<li><a class='edit btn btn-xs btn-default btn-circle' href='" . route($routes['edit'], $model->id) . "' id='edit_" . $model->id . "'><i class='fa fa-pencil'></i> Editar</a></li>");
-				$this->addActionColumn("<li><a class='edit btn btn-xs btn-default btn-circle' href='" . route($routes['send-confirm'], $model->id) . "' id='send-confirm_" . $model->id . "'><i class='fa fa-pencil'></i> Enviar confirmación</a></li>");
-
 				$deleteForm = '<form method="POST" action="' . route($routes['delete'], $model->id) . '" accept-charset="UTF-8" style="display: inline;">';
+				$deleteForm .= "<li><a class='show btn btn-xs btn-default btn-circle' href='" . route($routes['show'], $model->id) . "' id='show_".$model->id."'><i class='fa fa-user'></i> Ver</a></li>";
+				$deleteForm .= "<li><a class='edit btn btn-xs btn-default btn-circle' href='" . route($routes['edit'], $model->id) . "' id='edit_" . $model->id . "'><i class='fa fa-pencil'></i> Editar</a></li>";
+				$deleteForm .= "<li><a class='edit btn btn-xs btn-default btn-circle' href='" . route($routes['send-confirm'], $model->id) . "' id='send-confirm_" . $model->id . "'><i class='fa fa-pencil'></i> Enviar confirmación</a></li>";				
 				$deleteForm .= '<input name="_method" type="hidden" value="DELETE">';
 				$deleteForm .= '<input name="_token" type="hidden" value="' . csrf_token() . '">';
 				$deleteForm .= '<a type="submit" class="delete btn btn-xs btn-default btn-circle"><i class="fa fa-trash"></i> Eliminar</a>';

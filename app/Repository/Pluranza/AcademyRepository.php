@@ -34,7 +34,12 @@ class AcademyRepository extends BaseRepository {
 	{
 		$academy = $this->get($id);
 		$user = $academy->user();
-		return $academy->delete() && $user->delete();
+	    return $academy->payments()->delete() 		&&
+			   $academy->competitors()->delete() 	&&
+			   $academy->exhibitions()->delete() 	&&
+			   $academy->dancers()->delete() 		&&
+			   $academy->delete() 					&& 
+			   $user->delete();
 
 	}
 
