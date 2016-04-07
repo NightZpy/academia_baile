@@ -82,7 +82,7 @@ class PaymentDataTable extends BaseDataTable
 
 		$this->collection->addColumn('Academia', function($model)
 		{
-			return '<a target="_blank" href="' . route('pluranza.academies.show', $model->academy->id) . '">' . $model->academy->name . '"</a>';
+			return '<a target="_blank" href="' . route('pluranza.academies.show', $model->academy->id) . '">' . $model->academy->name . '</a>';
 		});
 	}
 
