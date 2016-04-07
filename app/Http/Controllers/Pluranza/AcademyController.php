@@ -172,8 +172,8 @@ class AcademyController extends Controller
     public function destroy($id)
     {
         $academy = $this->repository->get($id);
-        flash()->success('Academia ' . $academy->name . ' eliminada correctamente.');
         $this->repository->delete($id);
+        flash()->success('Academia ' . $academy->name . ' eliminada correctamente.');
         return redirect()->back();
     }
 

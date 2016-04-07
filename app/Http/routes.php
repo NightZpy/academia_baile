@@ -164,7 +164,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
 		* ---------- Academies ----------
 		*/
 		Route::group(['prefix' => 'academias'], function () {
-			Route::delete('{id}', ['as' => 'pluranza.academies.delete', 'uses' => 'Academy@destroy']);
+			Route::delete('{id}', ['as' => 'pluranza.academies.delete', 'uses' => 'AcademyController@destroy']);
 			Route::get('/resent-confirm', ['as' => 'pluranza.academies.resend-confirm', 'uses' => 'AcademyController@resendToNoVerifiedAccounts']);
 			Route::get('/resent-confirm-academy/{id}', ['as' => 'pluranza.academies.resend-confirm-academy', 'uses' => 'AcademyController@resendToNoVerifiedAccount']);
 			Route::get('/verificar/{id}', ['as' => 'pluranza.academies.confirm', 'uses' => 'AcademyController@confirm']);
