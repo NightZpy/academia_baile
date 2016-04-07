@@ -14,6 +14,7 @@ class PaymentDataTable extends BaseDataTable
 			'Código de referencia',
 			'Estatús',
 			'Competidor',
+			'Academia',
 			'Acciones'
 		];
 		$this->defaultConfig();
@@ -39,8 +40,8 @@ class PaymentDataTable extends BaseDataTable
 
 	public function setBodyTableSettings()
 	{
-		$this->collection->searchColumns('Monto', 'Fecha', 'Código de referencia', 'Estatús', 'Competidor');
-		$this->collection->orderColumns('Monto', 'Fecha', 'Estatús', 'Competidor');
+		$this->collection->searchColumns('Monto', 'Fecha', 'Código de referencia', 'Estatús', 'Competidor', 'Academia');
+		$this->collection->orderColumns('Monto', 'Fecha', 'Estatús', 'Competidor', 'Academia');
 
 		$this->collection->addColumn('Voucher', function($model)
 		{
@@ -76,6 +77,11 @@ class PaymentDataTable extends BaseDataTable
 		{
 			if ($model->competitor)
 				return $model->competitor->name;
+			return $model->academy->name;
+		});
+
+		$this->collection->addColumn('Academia', function($model)
+		{
 			return $model->academy->name;
 		});
 	}

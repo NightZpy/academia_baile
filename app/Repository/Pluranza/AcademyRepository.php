@@ -49,9 +49,12 @@ class AcademyRepository extends BaseRepository {
 			\Debugbar::info(['Enviando custom a: ' => $academies]);
 			foreach ($academies as $id) {
 				$academy = $this->get($id);
-				if (strlen($academy->phone) == 11) {
-					\Debugbar::info(['Phone: ' => $academy->phone]);
-					$this->sms($message, $academy->phone);
+				$phone = $academy->phone;
+				$prefix = intval(substr($phone, 0, 4));
+				if ( ($prefix != 276) && strlen($phone) == 11) {
+					\Debugbar::info(['Phone: ' => $phone]);
+					\Debugbar::info(['prefix: ' => $prefix]);
+					$this->sms($message, $phone);
 				}				
 			}
 		} 
@@ -60,8 +63,10 @@ class AcademyRepository extends BaseRepository {
 			\Debugbar::info(['Enviando a: ' => 'todos']);
 			$academies = $this->getAll();
 			foreach ($academies as $academy) {
-				if (strlen($academy->phone) == 11) {
-					$this->sms($message, $academy->phone);
+				$phone = $academy->phone;
+				$prefix = intval(substr($phone, 0, 4));				
+				if ( ($prefix != 276) && strlen($phone) == 11) {
+					$this->sms($message, $phone);
 				}				
 			}
 		}
@@ -71,8 +76,10 @@ class AcademyRepository extends BaseRepository {
 			\Debugbar::info(['Enviando sin verificar a: ' => $users->lists('name')]);
         	if ($users->count()) {
         		foreach ($users as $user) {
-        			if (strlen($user->academy->phone) == 11) 
-						$this->sms($message, $user->academy->phone);
+        			$phone = $user->academy->phone;
+        			$prefix = intval(substr($phone, 0, 4));
+        			if ( ($prefix != 276) && strlen($phone) == 11) { 
+						$this->sms($message, $phone);
         		}
         	}
 		}
