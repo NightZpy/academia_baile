@@ -78,7 +78,7 @@ class AcademyRepository extends BaseRepository {
         		foreach ($users as $user) {
         			$phone = $user->academy->phone;
         			$prefix = intval(substr($phone, 0, 4));
-        			if ( ($prefix != 276) && strlen($phone) == 11) { 
+        			if ( ($prefix != 276) && strlen($phone) == 11)
 						$this->sms($message, $phone);
         		}
         	}
