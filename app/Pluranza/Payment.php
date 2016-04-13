@@ -70,12 +70,12 @@ class Payment extends Model implements StaplerableInterface {
 
 	public function getPayDateAttribute($value)
 	{
-		return Carbon::parse($value)->format('Y-m-d');
+		return Carbon::parse($this->pay_date)->format('Y-m-d');
 	}
 
-	public function getPayDateEsAttribute($value)
+	public function getPayDateEsAttribute()
 	{
-		return Carbon::parse($value)->format('d-m-Y');
+		return Carbon::parse($this->pay_date)->format('d-m-Y');
 	}	
 
 	/*
