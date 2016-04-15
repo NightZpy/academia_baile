@@ -16,7 +16,7 @@
 */
 
 Route::get('/test', function() {
-	return App\Pluranza\Academy::has('payments')->pluck('name');
+
 });
 
 

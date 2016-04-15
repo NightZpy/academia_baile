@@ -3,6 +3,18 @@
         <div class="row ct-u-paddingTop5">
             <div class="col-md-12">
                 <h4 class="text-center text-uppercase ct-u-paddingTop30">
+                    Academias que han pagado
+                </h4>
+                <ul>
+                    @foreach ($paymentAcademies as $academy)
+                        <li>{{ $academy }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+        <div class="row ct-u-paddingTop5">
+            <div class="col-md-12">
+                <h4 class="text-center text-uppercase ct-u-paddingTop30">
                     Estadísticas
                 </h4>
             </div>
