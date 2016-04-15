@@ -10,7 +10,7 @@
         <div class="row ct-u-paddingTop15 ct-u-paddingBottom15">
             @foreach ($paymentAcademies as $academy)
                 <div class="col-md-2">
-                    <a target="_blank" href="{{ route('pluranza.academies.show', $academy->id) }}"><img src="{{ $academy->logo->url('thumb') }}" alt=" {{ $academy->name }} "></a>
+                    <a target="_blank" href="{{ route('pluranza.academies.show', $academy->id) }}"><img src="{{ $academy->logo->url('thumb') }}" alt=" {{ $academy->name }} " title=" {{ $academy->name }} "></a>
                 </div>
             @endforeach
         </div>
@@ -24,7 +24,7 @@
         <div class="row ct-u-paddingTop15 ct-u-paddingBottom15">
             @foreach ($competitorAcademies as $academy)
                 <div class="col-md-2">
-                    <a target="_blank" href="{{ route('pluranza.academies.show', $academy->id) }}"><img src="{{ $academy->logo->url('thumb') }}" alt=" {{ $academy->name }} "></a>
+                    <a target="_blank" href="{{ route('pluranza.academies.show', $academy->id) }}"><img src="{{ $academy->logo->url('thumb') }}" alt=" {{ $academy->name }} " title=" {{ $academy->name }} "></a>
                     <em>{{ $academy->phone }}</em>
                 </div>
             @endforeach
