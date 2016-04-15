@@ -46,7 +46,7 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $paymentAcademies = App\Pluranza\Academy::has('payments')->pluck('name');
+        $paymentAcademies = Academy::has('payments')->pluck('name');
         $countAcademies = $this->academyRepository->countVerified();
 	    $totalDancers = $this->dancerRepository->count();
 	    $totalCompetitors = $this->competitorRepository->count();
