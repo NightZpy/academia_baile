@@ -7,7 +7,7 @@
                 </h4>
                 <ul>
                     @foreach ($paymentAcademies as $academy)
-                        <li>{{ $academy }}</li>
+                        <li>{{ $academy->name }}</li>
                     @endforeach
                 </ul>
             </div>

@@ -46,7 +46,7 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $paymentAcademies = Academy::has('payments')->pluck('name');
+        $paymentAcademies = Academy::has('payments')->get();
         $countAcademies = $this->academyRepository->countVerified();
 	    $totalDancers = $this->dancerRepository->count();
 	    $totalCompetitors = $this->competitorRepository->count();
