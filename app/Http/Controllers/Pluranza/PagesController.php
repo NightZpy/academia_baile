@@ -48,7 +48,7 @@ class PagesController extends Controller
     {
         $paymentAcademies = Academy::has('payments')->get();
         $competitorAcademies = Academy::has('competitors')->get();
-        $competitorsWithoutPayments = Academy::has('competitors')->hasNot('payments')->get();
+        $competitorsWithoutPayments = Academy::has('competitors')->has('payments', '<', 1)->get();
         $countAcademies = $this->academyRepository->countVerified();
 	    $totalDancers = $this->dancerRepository->count();
 	    $totalCompetitors = $this->competitorRepository->count();
