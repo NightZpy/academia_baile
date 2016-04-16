@@ -7,8 +7,7 @@ use Entrust;
 class CompetitorDataTable extends BaseDataTable
 {
 	function __construct() {
-		$columns = [
-			'Agregado',
+		$columns = [			
 			'Nombre',
 			'Género',
 			'Nivel',
