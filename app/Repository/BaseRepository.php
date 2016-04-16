@@ -24,10 +24,10 @@ class BaseRepository {
 	public function  getAll($exclude = null, $fields = null)
 	{
 		$query = $this->getModel();
-		if (count($fields)) {
+		if (count($fields)) 
 			foreach ($fields as $order => $field)
 				$query->orderBy($field, $order);
-		}
+		
 		if($exclude)
 			$query->whereNotIn('id', $exclude);
 		return $query->get();
