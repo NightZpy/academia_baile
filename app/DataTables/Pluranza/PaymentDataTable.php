@@ -8,6 +8,7 @@ class PaymentDataTable extends BaseDataTable
 {
 	function __construct() {
 		$this->columns = [
+			'Agregada',
 			'Voucher',
 			'Monto',
 			'Fecha',
@@ -19,8 +20,9 @@ class PaymentDataTable extends BaseDataTable
 		];
 		$this->defaultConfig();
 		$this->setRoute('pluranza.payments.api.list');
-		$this->setOrderColumn(2);
+		$this->setOrderColumn(0);
 		$this->setOrderType('desc');
+		$this->setHideColumns([0]);
 
 		$actionRoutes = [
 			'edit'      => 'pluranza.payments.edit',
@@ -42,6 +44,11 @@ class PaymentDataTable extends BaseDataTable
 	{
 		$this->collection->searchColumns('Monto', 'Fecha', 'Código de referencia', 'Estatús', 'Competidor', 'Academia');
 		$this->collection->orderColumns('Monto', 'Fecha', 'Estatús', 'Competidor', 'Academia');
+
+		$this->collection->addColumn('Agregada', function($model)
+		{		
+			return $model->created_at->timestamp;
+		});
 
 		$this->collection->addColumn('Voucher', function($model)
 		{
