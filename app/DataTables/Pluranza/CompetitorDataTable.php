@@ -66,7 +66,8 @@ class CompetitorDataTable extends BaseDataTable
 	{
 		$this->collection->addColumn('Agregada', function($model)
 		{
-			return $model->created_at->format('dmYHms');
+			$date = $model->created_at->format('dmYHms');
+			return $date;
 		});
 		
 		$filters = $this->columns;
