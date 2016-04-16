@@ -84,7 +84,7 @@ class CompetitorRepository extends BaseRepository {
 	public function getAllDataTable()
 	{
 		$this->dataTable->getDefaultTable($this->getAll(null, ['desc' => 'created_at']));
-		\Db::enableQueryLog();
+		\DB::enableQueryLog();
 		dd(\DB::getQueryLog());
 	}
 
