@@ -83,7 +83,7 @@ class CompetitorRepository extends BaseRepository {
 
 	public function getAllDataTable()
 	{
-		return $this->dataTable->getDefaultTable($this->getAll()->orderBy('created_at', 'desc'));
+		return $this->dataTable->getDefaultTable($this->getAll(null, ['created_at', 'desc']));
 	}
 
 	public function getAutomaticName(CompetitionType $competitionType)

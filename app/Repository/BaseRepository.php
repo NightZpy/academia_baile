@@ -21,12 +21,18 @@ class BaseRepository {
 		return $model;
 	}
 
-	public function  getAll($exclude = null)
+	public function  getAll($exclude = null, $fields = null)
 	{
+		$query = $this->getModel();
+		if (count($fields)) {
+			foreach ($fields as $order => $field)
+				$query->orderBy($field, $order);
+		}
 		if($exclude)
-			return $this->getModel()->whereNotIn('id', $exclude)->get();
-		return $this->getModel()->all();
+			$query->whereNotIn('id', $exclude);
+		return $query->get();
 	}
+
 
 	public function getAllForSelect()
 	{
