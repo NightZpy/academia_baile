@@ -288,7 +288,6 @@ class CompetitorController extends Controller
         \DB::connection()->enableQueryLog();
         $query = \DB::getQueryLog();
         \Debugbar::info(end($query)); 
-        dd(end($query));
         return $response;
     }
 
