@@ -87,7 +87,8 @@ class CompetitorRepository extends BaseRepository {
 		\DB::connection()->enableQueryLog();
 		$query = \DB::getQueryLog();
 		$lastQuery = end($query); 
-		return $lastQuery;
+
+		dd($lastQuery);
 	}
 
 	public function getAutomaticName(CompetitionType $competitionType)
