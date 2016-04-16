@@ -70,7 +70,7 @@ class AuthController extends Controller
             'password' => 'required'            
         ];
 
-        $excludeRecaptcha = ['escuelapasionlatina@hotmail.com', 'nightzpy@gmail.com'];
+        $excludeRecaptcha = ['escuelapasionlatina@hotmail.com', 'alcompas14@gmail.com'];
         if (!in_array($request->get('email'), $excludeRecaptcha))
             $rules = array_merge($rules, ['g-recaptcha-response' => 'required|captcha']);
         $this->validate($request, $rules);
