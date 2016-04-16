@@ -284,11 +284,7 @@ class CompetitorController extends Controller
     public function apiList()
     {
         if(request()->ajax())
-            $response = $this->repository->getAllDataTable();
-        \DB::connection()->enableQueryLog();
-        $query = \DB::getQueryLog();
-        \Debugbar::info(end($query)); 
-        return $response;
+            return $this->repository->getAllDataTable();
     }
 
     public function apiByAcademyList($id)

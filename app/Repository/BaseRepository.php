@@ -23,15 +23,14 @@ class BaseRepository {
 
 	public function  getAll($exclude = null, $fields = null)
 	{
-		$query = $this->getModel();
-		if (count($fields)) {
-			\Debugbar::info(['Fields' => $fields]);
-			foreach ($fields as $order => $field)
-				$query->orderBy($field, $order);
-		}
-		
+		$query = $this->getModel();	
 		if($exclude)
-			$query->whereNotIn('id', $exclude);
+			$query = $query->whereNotIn('id', $exclude);
+
+		if (count($fields)) {
+			foreach ($fields as $order => $field)
+				$query = $query->orderBy($field, $order);
+		}
 		return $query->get();
 	}
 
