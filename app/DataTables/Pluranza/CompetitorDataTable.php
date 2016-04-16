@@ -8,6 +8,7 @@ class CompetitorDataTable extends BaseDataTable
 {
 	function __construct() {
 		$columns = [
+			'Agregado',
 			'Nombre',
 			'Género',
 			'Nivel',
