@@ -48,6 +48,7 @@ class PagesController extends Controller
     {
         $paymentAcademies = Academy::has('payments')->get();
         $competitorAcademies = Academy::has('competitors')->get();
+        $competitorsWithoutPayments = Academy::has('competitors')->hasNot('payments')->get();
         $countAcademies = $this->academyRepository->countVerified();
 	    $totalDancers = $this->dancerRepository->count();
 	    $totalCompetitors = $this->competitorRepository->count();
@@ -63,7 +64,7 @@ class PagesController extends Controller
         if (Auth::user()) {
             $academy = Academy::find(Auth::user()->academy->id);
         }
-        return view ('pluranza.pages.index')->with(compact('competitorAcademies', 'paymentAcademies', 'academy', 'competitionCategoriesCount', 'countAcademies', 'totalDancers', 'totalCompetitors', 'totalPayments', 'availableCompetitionQuotas', 'exceededQuotas', 'acceptPayments', 'credit', 'debt', 'totalDebt'));
+        return view ('pluranza.pages.index')->with(compact('competitorsWithoutPayments', 'competitorAcademies', 'paymentAcademies', 'academy', 'competitionCategoriesCount', 'countAcademies', 'totalDancers', 'totalCompetitors', 'totalPayments', 'availableCompetitionQuotas', 'exceededQuotas', 'acceptPayments', 'credit', 'debt', 'totalDebt'));
     }
 
     /**
