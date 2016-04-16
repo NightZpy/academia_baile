@@ -42,13 +42,13 @@ class PaymentDataTable extends BaseDataTable
 
 	public function setBodyTableSettings()
 	{
-		$this->collection->searchColumns('Monto', 'Fecha', 'Código de referencia', 'Estatús', 'Competidor', 'Academia');
-		$this->collection->orderColumns('Monto', 'Fecha', 'Estatús', 'Competidor', 'Academia');
-
 		$this->collection->addColumn('Agregada', function($model)
 		{		
 			return $model->created_at->timestamp;
 		});
+
+		$this->collection->searchColumns('Monto', 'Fecha', 'Código de referencia', 'Estatús', 'Competidor', 'Academia');
+		$this->collection->orderColumns('Agregada', 'Monto', 'Estatús', 'Competidor', 'Academia');
 
 		$this->collection->addColumn('Voucher', function($model)
 		{
