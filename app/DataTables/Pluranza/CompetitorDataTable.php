@@ -22,7 +22,8 @@ class CompetitorDataTable extends BaseDataTable
 		$this->setRoute('pluranza.competitors.api.list');
 		$this->setOrderColumn(0);
 		$this->setOrderType('desc');
-		$this->setHideColumns([0]);
+		if (!Entrust::hasRole('admin'))
+			$this->setHideColumns([0]);
 
 		if (!Entrust::hasRole('director'))
 			$this->columns = ['Academia'];
